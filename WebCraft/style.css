@@ -1,0 +1,154 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    overflow-y: hidden;
+    overflow-x: hidden ;
+}
+
+.container{
+    outline: red dashed 1px;
+    height: 54rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subContainer{
+    outline: red dashed 1px;
+    width: 100%;
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoContainer{
+    outline: red dashed 1px;
+    height: 100%;
+    width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imageContainer{
+    position: relative;
+}
+
+.imageContainer1{
+    outline: red dashed 1px;
+    height: 8rem;
+    width: 100%;
+    position: absolute;
+    top: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subImageContainer1{
+    outline: red dashed 1px;
+    height: 100%;
+    width: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContainer2{
+    outline: black dashed 1px;
+    height: 7rem;
+    position: absolute;
+    width: 100%;
+    top: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subImageContainer2{
+    outline: black dashed 1px;
+    height: 100%;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContainer3{
+    outline: black dashed 1px;
+    height: 4.5rem;
+    position: absolute;
+    width: 100%;
+    top: 11rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subImageContainer3{
+    outline: black dashed 1px;
+    height: 100%;
+    width: 11rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image3{
+    height: 7.5rem;
+    animation: bounce 1s linear;
+}
+
+.image2{
+    height: 6rem;
+    animation: bounce 0.7s linear;
+}
+
+.image1{
+    height: 8rem;
+    animation: bounce 0.9s linear;
+}
+
+.image{
+    height: 20rem;
+    animation: fadeIn 0.5s linear;
+}
+
+.hidden{
+    display: none;
+}
+
+.container1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    0%{
+        height: 200rem;
+    }50%{
+        height: 50rem;
+    }100%{
+        height: 20rem;
+    }
+}
+
+@keyframes bounce {
+    0%{
+        height: 10rem;
+    }20%{
+        height: 5rem;
+    }40%{
+        height: 8rem;
+    }60%{
+        height: 10rem;
+    }80%{
+        height: 20rem;
+    }100%{
+        height: 10rem;
+    }
+}
