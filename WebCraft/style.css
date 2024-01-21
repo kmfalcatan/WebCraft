@@ -9,36 +9,41 @@ body{
 }
 
 .container{
-    outline: red dashed 1px;
     height: 54rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    background-color: rgb(0,183,175);
 }
 
 .subContainer{
-    outline: red dashed 1px;
     width: 100%;
     height: 20rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    row-gap: 10rem;
+    column-gap: 3rem;
+    
 }
 
 .logoContainer{
-    outline: red dashed 1px;
     height: 100%;
     width: 20rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .imageContainer{
     position: relative;
+    background-color: white;
+    border-radius: 500rem;
+    filter: drop-shadow(0px 0px 10px rgb(3, 94, 89));
 }
 
 .imageContainer1{
-    outline: red dashed 1px;
     height: 8rem;
     width: 100%;
     position: absolute;
@@ -49,7 +54,6 @@ body{
 }
 
 .subImageContainer1{
-    outline: red dashed 1px;
     height: 100%;
     width: 8rem;
     display: flex;
@@ -58,7 +62,6 @@ body{
 }
 
 .imageContainer2{
-    outline: black dashed 1px;
     height: 7rem;
     position: absolute;
     width: 100%;
@@ -69,7 +72,6 @@ body{
 }
 
 .subImageContainer2{
-    outline: black dashed 1px;
     height: 100%;
     width: 4rem;
     display: flex;
@@ -78,7 +80,6 @@ body{
 }
 
 .imageContainer3{
-    outline: black dashed 1px;
     height: 4.5rem;
     position: absolute;
     width: 100%;
@@ -89,7 +90,6 @@ body{
 }
 
 .subImageContainer3{
-    outline: black dashed 1px;
     height: 100%;
     width: 11rem;
     display: flex;
@@ -115,6 +115,45 @@ body{
 .image{
     height: 20rem;
     animation: fadeIn 0.5s linear;
+    margin: 0.2rem 0.2rem 0 0.2rem;
+}
+
+.image4{
+    height: 13rem;
+    transform: rotate(20deg);
+    animation: floatAnimation 4s infinite, bounce 1s linear;
+    filter: drop-shadow(5px 5px 10px rgb(3, 94, 89));
+}
+
+.image5{
+    height: 13rem;
+    transform: rotate(-20deg);
+    animation: floatAnimation 5s infinite, bounce 1s linear;
+    filter: drop-shadow(5px 5px 10px rgb(3, 94, 89));
+}
+
+.image6{
+    height: 16rem;
+    animation: floatAnimation 6s infinite, bounce 1.5s linear;
+    filter: drop-shadow(5px 5px 10px rgb(3, 94, 89));
+}
+
+.image7{
+    height: 13rem;
+    animation: floatAnimation 4s infinite, bounce 1.5s linear;
+    filter: drop-shadow(5px 5px 10px rgb(3, 94, 89));
+}
+
+.image8{
+    animation: floatAnimation 5s infinite, bounce 2s linear;
+    filter: drop-shadow(5px 5px 10px rgb(3, 94, 89));
+}
+
+.image9{
+    height: 13rem;
+    transform: rotate(-20deg);
+    animation: floatAnimation 6s infinite, bounce 2s linear;
+    filter: drop-shadow(5px 5px 10px rgb(3, 94, 89));
 }
 
 .hidden{
@@ -125,6 +164,45 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.subContainer1{
+    height: 17rem;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    column-gap: 70rem;
+}
+
+.subContainer2{
+    height: 17rem;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    column-gap: 70rem;
+}
+
+.imageContainer4{
+    height: 100%;
+    width: 17rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translate(-10%, -10%) ;
+    }
+    50% {
+        transform: translate(-10%, -50%);
+    }
 }
 
 @keyframes fadeIn {
