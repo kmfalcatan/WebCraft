@@ -1,0 +1,411 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(184,186,189);
+}
+
+.headerContainer{
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subHeaderContainer{
+    height: 4rem;
+    width: 35rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(1rem);
+    background-color: rgb(255,252,252);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.imageContainer{
+    height: 100%;
+    width: 12rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.subImageContainer{
+    height: 100%;
+    width: 8rem;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nameContainer{
+    height: 100%;
+    width: 14rem;
+}
+
+.profileContainer{
+    height: 100%;
+    width: 12rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+
+.subProfileContainer{
+    height: 100%;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menubarContainer{
+    padding-top: 2px;
+    width: 3.125rem;
+    height: 3rem;
+}
+
+.line{
+    border: solid 0.125rem;
+    width: 1.563rem;
+    margin-bottom: 0.313rem;
+    margin-top: 0.5rem;
+    margin-left: 0.563rem;
+    border-color: black;
+}
+
+.hidden{
+    display: none;
+}
+
+.change .line:nth-child(1) {
+    transform: rotate(-45deg) translate(-9px, 0.625rem);
+}
+
+.change .line:nth-child(2) {
+    opacity: 0;
+}
+
+.change .line:nth-child(3) {
+    transform: rotate(45deg) translate(-0.438rem, -0.5rem);
+}
+
+.addToCartContainer, .notificationContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addToCart, .notification, .menubarContainer{
+    position: relative;
+    cursor: pointer;
+}
+
+.sideNavBarContainer{
+    height: 20.5em;
+    width:  12.5rem;
+    position: fixed;
+    right: -12.5rem;
+    top: 4.4rem;
+    background-color: rgb(255,252,252);
+    z-index: 1;
+}
+
+.fadeIn{
+    animation: sideIn 0.6s ease forwards
+}
+
+.sideNavBar{
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.125rem;
+    border-bottom: solid 1px rgb(189,189,189);
+}
+
+.profile, .status, .myOrder, .studentShop, .logOut{
+    color: black;
+    text-decoration: none;
+}
+
+.image{
+    height: 3.7rem;
+}
+
+.companyName{
+    display: none;
+}
+
+.adminName{
+    display: none;
+}
+
+.image2{
+    display: none;
+}
+
+@keyframes sideIn {
+    from{
+
+    } to{
+        right: 1.7rem;
+    }
+}
+
+/*tablet*/
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .subHeaderContainer{
+        width: 60rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .companyName{
+        display: block;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .nameContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 12rem;
+        margin-left: 1rem;
+        font-weight: bold;
+        font-size: 1.3rem;
+    }
+
+    .imageContainer{
+        width: 18rem;
+    }
+    
+    .subImageContainer{
+        width: 4rem;
+    }
+    
+    .sideNavBarContainer{
+        border-radius: 0rem 0rem 1rem 1rem;
+    }
+
+    .image2{
+        display: none;
+    }
+
+    @keyframes sideIn {
+        from{
+    
+        } to{
+            right: 2.6rem;
+        }
+    }
+}
+
+/*laptop*/
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    .subHeaderContainer{
+        width: 86rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .adminName{
+        display: block;
+    }
+
+    .menubarContainer{
+        display: none;
+    }
+
+    .companyName{
+        display: block;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nameContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 18rem;
+        margin-left: 1rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .adminName{
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .profileContainer{
+        padding-right: 1rem;
+    }
+
+    .imageContainer{
+        width: 18rem;
+    }
+
+    .subImageContainer{
+        width: 4rem;
+    }
+
+    .sideNavBarContainer{
+        height: 20.5rem;
+        position: absolute;
+        left: -9.7rem;
+        top: 15rem;
+        border-radius: 0rem 1rem 1rem 0rem;
+        transition: all 0.5s;
+    }
+
+    .sideNavBarContainer:hover{
+        position: absolute;
+        left: 0;
+    }
+
+    .subSideNavBar{
+        height: 100%;
+        width: 10rem;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        padding-right: 1rem;
+    }
+
+    .image2{
+        height: 100%;
+        width: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image3{
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .image4{
+        height: 1.5rem;
+        cursor: pointer;
+    }
+
+    .image5{
+        position: absolute;
+        height: 1.5rem;
+        right: 0;
+        top: 1rem;
+    }
+}
+
+
+/*pc*/
+@media only screen and (min-width: 1441px){
+    .subHeaderContainer{
+        width: 108rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .adminName{
+        display: block;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .menubarContainer{
+        display: none;
+    }
+
+    .companyName{
+        display: block;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: bold;
+        width: 20rem;
+    }
+
+    .nameContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20rem;
+        margin-left: 1rem;
+    }
+
+    .imageContainer{
+        width: 20rem;
+    }
+
+    .subImageContainer{
+        width: 4rem;
+    }
+
+    .sideNavBarContainer{
+        height: 20.5rem;
+        position: absolute;
+        left: -9.7rem;
+        top: 15rem;
+        border-radius: 0rem 1rem 1rem 0rem;
+        transition: all 0.5s;
+    }
+
+    .sideNavBar{
+        font-weight: bold;
+        font-size: 1.125rem;
+    }
+
+    .sideNavBarContainer:hover{
+        position: absolute;
+        left: 0;
+    }
+
+    .subSideNavBar{
+        height: 100%;
+        width: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image2{
+        height: 100%;
+        width: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image3{
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .image4{
+        height: 1.5rem;
+        cursor: pointer;
+    }
+
+    .image5{
+        position: absolute;
+        height: 1.5rem;
+        right: 0;
+        top: 1rem;
+    }
+
+    .profileContainer{
+        padding-right: 1.5rem;
+    }
+}
