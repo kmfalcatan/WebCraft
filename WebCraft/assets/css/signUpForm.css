@@ -9,7 +9,6 @@ body{
 }
 
 .headerContainer{
-    outline: red dashed 1px;
     height: 5rem;
     display: flex;
     flex-direction: row;
@@ -18,7 +17,6 @@ body{
 }
 
 .imageContainer{
-    outline: red dashed 1px;
     height: 100%;
     width: 5rem;
     display: flex;
@@ -28,7 +26,6 @@ body{
 }
 
 .nameContainer{
-    outline: red dashed 1px;
     height: 100%;
     width: 12.5rem;
     display: flex;
@@ -47,7 +44,6 @@ body{
 }
 
 .container{
-    outline: red dashed 1px;
     height: 51rem;
     display: flex;
     justify-content: center;
@@ -55,8 +51,7 @@ body{
 }
 
 .subContainer{
-    outline: red dashed 1px;
-    height: 35rem;
+    height: 48.8rem;
     width: 24rem;
     display: flex;
     justify-content: center;
@@ -64,7 +59,6 @@ body{
 }
 
 .imageContainer1{
-    outline: red dashed 1px;
     height: 12rem;
     width: 100%;
     display: flex;
@@ -72,24 +66,24 @@ body{
 }
 
 .subImageContainer{
-    outline: red dashed 1px;
     height: 100%;
     width: 9rem;
+    border-radius: 1rem;
 }
 
 .image1{
-    outline: red dashed 1px;
     height: 9rem;
     background-color: rgb(124,124,124);
+    border-radius: 1rem;
 }
 
 .image2{
     height: 100%;
     width: 100%;
+    border-radius: 1rem;
 }
 
 .inputFileContainer{
-    outline: red dashed 1px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,7 +96,6 @@ body{
 }
 
 .createFormContainer{
-    outline: red dashed 1px;
     height: 100%;
     width: 100%;
     display: flex;
@@ -110,7 +103,6 @@ body{
 }
 
 .userNameContainer{
-    outline: red dashed 1px;
     height: 2.5rem;
     width: 100%;
     display: flex;
@@ -125,7 +117,6 @@ body{
 }
 
 .inputUserNameContainer, .inputPassWordContainer{
-    outline: red dashed 1px;
     height: 2.5rem;
     width: 100%;
     display: flex;
@@ -144,7 +135,6 @@ body{
 }
 
 .infoContainer{
-    outline: red dashed 1px;
     height: 30rem;
     width: 100%;
     display: flex;
@@ -152,13 +142,11 @@ body{
 }
 
 .fullNameContainer, .emailContainer, .contactContainer{
-    outline: red dashed 1px;
     height: 2.5rem;
     width: 100%;
 }
 
 .inputFullNameContainer, .inputEmailContainer, .inputContactContainer{
-    outline: red dashed 1px;
     height: 2.5rem;
     width: 100%;
     margin-bottom: 1rem;
@@ -175,7 +163,6 @@ body{
 }
 
 .buttonContainer{
-    outline: red dashed 1px;
     height: 5rem;
     width: 100%;
     display: flex;
@@ -204,7 +191,7 @@ body{
 /*tablet*/
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
     .container{
-        height: 43.5rem;
+        height: 48.8rem;
     }
 }
 
@@ -212,7 +199,7 @@ body{
 /*laptop*/
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
     .container{
-        height: 43.5rem;
+        height: 48.8rem;
     }
 
     .subContainer{
@@ -235,6 +222,44 @@ body{
 /*pc*/
 @media only screen and (min-width: 1441px){
     .container{
+        height: 100%;
+    }
+
+    .subContainer{
+        width: 40rem;
         height: 50rem;
+    }
+
+    .subImageContainer{
+        width: 15rem;
+    }
+
+    .imageContainer1{
+        height: 15rem;
+    }
+
+    .image1{
+        height: 15rem;
+    }
+
+    .infoContainer{
+        margin-top: 3rem;
+    }
+
+    .inputFile{
+        margin-left: 4.5rem;
+    }
+
+    .createFormContainer{
+        display: flex;
+        justify-content: center;
+    }
+
+    .inputUserName, .inputPassWord{
+        width: 22rem;
+    }
+
+    .inputFullName, .inputEmail, .inputContact{
+        width: 39rem;
     }
 }
