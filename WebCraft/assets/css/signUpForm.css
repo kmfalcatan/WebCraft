@@ -1,0 +1,240 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(238, 236, 236);
+    overflow: hidden;
+}
+
+.headerContainer{
+    outline: red dashed 1px;
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    padding-left: 1rem;
+    z-index: 1;
+}
+
+.imageContainer{
+    outline: red dashed 1px;
+    height: 100%;
+    width: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.nameContainer{
+    outline: red dashed 1px;
+    height: 100%;
+    width: 12.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.image{
+    height: 90%;
+}
+
+.name{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.container{
+    outline: red dashed 1px;
+    height: 51rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subContainer{
+    outline: red dashed 1px;
+    height: 35rem;
+    width: 24rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.imageContainer1{
+    outline: red dashed 1px;
+    height: 12rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.subImageContainer{
+    outline: red dashed 1px;
+    height: 100%;
+    width: 9rem;
+}
+
+.image1{
+    outline: red dashed 1px;
+    height: 9rem;
+    background-color: rgb(124,124,124);
+}
+
+.image2{
+    height: 100%;
+    width: 100%;
+}
+
+.inputFileContainer{
+    outline: red dashed 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    color: transparent;
+}
+
+.inputFile{
+    margin-left: 1.7rem;
+}
+
+.createFormContainer{
+    outline: red dashed 1px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.userNameContainer{
+    outline: red dashed 1px;
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.userName, .passWord, .fullName, .email, .contact{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.inputUserNameContainer, .inputPassWordContainer{
+    outline: red dashed 1px;
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputUserName, .inputPassWord{
+    height: 100%;
+    width: 12.5rem;
+    border-radius: 5rem;
+    border: none;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.infoContainer{
+    outline: red dashed 1px;
+    height: 30rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.fullNameContainer, .emailContainer, .contactContainer{
+    outline: red dashed 1px;
+    height: 2.5rem;
+    width: 100%;
+}
+
+.inputFullNameContainer, .inputEmailContainer, .inputContactContainer{
+    outline: red dashed 1px;
+    height: 2.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.inputFullName, .inputEmail, .inputContact{
+    height: 100%;
+    width: 23rem;
+    border-radius: 5rem;
+    border: none;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.buttonContainer{
+    outline: red dashed 1px;
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 2rem;
+}
+
+.button{
+    height: 3rem;
+    width: 8rem;
+    background-color: rgb(152,152,152);
+    color: rgb(41,41,41);
+    border: none;
+    border-radius: 0.5rem;
+    transition: all 0.15s;
+    font-size: 1.2rem;
+}
+
+.button:active{
+    background-color: rgb(124,124,124);
+    transform: scale(0.9);
+}
+
+
+/*tablet*/
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .container{
+        height: 43.5rem;
+    }
+}
+
+
+/*laptop*/
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    .container{
+        height: 43.5rem;
+    }
+
+    .subContainer{
+        width: 30rem;
+    }
+
+    .inputUserName, .inputPassWord{
+        width: 18rem;
+    }
+
+    .inputFullName, .inputEmail, .inputContact{
+        width: 29rem;
+    }
+
+    .button:hover{
+        background-color: rgb(189,189,189);
+    }
+}
+
+/*pc*/
+@media only screen and (min-width: 1441px){
+    .container{
+        height: 50rem;
+    }
+}
