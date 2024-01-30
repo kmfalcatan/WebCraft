@@ -1,13 +1,4 @@
- // Set the time to wait before transitioning to the next page (in milliseconds)
-    const transitionTime = 4000; // 5 seconds
-
-    // Wait for the specified time, then transition to the second page
-    setTimeout(() => {
-        document.querySelector('.container').classList.add('hidden');
-        document.querySelector('.container1').classList.remove('hidden');
-    }, transitionTime);
-
-    function toggleMenu(menuIcon) {
+function toggleMenu(menuIcon) {
     menuIcon.classList.toggle("change")
 }
 
@@ -33,3 +24,14 @@ header.addEventListener('click', function(){
         navbar.classList.toggle('fadeIn');
     }
 });
+
+function changeColor(button) {
+    // Reset the background color of all buttons
+    var filters = document.querySelectorAll('.filter');
+    filters.forEach(function(filter) {
+        filter.style.backgroundColor = '';
+    });
+
+    // Set the background color for the clicked button
+    button.style.backgroundColor = 'rgb(124, 124, 124)'; // Change to the desired color
+}

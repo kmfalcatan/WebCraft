@@ -17,7 +17,7 @@ body{
 
 .subHeaderContainer{
     height: 4rem;
-    width: 35rem;
+    width: 90%;
     border-radius: 1rem;
     backdrop-filter: blur(1rem);
     background-color: rgb(255,252,252);
@@ -111,7 +111,7 @@ body{
     width:  12.5rem;
     position: fixed;
     right: -12.5rem;
-    top: 4.4rem;
+    top: 4.5rem;
     background-color: rgb(255,252,252);
     z-index: 1;
 }
@@ -128,7 +128,44 @@ body{
     align-items: center;
     font-weight: bold;
     font-size: 1.125rem;
-    border-bottom: solid 1px rgb(189,189,189);
+    border: solid 1px rgb(189,189,189);
+    cursor: pointer;
+}
+
+.sideNavBar1{
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.125rem;
+    border: solid 1px rgb(189,189,189);
+    cursor: pointer;
+}
+
+.sideNavBar2{
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.125rem;
+    border: solid 1px rgb(189,189,189);
+    cursor: pointer;
+}
+
+.sideNavBar:hover{
+    background-color: rgb(189,189,189);
+}
+
+.sideNavBar1:hover{
+    background-color: rgb(189,189,189);
+}
+
+.sideNavBar2:hover{
+    background-color: rgb(189,189,189);
 }
 
 .profile, .status, .myOrder, .studentShop, .logOut{
@@ -152,18 +189,154 @@ body{
     display: none;
 }
 
+.container{
+    outline: red dashed 1px;
+    height: 91vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchBarContainer{
+    outline: red dashed 1px;
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchBar{
+    height: 3rem;
+    width: 86%;
+    border-radius: 10rem;
+    border: solid gray 1px;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+}
+
+.filterContainer{
+    outline: red dashed 1px;
+    height: 2rem;
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subFilterContainer{
+    outline: red dashed 1px;
+    height: 100%;
+    width: 90%;
+    background-color: snow;
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.sortContainer{
+    outline: red dashed 1px;
+    height: 100%;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sort{
+    height: 2rem;
+}
+
+.sort:active{
+    background-color: rgb(124,124,124);
+}
+
+.filter{
+    outline: red dashed 1px;
+    height: 100%;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.year{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.tableContainer{
+    outline: red dashed 1px;
+    height: 71%;
+    width: 90%;
+    background-color: snow;
+    overflow-x: auto;
+}
+
+.action{
+    height: 2rem;
+    width: 4rem;
+    border-radius: 1rem;
+    border: none;
+    background-color: rgb(152,152,152);
+    color: rgb(41,41,41);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.action:hover{
+    background-color: rgb(189,189,189);
+}
+
+.action:active{
+    background-color: rgb(124,124,124);
+}
+
+@media only screen and (max-width: 600px){
+    table{
+        border-collapse: collapse;
+        display: flex;
+        flex-direction: row;
+    }
+
+    th{
+        background-color: rgb(82,82,82);
+        color: rgb(239,239,239);
+    }
+
+    th, td{
+        display: flex;
+        flex-direction: column;
+        border: solid black 1px;
+        height: 2.5rem;
+        padding: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.7rem;
+    }
+
+    tbody{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
 @keyframes sideIn {
     from{
 
     } to{
-        right: 1.7rem;
+        right: 8%;
     }
 }
 
 /*tablet*/
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
     .subHeaderContainer{
-        width: 60rem;
+        width: 95%;
         display: flex;
         justify-content: space-between;
     }
@@ -201,12 +374,40 @@ body{
     .image2{
         display: none;
     }
+    
+    .tableContainer{
+        outline: red dashed 1px;
+        height: 71%;
+        width: 90%;
+        background-color: snow;
+        overflow-x: auto;
+    }
+
+    table{
+        border-collapse: collapse;
+        text-align: center;
+        width: 100%;
+    }
+    
+    th{
+        background-color: rgb(82,82,82);
+        color: rgb(239,239,239);
+    }
+    
+    th, td{
+        border: solid black 1px;
+        height: 2.5rem;
+        padding: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.9rem;
+    }
 
     @keyframes sideIn {
         from{
     
         } to{
-            right: 2.6rem;
+            right: 5%;
         }
     }
 }
@@ -214,7 +415,7 @@ body{
 /*laptop*/
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
     .subHeaderContainer{
-        width: 86rem;
+        width: 95%;
         display: flex;
         justify-content: space-between;
     }
@@ -261,7 +462,7 @@ body{
     }
 
     .sideNavBarContainer{
-        height: 20.5rem;
+        height: 21rem;
         position: absolute;
         left: -9.7rem;
         top: 15rem;
@@ -307,13 +508,49 @@ body{
         right: 0;
         top: 1rem;
     }
+
+    .tableContainer{
+        outline: red dashed 1px;
+        height: 71%;
+        width: 90%;
+        background-color: snow;
+        overflow-x: auto;
+    }
+
+    .sideNavBar1{
+        border-top-right-radius: 1rem;
+    }
+
+    .sideNavBar2{
+        border-bottom-right-radius: 1rem;
+    }
+
+    table{
+        border-collapse: collapse;
+        text-align: center;
+        width: 100%;
+    }
+    
+    th{
+        background-color: rgb(82,82,82);
+        color: rgb(239,239,239);
+    }
+    
+    th, td{
+        border: solid black 1px;
+        height: 2.5rem;
+        padding: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+    }
 }
 
 
 /*pc*/
 @media only screen and (min-width: 1441px){
     .subHeaderContainer{
-        width: 108rem;
+        width: 97%;
         display: flex;
         justify-content: space-between;
     }
@@ -354,7 +591,7 @@ body{
     }
 
     .sideNavBarContainer{
-        height: 20.5rem;
+        height: 21rem;
         position: absolute;
         left: -9.7rem;
         top: 15rem;
@@ -407,5 +644,41 @@ body{
 
     .profileContainer{
         padding-right: 1.5rem;
+    }
+
+    .tableContainer{
+        outline: red dashed 1px;
+        height: 71%;
+        width: 90%;
+        background-color: snow;
+        overflow-x: auto;
+    }
+
+    .sideNavBar1{
+        border-top-right-radius: 1rem;
+    }
+
+    .sideNavBar2{
+        border-bottom-right-radius: 1rem;
+    }
+
+    table{
+        border-collapse: collapse;
+        text-align: center;
+        width: 100%;
+    }
+    
+    th{
+        background-color: rgb(82,82,82);
+        color: rgb(239,239,239);
+    }
+    
+    th, td{
+        border: solid black 1px;
+        height: 2.5rem;
+        padding: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
     }
 }
