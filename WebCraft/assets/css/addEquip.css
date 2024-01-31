@@ -162,6 +162,7 @@
     background-color: rgb(152,152,152);
     transition: all 0.15s;
     border: solid gray 1px;
+    cursor: pointer;
 }
 
 .addEquipButton:hover{
