@@ -296,6 +296,7 @@ body{
     background-color: rgb(124,124,124);
 }
 
+/*Cellphone*/
 @media only screen and (max-width: 600px){
     table{
         border-collapse: collapse;
