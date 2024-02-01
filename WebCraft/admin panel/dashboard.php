@@ -6,10 +6,9 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="/WebCraft/assets/css/index.css">
-    <link rel="stylesheet" href="/WebCraft/assets/css/addEquip.css">
 </head>
 <body>
-    <div class="container2">
+    <div class="container1">
         <div class="headerContainer">
             <div class="subHeaderContainer">
                 <div class="imageContainer">
@@ -42,7 +41,7 @@
             <div class='sideNavBarContainer'>
                 <div class='sideNavBar1'>
                     <div class="subSideNavBar">
-                        <a class='profile' href=''>
+                        <a class='profile' href='addEquip.php'>
                             New Equipment
                         </a>
                     </div>
@@ -54,11 +53,11 @@
                 </div>
         
                 <div class='sideNavBar'>
+                    <a class='profile' href=''>
                         <div class="subSideNavBar">
-                            <a class='profile' href='/WebCraft/admin panel/dashboard.html'>
                                 Inventory
-                            </a>
                         </div>
+                    </a>
 
                     <div class="image2">
                         <img class="image3" src="/WebCraft/assets/img/file-text-circle.png" alt="">
@@ -132,80 +131,74 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="container3">
-        <div class="subContainer2">
-            <div class="imageContainer1">
-                <div class="subImageContainer1">
-                    <div class="uploadImageContainer">
-                        <div class="subUploadImageContainer">
-                            <img class="uploadImage" src="" alt="">
-                        </div>
-                    </div>
-    
-                    <div class="uploadButtonContainer">
-                        <input class="uploadButton" type="file">
-                    </div>
-                </div>
+        <div class="container">
+           <div class="searchBarContainer">
+                <input class="searchBar" type="text">
+           </div>
 
-                <div class="infoContainer">
-                    <div class="subInfoContainer">
-                        <textarea class="inputInfo" name="" id="" cols="30" rows="10" placeholder="User name:"></textarea>
-                    </div>
-                    
-                    <div class="subInfoContainer">
-                        <textarea class="inputInfo" name="" id="" cols="30" rows="10" placeholder="Article:"></textarea>
-                    </div>
-                    
-                    <div class="subInfoContainer">
-                        <textarea class="inputInfo" name="" id="" cols="30" rows="10" placeholder="Description:"></textarea>
+           <div class="filterContainer">
+                <div class="subFilterContainer">
+                    <div class="sortContainer">
+                        <img class="sort" src="/WebCraft/assets/img/th (2).jpg" alt="">
                     </div>
 
-                    <div class="subInfoContainer">
-                        <div class="subInputInfoContainer2">
-                            <textarea class="inputInfo3" name="" id="" cols="30" rows="10" placeholder="Property number:"></textarea>
-                        </div>
+                    <div class="filter" onclick="changeColor(this)">
+                        <p class="year">2024</p>
+                    </div>
 
-                        <div class="subInputInfoContainer2">
-                            <textarea class="inputInfo3" name="" id="" cols="30" rows="10" placeholder="Account code:"></textarea>
-                        </div>
+                    <div class="filter" onclick="changeColor(this)">
+                        <p class="year">2023</p>
+                    </div>
 
-                        <div class="subInputInfoContainer2">
-                            <textarea class="inputInfo3" name="" id="" cols="30" rows="10" placeholder="Units:"></textarea>
-                        </div>
+                    <div class="filter" onclick="changeColor(this)">
+                        <p class="year">2022</p>
                     </div>
                 </div>
-            </div>
+           </div>
 
-            <div class="otherInfoContainer">
-                <div class="subOtherInfoContainer">
-                    <div class="subInputInfoContainer2">
-                        <textarea class="inputInfo3" name="" id="" cols="30" rows="10" placeholder="Unit value:"></textarea>
-                    </div>
+           <div class="tableContainer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ARTICLE</th>
+                            <th>DESCRIPTION</th>
+                            <th>DEPLOYMENT</th>
+                            <th>USER</th>
+                            <th>PROPERTY NUMBER</th>
+                            <th>ACCOUNT CODE</th>
+                            <th>UNITS</th>
+                            <th>UNIT VALUE</th>
+                            <th>TOTAL VALUE</th>
+                            <th>REMARKS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
 
-                    <div class="subInputInfoContainer2">
-                        <textarea class="inputInfo3" name="" id="" cols="30" rows="10" placeholder="Total value:"></textarea>
-                    </div>
-
-                    <div class="subInputInfoContainer2">
-                        <textarea class="inputInfo3" name="" id="" cols="30" rows="10" placeholder="remarks:"></textarea>
-                    </div>
-                </div>
-
-                <div class="descriptionContainer">
-                    <textarea class="inputInfo4" name="" id="" cols="30" rows="10" placeholder="Description:"></textarea>
-                </div>
-
-                <div class="addEquipButtonContainer">
-                    <a href="/WebCraft/admin panel/addOtherinfor.html">
-                        <button class="addEquipButton">Add other information</button>
-                    </a>
-                </div>
-            </div>
+                    <tbody>
+                        <tr>
+                            <td>adasdasd</td>
+                            <td>asdasdas</td>
+                            <td>adasdasd</td>
+                            <td>asdasdas</td>
+                            <td>adasdasd</td>
+                            <td>asdasdas</td>
+                            <td>adasdasd</td>
+                            <td>asdasdas</td>
+                            <td>adasdasd</td>
+                            <td>asdasdas</td>
+                            <td>
+                                <button class="action">View</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+           </div>
         </div>
     </div>
 
-    <script src="/WebCraft/assets/js/dashboard.js"></script>
+
+
+    <script src="/WebCraft/assets/js/index.js"></script>
 </body>
 </html>
