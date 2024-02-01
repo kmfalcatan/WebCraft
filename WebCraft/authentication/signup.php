@@ -1,3 +1,9 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once '../functions/signup.php';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/WebCraft/assets/css/signUpForm.css">
+    <link rel="stylesheet" href="../assets/css/signUpForm.css">
 </head>
 <body>
     <div class="container">
@@ -18,11 +24,17 @@
                     </div>
     
                     <div class="subLogoContainer">
-                        <img class="logo" src="/WebCraft/assets/img/medLogo.png" alt="">
+                        <img class="logo" src="../assets/img/medLogo.png" alt="">
                     </div>
                 </div>
     
                 <div class="logInFormContainer">
+                <form action="" method="POST">
+                    <!-- <?php if (isset($message)): ?>
+                        <div class="alert alert-danger" style="color: rgb(244, 72, 24); font-size: 0.8rem; position:absolute; margin-top: 2rem;">
+                            <?php echo $message; ?>
+                        </div>
+                    <?php endif; ?> -->
                     <div class="subLogInFormContainer">
                         <div class="logIntextContainer">
                             <p class="logIntext">Sign Up</p>
@@ -30,51 +42,51 @@
     
                         <div class="subLogInFormContainer1">
                             <div class="iconContainer">
-                                <img class="icon" src="/WebCraft/assets/img/person (1).png" alt="">
+                                <img class="icon" src="../assets/img/user.png" alt="">
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputUserName" type="text" placeholder="Full name:" required>
+                                <input class="inputField" name="fullname" type="text" placeholder="Full name" required>
                             </div>  
                         </div>
     
                         <div class="subLogInFormContainer1">
                             <div class="iconContainer">
-                                <img class="icon" src="/WebCraft/assets/img/phone-lock.png" alt="">
+                                <img class="icon" src="../assets/img/user.png" alt="">
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputUserName" type="text" placeholder="Password:" required>
+                                <input class="inputField" name="username" type="text" placeholder="User name" required>
                             </div>  
                         </div>
     
                         <div class="subLogInFormContainer1">
                             <div class="iconContainer">
-                                <img class="icon" src="/WebCraft/assets/img/person (1).png" alt="">
+                                <img class="icon" src="../assets/img/email.png" alt="">
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputUserName" type="text" placeholder="Full name:" required>
+                                <input class="inputField" name="email" type="email" placeholder="E-mail" required>
                             </div>  
                         </div>
 
                         <div class="subLogInFormContainer1">
                             <div class="iconContainer">
-                                <img class="icon" src="/WebCraft/assets/img/person (1).png" alt="">
+                                <img class="icon" src="../assets/img/password.png" alt="">
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputUserName" type="text" placeholder="Full name:" required>
+                                <input class="inputField" name="password" type="text" placeholder="Password" required>
                             </div>  
                         </div>
                         
                         <div class="subLogInFormContainer1">
                             <div class="iconContainer">
-                                <img class="icon" src="/WebCraft/assets/img/person (1).png" alt="">
+                                <img class="icon" src="../assets/img/password.png" alt="">
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputUserName" type="text" placeholder="Full name:" required>
+                                <input class="inputField" name="confirm_password" type="text" placeholder="Confirm password" required>
                             </div>  
                         </div>
     
@@ -85,20 +97,21 @@
     
                     <div class="signUpContainer">
                         <div class="subSignUpContainer">
-                            <p>Don't have an account?</p>
+                            <p>Already have an account?</p>
                         </div>
     
                         <div class="signUpButtonContainer">
-                            <a href="/WebCraft/authentication/login.html">
+                            <a href="../authentication/login.html">
                                 <button class="signUpButton">Sign in</button>
                             </a>
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
 
             <div class="imageContainer">
-                <img class="image" src="/WebCraft/assets/img/420349590_930221445486934_1364504703495386952_n.png" alt="">
+                <img class="image" src="../assets/img/R.png" alt="">
                 <div class="backgroundContainer">
                     <div class="paragraphContainer">
                         <p class="paragraph">Discover the power of efficient equipment management wiith MedEquip Tracker</p>
@@ -107,7 +120,7 @@
                     <div class="learnButtonContainer">
                         <button class="learnButton">
                             Learn more
-                            <img class="image1" src="/WebCraft/assets/img/chevron-right (1).png" alt="">
+                            <img class="image1" src="../assets/img/chevron-right (1).png" alt="">
                         </button>
                     </div>
                 </div>
