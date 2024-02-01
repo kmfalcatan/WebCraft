@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputField" name="password" type="text" placeholder="Password" required>
+                                <input class="inputField" name="password" type="password" placeholder="Password" required>
                             </div>  
                         </div>
                         
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputField" name="confirm_password" type="text" placeholder="Confirm password" required>
+                                <input class="inputField" name="confirm_password" type="password" placeholder="Confirm password" required>
                             </div>  
                         </div>
     
@@ -101,9 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
     
                         <div class="signUpButtonContainer">
-                            <a href="../authentication/login.html">
-                                <button class="signUpButton">Sign in</button>
-                            </a>
+                            <button class="signUpButton"><a href="login.php">Sign in</a></button>
                         </div>
                     </div>
                 </div>

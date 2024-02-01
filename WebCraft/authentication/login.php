@@ -1,3 +1,9 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once '../functions/signin.php';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +44,7 @@
                 </div>
     
                 <div class="logInFormContainer">
+                    <form action="" method="POST">
                     <div class="subLogInFormContainer">
                         <div class="logIntextContainer">
                             <p class="logIntext">Sign in</p>
@@ -49,7 +56,7 @@
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputField" type="text" placeholder="User name" required>
+                                <input class="inputField" name="user_name" type="text" placeholder="User name" required>
                             </div>  
                         </div>
     
@@ -59,7 +66,7 @@
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputField" type="text" placeholder="Password" required>
+                                <input class="inputField" name="password" type="password" placeholder="Password" required>
                             </div>  
                         </div>
     
@@ -85,11 +92,10 @@
                         </div>
     
                         <div class="signUpButtonContainer">
-                            <a href="../authentication/signup.html">
-                                <button class="signUpButton">Sign up</button>
-                            </a>
+                            <button class="signUpButton"><a href="../authentication/signup.php">Sign up</a></button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

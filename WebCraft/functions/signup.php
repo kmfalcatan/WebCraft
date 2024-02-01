@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($result) {
                 if ($result === 'admin') {
-                    header('Location: ../admin panel/dashboard.php');
+                    header('Location: ../authentication/login.php');
                     exit();
                 } else {
                     header('Location: login.php');
