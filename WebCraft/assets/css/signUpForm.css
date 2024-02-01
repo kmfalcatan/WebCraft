@@ -232,6 +232,15 @@ body{
     transition: all 0.15s;
 }
 
+.signUpButton a{
+    text-decoration: none;
+    color: #000;
+}
+
+.signUpButton a:hover{
+    color: #fff;
+}
+
 .signUpButton:hover{
     background-color: black;
     color: white;
