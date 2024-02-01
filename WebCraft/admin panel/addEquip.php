@@ -6,9 +6,10 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="/WebCraft/assets/css/index.css">
+    <link rel="stylesheet" href="/WebCraft/assets/css/addEquip.css">
 </head>
 <body>
-    <div class="container1">
+    <div class="container2">
         <div class="headerContainer">
             <div class="subHeaderContainer">
                 <div class="imageContainer">
@@ -41,7 +42,7 @@
             <div class='sideNavBarContainer'>
                 <div class='sideNavBar1'>
                     <div class="subSideNavBar">
-                        <a class='profile' href='/WebCraft/admin panel/addEquip.html'>
+                        <a class='profile' href=''>
                             New Equipment
                         </a>
                     </div>
@@ -53,11 +54,11 @@
                 </div>
         
                 <div class='sideNavBar'>
+                    <a class='profile' href='dashboard.html'>
                         <div class="subSideNavBar">
-                            <a class='profile' href=''>
                                 Inventory
-                            </a>
                         </div>
+                    </a>
 
                     <div class="image2">
                         <img class="image3" src="/WebCraft/assets/img/file-text-circle.png" alt="">
@@ -131,75 +132,82 @@
                 </div>
             </div>
         </div>
-
-        <div class="container">
-           <div class="searchBarContainer">
-                <input class="searchBar" type="text">
-           </div>
-
-           <div class="filterContainer">
-                <div class="subFilterContainer">
-                    <div class="sortContainer">
-                        <img class="sort" src="/WebCraft/assets/img/th (2).jpg" alt="">
-                    </div>
-
-                    <div class="filter" onclick="changeColor(this)">
-                        <p class="year">2024</p>
-                    </div>
-
-                    <div class="filter" onclick="changeColor(this)">
-                        <p class="year">2023</p>
-                    </div>
-
-                    <div class="filter" onclick="changeColor(this)">
-                        <p class="year">2022</p>
-                    </div>
-                </div>
-           </div>
-
-           <div class="tableContainer">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ARTICLE</th>
-                            <th>DESCRIPTION</th>
-                            <th>DEPLOYMENT</th>
-                            <th>USER</th>
-                            <th>PROPERTY NUMBER</th>
-                            <th>ACCOUNT CODE</th>
-                            <th>UNITS</th>
-                            <th>UNIT VALUE</th>
-                            <th>TOTAL VALUE</th>
-                            <th>REMARKS</th>
-                            <th>ACTION</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>adasdasd</td>
-                            <td>asdasdas</td>
-                            <td>adasdasd</td>
-                            <td>asdasdas</td>
-                            <td>adasdasd</td>
-                            <td>asdasdas</td>
-                            <td>adasdasd</td>
-                            <td>asdasdas</td>
-                            <td>adasdasd</td>
-                            <td>asdasdas</td>
-                            <td class="actionContainer">
-                                <button class="action">View</button>
-                                <button class="action">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-           </div>
-        </div>
     </div>
 
+    <div class="container3">
+    <form action="/WebCraft/functions/saveEquip.php" enctype="multipart/form-data" method="post">
+        <div class="subContainer2">
+            <div class="imageContainer1">
+                <div class="subImageContainer1">
+                    <div class="uploadImageContainer">
+                        <div class="subUploadImageContainer">
+                            <img class="uploadImage" src="" alt="">
+                        </div>
+                    </div>
+    
+                    <div class="uploadButtonContainer">
+                        <input class="uploadButton" name="image" type="file" name="image">
+                    </div>
+                </div>
 
+                <div class="infoContainer">
+                    <div class="subInfoContainer">
+                        <textarea class="inputInfo" name="user_name" cols="30" rows="10" placeholder="User name:"></textarea>
+                    </div>
+                    
+                    <div class="subInfoContainer">
+                        <textarea class="inputInfo" name="article" cols="30" rows="10" placeholder="Article:"></textarea>
+                    </div>
+                    
+                    <div class="subInfoContainer">
+                        <textarea class="inputInfo" name="description" cols="30" rows="10" placeholder="Description:"></textarea>
+                    </div>
 
-    <script src="/WebCraft/assets/js/dashboard.js"></script>
+                    <div class="subInfoContainer">
+                        <div class="subInputInfoContainer2">
+                            <textarea class="inputInfo3" name="property_number" cols="30" rows="10" placeholder="Property number:"></textarea>
+                        </div>
+
+                        <div class="subInputInfoContainer2">
+                            <textarea class="inputInfo3" name="account_code" cols="30" rows="10" placeholder="Account code:"></textarea>
+                        </div>
+
+                        <div class="subInputInfoContainer2">
+                            <textarea class="inputInfo3" name="units" cols="30" rows="10" placeholder="Units:"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="otherInfoContainer">
+                <div class="subOtherInfoContainer">
+                    <div class="subInputInfoContainer2">
+                        <textarea class="inputInfo3" name="unit_value" cols="30" rows="10" placeholder="Unit value:"></textarea>
+                    </div>
+
+                    <div class="subInputInfoContainer2">
+                        <textarea class="inputInfo3" name="total_value" cols="30" rows="10" placeholder="Total value:"></textarea>
+                    </div>
+
+                    <div class="subInputInfoContainer2">
+                        <textarea class="inputInfo3" name="remarks" cols="30" rows="10" placeholder="remarks:"></textarea>
+                    </div>
+                </div>
+
+                <div class="descriptionContainer">
+                    <textarea class="inputInfo4" name="other_information" cols="30" rows="10" placeholder="Description:"></textarea>
+                </div>
+
+                <div class="addEquipButtonContainer">
+                    <a href="/WebCraft/adminPanel/addOtherinfor.html">
+                        <button class="addEquipButton" type="submit">Add other information</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+
+    <script src="/WebCraft/assets/js/index.js"></script>
 </body>
 </html>
