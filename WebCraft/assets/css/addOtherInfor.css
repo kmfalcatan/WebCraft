@@ -139,6 +139,12 @@ body{
     border-radius: 0.5rem;
 }
 
+.container3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .howToUseContainer{
     height: 15rem;
     outline: red dashed 1px;

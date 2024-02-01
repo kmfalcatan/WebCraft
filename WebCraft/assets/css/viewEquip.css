@@ -129,6 +129,7 @@
     border: none;
     background-color: rgb(152,152,152);
     transition: all 0.15s;
+    cursor: pointer;
 }
 
 .button:hover{
