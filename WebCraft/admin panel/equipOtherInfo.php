@@ -91,7 +91,7 @@
                         <textarea class="inputInfo4" name="other_information" cols="30" rows="10" placeholder="Description:"></textarea>
                     </div>
     
-                    <div class="buttonsContainer">
+                    <div class="buttonsgitContainer">
                         <a href="../admin panel/updateEquip.php">
                             <button class="addEquipButton1" type="submit">Update</button>
                         </a>
