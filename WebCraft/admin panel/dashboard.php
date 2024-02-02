@@ -1,3 +1,10 @@
+<?php
+    include('/WebCraft/dbConfig/dbconnect.php');
+
+    $sql = "SELECT * FROM equipment";
+    $result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,11 +20,11 @@
             <div class="subHeaderContainer">
                 <div class="imageContainer">
                     <div class="subImageContainer">
-                        <img class="image" src="/WebCraft/assets/img/417914173_1061244888319690_1028014099293182518_n-removebg-preview.png" alt="">
+                        <img class="image" src="/WebCraft/assets/img/medLogo.png" alt="">
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip tracker</p>
+                        <p class="companyName">MedEquip Tracker</p>
                     </div>
                 </div>
 
@@ -41,7 +48,7 @@
             <div class='sideNavBarContainer'>
                 <div class='sideNavBar1'>
                     <div class="subSideNavBar">
-                        <a class='profile' href='/WebCraft/admin panel/addEquip.html'>
+                        <a class='profile' href='/WebCraft/admin panel/addEquip.php'>
                             New Equipment
                         </a>
                     </div>
@@ -65,7 +72,7 @@
                 </div>
                 <div class='sideNavBar'>
                     <div class="subSideNavBar">
-                        <a class='profile' href=''>
+                        <a class='profile' href='/WebCraft/admin panel/userAccount.php'>
                             Users
                         </a>
                     </div>
@@ -176,22 +183,26 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>adasdasd</td>
-                            <td>asdasdas</td>
-                            <td>adasdasd</td>
-                            <td>asdasdas</td>
-                            <td>adasdasd</td>
-                            <td>asdasdas</td>
-                            <td>adasdasd</td>
-                            <td>asdasdas</td>
-                            <td>adasdasd</td>
-                            <td>asdasdas</td>
-                            <td class="actionContainer">
-                                <button class="action">View</button>
-                                <button class="action">Delete</button>
-                            </td>
-                        </tr>
+                        <?php
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>{$row['article']}</td>";
+                                echo "<td>{$row['description']}</td>";
+                                echo "<td>{$row['deployment']}</td>";
+                                echo "<td>{$row['user']}</td>";
+                                echo "<td>{$row['property_number']}</td>";
+                                echo "<td>{$row['account_code']}</td>";
+                                echo "<td>{$row['units']}</td>";
+                                echo "<td>{$row['unit_value']}</td>";
+                                echo "<td>{$row['total_value']}</td>";
+                                echo "<td>{$row['remarks']}</td>";
+                                echo "<td class='actionContainer'>";
+                                echo "<button class='action'>View</button>";
+                                echo "<button class='action'>Delete</button>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                        ?>
                     </tbody>
                 </table>
            </div>

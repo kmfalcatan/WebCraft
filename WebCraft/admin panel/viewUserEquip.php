@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/WebCraft/assets/css/index.css">
-    <link rel="stylesheet" href="/WebCraft/assets/css/viewUSerEquip.css">
+    <link rel="stylesheet" href="WebCraft/assets/css/index.css">
+    <link rel="stylesheet" href="WebCraft/assets/css/viewUSerEquip.css">
 </head>
 <body>
     <div class="container2">
@@ -76,7 +76,7 @@
         </div>
 
         <div class="buttonContainer">
-            <a href="/WebCraft/admin panel/userAccount.html">
+            <a href="WebCraft/admin panel/userAccount.php">
                 <button>
                     Back
                 </button>

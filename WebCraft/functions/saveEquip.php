@@ -1,43 +1,36 @@
 <?php
-require_once "../dbConfig/dbconnect.php";
-
-$image = isset($_POST['image']) ? $_POST['image'] : '';
-$userName = isset($_POST['user_name']) ? $_POST['user_name'] : '';
-$article = isset($_POST['article']) ? $_POST['article'] : '';
-$description = isset($_POST['description']) ? $_POST['description'] : '';
-$propertyNumber = isset($_POST['property_number']) ? $_POST['property_number'] : '';
-$accountCode = isset($_POST['account_code']) ? $_POST['account_code'] : '';
-$units = isset($_POST['units']) ? $_POST['units'] : '';
-$unitValue = isset($_POST['unit_value']) ? $_POST['unit_value'] : '';
-$totalValue = isset($_POST['total_value']) ? $_POST['total_value'] : '';
-$remarks = isset($_POST['remarks']) ? $_POST['remarks'] : '';
-$otherInformation = isset($_POST['other_information']) ? $_POST['other_information'] : '';
-
-$successMessage = '';
+require_once "/Web/Craft/dbConfig/dbconnect.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $targetDir = '../uploads/';
-    $targetFile = $targetDir . basename($_FILES['image']['name']); 
+    $user = $_POST['user'] ?? '';
+    $article = $_POST['article'] ?? '';
+    $description = $_POST['description'] ?? '';
+    $image = $_POST['image'] ?? '';
+    $deployment = $_POST['deployment'] ?? '';
+    $units = $_POST['units'] ?? '';
+    $accountCode = $_POST['account_code'] ?? '';
+    $propertyNumber = $_POST['property_number'] ?? '';
+    $unitValue = $_POST['unit_value'] ?? '';
+    $totalValue = $_POST['total_value'] ?? '';
+    $remarks = $_POST['remarks'] ?? '';
+    $yearReceived = $_POST['year_received'] ?? '';
 
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
-     
-        if ($stmt = $conn->prepare("INSERT INTO equipment (image, user_name, article, description, property_number, account_code, units, unit_value, total_value, remarks, other_information) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
-            $stmt->bind_param("sssssssssss", $targetFile, $userName, $article, $description, $propertyNumber, $accountCode, $units, $unitValue, $totalValue, $remarks, $otherInformation);
-            if ($stmt->execute()) {
-                $successMessage = "Equipment added successfully!";
-                header("Location: ../adminPanel/dashboard.php");
-                exit();
-            } else {
-                echo "Error executing the SQL statement: " . $stmt->error;
-            }
-            $stmt->close();
-        } else {
-            echo "Error preparing the SQL statement: " . $conn->error;
-        }
+    $warrantyStart = isset($_POST['warranty_start']) ? $_POST['warranty_start'] : '';
+    $warrantyEnd = isset($_POST['warranty_end']) ? $_POST['warranty_end'] : '';
+    $budget = isset($_POST['budget']) ? $_POST['budget'] : '';
+    $instruction = isset($_POST['instruction']) ? $_POST['instruction'] : '';
+
+    $stmt = $conn->prepare("INSERT INTO equipment (user, article, description, image, deployment, units, account_code, property_number, unit_value, total_value, remarks, year_received, warranty_start, warranty_end, budget, instruction, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, current_timestamp())");
+    $stmt->bind_param("ssssssssssssssss", $user, $article, $description, $image, $deployment, $units, $accountCode, $propertyNumber, $unitValue, $totalValue, $remarks, $yearReceived, $warrantyStart, $warrantyEnd, $budget, $instruction);
+
+    if ($stmt->execute()) {
+        header("Location: /Web/Craft/adminPanel/dashboard.php");
+        exit();
     } else {
-        
-        echo "Error uploading image.";
+        echo "Error executing the SQL statement: " . $stmt->error;
     }
+
+    $stmt->close();
 }
 
 $conn->close();

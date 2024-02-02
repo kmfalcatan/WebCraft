@@ -8,7 +8,7 @@ body{
 }
 
 .container{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 100vh;
     width: 100%;
     display: flex;
@@ -18,7 +18,7 @@ body{
 }
 
 .subContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 80%;
     width: 90%;
     border-radius: 1rem;
@@ -28,7 +28,7 @@ body{
 }
 
 .textContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     width: 100%;
     height: 4rem;
     display: flex;
@@ -45,13 +45,13 @@ body{
 }
 
 .warrantyContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 21rem;
     border-bottom: solid gray 1px;
 }
 
 .imageContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 13rem;
     display: flex;
     justify-content: center;
@@ -59,7 +59,7 @@ body{
 }
 
 .subImageContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 10rem;
     width: 100%;
     display: flex;
@@ -68,10 +68,11 @@ body{
 }
 
 .uploadImage{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 100%;
     width: 10rem;
     background-color: snow;
+    border: #ddd solid 0.2rem;
 }
 
 .image{
@@ -80,7 +81,7 @@ body{
 }
 
 .uploadButtonContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 3rem;
     width: 100%;
     display: flex;
@@ -94,12 +95,12 @@ body{
 }
 
 .subWarrantyContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 8rem;
 }
 
 .startWarrantyContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 4rem;
     display: flex;
     justify-content: center;
@@ -116,14 +117,14 @@ body{
 }
 
 .budgetContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 8.5rem;
     border-bottom: solid gray 1px;
     margin-bottom: 0.5rem;
 }
 
 .subBudgetContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 4rem;
     display: flex;
     justify-content: center;
@@ -139,19 +140,13 @@ body{
     border-radius: 0.5rem;
 }
 
-.container3{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .howToUseContainer{
     height: 15rem;
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
 }
 
 .subHowToUseContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 10rem;
     display: flex;
     justify-content: center;
@@ -168,7 +163,7 @@ body{
 }
 
 .buttonContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 4rem;
     width: 100%;
     display: flex;

@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip tracker</p>
+                        <p class="companyName">MedEquip Tracker</p>
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@
             <div class='sideNavBarContainer'>
                 <div class='sideNavBar1'>
                     <div class="subSideNavBar">
-                        <a class='profile' href='/WebCraft/admin panel/addEquip.html'>
+                        <a class='profile' href='/WebCraft/admin panel/addEquip.php'>
                             New Equipment
                         </a>
                     </div>
@@ -130,23 +130,26 @@
            </div>
 
            <div class="userContainer">
-                <a class="link" href="/WebCraft/admin panel/viewUserEquip.html">
+                <a class="link" href="/WebCraft/admin panel/viewUserEquip.php">
                     <div class="subUserContainer">
                         <div class="imageContainer2">
                             <div class="subImageContainer2">
                                 <img class="image6" src="" alt="">
                             </div>
                         </div>
-
+                        
                         <div class="nameContainer1">
                             <p>User's Name:</p>
                         </div>
                     </div>
                 </a>
-           </div>
+                <div class="addIcon">
+                    <span>+</span>
+                </div>
+            </div>
         </div>
     </div>
-
+    
 
 
     <script src="/WebCraft/assets/js/dashboard.js"></script>

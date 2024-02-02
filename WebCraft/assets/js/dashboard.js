@@ -32,6 +32,5 @@ function changeColor(button) {
         filter.style.backgroundColor = '';
     });
 
-    // Set the background color for the clicked button
-    button.style.backgroundColor = 'rgb(124, 124, 124)'; // Change to the desired color
+    button.style.backgroundColor = 'rgb(124, 124, 124)'; 
 }

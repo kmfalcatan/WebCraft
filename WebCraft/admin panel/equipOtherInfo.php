@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip tracker</p>
+                        <p class="companyName">MedEquip Tracker</p>
                     </div>
                 </div>
 
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <form class="subContainer3" action="../functions/saveEquip.php" enctype="multipart/form-data" method="post">
+    <form class="subContainer3" action="" enctype="multipart/form-data" method="post">
         <div class="container3">
             <div class="subContainer2">
                 <div class="imageContainer1">
@@ -91,8 +91,18 @@
                         <textarea class="inputInfo4" name="other_information" cols="30" rows="10" placeholder="Description:"></textarea>
                     </div>
     
-                    <div class="addEquipButtonContainer">
-                        <a href="/WebCraft/admin panel/viewEquip.html">
+                    <div class="buttonsgitContainer">
+                        <a href="/WebCraft/admin panel/updateEquip.php">
+                            <button class="addEquipButton1" type="submit">Update</button>
+                        </a>
+
+                        
+                        <a href="/WebCraft/admin panel/warranty.php">
+                            <button class="addEquipButton1" type="submit">Check warranty</button>
+                        </a>
+
+                        
+                        <a href="viewEquip.php">
                             <button class="addEquipButton1" type="submit">Back</button>
                         </a>
                     </div>
