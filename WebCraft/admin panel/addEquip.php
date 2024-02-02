@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="../assets/css/index.css">
-    <link rel="stylesheet" href="../assets/css/addEquip.css">
+    <link rel="stylesheet" href="/WebCraft/assets/css/index.css">
+    <link rel="stylesheet" href="/WebCraft/assets/css/addEquip.css">
 </head>
 <body>
     <div class="container2">
@@ -14,7 +14,7 @@
             <div class="subHeaderContainer">
                 <div class="imageContainer">
                     <div class="subImageContainer">
-                        <img class="image" src="../assets/img/medLogo.png" alt="">
+                        <img class="image" src="/WebCraft/assets/img/medLogo.png" alt="">
                     </div>
 
                     <div class="nameContainer">
@@ -24,7 +24,7 @@
 
                 <div class="profileContainer">
                     <div class="subProfileContainer">
-                        <img class="image1" src="../assets/img/person-circle.png" alt="">
+                        <img class="image1" src="/WebCraft/assets/img/person-circle.png" alt="">
                     </div>
 
                     <div class="subProfileContainer">
@@ -48,8 +48,8 @@
                     </div>
 
                     <div class="image2">
-                        <img class="image3" src="../assets/img/th-removebg-preview.png" alt="">
-                        <img class="image5" src="../assets/img/plus-circle.png" alt="">
+                        <img class="image3" src="/WebCraft/assets/img/th-removebg-preview.png" alt="">
+                        <img class="image5" src="/WebCraft/assets/img/plus-circle.png" alt="">
                     </div>
                 </div>
         
@@ -61,7 +61,7 @@
                         </div>
 
                     <div class="image2">
-                        <img class="image3" src="../assets/img/file-text-circle.png" alt="">
+                        <img class="image3" src="/WebCraft/assets/img/file-text-circle.png" alt="">
                     </div>
                 </div>
                 <div class='sideNavBar'>
@@ -72,7 +72,7 @@
                     </div>
 
                     <div class="image2">
-                        <img class="image3" src="../assets/img/person-circle.png" alt="">
+                        <img class="image3" src="/WebCraft/assets/img/person-circle.png" alt="">
                     </div>
                 </div>
                 <div class='sideNavBar'>
@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="image2">
-                        <img class="image3" src="../assets/img/th__1_-removebg-preview.png" alt="">
+                        <img class="image3" src="/WebCraft/assets/img/th__1_-removebg-preview.png" alt="">
                     </div>
                 </div>
                 <div class='sideNavBar'>
@@ -94,7 +94,7 @@
                     </div>
 
                     <div class="image2">
-                        <img class="image3" src="../assets/img/calendar.png" alt="">
+                        <img class="image3" src="/WebCraft/assets/img/calendar.png" alt="">
                     </div>
                 </div>
                 <div class='sideNavBar'>
@@ -105,7 +105,7 @@
                     </div>
 
                     <div class="image2">
-                        <img class="image3" src="../assets/img/question-circle (2).png" alt="">
+                        <img class="image3" src="/WebCraft/assets/img/question-circle (2).png" alt="">
                     </div>
                 </div>
                 <div class='sideNavBar'>
@@ -116,7 +116,7 @@
                     </div>
 
                     <div class="image2">
-                        <img class="image4" src="../assets/img/about-us-icon-3.jpg" alt="">
+                        <img class="image4" src="/WebCraft/assets/img/about-us-icon-3.jpg" alt="">
                     </div>
                 </div>
                 <div class='sideNavBar2'>
@@ -127,7 +127,7 @@
                     </div>
 
                     <div class="image2">
-                        <img class="image3" src="../assets/img/vector-settings-icon-removebg-preview.png" alt="">
+                        <img class="image3" src="/WebCraft/assets/img/vector-settings-icon-removebg-preview.png" alt="">
                     </div>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                     <div class="subImageContainer1">
                         <div class="uploadImageContainer">
                             <div class="subUploadImageContainer">
-                                <img class="uploadImage" src="../assets/img/img_placeholder.jpg" alt="Mountain Placeholder">
+                                <img class="uploadImage" src="/WebCraft/assets/img/img_placeholder.jpg" alt="Mountain Placeholder">
                             </div>
                         </div>
         
@@ -215,7 +215,7 @@
         </div>
     </form>
 
-    <script src="../assets/js/dashboard.js"></script>
-    <script src="../assets/js/uploadImg.js"></script>
+    <script src="/WebCraft/assets/js/dashboard.js"></script>
+    <script src="/WebCraft/assets/js/uploadImg.js"></script>
 </body>
 </html>
