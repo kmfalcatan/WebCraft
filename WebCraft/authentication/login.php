@@ -2,6 +2,8 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once '../functions/signin.php';
 }
+
+$message = "";
 ?>
 
 <!DOCTYPE html>
@@ -43,20 +45,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
     
+            <form action="" method="POST">
                 <div class="logInFormContainer">
-                    <form action="" method="POST">
                     <div class="subLogInFormContainer">
                         <div class="logIntextContainer">
                             <p class="logIntext">Sign in</p>
                         </div>
     
+                        <?php
+                        session_start();
+                        if (isset($_SESSION['login_error'])) {
+                            echo '<div id="alert" class="alert alert-danger">' . $_SESSION['login_error'] . '</div>';
+                            unset($_SESSION['login_error']);
+                        }
+                        ?>
+                        
                         <div class="subLogInFormContainer1">
                             <div class="iconContainer">
-                                <img class="icon" src="../assets/img/user.png" alt="">
+                                <img class="icon" src="../assets/img/email.png" alt="">
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputField" name="user_name" type="text" placeholder="User name" required>
+                                <input class="inputField" name="email" type="email" placeholder="E-mail" required>
                             </div>  
                         </div>
     
@@ -85,20 +95,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </a>
                         </div>
                     </div>
-    
-                    <div class="signUpContainer">
-                        <div class="subSignUpContainer">
-                            <p>Don't have an account?</p>
-                        </div>
-    
-                        <div class="signUpButtonContainer">
-                            <button class="signUpButton"><a href="../authentication/signup.php">Sign up</a></button>
-                        </div>
                     </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+
+    <script src="../assets/js/login.js"></script>
 </body>
 </html>

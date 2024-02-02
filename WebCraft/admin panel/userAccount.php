@@ -1,9 +1,3 @@
-<?php
-    include('../dbConfig/dbconnect.php');
-
-    $sql = "SELECT * FROM equipment";
-    $result = $conn->query($sql);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +7,7 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/userAccount.css">
 </head>
 <body>
     <div class="container1">
@@ -31,16 +26,6 @@
                 <div class="profileContainer">
                     <div class="subProfileContainer">
                         <img class="image1" src="../assets/img/person-circle.png" alt="">
-                    </div>
-
-                    <div class="subProfileContainer">
-                        <div class='menubarContainer' onclick='toggleMenu(this)'>
-                            <div class='line'></div>
-                            <div class='line'></div>
-                            <div class='line'></div>
-                        </div>
-
-                        <p class="adminName">Admin</p>
                     </div>
                 </div>
             </div>
@@ -72,7 +57,7 @@
                 </div>
                 <div class='sideNavBar'>
                     <div class="subSideNavBar">
-                        <a class='profile' href='../admin panel/userAccount.php'>
+                        <a class='profile' href=''>
                             Users
                         </a>
                     </div>
@@ -144,71 +129,27 @@
                 <input class="searchBar" type="text">
            </div>
 
-           <div class="filterContainer">
-                <div class="subFilterContainer">
-                    <div class="sortContainer">
-                        <img class="sort" src="../assets/img/th (2).jpg" alt="">
+           <div class="userContainer">
+                <a class="link" href="../admin panel/viewUserEquip.php">
+                    <div class="subUserContainer">
+                        <div class="imageContainer2">
+                            <div class="subImageContainer2">
+                                <img class="image6" src="" alt="">
+                            </div>
+                        </div>
+                        
+                        <div class="nameContainer1">
+                            <p>User's Name:</p>
+                        </div>
                     </div>
-
-                    <div class="filter" onclick="changeColor(this)">
-                        <p class="year">2024</p>
-                    </div>
-
-                    <div class="filter" onclick="changeColor(this)">
-                        <p class="year">2023</p>
-                    </div>
-
-                    <div class="filter" onclick="changeColor(this)">
-                        <p class="year">2022</p>
-                    </div>
+                </a>
+                <div class="addIcon">
+                    <span>+</span>
                 </div>
-           </div>
-
-           <div class="tableContainer">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ARTICLE</th>
-                            <th>DESCRIPTION</th>
-                            <th>DEPLOYMENT</th>
-                            <th>USER</th>
-                            <th>PROPERTY NUMBER</th>
-                            <th>ACCOUNT CODE</th>
-                            <th>UNITS</th>
-                            <th>UNIT VALUE</th>
-                            <th>TOTAL VALUE</th>
-                            <th>REMARKS</th>
-                            <th>ACTION</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td>{$row['article']}</td>";
-                                echo "<td>{$row['description']}</td>";
-                                echo "<td>{$row['deployment']}</td>";
-                                echo "<td>{$row['user']}</td>";
-                                echo "<td>{$row['property_number']}</td>";
-                                echo "<td>{$row['account_code']}</td>";
-                                echo "<td>{$row['units']}</td>";
-                                echo "<td>{$row['unit_value']}</td>";
-                                echo "<td>{$row['total_value']}</td>";
-                                echo "<td>{$row['remarks']}</td>";
-                                echo "<td class='actionContainer'>";
-                                echo "<button class='action'>View</button>";
-                                echo "<button class='action'>Delete</button>";
-                                echo "</td>";
-                                echo "</tr>";
-                            }
-                        ?>
-                    </tbody>
-                </table>
-           </div>
+            </div>
         </div>
     </div>
-
+    
 
 
     <script src="../assets/js/dashboard.js"></script>
