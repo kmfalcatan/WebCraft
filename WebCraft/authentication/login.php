@@ -1,7 +1,9 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once '../functions/signin.php';
+    require_once '/WebCraft/functions/signin.php';
 }
+
+$message = "";
 ?>
 
 <!DOCTYPE html>
@@ -11,13 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="../assets/css/loginForm.css">
+    <link rel="stylesheet" href="/WebCraft/assets/css/loginForm.css">
 </head>
 <body>
     <div class="container">
         <div class="subContainer">
             <div class="imageContainer">
-                <img class="image" src="../assets/img/R.png" alt="">
+                <img class="image" src="/WebCraft/assets/img/R.png" alt="">
                 <div class="backgroundContainer">
                     <div class="paragraphContainer">
                         <p class="paragraph">Discover the power of efficient equipment management wiith MedEquip Tracker</p>
@@ -26,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="learnButtonContainer">
                         <button class="learnButton">
                             Learn more
-                            <img class="image1" src="../assets/img/chevron-right (1).png" alt="">
+                            <img class="image1" src="/WebCraft/assets/img/chevron-right (1).png" alt="">
                         </button>
                     </div>
                 </div>
@@ -39,30 +41,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
     
                     <div class="subLogoContainer">
-                        <img class="logo" src="../assets/img/medLogo.png" alt="">
+                        <img class="logo" src="/WebCraft/assets/img/medLogo.png" alt="">
                     </div>
                 </div>
     
+            <form action="" method="POST">
                 <div class="logInFormContainer">
-                    <form action="" method="POST">
                     <div class="subLogInFormContainer">
                         <div class="logIntextContainer">
                             <p class="logIntext">Sign in</p>
                         </div>
     
+                        <?php
+                        session_start();
+                        if (isset($_SESSION['login_error'])) {
+                            echo '<div id="alert" class="alert alert-danger">' . $_SESSION['login_error'] . '</div>';
+                            unset($_SESSION['login_error']);
+                        }
+                        ?>
+                        
                         <div class="subLogInFormContainer1">
                             <div class="iconContainer">
-                                <img class="icon" src="../assets/img/user.png" alt="">
+                                <img class="icon" src="/WebCraft/assets/img/email.png" alt="">
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputField" name="user_name" type="text" placeholder="User name" required>
+                                <input class="inputField" name="email" type="email" placeholder="E-mail" required>
                             </div>  
                         </div>
     
                         <div class="subLogInFormContainer1">
                             <div class="iconContainer">
-                                <img class="icon" src="../assets/img/password.png" alt="">
+                                <img class="icon" src="/WebCraft/assets/img/password.png" alt="">
                             </div>
     
                             <div class="inputContainer">
@@ -85,20 +95,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </a>
                         </div>
                     </div>
-    
-                    <div class="signUpContainer">
-                        <div class="subSignUpContainer">
-                            <p>Don't have an account?</p>
-                        </div>
-    
-                        <div class="signUpButtonContainer">
-                            <button class="signUpButton"><a href="../authentication/signup.php">Sign up</a></button>
-                        </div>
                     </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+
+    <script src="/WebCraft/assets/js/login.js"></script>
 </body>
 </html>

@@ -1,47 +1,67 @@
 <?php
-require_once('../dbConfig/dbconnect.php');
+require_once '../dbConfig/dbconnect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['user_name'], $_POST['password'])) {
-        $username = $_POST['user_name'];
+    if (isset($_POST['email'], $_POST['password'])) {
+        $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $result = loginUser($username, $password);
+        $result = loginUser($email, $password);
 
-        if ($result) {
-            if ($result === 'admin') {
-                header('Location: ../admin panel/dashboard.php');
-                exit();
-            } else {
-                header('Location: ../userPanel/dashboard.php');
-                exit();
-            }
+        if ($result === true) {
+            exit();
         } else {
-            $message = "Invalid username or password.";
+            session_start();
+            $_SESSION['login_error'] = $result;
+            header('Location: login.php');
+            exit();
         }
     } else {
-        $message = "Please fill in all required fields.";
+        session_start();
+        $_SESSION['login_error'] = "Please fill in all required fields.";
+        header('Location: login.php');
+        exit();
     }
 }
 
-function loginUser($username, $password)
+function loginUser($email, $password)
 {
     global $conn;
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
+    // Check if the provided email and password match the admin credentials
+    if ($email === 'admin@wmsu.edu.ph' && $password === 'adminPass') {
+        session_start();
+        $_SESSION['user_id'] = 1; // Assuming admin has user_id 1
+        $_SESSION['email'] = $email;
+        header('Location: /WebCraft/admin panel/dashboard.php');
+        exit();
+    }
+
+    // If not admin credentials, check the database
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows === 1) {
-        $row = $result->fetch_assoc();
-        $hashedPassword = $row['password'];
-
-        if (password_verify($password, $hashedPassword)) {
-            return $row['role'];
-        }
+    if ($result->num_rows === 0) {
+        return "Invalid email or password.";
     }
 
-    return false;
+    $user = $result->fetch_assoc();
+
+    if (password_verify($password, $user['password'])) {
+        session_start();
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['email'] = $user['email'];
+
+        if ($user['email'] === 'admin@wmsu.edu.ph') {
+            header('Location: /WebCraft/admin panel/dashboard.php');
+            exit();
+        } else {
+            header('Location: /WebCraft/studentDashboard/home.php');
+            exit();
+        }
+    } else {
+        return "Invalid email or password.";
+    }
 }
-?>

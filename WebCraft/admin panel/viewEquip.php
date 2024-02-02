@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="nameContainer">
-                    <p class="companyName">MedEquip tracker</p>
+                    <p class="companyName">MedEquip Tracker</p>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
 
     <div class="container1">
         <div class="subContainer">
-            <a href="/WebCraft/admin panel/equipOtherInfo.html">
+            <a href="/WebCraft/admin panel/equipOtherInfo.php">
                 <div class="subContainer1">
                     <div class="equipmentCoontainer">
                         <div class="imageContainer1">
@@ -67,7 +67,7 @@
         </div>
 
         <div class="buttonContainer">
-            <a href="/WebCraft/admin panel/dashboard.html">
+            <a href="dashboard.php">
                 <button class="button">
                     Back
                 </button>

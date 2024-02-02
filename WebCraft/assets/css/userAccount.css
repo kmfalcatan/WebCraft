@@ -8,6 +8,7 @@
     overflow: auto;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .subUserContainer{
@@ -58,4 +59,30 @@
     height: 8rem;
     text-decoration: none;
     color: black;
+}
+
+.addIcon {
+    position: fixed;
+    bottom: 7rem; 
+    right: 7rem; 
+    background-color: rgb(222,226,230);
+    width: 5rem;
+    height: 5rem; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.7); 
+    transition: box-shadow 0.3s ease; 
+}
+
+.addIcon:hover {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.8); 
+}
+
+.addIcon span {
+    font-size: 2.5rem;
+    color: #000;
+    font-weight: bolder;
 }

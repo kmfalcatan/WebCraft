@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip tracker</p>
+                        <p class="companyName">MedEquip <Table></Table>racker</p>
                     </div>
                 </div>
 
@@ -38,7 +38,7 @@
             </div>
 
             <div class="buttonContainer">
-                <a href="/WebCraft/admin panel/equipOtherInfo.html">
+                <a href="/WebCraft/admin panel/equipOtherInfo.php">
                     <button>Back</button>
                 </a>
             </div>
