@@ -1,5 +1,5 @@
 <?php
-require_once "../dbConfig/dbconnect.php";
+require_once "/WebCraft/dbConfig/dbconnect.php";
 
 $warrantyStart = isset($_POST['warranty_start']) ? $_POST['warranty_start'] : '';
 $warrantyEnd = isset($_POST['warranty_end']) ? $_POST['warranty_end'] : '';
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         $successMessage = "Warranty information added successfully!";
-        header("Location: ../adminPanel/dashboard.php");
+        header("Location: /WebCraft/adminPanel/dashboard.php");
         exit();
     } else {
         echo "Error executing the SQL statement: " . $stmt->error;

@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="../assets/css/viewEquip.css">
-    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="/WebCraft/assets/css/viewEquip.css">
+    <link rel="stylesheet" href="/WebCraft/assets/css/index.css">
 </head>
 <body>
     <div class="headerContainer">
         <div class="subHeaderContainer">
             <div class="imageContainer">
                 <div class="subImageContainer">
-                    <img class="image" src="../assets/img/medLogo.png" alt="">
+                    <img class="image" src="/WebCraft/assets/img/medLogo.png" alt="">
                 </div>
 
                 <div class="nameContainer">
@@ -23,7 +23,7 @@
 
             <div class="profileContainer">
                 <div class="subProfileContainer">
-                    <img class="image1" src="../assets/img/person-circle.png" alt="">
+                    <img class="image1" src="/WebCraft/assets/img/person-circle.png" alt="">
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
 
     <div class="container1">
         <div class="subContainer">
-            <a href="../admin panel/equipOtherInfo.php">
+            <a href="/WebCraft/admin panel/equipOtherInfo.php">
                 <div class="subContainer1">
                     <div class="equipmentCoontainer">
                         <div class="imageContainer1">
@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <script src="../assets/js/dashboard.js"></script>
-    <script src="../assets/js/viewEquipt.js"></script>
+    <script src="/WebCraft/assets/js/dashboard.js"></script>
+    <script src="/WebCraft/assets/js/viewEquipt.js"></script>
 </body>
 </html>

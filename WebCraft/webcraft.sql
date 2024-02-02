@@ -28,25 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `equipment` (
-  `id` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `user_name` varchar(255) NOT NULL,
-  `article` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `property_number` varchar(255) NOT NULL,
-  `account_code` varchar(255) NOT NULL,
-  `units` varchar(255) NOT NULL,
-  `unit_value` varchar(255) NOT NULL,
-  `total_value` varchar(255) NOT NULL,
-  `remarks` varchar(255) NOT NULL,
-  `other_information` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
-CREATE TABLE `equipment` (
-  `equipment_ID` int(11) NOT NULL,
+  `equipment_ID` int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
   `image` varchar(255) NOT NULL,
   `article` varchar(255) NOT NULL,
   `description` text NOT NULL,
@@ -58,10 +40,10 @@ CREATE TABLE `equipment` (
   `unit_value` varchar(255) NOT NULL,
   `total_value` varchar(255) NOT NULL,
   `remarks` varchar(255) NOT NULL,
-  `year_received` int(11) NOT NULL,
-  `other_information` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `year_received` int(11) NOT NULL
+);
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `users`

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="../assets/css/index.css">
-    <link rel="stylesheet" href="../assets/css/addEquip.css">
+    <link rel="stylesheet" href="/WebCraft/assets/css/index.css">
+    <link rel="stylesheet" href="/WebCraft/assets/css/addEquip.css">
 </head>
 <body>
     <div class="container2">
@@ -14,7 +14,7 @@
             <div class="subHeaderContainer">
                 <div class="imageContainer">
                     <div class="subImageContainer">
-                        <img class="image" src="../assets/img/medLogo.png" alt="">
+                        <img class="image" src="/WebCraft/assets/img/medLogo.png" alt="">
                     </div>
 
                     <div class="nameContainer">
@@ -24,7 +24,7 @@
 
                 <div class="profileContainer">
                     <div class="subProfileContainer">
-                        <img class="image1" src="../assets/img/person-circle.png" alt="">
+                        <img class="image1" src="/WebCraft/assets/img/person-circle.png" alt="">
                     </div>
                 </div>
             </div>
@@ -92,12 +92,12 @@
                     </div>
     
                     <div class="buttonsgitContainer">
-                        <a href="../admin panel/updateEquip.php">
+                        <a href="/WebCraft/admin panel/updateEquip.php">
                             <button class="addEquipButton1" type="submit">Update</button>
                         </a>
 
                         
-                        <a href="../admin panel/warranty.php">
+                        <a href="/WebCraft/admin panel/warranty.php">
                             <button class="addEquipButton1" type="submit">Check warranty</button>
                         </a>
 
@@ -111,6 +111,6 @@
         </div>
     </form>
 
-    <script src="../assets/js/dashboard.js"></script>
+    <script src="/WebCraft/assets/js/dashboard.js"></script>
 </body>
 </html>

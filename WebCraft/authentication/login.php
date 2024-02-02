@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once '../functions/signin.php';
+    require_once '/WebCraft/functions/signin.php';
 }
 
 $message = "";
@@ -13,13 +13,13 @@ $message = "";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="../assets/css/loginForm.css">
+    <link rel="stylesheet" href="/WebCraft/assets/css/loginForm.css">
 </head>
 <body>
     <div class="container">
         <div class="subContainer">
             <div class="imageContainer">
-                <img class="image" src="../assets/img/R.png" alt="">
+                <img class="image" src="/WebCraft/assets/img/R.png" alt="">
                 <div class="backgroundContainer">
                     <div class="paragraphContainer">
                         <p class="paragraph">Discover the power of efficient equipment management wiith MedEquip Tracker</p>
@@ -28,7 +28,7 @@ $message = "";
                     <div class="learnButtonContainer">
                         <button class="learnButton">
                             Learn more
-                            <img class="image1" src="../assets/img/chevron-right (1).png" alt="">
+                            <img class="image1" src="/WebCraft/assets/img/chevron-right (1).png" alt="">
                         </button>
                     </div>
                 </div>
@@ -41,7 +41,7 @@ $message = "";
                     </div>
     
                     <div class="subLogoContainer">
-                        <img class="logo" src="../assets/img/medLogo.png" alt="">
+                        <img class="logo" src="/WebCraft/assets/img/medLogo.png" alt="">
                     </div>
                 </div>
     
@@ -62,7 +62,7 @@ $message = "";
                         
                         <div class="subLogInFormContainer1">
                             <div class="iconContainer">
-                                <img class="icon" src="../assets/img/email.png" alt="">
+                                <img class="icon" src="/WebCraft/assets/img/email.png" alt="">
                             </div>
     
                             <div class="inputContainer">
@@ -72,7 +72,7 @@ $message = "";
     
                         <div class="subLogInFormContainer1">
                             <div class="iconContainer">
-                                <img class="icon" src="../assets/img/password.png" alt="">
+                                <img class="icon" src="/WebCraft/assets/img/password.png" alt="">
                             </div>
     
                             <div class="inputContainer">
@@ -101,6 +101,6 @@ $message = "";
         </div>
     </div>
 
-    <script src="../assets/js/login.js"></script>
+    <script src="/WebCraft/assets/js/login.js"></script>
 </body>
 </html>

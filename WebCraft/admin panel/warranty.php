@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="../assets/css/index.css">
-    <link rel="stylesheet" href="../assets/css/warranty.css">
+    <link rel="stylesheet" href="/WebCraft/assets/css/index.css">
+    <link rel="stylesheet" href="/WebCraft/assets/css/warranty.css">
 </head>
 <body>
     <div class="container2">
@@ -14,7 +14,7 @@
             <div class="subHeaderContainer">
                 <div class="imageContainer">
                     <div class="subImageContainer">
-                        <img class="image" src="../assets/img/medLogo.png" alt="">
+                        <img class="image" src="/WebCraft/assets/img/medLogo.png" alt="">
                     </div>
 
                     <div class="nameContainer">
@@ -24,7 +24,7 @@
 
                 <div class="profileContainer">
                     <div class="subProfileContainer">
-                        <img class="image1" src="../assets/img/person-circle.png" alt="">
+                        <img class="image1" src="/WebCraft/assets/img/person-circle.png" alt="">
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
             </div>
 
             <div class="buttonContainer">
-                <a href="../admin panel/equipOtherInfo.php">
+                <a href="/WebCraft/admin panel/equipOtherInfo.php">
                     <button>Back</button>
                 </a>
             </div>

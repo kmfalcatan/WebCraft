@@ -1,5 +1,5 @@
 <?php
-require_once "../dbConfig/dbconnect.php";
+require_once "/Web/Craft/dbConfig/dbconnect.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST['user'] ?? '';
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssssssssssssssss", $user, $article, $description, $image, $deployment, $units, $accountCode, $propertyNumber, $unitValue, $totalValue, $remarks, $yearReceived, $warrantyStart, $warrantyEnd, $budget, $instruction);
 
     if ($stmt->execute()) {
-        header("Location: ../adminPanel/dashboard.php");
+        header("Location: /Web/Craft/adminPanel/dashboard.php");
         exit();
     } else {
         echo "Error executing the SQL statement: " . $stmt->error;
