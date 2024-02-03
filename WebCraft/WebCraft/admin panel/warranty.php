@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip <Table></Table>racker</p>
+                        <p class="companyName">MedEquip Tracker</p>
                     </div>
                 </div>
 

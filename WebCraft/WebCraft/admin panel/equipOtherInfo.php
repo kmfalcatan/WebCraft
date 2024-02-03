@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,8 +42,6 @@
                             </div>
                         </div>
                     </div>
-
-                    
     
                     <div class="infoContainer">
                         <div class="subInfoContainer">
