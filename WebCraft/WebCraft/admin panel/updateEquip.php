@@ -31,14 +31,14 @@
         </div>
     </div>
 
-    <form class="subContainer3" action="../functions/saveEquip.php" enctype="multipart/form-data" method="post">
+    <form class="subContainer3" action="" enctype="multipart/form-data" method="post">
         <div class="container3">
             <div class="subContainer2">
                 <div class="imageContainer1">
                     <div class="subImageContainer1">
                         <div class="uploadImageContainer">
                             <div class="subUploadImageContainer">
-                                <img class="uploadImage" src="" alt="">
+                                <img class="uploadImage" src="../assets/img/img_placeholder.jpg" alt="Mountain Placeholder">
                             </div>
                         </div>
                     </div>
@@ -91,9 +91,9 @@
                         <textarea class="inputInfo4" name="other_information" cols="30" rows="10" placeholder="Description:"></textarea>
                     </div>
     
-                    <div class="addEquipButtonContainer">
-                        <a href="../admin panel/viewEquip.php">
-                            <button class="addEquipButton1" type="submit">Back</button>
+                    <div class="buttonsContainer">
+                        <a href="../admin panel/equipOtherInfo.php">
+                            <button class="button">Back</button>
                         </a>
                     </div>
                 </div>

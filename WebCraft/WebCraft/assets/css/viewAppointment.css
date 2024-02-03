@@ -1,5 +1,5 @@
 .container2{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 91vh;
     display: flex;
     justify-content: center;
@@ -7,7 +7,7 @@
 }
 
 .subContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 35rem;
     width: 90%;
     border-radius: 0.5rem;
@@ -17,14 +17,14 @@
 }
 
 .equipInfoContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 10rem;
     display: flex;
     flex-direction: row;
 }
 
 .imageContainer1{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height:  100%;
     width: 16rem;
     display: flex;
@@ -34,7 +34,7 @@
 }
 
 .subImageContainer1{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 90%;
     width: 90%;
     border-radius: 0.5rem;
@@ -45,7 +45,7 @@
 }
 
 .infoContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 100%;
     width: 100%;
     display: flex;
@@ -56,7 +56,7 @@
 .equipNameContainer{
     height: 3rem;
     width: 98%;
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     display: flex;
     align-items: center;
     border-radius: 0.5rem;
@@ -66,7 +66,7 @@
 }
 
 .damageContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 10rem;
     margin-top: 1rem;
     display: flex;
@@ -82,7 +82,7 @@
 
 .nextRightContainer{
     position: absolute;
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 2rem;
     width: 1.5rem;
     background-color: rgba(151, 151, 151, 0.822);
@@ -94,7 +94,7 @@
 
 .nextLeftContainer{
     position: absolute;
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     right: 0;
     height: 2rem;
     width: 1.5rem;
@@ -106,7 +106,7 @@
 }
 
 .textContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 2rem;
     width: 100%;
     display: flex;
@@ -116,13 +116,13 @@
 }
 
 .budgetContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 100%;
     width: 100%;
 }
 
 .subBudgetContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 8rem;
     width: 100%;
     display: flex;
@@ -131,7 +131,7 @@
 }
 
 .budget{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 3rem;
     width: 100%;
     background-color: snow;
@@ -142,13 +142,13 @@
 }
 
 .maintenanceContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 10rem;
     margin-top: 1rem;
 }
 
 .subMaintenanceContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 2.5rem;
     width: 100%;
     display: flex;
@@ -165,7 +165,7 @@ span{
 }
 
 .buttonContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 3rem;
     display: flex;
     justify-content: right;

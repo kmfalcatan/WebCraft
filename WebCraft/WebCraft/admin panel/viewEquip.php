@@ -1,3 +1,11 @@
+<?php
+    include('../dbConfig/dbconnect.php');
+
+    $sql = "SELECT * FROM equipment";
+    $result = $conn->query($sql);
+    $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,15 +58,15 @@
                             </div>
         
                             <div class="subInfoContainer">
-                                <p>Apparatus name:</p>
+                                <p>Apparatus name: <?php echo $article; ?></p>
                             </div>
         
                             <div class="subInfoContainer">
-                                <p>ID:</p>
+                                <p>ID: <?php echo $yearReceived; ?></p>
                             </div>
         
                             <div class="subInfoContainer">
-                                Status:
+                                Status: <?php echo $remarks; ?>
                             </div>
                         </div>
                     </div>

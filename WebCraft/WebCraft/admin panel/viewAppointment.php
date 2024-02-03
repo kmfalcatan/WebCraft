@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/WebCraft/assets/css/viewAppointment.css">
-    <link rel="stylesheet" href="/WebCraft/assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/viewAppointment.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
 </head>
 <body>
     <div class="container1">
@@ -35,7 +35,7 @@
                 <div class="equipInfoContainer">
                     <div class="imageContainer1">
                         <div class="subImageContainer1">
-                            <img class="image3" src="" alt="">
+                            <img class="image3" src="../assets/img/img_placeholder.jpg" alt="Mountain Placeholder">
                         </div>
                     </div>
 
@@ -60,14 +60,14 @@
                             <p>Damage:</p>
                         </div>
                         <div class="subImageContainer1">
-                            <img class="image3" src="" alt="">
+                            <img class="image3" src="../assets/img/img_placeholder.jpg" alt="Mountain Placeholder">
 
                             <div class="nextRightContainer">
-                                <img class="image3" src="/WebCraft/assets/img/chevron-left (1).png" alt="">
+                                <img class="image3" src="../assets/img/chevron-left (1).png" alt="">
                             </div>
 
                             <div class="nextLeftContainer">
-                                <img class="image3" src="/WebCraft/assets/img/chevron-right.png" alt="">
+                                <img class="image3" src="../assets/img/chevron-right.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -105,11 +105,11 @@
 
                 <div class="buttonContainer">
                     <button class="button1">
-                        <img class="image7" src="/WebCraft/assets/img/th (3).jpg" alt="">
+                        <img class="image7" src="../assets/img/th (3).jpg" alt="">
                     </button>
                     <button class="button">Send email</button>
                     <button class="button">Approve</button>
-                    <a href="/WebCraft/admin panel/appointment.html">
+                    <a href="../admin panel/appointment.php">
                         <button class="button">Back</button>
                     </a>
                 </div>
