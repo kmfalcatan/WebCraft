@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/WebCraft/assets/css/index.css">
-    <link rel="stylesheet" href="/WebCraft/assets/css/addEquip.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/addEquip.css">
 </head>
 <body>
     <div class="container2">
@@ -14,7 +14,7 @@
             <div class="subHeaderContainer">
                 <div class="imageContainer">
                     <div class="subImageContainer">
-                        <img class="image" src="/WebCraft/assets/img/medLogo.png" alt="">
+                        <img class="image" src="../assets/img/medLogo.png" alt="">
                     </div>
 
                     <div class="nameContainer">
@@ -24,14 +24,14 @@
 
                 <div class="profileContainer">
                     <div class="subProfileContainer">
-                        <img class="image1" src="/WebCraft/assets/img/person-circle.png" alt="">
+                        <img class="image1" src="../assets/img/person-circle.png" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <form class="subContainer3" action="/WebCraft/functions/saveEquip.php" enctype="multipart/form-data" method="post">
+    <form class="subContainer3" action="../functions/saveEquip.php" enctype="multipart/form-data" method="post">
         <div class="container3">
             <div class="subContainer2">
                 <div class="imageContainer1">
@@ -92,7 +92,7 @@
                     </div>
     
                     <div class="addEquipButtonContainer">
-                        <a href="/WebCraft/admin panel/viewEquip.php">
+                        <a href="../admin panel/viewEquip.php">
                             <button class="addEquipButton1" type="submit">Back</button>
                         </a>
                     </div>
@@ -101,6 +101,6 @@
         </div>
     </form>
 
-    <script src="/WebCraft/assets/js/dashboard.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
 </body>
 </html>

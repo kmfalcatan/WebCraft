@@ -33,7 +33,7 @@ function loginUser($email, $password)
         session_start();
         $_SESSION['user_id'] = 1; // Assuming admin has user_id 1
         $_SESSION['email'] = $email;
-        header('Location: /WebCraft/admin panel/dashboard.php');
+        header('Location: ../admin panel/dashboard.php');
         exit();
     }
 
@@ -55,10 +55,10 @@ function loginUser($email, $password)
         $_SESSION['email'] = $user['email'];
 
         if ($user['email'] === 'admin@wmsu.edu.ph') {
-            header('Location: /WebCraft/admin panel/dashboard.php');
+            header('Location: ../admin panel/dashboard.php');
             exit();
         } else {
-            header('Location: /WebCraft/studentDashboard/home.php');
+            header('Location: ../studentDashboard/home.php');
             exit();
         }
     } else {
