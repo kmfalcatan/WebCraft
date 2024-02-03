@@ -1,37 +1,70 @@
 <?php
-require_once "/Web/Craft/dbConfig/dbconnect.php";
+include '../dbConfig/dbconnect.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user = $_POST['user'] ?? '';
-    $article = $_POST['article'] ?? '';
-    $description = $_POST['description'] ?? '';
-    $image = $_POST['image'] ?? '';
-    $deployment = $_POST['deployment'] ?? '';
-    $units = $_POST['units'] ?? '';
-    $accountCode = $_POST['account_code'] ?? '';
-    $propertyNumber = $_POST['property_number'] ?? '';
-    $unitValue = $_POST['unit_value'] ?? '';
-    $totalValue = $_POST['total_value'] ?? '';
-    $remarks = $_POST['remarks'] ?? '';
-    $yearReceived = $_POST['year_received'] ?? '';
+if(isset($_POST['submit_form1'])){
 
-    $warrantyStart = isset($_POST['warranty_start']) ? $_POST['warranty_start'] : '';
-    $warrantyEnd = isset($_POST['warranty_end']) ? $_POST['warranty_end'] : '';
-    $budget = isset($_POST['budget']) ? $_POST['budget'] : '';
-    $instruction = isset($_POST['instruction']) ? $_POST['instruction'] : '';
+    $user = $_POST['user'];
+    $article = $_POST['article'];
+    $deployment = $_POST['deployment'];
+    $property_number = $_POST['property_number'];
+    $account_code = $_POST['account_code'];
+    $units = $_POST['units'];
+    $unit_value = $_POST['unit_value'];
+    $total_value = $_POST['total_value'];
+    $remarks = $_POST['remarks'];
+    $description = $_POST['description'];
+    $year_received = $_POST['year_received'];
 
-    $stmt = $conn->prepare("INSERT INTO equipment (user, article, description, image, deployment, units, account_code, property_number, unit_value, total_value, remarks, year_received, warranty_start, warranty_end, budget, instruction, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, current_timestamp())");
-    $stmt->bind_param("ssssssssssssssss", $user, $article, $description, $image, $deployment, $units, $accountCode, $propertyNumber, $unitValue, $totalValue, $remarks, $yearReceived, $warrantyStart, $warrantyEnd, $budget, $instruction);
+    $target_dir = "../uploads/";
+    $image_name = basename($_FILES["image"]["name"]);
+    $target_file = $target_dir . $image_name;
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-    if ($stmt->execute()) {
-        header("Location: /Web/Craft/adminPanel/dashboard.php");
-        exit();
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if($check !== false) {
+        $uploadOk = 1;
     } else {
-        echo "Error executing the SQL statement: " . $stmt->error;
+        echo "Error: File is not an image.";
+        $uploadOk = 0;
     }
 
-    $stmt->close();
-}
+    if (file_exists($target_file)) {
+        echo "Error: File already exists.";
+        $uploadOk = 0;
+    }
 
-$conn->close();
+    if ($_FILES["image"]["size"] > 500000) {
+        echo "Error: File is too large.";
+        $uploadOk = 0;
+    }
+
+    $allowed_formats = array("jpg", "jpeg", "png", "gif");
+    if(!in_array($imageFileType, $allowed_formats)) {
+        echo "Error: Only JPG, JPEG, PNG, and GIF files are allowed.";
+        $uploadOk = 0;
+    }
+
+    if ($uploadOk) {
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+
+            $sql = "INSERT INTO equipment (user, article, deployment, property_number, account_code, units, unit_value, total_value, remarks, description, year_received, image) 
+                    VALUES ('$user', '$article', '$deployment', '$property_number', '$account_code', '$units', '$unit_value', '$total_value', '$remarks', '$description', '$year_received', '$image_name')";
+
+            if ($conn->query($sql) === TRUE) {
+                session_start();
+                $_SESSION['equipment_ID'] = $conn->insert_id; 
+
+                header("Location: ../admin panel/addOtherinfo.php");
+                exit();
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        } else {
+            echo "Error: Failed to upload image.";
+        }
+    }
+
+    $conn->close();
+}
 ?>
