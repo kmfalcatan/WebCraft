@@ -1,5 +1,4 @@
 .container2{
-    outline: red dashed 1px;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -8,7 +7,6 @@
 }
 
 .subContainer{
-    outline: red dashed 1px;
     height: 40rem;
     width: 90%;
     border-radius: 0.5rem;
@@ -17,7 +15,6 @@
 }
 
 .userInfoContainer{
-    outline: red dashed 1px;
     height: 10rem;
     border-bottom: solid gray 1px;
     display: flex;
@@ -25,7 +22,6 @@
 }
 
 .imageContainer{
-    outline: red dashed 1px;
     height: 100%;
     width: 10rem;
     display: flex;
@@ -34,7 +30,6 @@
 }
 
 .subImageContainer3{
-    outline: red dashed 1px;
     height: 9rem;
     width: 9rem;
     border-radius: 0.5rem;
@@ -50,7 +45,6 @@
 }
 
 .inforContainer{
-    outline: red dashed 1px;
     height: 100%;
     width: 57%;
     display: flex;
@@ -59,7 +53,6 @@
 }
 
 .subInfoContainer{
-    outline: red dashed 1px;
     height: 3rem;
     display: flex;
     align-items: center;
@@ -67,7 +60,6 @@
 }
 
 .tableContainer1{
-    outline: red dashed 1px;
     height: 100%;
     margin-top: 1rem;
     display: flex;
@@ -75,7 +67,6 @@
 }
 
 .subTableContainer{
-    outline: red dashed 1px;
     height: 38rem;
     width: 90%;
     background-color: snow;
@@ -83,7 +74,6 @@
 }
 
 .buttonContainer{
-    outline: red dashed 1px;
     height: 4rem;
     width: 100%;
     display: flex;

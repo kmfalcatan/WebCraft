@@ -1,5 +1,4 @@
 .userContainer{
-    outline: red dashed 1px;
     height: 37rem;
     width: 87%;
     padding: 0.5rem;
@@ -12,7 +11,6 @@
 }
 
 .subUserContainer{
-    outline: red dashed 1px;
     height: 8rem;
     width: 100%;
     border-radius: 0.5rem;
@@ -24,7 +22,6 @@
 }
 
 .imageContainer2{
-    outline: red dashed 1px;
     height: 100%;
     width: 8rem;
     display: flex;
@@ -33,7 +30,6 @@
 }
 
 .subImageContainer2{
-    outline: red dashed 1px;
     height: 7rem;
     width: 7rem;
     border-radius: 0.5rem;
@@ -41,7 +37,6 @@
 }
 
 .nameContainer1{
-    outline: red dashed 1px;
     height: 100%;
     width: 64.1%;
     display: flex;
