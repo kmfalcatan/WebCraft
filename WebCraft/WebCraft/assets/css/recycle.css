@@ -1,0 +1,27 @@
+.buttonContainer1{
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button2{
+    height: 2.5rem;
+    width: 15rem;
+    border: solid gray 1px;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.15s;
+    background-color: rgb(152,152,152);
+    cursor: pointer;
+}
+
+.button2:hover{
+    background-color: rgb(189,189,189);
+}
+
+.button2:active{
+    background-color: rgb(124,124,124);
+}

@@ -199,7 +199,6 @@ body{
 }
 
 .container{
-    outline: red dashed 1px;
     height: 91vh;
     display: flex;
     flex-direction: column;
@@ -207,7 +206,6 @@ body{
 }
 
 .searchBarContainer{
-    outline: red dashed 1px;
     height: 4rem;
     width: 100%;
     display: flex;
@@ -225,17 +223,14 @@ body{
 }
 
 .filterContainer{
-    outline: red dashed 1px;
     height: 2rem;
     width: 100%;
-    margin-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .subFilterContainer{
-    outline: red dashed 1px;
     height: 100%;
     width: 90%;
     background-color: snow;
@@ -243,10 +238,10 @@ body{
     overflow-y: auto;
     display: flex;
     flex-direction: row;
+    border: solid gray 1px;
 }
 
 .sortContainer{
-    outline: red dashed 1px;
     height: 100%;
     width: 2rem;
     display: flex;
@@ -264,7 +259,6 @@ body{
 }
 
 .filter{
-    outline: red dashed 1px;
     height: 100%;
     width: 4rem;
     display: flex;
@@ -279,11 +273,11 @@ body{
 }
 
 .tableContainer{
-    outline: red dashed 1px;
     height: 71%;
     width: 90%;
     background-color: snow;
     overflow-x: auto;
+    border: solid gray 1px;
 }
 
 .action{
@@ -303,12 +297,6 @@ body{
 
 .action:active{
     background-color: rgb(124,124,124);
-}
-
-.actionContainer{
-    display: flex;
-    column-gap: 0.5rem;
-    row-gap: 0.5rem;
 }
 
 /*Cellphone*/
@@ -392,7 +380,6 @@ body{
     }
     
     .tableContainer{
-        outline: red dashed 1px;
         height: 71%;
         width: 90%;
         background-color: snow;
@@ -497,7 +484,6 @@ body{
         display: flex;
         justify-content: right;
         align-items: center;
-        outline: red dashed 1px;
     }
 
     .image2{
@@ -526,7 +512,6 @@ body{
     }
 
     .tableContainer{
-        outline: red dashed 1px;
         height: 71%;
         width: 90%;
         background-color: snow;
@@ -542,7 +527,6 @@ body{
     }
 
     .sideNavBar{
-        outline: red dashed 1px;
     }
     table{
         border-collapse: collapse;
@@ -666,7 +650,6 @@ body{
     }
 
     .tableContainer{
-        outline: red dashed 1px;
         height: 71%;
         width: 90%;
         background-color: snow;
