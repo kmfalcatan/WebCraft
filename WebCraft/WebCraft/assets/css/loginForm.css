@@ -9,7 +9,6 @@ font-family: system-ui, -apple-system;
 }
 
 .container{
-/* outline: red dashed 1px; */
 height: 100vh;
 display: flex;
 justify-content: center;
@@ -17,7 +16,6 @@ align-items: center ;
 }
 
 .subContainer{
-/* outline: red dashed 1px; */
 height: 85%;
 width: 90%;
 background-color: snow;
@@ -26,7 +24,6 @@ position: relative;
 }
 
 .logoContainer{
-/* outline: red dashed 1px; */
 height: 5rem;
 display: flex;
 justify-content: right;
@@ -36,7 +33,6 @@ align-items: center;
 .subLogoContainer{
 height: 100%;
 width: 5rem;
-/* outline: red dashed 1px; */
 display: flex;
 justify-content: center;
 align-items: center;
@@ -47,7 +43,6 @@ height: 90%;
 }
 
 .nameContainer{
-/* outline: red dashed 1px; */
 height: 100%;
 width: 11rem;
 display: flex;
@@ -58,7 +53,6 @@ font-weight: bold;
 }
 
 .logInFormContainer{
-/* outline: red dashed 1px; */
 height: 100%;
 width: 100%;
 display: flex;
@@ -70,7 +64,6 @@ top: 0;
 }
 
 .subLogInFormContainer{
-/* outline: red dashed 1px; */
 height: 23rem;
 width: 90%;
 border-radius: 1rem;
@@ -79,7 +72,6 @@ padding: 10px 10px;
 }
 
 .logIntextContainer{
-/* outline: red dashed 1px; */
 height: 4rem;
 display: flex;
 justify-content: left;
@@ -103,7 +95,6 @@ text-align: center;
 
 
 .subLogInFormContainer1{
-/* outline: red  dashed 1px; */
 height: 4rem;
 display: flex;
 justify-content: center;
@@ -111,7 +102,6 @@ align-items: center;
 }
 
 .iconContainer{
-/* outline: red dashed 1px; */
 height: 100%;
 width: 2rem;
 display: flex;
@@ -126,7 +116,6 @@ height: 1.7rem;
 .inputContainer{
 height: 100%;
 width: 90%;
-/* outline: red dashed 1px; */
 display: flex;
 align-items: center;
 }
@@ -142,7 +131,6 @@ align-items: center;
 }
 
 .rememberMeContainer{
-/* outline: red dashed 1px; */
 height: 4rem;
 display: flex;
 justify-content: left;
@@ -160,7 +148,6 @@ cursor: pointer;
 }
 
 .signInButtonContainer{
-/* outline: red dashed 1px; */
 height: 4rem;
 display: flex;
 justify-content: center;
@@ -188,7 +175,6 @@ background-color: rgb(128, 128, 128);
 }
 
 .forgotContainer{
-/* outline: red dashed 1px; */
 height: 3rem;
 display: flex;
 justify-content: center;
@@ -261,7 +247,6 @@ background-color: gray;
 
 .logInFormContainer1{
 height: 100%;
-/* outline: red dashed 1px; */
 }
 
 .imageContainer{
@@ -308,7 +293,6 @@ display: none;
 
 .imageContainer{
     width: 50%;
-    /* outline: red dashed 1px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -410,7 +394,6 @@ display: none;
 
 .imageContainer{
     width: 50%;
-    /* outline: red dashed 1px; */
     display: flex;
     justify-content: center;
     align-items: center;

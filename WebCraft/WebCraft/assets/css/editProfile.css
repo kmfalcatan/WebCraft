@@ -1,0 +1,23 @@
+.uploadImageContainer{
+    outline: red dashed 1px;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonContainer1{
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1rem;
+    margin-top: 8rem;
+}
+
+@media only screen and (min-width: 1441px){
+    .buttonContainer1{
+        margin-top: 10rem;
+    }
+}
