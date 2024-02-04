@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: linear-gradient(snow, gray);
+}
+
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subContainer{
+    height: 20rem;
+    width: 25rem;
+    border-radius: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1.rem;
+    display: flex;
+    row-gap: 1rem;
+    flex-direction: column;
+    background-color: rgb(224, 224, 224);
+    border: solid gray 1px;
+}
+
+.buttonContainer{
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    height: 2.5rem;
+    width: 15rem;
+    border: solid gray 1px;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.15s;
+    background-color: rgb(152,152,152);
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgb(189,189,189);
+}
+
+button:active{
+    background-color: rgb(124,124,124);
+}
