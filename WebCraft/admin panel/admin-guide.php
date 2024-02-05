@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/WebCraft/assets/css/header-sidebar.css">
-    <link rel="stylesheet" href="/WebCraft/assets/css/admin-guide.css">
+    <link rel="stylesheet" href="../assets/css/header-sidebar.css">
+    <link rel="stylesheet" href="../assets/css/admin-guide.css">
 </head>
 <body>
     <div class="container1">
@@ -146,7 +146,7 @@
 
     <div class="container">
         <div class="subContainer">
-            <p class="text">MedEquip Tracker</p>
+            <p class="text">MEDEQUIP TRACKER</p>
             <p class="text1">A quick admin guide</p>
         </div>
 
@@ -163,7 +163,7 @@
         <div class="imageContainer1"> 
             <div class="subImageContainer1">
                 <div class="subImageContainer2">
-                    <img class="image6" src="/WebCraft/assets/img/Screenshot_2024-02-05_202750-removebg-preview.png" alt="">
+                    <img class="image6" src="../assets/img/Screenshot_2024-02-05_202750-removebg-preview.png" alt="">
                 </div>
             </div>
 
@@ -199,7 +199,7 @@
         <div class="imageContainer1"> 
             <div class="subImageContainer3">
                 <div class="subImageContainer2">
-                    <img class="image6" src="/WebCraft/assets/img/viewEquip-removebg-preview.png" alt="">
+                    <img class="image6" src="../assets/img/viewEquip-removebg-preview.png" alt="">
                 </div>
             </div>
 
@@ -245,7 +245,7 @@
         <div class="imageContainer1"> 
             <div class="subImageContainer1">
                 <div class="subImageContainer2">
-                    <img class="image6" src="/WebCraft/assets/img/viewBudget-removebg-preview.png" alt="">
+                    <img class="image6" src="../assets/img/viewBudget-removebg-preview.png" alt="">
                 </div>
             </div>
 
@@ -281,7 +281,7 @@
         <div class="imageContainer1"> 
             <div class="subImageContainer3">
                 <div class="subImageContainer2">
-                    <img class="image6" src="/WebCraft/assets/img/viewUser-removebg-preview.png" alt="">
+                    <img class="image6" src="../assets/img/viewUser-removebg-preview.png" alt="">
                 </div>
             </div>
 
@@ -317,7 +317,7 @@
         <div class="imageContainer1"> 
             <div class="subImageContainer1">
                 <div class="subImageContainer2">
-                    <img class="image6" src="/WebCraft/assets/img/appointment-removebg-preview.png" alt="">
+                    <img class="image6" src="../assets/img/appointment-removebg-preview.png" alt="">
                 </div>
             </div>
 
@@ -363,7 +363,7 @@
         <div class="imageContainer1"> 
             <div class="subImageContainer3">
                 <div class="subImageContainer2">
-                    <img class="image6" src="/WebCraft/assets/img/editProfile-removebg-preview.png" alt="">
+                    <img class="image6" src="../assets/img/editProfile-removebg-preview.png" alt="">
                 </div>
             </div>
 
@@ -409,7 +409,7 @@
         <div class="imageContainer1"> 
             <div class="subImageContainer1">
                 <div class="subImageContainer2">
-                    <img class="image6" src="/WebCraft/assets/img/changePassword-removebg-preview.png" alt="">
+                    <img class="image6" src="../assets/img/changePassword-removebg-preview.png" alt="">
                 </div>
             </div>
 
@@ -455,7 +455,7 @@
         <div class="imageContainer1"> 
             <div class="subImageContainer3">
                 <div class="subImageContainer2">
-                    <img class="image6" src="/WebCraft/assets/img/recycle-removebg-preview.png" alt="">
+                    <img class="image6" src="../assets/img/recycle-removebg-preview.png" alt="">
                 </div>
             </div>
 
@@ -484,6 +484,6 @@
         </div>
     </div>
 
-    <script src="/WebCraft/assets/js/dashboard.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
 
     <link rel="stylesheet" href="../assets/css/setting.css">
 </head>
+
 <body>
     <div class="container">
         <div class="subContainer">
             <div class="buttonContainer">
-                <a href="../admin panel/editProfile.php">
+                <a href="../admin panel/userProfile.php">
                     <button>Edit profile</button>
                 </a>
             </div>
@@ -29,9 +31,7 @@
             </div>
 
             <div class="buttonContainer">
-                <a href="../authentication/login.php">
-                    <button>Log out</button>
-                </a>
+                <button onclick="showLogoutConfirmation()">Log out</button>
             </div>
 
             <div class="buttonContainer">
@@ -41,5 +41,31 @@
             </div>
         </div>
     </div>
+
+    <div id="logoutConfirmation" class="popupContainer">
+        <div class="popupContent">
+            <p>Are you sure you want to log out?</p>
+            <div class="popupButtons">
+                <button onclick="logout()">Yes</button>
+                <button onclick="hideLogoutConfirmation()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLogoutConfirmation() {
+            document.getElementById("logoutConfirmation").style.display = "block";
+        }
+
+        function hideLogoutConfirmation() {
+            document.getElementById("logoutConfirmation").style.display = "none";
+        }
+
+        function logout() {
+            window.location.href = "../authentication/login.php";
+        }
+    </script>
+
 </body>
+
 </html>

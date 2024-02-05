@@ -58,7 +58,7 @@
         </div>
         <div class='sideNavBar'>
             <div class="subSideNavBar">
-                <a class='profile' href=''>
+                <a class='profile' href='../admin panel/admin-guide.php'>
                     Help
                 </a>
             </div>

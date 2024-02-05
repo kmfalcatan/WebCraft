@@ -1,5 +1,21 @@
 <?php
-include('../functions/upateProfile.php');
+include('../dbConfig/dbconnect.php');
+
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+
+function getUserInfo($conn, $id) {
+    $sql = "SELECT * FROM users WHERE id = '$id'";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        return $result->fetch_assoc();
+    } else {
+        return null; 
+    }
+}
+
+$userInfo = getUserInfo($conn, $id);
+
 ?>
 
 
@@ -17,10 +33,10 @@ include('../functions/upateProfile.php');
     <div class="container">
         <div class="subContainer">
             <div class="textContainer">
-                <p class="text">Edit Profile</p>
+                <p class="text">Profile</p>
             </div>
 
-            <form class="warrantyContainer1" method="POST" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $id; ?>" enctype="multipart/form-data">
+            <form class="warrantyContainer1" method="POST"  action="../admin panel/editProfile.php?id=<?php echo $id; ?>">
                 
                 <div class="imageContainer">
                     <div class="subImageContainer">
@@ -35,33 +51,30 @@ include('../functions/upateProfile.php');
 
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
 
-                    <div class="uploadButtonContainer">
-                        <input class="uploadButton" name="profile_img" type="file">
-                    </div>
                 </div>
                 <div class="subWarrantyContainer">
                     <div class="startWarrantyContainer">
-                        <input class="startWarranty" name="fullname" type="text" placeholder="Full name" value="<?php echo $userInfo['fullname'] ?? ''; ?>">
+                        <input class="startWarranty" name="fullname" type="text" placeholder="Full name" value="<?php echo $userInfo['fullname'] ?? ''; ?>" readonly>
                     </div>
                     
                     <div class="startWarrantyContainer">
-                        <input class="startWarranty" name="email" type="email" placeholder="Email" value="<?php echo $userInfo['email'] ?? ''; ?>">
+                        <input class="startWarranty" name="email" type="email" placeholder="Email" value="<?php echo $userInfo['email'] ?? ''; ?>" readonly>
                     </div>
                     
                     <div class="startWarrantyContainer">
-                        <input class="startWarranty" name="contact" type="number" placeholder="Contact no." value="<?php echo $userInfo['contact'] ?? ''; ?>">
+                        <input class="startWarranty" name="contact" type="number" placeholder="Contact no." value="<?php echo $userInfo['contact'] ?? ''; ?>" readonly>
                     </div>
 
                     <div class="startWarrantyContainer">
-                        <input class="startWarranty" name="department" type="text" placeholder="department" value="<?php echo $userInfo['department'] ?? ''; ?>">
+                        <input class="startWarranty" name="department" type="text" placeholder="department" value="<?php echo $userInfo['department'] ?? ''; ?>" readonly>
                     </div>
                 </div>
 
                 <div class="buttonContainer1">
-                    <button class="button" type="submit" >Save</button>
-                    <a href="../admin panel/setting.php">
-                        <button class="button">Back</button>
+                    <a href="../admin%20panel/editProfile.php?id=<?php echo $id; ?>">
+                        <button class="button">Edit</button>
                     </a>
+                    <button class="button">Back</button>
                 </div>
             </form>
         </div>
