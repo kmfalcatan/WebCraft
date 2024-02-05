@@ -8,7 +8,7 @@
 
 .subContainer{
     /* outline: red dashed 1px; */
-    height: 35rem;
+    height: 28rem;
     width: 90%;
     border-radius: 0.5rem;
     background-color: rgb(224, 224, 224);
@@ -17,8 +17,7 @@
 }
 
 .equipInfoContainer{
-    /* outline: red dashed 1px; */
-    height: 10rem;
+    height: 12rem;
     display: flex;
     flex-direction: row;
 }
@@ -26,7 +25,7 @@
 .imageContainer1{
     /* outline: red dashed 1px; */
     height:  100%;
-    width: 16rem;
+    width: 19rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,22 +55,17 @@
 .equipNameContainer{
     height: 3rem;
     width: 98%;
-    /* outline: red dashed 1px; */
     display: flex;
     align-items: center;
     border-radius: 0.5rem;
     background-color: snow;
-    padding-left: 0.5rem;
-    overflow: auto;
 }
 
 .damageContainer{
-    /* outline: red dashed 1px; */
-    height: 10rem;
+    height: 12rem;
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
-    border-top: solid gray 1px;
 }
 
 .image3{
@@ -107,12 +101,13 @@
 
 .textContainer{
     /* outline: red dashed 1px; */
-    height: 2rem;
+    height: 3rem;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    text-align: center;
 }
 
 .budgetContainer{
@@ -128,6 +123,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    row-gap: 0.5rem;
 }
 
 .budget{
@@ -222,9 +219,33 @@ span{
     width: 100%;
 }
 
+.uploadImageContainer{
+    height: 2rem;
+    width: 9rem;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploadImage{
+    color: transparent;
+    margin-left: 20%;
+}
+
+.inputName{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    overflow: auto;
+    border: solid gray 1px;
+}
+
 /*laptop*/
 @media only screen and (min-width: 1025px) {
     .subContainer{
         width: 50rem;
+        height: 28rem;
     }
 }

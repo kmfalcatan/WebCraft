@@ -12,6 +12,10 @@
     <div class="container">
         <div class="subContainer1">
             <div class="inputPassContainer">
+                <input type="text" placeholder="Old password:" required>
+            </div>
+
+            <div class="inputPassContainer">
                 <input type="text" placeholder="New password:" required>
             </div>
 
