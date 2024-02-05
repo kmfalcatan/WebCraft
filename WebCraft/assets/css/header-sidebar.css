@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
 }
 
 body{
@@ -14,6 +15,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
 }
 
 .subHeaderContainer{
@@ -116,13 +118,14 @@ body{
 }
 
 .sideNavBarContainer{
-    height: 20.5em;
+    height: 23.6em;
     width:  12.5rem;
     position: fixed;
     right: -12.5rem;
     top: 4.5rem;
     background-color: rgb(255,252,252);
     z-index: 1;
+    position: fixed;
 }
 
 .fadeIn{
@@ -198,143 +201,6 @@ body{
     display: none;
 }
 
-.container{
-    outline: red dashed 1px;
-    height: 91vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.searchBarContainer{
-    outline: red dashed 1px;
-    height: 4rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.searchBar{
-    height: 3rem;
-    width: 86%;
-    border-radius: 10rem;
-    border: solid gray 1px;
-    padding-left: 1rem;
-    font-size: 1.3rem;
-}
-
-.filterContainer{
-    outline: red dashed 1px;
-    height: 2rem;
-    width: 100%;
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.subFilterContainer{
-    outline: red dashed 1px;
-    height: 100%;
-    width: 90%;
-    background-color: snow;
-    border-radius: 0.5rem 0.5rem 0rem 0rem;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: row;
-}
-
-.sortContainer{
-    outline: red dashed 1px;
-    height: 100%;
-    width: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.sort{
-    height: 2rem;
-}
-
-.sort:active{
-    background-color: rgb(124,124,124);
-}
-
-.filter{
-    outline: red dashed 1px;
-    height: 100%;
-    width: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-.year{
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.tableContainer{
-    outline: red dashed 1px;
-    height: 71%;
-    width: 90%;
-    background-color: snow;
-    overflow-x: auto;
-}
-
-.action{
-    height: 2rem;
-    width: 4rem;
-    border-radius: 1rem;
-    border: none;
-    background-color: rgb(152,152,152);
-    color: rgb(41,41,41);
-    cursor: pointer;
-    transition: all 0.15s;
-}
-
-.action:hover{
-    background-color: rgb(189,189,189);
-}
-
-.action:active{
-    background-color: rgb(124,124,124);
-}
-
-/*Cellphone*/
-@media only screen and (max-width: 600px){
-    table{
-        border-collapse: collapse;
-        display: flex;
-        flex-direction: row;
-    }
-
-    th{
-        background-color: rgb(82,82,82);
-        color: rgb(239,239,239);
-    }
-
-    th, td{
-        display: flex;
-        flex-direction: column;
-        border: solid black 1px;
-        height: 2.5rem;
-        padding: 0.5rem;
-        justify-content: center;
-        align-items: center;
-        font-size: 0.7rem;
-    }
-
-    tbody{
-        display: flex;
-        flex-direction: row;
-    }
-}
-
 @keyframes sideIn {
     from{
 
@@ -383,34 +249,6 @@ body{
 
     .image2{
         display: none;
-    }
-    
-    .tableContainer{
-        outline: red dashed 1px;
-        height: 71%;
-        width: 90%;
-        background-color: snow;
-        overflow-x: auto;
-    }
-
-    table{
-        border-collapse: collapse;
-        text-align: center;
-        width: 100%;
-    }
-    
-    th{
-        background-color: rgb(82,82,82);
-        color: rgb(239,239,239);
-    }
-    
-    th, td{
-        border: solid black 1px;
-        height: 2.5rem;
-        padding: 0.5rem;
-        justify-content: center;
-        align-items: center;
-        font-size: 0.9rem;
     }
 
     @keyframes sideIn {
@@ -472,7 +310,7 @@ body{
     }
 
     .sideNavBarContainer{
-        height: 21rem;
+        height: 23.5rem;
         position: absolute;
         left: -9.7rem;
         top: 15rem;
@@ -489,9 +327,8 @@ body{
         height: 100%;
         width: 10rem;
         display: flex;
-        justify-content: right;
+        justify-content: center;
         align-items: center;
-        outline: red dashed 1px;
     }
 
     .image2{
@@ -515,50 +352,16 @@ body{
     .image5{
         position: absolute;
         height: 1.5rem;
+        width: 1.5rem;
         right: 0;
         top: 1rem;
     }
 
-    .tableContainer{
-        outline: red dashed 1px;
-        height: 71%;
-        width: 90%;
-        background-color: snow;
-        overflow-x: auto;
-    }
-
-    .sideNavBar1{
-        border-top-right-radius: 1rem;
-    }
-
-    .sideNavBar2{
-        border-bottom-right-radius: 1rem;
-    }
-
     .sideNavBar{
-        outline: red dashed 1px;
-    }
-    table{
-        border-collapse: collapse;
-        text-align: center;
-        width: 100%;
-    }
-    
-    th{
-        background-color: rgb(82,82,82);
-        color: rgb(239,239,239);
-    }
-    
-    th, td{
-        border: solid black 1px;
-        height: 2.5rem;
-        padding: 0.5rem;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.2rem;
+        font-weight: bold;
+        font-size: 1rem;
     }
 }
-
 
 /*pc*/
 @media only screen and (min-width: 1441px){
@@ -604,7 +407,7 @@ body{
     }
 
     .sideNavBarContainer{
-        height: 21rem;
+        height: 23.5rem;
         position: absolute;
         left: -9.7rem;
         top: 15rem;
@@ -614,7 +417,8 @@ body{
 
     .sideNavBar{
         font-weight: bold;
-        font-size: 1.125rem;
+        font-size: 1rem;
+        text-align: center;
     }
 
     .sideNavBarContainer:hover{
@@ -651,6 +455,7 @@ body{
     .image5{
         position: absolute;
         height: 1.5rem;
+        width: 1.5rem;
         right: 0;
         top: 1rem;
     }
@@ -660,7 +465,6 @@ body{
     }
 
     .tableContainer{
-        outline: red dashed 1px;
         height: 71%;
         width: 90%;
         background-color: snow;
@@ -673,25 +477,5 @@ body{
 
     .sideNavBar2{
         border-bottom-right-radius: 1rem;
-    }
-
-    table{
-        border-collapse: collapse;
-        text-align: center;
-        width: 100%;
-    }
-    
-    th{
-        background-color: rgb(82,82,82);
-        color: rgb(239,239,239);
-    }
-    
-    th, td{
-        border: solid black 1px;
-        height: 2.5rem;
-        padding: 0.5rem;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.2rem;
     }
 }
