@@ -1,4 +1,6 @@
 <?php
+session_start(); 
+
 require_once '../dbConfig/dbconnect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -9,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = loginUser($email, $password);
 
         if ($result === true) {
+            header('Location: ../admin panel/dashboard.php'); // or any other destination after successful login
             exit();
         } else {
             session_start();
@@ -33,8 +36,7 @@ function loginUser($email, $password)
         session_start();
         $_SESSION['user_id'] = 1; // Assuming admin has user_id 1
         $_SESSION['email'] = $email;
-        header('Location: ../admin panel/dashboard.php');
-        exit();
+        return true;
     }
 
     // If not admin credentials, check the database
@@ -51,16 +53,9 @@ function loginUser($email, $password)
 
     if (password_verify($password, $user['password'])) {
         session_start();
-        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
-
-        if ($user['email'] === 'admin@wmsu.edu.ph') {
-            header('Location: ../admin panel/dashboard.php');
-            exit();
-        } else {
-            header('Location: ../user panel/dashboard.php');
-            exit();
-        }
+        return true;
     } else {
         return "Invalid email or password.";
     }

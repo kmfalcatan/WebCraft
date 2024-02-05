@@ -1,6 +1,7 @@
 <?php
 include_once "../functions/saveOtherinfo.php";
 
+
 session_start();
 $equipment_ID = $_SESSION['equipment_ID'] ?? null;
 
@@ -32,9 +33,7 @@ if (!$equipment_ID) {
             <div class="warrantyContainer">
                 <div class="imageContainer">
                     <div class="subImageContainer">
-                        <div class="uploadImage">
-                            <img class="uploadImage" src="../assets/img/img_placeholder.jpg" alt="Mountain Placeholder">
-                        </div>
+                        <img class="uploadImage" src="../assets/img/img_placeholder.jpg" alt="Mountain Placeholder">
                     </div>
 
                     <input type="hidden" name="equipment_ID" value="<?php echo $equipment_ID; ?>">

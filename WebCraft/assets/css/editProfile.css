@@ -16,6 +16,10 @@
     margin-top: 8rem;
 }
 
+.uploadImage{
+    border-radius: 5rem;
+}
+
 @media only screen and (min-width: 1441px){
     .buttonContainer1{
         margin-top: 10rem;

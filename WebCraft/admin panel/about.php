@@ -1,3 +1,6 @@
+<?php
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +11,7 @@
     <link rel="stylesheet" href="../assets/css/about.css">
 </head>
 <body>
+
     <div class="container">
         <div class="subContainer">
             <div class="backContainer">

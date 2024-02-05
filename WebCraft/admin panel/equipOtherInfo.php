@@ -1,31 +1,5 @@
 <?php
-    include('../dbConfig/dbconnect.php');
-
-    $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
-
-    $sql = "SELECT * FROM equipment WHERE equipment_ID = '$equipment_ID'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $imageFilename = $row['image'];
-        $imageURL = "../uploads/" . $imageFilename;
-        $user = $row['user'];
-        $article = $row['article'];
-        $deployment = $row['deployment'];
-        $property_number = $row['property_number'];
-        $account_code = $row['account_code'];
-        $units = $row['units'];
-        $unit_value = $row['unit_value'];
-        $total_value = $row['total_value'];
-        $remarks = $row['remarks'];
-        $description = $row['description'];
-    } else {
-        // Equipment not found, handle the error here
-        // You can redirect the user or display an error message
-    }
-
-    $conn->close();
+    include('../functions/updateEquip.php');
 ?>
 
 <!DOCTYPE html>

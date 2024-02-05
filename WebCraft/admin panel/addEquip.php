@@ -1,5 +1,6 @@
 <?php
 include_once "../functions/saveEquip.php";
+
 ?>
 
 <!DOCTYPE html>

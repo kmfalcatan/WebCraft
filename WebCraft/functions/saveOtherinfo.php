@@ -1,6 +1,7 @@
 <?php
 include '../dbConfig/dbconnect.php';
 
+
 if(isset($_POST['submit_form2'])){
 
     if(isset($_POST['equipment_ID'])){

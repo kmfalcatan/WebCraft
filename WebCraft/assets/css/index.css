@@ -305,6 +305,12 @@ body{
     background-color: rgb(124,124,124);
 }
 
+.actionContainer{
+    display: flex;
+    column-gap: 0.5rem;
+    row-gap: 0.5rem;
+}
+
 /*Cellphone*/
 @media only screen and (max-width: 600px){
     table{
