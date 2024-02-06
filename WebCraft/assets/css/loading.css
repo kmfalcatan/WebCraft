@@ -14,7 +14,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(0,183,175);
+    background: linear-gradient(rgb(231, 139, 0), rgb(255, 238, 0));
 }
 
 .subContainer{
