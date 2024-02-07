@@ -2,13 +2,13 @@
 include('../functions/upateProfile.php');
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/png" href="../assets/img/webcraftLogo.png">
+    <title>MedEquip Tracker</title>
 
     <link rel="stylesheet" href="../assets/css/addOtherInfor.css">
     <link rel="stylesheet" href="../assets/css/editProfile.css">
@@ -53,11 +53,7 @@ include('../functions/upateProfile.php');
                     </div>
 
                     <div class="startWarrantyContainer">
-                        <select class="startWarranty1" name="" id="">
-                            <option value="">
-                                Choose a department
-                            </option>
-                        </select>
+                        <input class="startWarranty" name="department" type="text" placeholder="department" value="<?php echo $userInfo['department'] ?? ''; ?>">
                     </div>
                 </div>
 
