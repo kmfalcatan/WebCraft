@@ -20,7 +20,7 @@
             echo "<td>{$row['total_value']}</td>";
             echo "<td>{$row['remarks']}</td>";
             echo "<td class='actionContainer'>";
-            echo "<button class='action'>View</button>";
+            echo "<a href='../admin panel/viewEquip.php?equipment_ID={$row['equipment_ID']}'><button class='action'>View</button></a>";
             echo "<button class='action'>Delete</button>";
             echo "</td>";
             echo "</tr>";

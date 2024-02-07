@@ -75,6 +75,11 @@ body{
     align-items: center;
 }
 
+.logo{
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
 .copyRight{
     height: 0.7rem;
 }

@@ -16,7 +16,7 @@ function liveSearch() {
     const xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById('tableBody').innerHTML = this.responseText;
+            document.getElementById('tblBody').innerHTML = this.responseText;
         }
     };
     xmlhttp.open('GET', 'search.php?search=' + input, true);

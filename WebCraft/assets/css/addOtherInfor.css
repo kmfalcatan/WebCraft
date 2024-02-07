@@ -22,7 +22,7 @@ body{
     height: 80%;
     width: 90%;
     border-radius: 1rem;
-    background-color: rgb(224, 224, 224);
+    background-color: rgb(182, 182, 182);
     border: solid gray 1px;
     overflow: auto;
 }
@@ -110,15 +110,6 @@ body{
 .startWarranty{
     height: 3rem;
     width: 87%;
-    border-radius: 0.5rem;
-    border: solid gray 1px;
-    padding-left: 1rem;
-    font-size: 1.2rem;
-}
-
-.startWarranty1{
-    height: 3rem;
-    width: 89%;
     border-radius: 0.5rem;
     border: solid gray 1px;
     padding-left: 1rem;

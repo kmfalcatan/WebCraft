@@ -1,19 +1,28 @@
 .userContainer{
-    outline: red dashed 1px;
-    height: 37rem;
+    /* outline: red dashed 1px; */
+    height: 38rem;
     width: 87%;
     padding: 0.5rem;
-    background-color: rgb(224, 224, 224);
+    background-color: rgb(182, 182, 182);
     border-radius: 0.5rem;
     overflow: auto;
     display: flex;
     justify-content: center;
     position: relative;
+    padding: 1rem;
+}
+
+h2{
+    font-size: 2rem;
+    font-weight: lighter;
+    font-family: system-ui, -apple-system;
+    padding: 0.5rem;
+    color: #979595;
 }
 
 .subUserContainer{
-    outline: red dashed 1px;
-    height: 8rem;
+    /* outline: red dashed 1px; */
+    height: 5rem;
     width: 100%;
     border-radius: 0.5rem;
     background-color: snow;
@@ -21,10 +30,11 @@
     flex-direction: row;
     overflow: auto;
     cursor: pointer;
+    margin-bottom: 1rem;
 }
 
 .imageContainer2{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 100%;
     width: 8rem;
     display: flex;
@@ -33,15 +43,15 @@
 }
 
 .subImageContainer2{
-    outline: red dashed 1px;
-    height: 7rem;
-    width: 7rem;
-    border-radius: 0.5rem;
+    /* outline: red dashed 1px; */
+    height: 4rem;
+    width: 4rem;
+    border-radius: 5rem;
     background-color: rgb(212, 212, 212);
 }
 
 .nameContainer1{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 100%;
     width: 64.1%;
     display: flex;
@@ -49,9 +59,10 @@
     font-size: 1.3rem;
 }
 
-.image6{
+.profile_img{
     height: 100%;
     width: 100%;
+    border-radius: 5rem;
 }
 
 .link{
@@ -62,7 +73,7 @@
 }
 
 .addIcon{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 4rem;
     width: 100%;
     display: flex;
@@ -72,7 +83,7 @@
 }
 
 .subAddIcon{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 100%;
     width: 4rem;
     margin-right: 6%;

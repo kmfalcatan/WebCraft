@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 
 require_once '../dbConfig/dbconnect.php';
 
@@ -11,16 +11,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = loginUser($email, $password);
 
         if ($result === true) {
-            header('Location: ../admin panel/dashboard.php'); // or any other destination after successful login
+            $user = getUserByEmail($email);
+            if ($user['role'] === 'admin') {
+                header("Location: ../admin panel/dashboard.php?id=" . $user['id']);
+            } else {
+                header("Location: ../user panel/dashboard.php?id=" . $user['id']);
+            }
             exit();
         } else {
-            session_start();
             $_SESSION['login_error'] = $result;
             header('Location: login.php');
             exit();
         }
     } else {
-        session_start();
         $_SESSION['login_error'] = "Please fill in all required fields.";
         header('Location: login.php');
         exit();
@@ -31,15 +34,6 @@ function loginUser($email, $password)
 {
     global $conn;
 
-    // Check if the provided email and password match the admin credentials
-    if ($email === 'admin@wmsu.edu.ph' && $password === 'adminPass') {
-        session_start();
-        $_SESSION['user_id'] = 1; // Assuming admin has user_id 1
-        $_SESSION['email'] = $email;
-        return true;
-    }
-
-    // If not admin credentials, check the database
     $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -50,13 +44,29 @@ function loginUser($email, $password)
     }
 
     $user = $result->fetch_assoc();
+    $hashedPassword = $user['password'];
 
-    if (password_verify($password, $user['password'])) {
-        session_start();
-        $_SESSION['id'] = $user['id'];
-        $_SESSION['email'] = $user['email'];
+    if (password_verify($password, $hashedPassword)) {
+        $_SESSION['email'] = $email;
         return true;
     } else {
         return "Invalid email or password.";
     }
 }
+
+function getUserByEmail($email)
+{
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 0) {
+        return null;
+    }
+
+    return $result->fetch_assoc();
+}
+?>

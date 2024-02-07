@@ -58,6 +58,7 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: right;
+    cursor: pointer;
 }
 
 
@@ -67,6 +68,12 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.headerImg{
+    border-radius: 5rem;
+    width: 3rem;
+    height: 3rem;
 }
 
 .profileContainer p{

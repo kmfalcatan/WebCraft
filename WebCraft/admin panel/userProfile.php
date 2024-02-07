@@ -18,13 +18,13 @@ $userInfo = getUserInfo($conn, $id);
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/png" href="../assets/img/webcraftLogo.png">
+    <title>MedEquip Tracker</title>
 
     <link rel="stylesheet" href="../assets/css/addOtherInfor.css">
     <link rel="stylesheet" href="../assets/css/editProfile.css">
@@ -71,10 +71,12 @@ $userInfo = getUserInfo($conn, $id);
                 </div>
 
                 <div class="buttonContainer1">
-                    <a href="../admin%20panel/editProfile.php?id=<?php echo $id; ?>">
-                        <button class="button">Edit</button>
+                    <a href="../admin panel/edrritProfile.php?id=<?php echo $id; ?>">
+                        <button class="button"><a href="../admin panel/editProfile.php?id=<?php echo $id; ?>">Edit</a></button>
                     </a>
-                    <button class="button">Back</button>
+                    <a href="../admin panel/dashboard.php">
+                        <button class="button">Back</button>
+                    </a>
                 </div>
             </form>
         </div>
