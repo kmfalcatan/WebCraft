@@ -1,0 +1,481 @@
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: rgb(222,226,230);
+    font-family: system-ui, -apple-system;
+}
+
+.headerContainer{
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+.subHeaderContainer{
+    height: 4rem;
+    width: 90%;
+    border-radius: 1rem;
+    backdrop-filter: blur(1rem);
+    background-color: rgb(255,252,252);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.imageContainer{
+    height: 100%;
+    width: 12rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.subImageContainer{
+    height: 100%;
+    width: 8rem;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nameContainer{
+    height: 100%;
+    width: 14rem;
+}
+
+.nameContainer p{
+    font-size: 1.3rem;
+}
+
+.profileContainer{
+    height: 100%;
+    width: 12rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+
+.subProfileContainer{
+    height: 100%;
+    width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileContainer p{
+    font-size: 1.3rem;
+}
+
+.menubarContainer{
+    padding-top: 2px;
+    width: 3.125rem;
+    height: 3rem;
+}
+
+.line{
+    border: solid 0.125rem;
+    width: 1.563rem;
+    margin-bottom: 0.313rem;
+    margin-top: 0.5rem;
+    margin-left: 0.563rem;
+    border-color: black;
+}
+
+.hidden{
+    display: none;
+}
+
+.change .line:nth-child(1) {
+    transform: rotate(-45deg) translate(-9px, 0.625rem);
+}
+
+.change .line:nth-child(2) {
+    opacity: 0;
+}
+
+.change .line:nth-child(3) {
+    transform: rotate(45deg) translate(-0.438rem, -0.5rem);
+}
+
+.addToCartContainer, .notificationContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addToCart, .notification, .menubarContainer{
+    position: relative;
+    cursor: pointer;
+}
+
+.sideNavBarContainer{
+    height: 23.6em;
+    width:  12.5rem;
+    position: fixed;
+    right: -12.5rem;
+    top: 4.5rem;
+    background-color: rgb(255,252,252);
+    z-index: 1;
+    position: fixed;
+}
+
+.fadeIn{
+    animation: sideIn 0.6s ease forwards
+}
+
+.sideNavBar, .sideNavBar3{
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.125rem;
+    border: solid 1px rgb(189,189,189);
+    cursor: pointer;
+}
+
+.sideNavBar1{
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.125rem;
+    border: solid 1px rgb(189,189,189);
+    cursor: pointer;
+}
+
+.sideNavBar2{
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.125rem;
+    border: solid 1px rgb(189,189,189);
+    cursor: pointer;
+}
+
+.sideNavBar:hover{
+    background-color: rgb(189,189,189);
+}
+
+.sideNavBar1:hover{
+    background-color: rgb(189,189,189);
+}
+
+.sideNavBar2:hover{
+    background-color: rgb(189,189,189);
+}
+
+.profile, .status, .myOrder, .studentShop, .logOut{
+    color: black;
+    text-decoration: none;
+}
+
+.image{
+    height: 3.7rem;
+}
+
+.companyName{
+    display: none;
+}
+
+.adminName{
+    display: none;
+}
+
+.image2{
+    display: none;
+}
+
+@keyframes sideIn {
+    from{
+
+    } to{
+        right: 8%;
+    }
+}
+
+/*tablet*/
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .subHeaderContainer{
+        width: 95%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .companyName{
+        display: block;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .nameContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 12rem;
+        margin-left: 1rem;
+        font-weight: bold;
+        font-size: 1.3rem;
+    }
+
+    .imageContainer{
+        width: 18rem;
+    }
+    
+    .subImageContainer{
+        width: 4rem;
+    }
+    
+    .sideNavBarContainer{
+        border-radius: 0rem 0rem 1rem 1rem;
+    }
+
+    .image2{
+        display: none;
+    }
+
+    @keyframes sideIn {
+        from{
+    
+        } to{
+            right: 5%;
+        }
+    }
+}
+
+/*laptop*/
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+    .subHeaderContainer{
+        width: 95%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .adminName{
+        display: block;
+    }
+
+    .menubarContainer{
+        display: none;
+    }
+
+    .companyName{
+        display: block;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nameContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 18rem;
+        margin-left: 1rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .adminName{
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .profileContainer{
+        padding-right: 1rem;
+    }
+
+    .imageContainer{
+        width: 18rem;
+    }
+
+    .subImageContainer{
+        width: 4rem;
+    }
+
+    .sideNavBarContainer{
+        height: 23.5rem;
+        position: absolute;
+        left: -9.7rem;
+        top: 15rem;
+        border-radius: 0rem 1rem 1rem 0rem;
+        transition: all 0.5s;
+    }
+
+    .sideNavBarContainer:hover{
+        position: absolute;
+        left: 0;
+    }
+
+    .subSideNavBar{
+        height: 100%;
+        width: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image2{
+        height: 100%;
+        width: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image3{
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .image4{
+        height: 1.5rem;
+        cursor: pointer;
+    }
+
+    .image5{
+        position: absolute;
+        height: 1.5rem;
+        width: 1.5rem;
+        right: 0;
+        top: 1rem;
+    }
+
+    .sideNavBar{
+        font-weight: bold;
+        font-size: 1rem;
+    }
+}
+
+/*pc*/
+@media only screen and (min-width: 1441px){
+    .subHeaderContainer{
+        width: 97%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .adminName{
+        display: block;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    .menubarContainer{
+        display: none;
+    }
+
+    .companyName{
+        display: block;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: bold;
+        width: 20rem;
+    }
+
+    .nameContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20rem;
+        margin-left: 1rem;
+    }
+
+    .imageContainer{
+        width: 20rem;
+    }
+
+    .subImageContainer{
+        width: 4rem;
+    }
+
+    .sideNavBarContainer{
+        height: 23.5rem;
+        position: absolute;
+        left: -9.7rem;
+        top: 15rem;
+        border-radius: 0rem 1rem 1rem 0rem;
+        transition: all 0.5s;
+    }
+
+    .sideNavBar{
+        font-weight: bold;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .sideNavBarContainer:hover{
+        position: absolute;
+        left: 0;
+    }
+
+    .subSideNavBar{
+        height: 100%;
+        width: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image2{
+        height: 100%;
+        width: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .image3{
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .image4{
+        height: 1.5rem;
+        cursor: pointer;
+    }
+
+    .image5{
+        position: absolute;
+        height: 1.5rem;
+        width: 1.5rem;
+        right: 0;
+        top: 1rem;
+    }
+
+    .profileContainer{
+        padding-right: 1.5rem;
+    }
+
+    .tableContainer{
+        height: 71%;
+        width: 90%;
+        background-color: snow;
+        overflow-x: auto;
+    }
+
+    .sideNavBar1{
+        border-top-right-radius: 1rem;
+    }
+
+    .sideNavBar2{
+        border-bottom-right-radius: 1rem;
+    }
+}
