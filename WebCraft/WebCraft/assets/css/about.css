@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: rgb(222,226,230);
+    background: radial-gradient(rgb(255,252,0), rgb(231, 139, 0));
     font-family: system-ui, -apple-system;
 }
 
@@ -22,7 +22,7 @@ body{
 
 .backContainer{
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.712);
+    background-color: rgba(231, 139, 0, 0.158);
 }
 
 .subBackContainer{

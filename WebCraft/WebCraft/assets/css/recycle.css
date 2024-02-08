@@ -14,14 +14,15 @@
     font-size: 1.2rem;
     font-weight: bold;
     transition: all 0.15s;
-    background-color: rgb(152,152,152);
+    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
     cursor: pointer;
 }
 
 .button2:hover{
-    background-color: rgb(189,189,189);
+    background: linear-gradient(to right, rgb(180, 177, 3), rgb(153, 92, 1));
+    color: white;
 }
 
 .button2:active{
-    background-color: rgb(124,124,124);
+    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
 }

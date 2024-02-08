@@ -10,8 +10,8 @@
     outline: red dashed 1px;
     height: 10rem;
     width: 20rem;
-    border-radius: 0.5rem;
-    background-color: rgb(182, 182, 182);
+    border-radius: 0.5rem;background-color: rgba(255, 250, 250, 0.582);
+    text-align: center;
 }
 
 .warrantyContainer{
@@ -41,15 +41,16 @@ button{
     border-radius: 0.5rem;
     border: none;
     font-size: 1.2rem;
-    background-color: rgb(152,152,152);
+    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
     transition: all 0.15s;
     cursor: pointer;
 }
 
 button:hover{
-    background-color: rgb(189,189,189);
+    background: linear-gradient(to right, rgb(180, 177, 3), rgb(153, 92, 1));
+    color: white;
 }
 
 button:active{
-    background-color: rgb(124,124,124);
+    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
 }

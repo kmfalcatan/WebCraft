@@ -486,3 +486,30 @@ display: none;
     color: black;
 }
 }
+
+.hamburger-container {
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger-line {
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    transition: 0.3s;
+}
+
+.change .line-1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.change .line-2 {
+    opacity: 0;
+}
+
+.change .line-3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
