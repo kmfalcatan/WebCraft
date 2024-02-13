@@ -127,11 +127,13 @@
     display: flex;
     align-items: center;
     padding-left: 0.5rem;
+    border: none;
 }
 
 .maintenanceContainer{
     height: 10rem;
     margin-top: 1rem;
+    overflow: auto;
 }
 
 .subMaintenanceContainer{
@@ -139,6 +141,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .maintenance{
