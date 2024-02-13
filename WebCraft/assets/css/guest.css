@@ -180,14 +180,23 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
 }
 
+/*tablet*/
+@media only screen and (max-width: 1024px) {
+    .subEquipNameContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 /*laptop*/
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
     .subContainer2{
-        width: 60rem;
+        width: 90%;
+        height: 40rem;
     }
 
     .imageContainer1{
@@ -202,18 +211,24 @@
         height: 15rem;
     }
 
+    .image12{
+        width: 15rem;
+    }
+
     .subEquipNameContainer{
-        width: 35rem;
+        width: 100%;
         height: 100%;
+        padding: 0.5rem;
+        outline: red dashed 1px;
     }
 
     .descriptionContainer{
         height: 11.5rem;
-        width: 34rem;
+        width: 100%;
     }
 
     .equipNameContainer{
-        width: 34rem;
+        width: 100%;
     }
 
     .subHowToUseContainer{
@@ -222,6 +237,89 @@
     }
 
     .howToUseContainer{
-        height: 17.5rem;
+        height: 22rem;
+        width: 100%;
+        outline: red dashed 1px;
+    }
+
+    .subHowToUseContainer{
+        width: 98%;
+        height: 100%;
+    }
+
+    .subDetailsContainer{
+        width: 100%;
+        height: 39rem;
+        outline: red dashed 1px;
+    }
+
+    .subEquipContainer{
+        height: 36rem;
+    }
+}
+
+/*pc*/
+@media only screen and (min-width: 1441px){
+    .subContainer2{
+        width: 70%;
+        height: 40rem;
+    }
+
+    .imageContainer1{
+        display: flex;
+        flex-direction: row;
+        height: 16rem;
+        margin-left: 0.5rem;
+    }
+
+    .subImageContainer1{
+        width: 15rem;
+        height: 15rem;
+    }
+
+    .image12{
+        width: 15rem;
+    }
+
+    .subEquipNameContainer{
+        width: 100%;
+        height: 100%;
+        padding: 0.5rem;
+        outline: red dashed 1px;
+    }
+
+    .descriptionContainer{
+        height: 11.5rem;
+        width: 100%;
+    }
+
+    .equipNameContainer{
+        width: 100%;
+    }
+
+    .subHowToUseContainer{
+        width: 49.5rem;
+        height: 16.5rem;
+    }
+
+    .howToUseContainer{
+        height: 22rem;
+        width: 100%;
+        outline: red dashed 1px;
+    }
+
+    .subHowToUseContainer{
+        width: 98%;
+        height: 100%;
+    }
+
+    .subDetailsContainer{
+        width: 100%;
+        height: 39rem;
+        outline: red dashed 1px;
+    }
+
+    .subEquipContainer{
+        height: 36rem;
     }
 }
