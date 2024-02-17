@@ -1,16 +1,16 @@
 <?php
-session_start();
-
 include_once "../dbConfig/dbconnect.php";
 include_once "../functions/header.php";
+include_once "../authentication/auth.php";
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+if (!isset($_GET['request_ID']) || !($row = $conn->query("SELECT * FROM appointment WHERE request_ID = {$_GET['request_ID']}")->fetch_assoc())) {
+    echo "Request ID is not provided or no appointment found with the provided ID.";
     exit();
 }
 
-$userID = $_SESSION['user_id'];
-
+$equipment_name = $row['article'];
+$date_of_appointment = $row['date_request'];
+$details_of_equipment = $row['description'];
 ?>
 
 <!DOCTYPE html>
@@ -61,26 +61,28 @@ $userID = $_SESSION['user_id'];
             </div>
         </div>
 
-        <div class="container2">
+        <form class="container2" method="POST" enctype="multipart/form-data" action="../functions/saveAppointment.php?request_ID=<?php echo $_GET['request_ID']; ?>">
             <div class="subContainer">
                 <div class="equipInfoContainer">
                     <div class="imageContainer1">
-                        <div class="subImageContainer1">
-                            <img class="image3" src="../assets/img/img_placeholder.jpg" alt="Mountain Placeholder">
-                        </div>
+                        <!-- img di pa nasasave sa database table budget -->
+                    <div class="subImageContainer1">
+                        <img class="image3" src="../uploads/<?php echo $row['equip_img']; ?>" alt="Equipment Image">
+                        <input type="hidden" name="equip_img">
+                    </div>
                     </div>
 
                     <div class="infoContainer">
                         <div class="equipNameContainer">
-                            <p class="equipName">equipment name:</p>
+                            <input name="equipment_name" value="<?php echo $equipment_name; ?>" readonly>
                         </div>
 
                         <div class="equipNameContainer">
-                            <p>date of appointment:</p>
+                            <input name="date_of_appointment" value="Appointment Date: <?php echo $date_of_appointment; ?>" readonly>
                         </div>
 
                         <div class="equipNameContainer">
-                            <p>details of equipment:</p>
+                            <input name="details_of_equipment" value="Reason: <?php echo $details_of_equipment; ?>" readonly>
                         </div>
                     </div>
                 </div>
@@ -109,8 +111,8 @@ $userID = $_SESSION['user_id'];
                         </div>
 
                         <div class="subBudgetContainer">
-                            <input type="text" class="budget" placeholder="Budget:">
-                            <input type="text" class="budget" placeholder="Admin email:">
+                            <input type="text" class="budget" name="budget" placeholder="Budget:">
+                            <input type="email" class="budget" name="admin_email" placeholder="Admin email:">
                         </div>
                     </div>
                 </div>
@@ -121,30 +123,30 @@ $userID = $_SESSION['user_id'];
                     </div>
 
                     <div class="subMaintenanceContainer">
-                        <input type="text" class="budget" placeholder="Name:">
+                        <input type="text" class="budget" name="name" placeholder="Name:">
                     </div>
 
                     <div class="subMaintenanceContainer">
-                        <input type="text" class="budget" placeholder="Email:">
+                        <input type="email" class="budget" name="maintenance_email" placeholder="Email:">
                     </div>
 
                     <div class="subMaintenanceContainer">
-                        <input type="text" class="budget" placeholder="Contact No.:">
+                        <input type="number" class="budget" name="contact_number" placeholder="Contact No.:">
                     </div>
                 </div>
 
                 <div class="buttonContainer">
-                    <button class="button1">
+                    <!-- <button class="button1">
                         <img class="image7" src="../assets/img/th (3).jpg" alt="">
                     </button>
-                    <button class="button">Send email</button>
-                    <button class="button">Approve</button>
-                    <a href="../admin panel/appointment.php?id=<?php echo $userID; ?>">
-                        <button class="button">Back</button>
+                    <button class="button">Approve</button> -->
+                    <button class="button" type="submit" name="submit">Send email</button>
+                    <a href="../admin panel/approveAppointment.php?request_ID=<?php echo $row['request_ID']; ?>&id=<?php echo $userID; ?>">
+                        <button class="button" type="button">Back</button>
                     </a>
                 </div>
             </div>
-        </div>
+        </form>
         
         <script src="../assets/js/theme/dashboard-theme.js"></script>
 </body>

@@ -1,5 +1,5 @@
 <?php
-    include('../dbConfig/dbconnect.php');
+    include_once "../dbConfig/dbconnect.php";
 
     $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 

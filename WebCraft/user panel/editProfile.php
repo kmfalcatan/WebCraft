@@ -1,6 +1,7 @@
 <?php
 include_once "../functions/upateProfile.php";
 include_once "../authentication/auth.php";
+$userInfo = getUserInfo($conn, $userID);
 ?>
 
 <!DOCTYPE html>
@@ -12,53 +13,62 @@ include_once "../authentication/auth.php";
     <title>MedEquip Tracker</title>
 
     <link rel="stylesheet" href="../assets/css/addOtherInfor.css">
-    <link rel="stylesheet" href="../assets/css/editProfile.css">
+    <link rel="stylesheet" href="../assets/css/profile.css">
 </head>
 <body id="body">
-    <div class="container">
-        <div class="subContainer">
+    <div class="container" style="height: 100vh;">
+        <form class="subContainer" style="height: 70vh;" method="POST" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $id; ?>" enctype="multipart/form-data">
             <div class="textContainer">
                 <p class="text">Edit Profile</p>
             </div>
 
-            <form class="warrantyContainer1" method="POST" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $id; ?>" enctype="multipart/form-data">
-                
-                <div class="imageContainer">
-                    <div class="subImageContainer">
-                        <?php
-                            if (!empty($userInfo['profile_img'])) {
-                                echo '<img class="uploadImage" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
-                            } else {
-                                echo '<img class="uploadImage" src="../assets/img/img_placeholder.jpg" alt="Mountain Placeholder">';
-                            }
+            <div class="imageContainer">
+                <div class="subImageContainer">
+                     <?php
+                        if (!empty($userInfo['profile_img'])) {
+                            echo '<img class="uploadImage" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
+                        } else {
+                            echo '<img class="uploadImage" src="../assets/img/img_placeholder.jpg" alt="Mountain Placeholder">';
+                        }
                         ?>
+                </div>
+
+                <div class="uploadButtonContainer">
+                    <label for="profile_img" class="uploadButton">
+                        <input id="profile_img" name="profile_img" type="file" style="display: none;">
+                        <span class="plusIcon">+</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="fullnameContainer">
+                <div class="subUserInfoContainer">
+                    <input class="userInfo3" name="fullname" type="text" placeholder="Full Name" value="<?php echo $userInfo['fullname'] ?? ''; ?>" readonly>
+                </div>
+
+                <div class="subUserInfoContainer" id="userID">
+                    <p class="userID"><?php echo  $userID = isset($userInfo['id']) ? date('Y') . '-' . str_pad($userInfo['id'], 5, '0', STR_PAD_LEFT) : ""; ?></p>
+                </div>
+            </div>
+
+            <div class="subWarrantyContainer">
+                <div class="userInfoContainer">
+                    <div class="subUserInfoContainer">
+                    <input class="userInfo2" name="username" type="text" placeholder="Username" value="<?php echo $userInfo['username'] ?? ''; ?>">
                     </div>
-
-                    <input type="hidden" name="id" value="<?php echo $id; ?>">
-
-                    <div class="uploadButtonContainer">
-                        <input class="uploadButton" name="profile_img" type="file">
+                    
+                    <div class="subUserInfoContainer">
+                        <input class="userInfo2" name="email" type="email" placeholder="Email" value="<?php echo $userInfo['email'] ?? ''; ?>">
+                    </div>
+                    
+                    <div class="subUserInfoContainer">
+                       <input class="userInfo2" name="contact" type="number" placeholder="Contact no." value="<?php echo $userInfo['contact'] ?? ''; ?>">
                     </div>
                 </div>
-                <div class="inputContainer">
-                    <div class="inputContainer2">
-                        <input class="input" name="username" type="text" placeholder="Username" value="<?php echo $userInfo['username'] ?? ''; ?>">
-                    </div>
 
-                    <div class="inputContainer2">
-                        <input class="input" name="fullname" type="text" placeholder="Full name" value="<?php echo $userInfo['fullname'] ?? ''; ?>">
-                    </div>
-                    
-                    <div class="inputContainer2">
-                        <input class="input" name="email" type="email" placeholder="Email" value="<?php echo $userInfo['email'] ?? ''; ?>">
-                    </div>
-                    
-                    <div class="inputContainer2">
-                        <input class="input" name="contact" type="number" placeholder="Contact no." value="<?php echo $userInfo['contact'] ?? ''; ?>">
-                    </div>
-
-                    <div class="inputContainer2">
-                        <select class="input" name="department" id="department">
+                <div class="userInfoContainer">
+                    <div class="subUserInfoContainer">
+                        <select class="userInfo2" name="department" id="">
                             <option value="" disabled selected hidden>Choose a department</option>
                             <option value="College of Medicine">College of Medicine</option>
                             <option value="College of Science and Mathematics">College of Science and Mathematics</option>
@@ -67,18 +77,34 @@ include_once "../authentication/auth.php";
                             <option value="College of Engineering">College of Engineering</option>
                         </select>
                     </div>
-                </div>
-
-                <div class="buttonContainer1">
-                    <button class="button" type="submit" id="btn1">Save</button>
-                        <button class="button" id="btn2"> <a href="../user panel/userProfile.php?id=<?php echo $userID; ?> ">Back</a></button>
                     
+                    <div class="subUserInfoContainer">
+                        <input type="text" name="address" class="userInfo2" placeholder="Address">
+                    </div>
+                    
+                    <div class="subUserInfoContainer">
+                        <select class="userInfo2" name="gender" id="">
+                            <option value="">Choose Gender:</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
                 </div>
-            </form>
-        </div>
+            </div>
+
+            <div class="buttonContainer2">
+                <button class="button" type="submit" id="btn1">Save</button>
+                <button type="button" class="button" id="btn2" onclick="goBack()">Back</button>
+            </div>
+        </form>
     </div>
 
- <script src="../assets/js/uploadImg.js"></script>
- <script src="../assets/js/theme/setting.js"></script>
+    <script src="../assets/js/uploadImg.js"></script>
+    <script src="../assets/js/theme/setting.js"></script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>

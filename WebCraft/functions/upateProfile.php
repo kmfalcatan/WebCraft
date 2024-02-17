@@ -20,13 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $contact = $_POST['contact'];
     $department = $_POST['department'];
+    $address = $_POST['address'];
+    $gender = $_POST['gender'];
 
     $sql = "UPDATE users SET 
             username = '$username',
             fullname = '$fullname',
             email = '$email',
             contact = '$contact',
-            department = '$department'
+            department = '$department',
+            address = '$address',
+            gender = '$gender'
             WHERE id = '$id'";
 
     if ($conn->query($sql) === TRUE) {
@@ -54,11 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Get the role of the user
     $userInfo = getUserInfo($conn, $id);
     $role = $userInfo['role'];
 
-    // Redirect based on the user's role
     if ($role === 'admin') {
         header("Location: ../admin panel/userProfile.php?id=" . $id);
     } else {

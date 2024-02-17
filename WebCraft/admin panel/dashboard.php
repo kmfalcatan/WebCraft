@@ -118,9 +118,7 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                                 echo "<td>{$row['total_value']}</td>";
                                 echo "<td>{$row['remarks']}</td>";
                                 echo "<td class='actionContainer'>";
-                                echo "<a href='../admin panel/viewEquip.php?equipment_ID={$row['equipment_ID']}&id={$userID}'>
-                                    <button id='viewBtn{$row['equipment_ID']}' class='action'>View</button>
-                                </a>";
+                                echo "<a href='../admin panel/viewEquip.php?equipment_ID={$row['equipment_ID']}&id={$userID}'><button class='action'>View</button></a>";
                                 echo "<button id='deleteBtn{$row['equipment_ID']}' class='action' onclick='removeEquipmentRow({$row['equipment_ID']})'>Delete</button>";
 
                                 echo "</td>";

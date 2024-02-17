@@ -8,3 +8,31 @@
     font-size: 1.2rem;
     justify-content: center;
 }
+
+.equip-name{
+    margin-bottom: 0.8rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.equipNameContainer, 
+.subMaintenanceContainer{
+    font-size: 1.1rem;
+}
+
+.textContainer p{
+    font-size: 1.2rem;
+}
+
+.budget1 p{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.subMaintenanceContainer span{
+    font-weight: 400;
+}
+
+.subMaintenanceContainer p{
+    font-weight: 700;
+}

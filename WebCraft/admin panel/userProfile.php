@@ -2,6 +2,8 @@
 include_once "../dbConfig/dbconnect.php";
 include_once "../authentication/auth.php";
 
+$userID = isset($_GET['id']) ? $_GET['id'] : null;
+
 function getUserInfo($conn, $userID) {
     $sql = "SELECT * FROM users WHERE id = '$userID'";
     $result = $conn->query($sql);
@@ -29,8 +31,8 @@ $userInfo = getUserInfo($conn, $userID);
     <link rel="stylesheet" href="../assets/css/profile.css">
 </head>
 <body id="body">
-    <div class="container" style="height: 100vh;">
-        <form class="subContainer"  style="height: 70vh;" method="POST"  action="../user panel/editProfile.php?id=<?php echo $userID; ?>">
+    <div class="container">
+        <form class="subContainer" method="POST"  action="../admin panel/editProfile.php?id=<?php echo $userID; ?>">
             <div class="textContainer">
                 <p class="text">Profile</p>
             </div>
@@ -51,11 +53,7 @@ $userInfo = getUserInfo($conn, $userID);
 
             <div class="fullnameContainer">
                 <div class="subUserInfoContainer">
-                    <input class="userInfo3" name="fullname" type="text" placeholder="Full Name" value="<?php echo $userInfo['fullname'] ?? ''; ?>" readonly>
-                </div>
-
-                <div class="subUserInfoContainer" id="userID">
-                    <p class="userID"><?php echo  $userID = isset($userInfo['id']) ? date('Y') . '-' . str_pad($userInfo['id'], 5, '0', STR_PAD_LEFT) : ""; ?></p>
+                <input class="userInfo3" name="fullname" type="text" placeholder="Full Name" value="<?php echo $userInfo['fullname'] ?? ''; ?>" readonly>
                 </div>
             </div>
 
@@ -90,10 +88,10 @@ $userInfo = getUserInfo($conn, $userID);
             </div>
 
             <div class="buttonContainer2">
-                <a href="../user panel/edrritProfile.php?id=<?php echo $userID; ?>">
-                    <button class="button" id="btn1"><a href="../user panel/editProfile.php?id=<?php echo $userID; ?>">Edit</a></button>
+                <a href="../admin panel/editProfile.php?id=<?php echo $userID; ?>">
+                    <button class="button" id="btn1"><a href="../admin panel/editProfile.php?id=<?php echo $userID; ?>">Edit</a></button>
                 </a>
-                <button class="button" id="btn2"><a href="../user panel/setting.php?id=<?php echo $userID; ?>">Back </a></button>
+                <button class="button" id="btn2"><a href="../admin panel/setting.php?id=<?php echo $userID; ?>">Back </a></button>
             </div>
         </form>
     </div>

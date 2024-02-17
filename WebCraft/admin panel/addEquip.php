@@ -10,8 +10,6 @@ if ($result) {
         $users[] = $row['fullname'];
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +77,10 @@ if ($result) {
                         </div>
         
                         <div class="uploadButtonContainer">
-                            <input class="uploadButton" name="image" type="file" required>
+                            <label for="image" class="uploadButton">
+                                <input id="image" name="image" type="file" style="display: none;">
+                                <span class="plusIcon">+</span>
+                            </label>
                         </div>
                     </div>
     

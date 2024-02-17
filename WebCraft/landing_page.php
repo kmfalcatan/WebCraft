@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="/WebCraft/assets/css/newLandingPage.css">
+    <link rel="stylesheet" href="assets/css/landing.css">
 </head>
 <body>
     <div class="headerContainer">
         <div class="logoContainer">
             <div class="subLogoContainer">
-                <img class="logo" src="/WebCraft/assets/img/medLogo.png" alt="">
+                <img class="logo" src="assets/img/medLogo.png" alt="">
             </div>
 
             <div class="nameContainer">
@@ -21,30 +21,35 @@
 
         <div class="buttonContainer">
             <div class="subButtonContainer">
-                <button class="button">About</button>
+                <button id="btn1"><a class="button1" href="about.php">About</a></button>
             </div>
 
             <div class="subButtonContainer">
-                <button class="button">Contact</button>
+                <button id="btn2"><a class="button2"  href="">Contact</a></button>
             </div>
 
             <div class="subButtonContainer">
-                <button class="button">Signin</button>
+                <button id="btn3"><a class="button3" href="authentication/login.php">Sign<span style="margin-left: 0.2rem;">in</span></a></button>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <div class="subContainer">
+        <div class="subContainer" id="subContainer">
             <div class="textContainer">
                 <div class="settingContainer">
                     <div class="subSettingContainer" onclick="toggleColorContainer()">
-                        <img class="setting" src="/WebCraft/assets/img/setting-2.svg" alt="">
+                        <img class="setting" src="assets/img/setting-2.svg" alt="">
                     </div>
 
-                    <div class="colorContainer">
-                        <div class="subColorContainer">
-
+                    <div class="colorContainer" id="colorContainer">
+                        <div class="colorOptions" id="colorOptions">
+                        <ul>
+                            <li class="color radial-gradient" style="background-image: radial-gradient(rgb(255, 252, 0, 0.7), rgb(231, 139, 0));" onclick="changeColor('radial-gradient(rgb(255, 252, 0, 0.7), rgb(231, 139, 0))')"></li>
+                            <li class="color" style="background-color: #bfd5db;" onclick="changeColor('#bfd5db')"></li>
+                            <li class="color" style="background-color: #b80f0A;" onclick="changeColor('#b80f0A')"></li>
+                            <li class="color" style="background-color: #f0f0f0;" onclick="changeColor('#f0f0f0')"></li>
+                        </ul>
                         </div>
                     </div>
                 </div>
@@ -63,7 +68,7 @@
 
                 <div class="viewContainer">
                     <div class="subViewContainer">
-                        <a href="">
+                        <a href="guest panel/guest.php">
                             <button class="viewButton">View inventory</button>
                         </a>
                     </div>
@@ -72,12 +77,12 @@
 
             <div class="imageContainer">
                 <div class="subImageContainer">
-                    <img class="image" src="/WebCraft/assets/img/banner_image_2.svg" alt="">
+                    <img class="image" src="assets/img/banner_image_2.svg" alt="">
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="/WebCraft/assets/js/newLandingPage.js"></script>
+    <script src="assets/js/theme/main.js"></script>
 </body>
 </html>

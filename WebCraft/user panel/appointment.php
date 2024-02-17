@@ -85,7 +85,7 @@ $result = mysqli_query($conn, $sql);
                         <tr>
                             <th>EQUIPMENT IMAGE</th>
                             <th>EQUIPMENT NAME</th>
-                            <th>ID</th>
+                            <th>UNIT ID</th>
                             <th>DATE</th>
                             <th>STATUS</th>
                             <th>ACTION</th>
@@ -95,15 +95,14 @@ $result = mysqli_query($conn, $sql);
                     <tbody>
                         <?php   
                         while ($row = mysqli_fetch_assoc($result)) { 
-                            $equipment_ID = date('Y') . '-' . str_pad($row['equipment_ID'], 5, '0', STR_PAD_LEFT);
                             echo "<tr>";
                             echo "<td><img src='../uploads/{$row['equip_img']}' alt='Equipment Image' width='100' height='100'></td>";
                             echo "<td>{$row['article']}</td>";
-                            echo "<td>{$equipment_ID}</td>";
+                            echo "<td>{$row['unit_ID']}</td>";
                             echo "<td>{$row['date_request']}</td>";
                             echo "<td>{$row['status']}</td>";
                             echo "<td class='actionContainer'>";
-                            echo "<a href='../admin panel/viewAppointment.php?equipment_ID&id=<?php echo $userID; ?>'><button class='action'>View</button></a>";
+                            echo "<a href='../user panel/viewAppointment.php?request_ID={$row['request_ID']}'><button class='action'>View</button></a>";
                             echo "<button class='action'>Delete</button>";
                             echo "</td>";
                             echo "</tr>";

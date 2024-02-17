@@ -1,16 +1,8 @@
 <?php
-session_start();
-
-include_once ('../functions/updateEquip.php');
-include_once ('../functions/header.php');
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-$userID = $_SESSION['user_id'];
-
+include_once "../authentication/auth.php";
+include_once "../functions/updateEquip.php";
+include_once "../functions/header.php";
+include_once "../functions/warranty.php";
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +15,7 @@ $userID = $_SESSION['user_id'];
 
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/addEquip.css">
+    <link rel="stylesheet" href="../assets/css/warranty.css">
 </head>
 <body id="body">
     <div class="container2">
@@ -126,7 +119,7 @@ $userID = $_SESSION['user_id'];
                     <div class="buttonsContainer">
                         <button class="button" id="btn1"><a href="updateEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Update</a></button>
                     
-                        <button class="button" id="btn2"><a href="../user panel/warranty.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Check warranty</a></button>
+                        <button class="button" id="btn2" type="button" onclick="showWarranty()">Check warranty</button>
                     
                         <button class="button" id="btn3" type="button" onclick="goBack()">Back</button>
                     </div>
@@ -135,6 +128,18 @@ $userID = $_SESSION['user_id'];
         </div>
     </form>
 
+    <div class="container4" id="warrantyContainer" style="display: none;">
+        <div class="subContainer"  >
+            <div class="warrantyContainer">
+                <p>Warranty expired on: <span><?php echo isset($warranty_end) ? date('M d, Y', strtotime($warranty_end)) : ''; ?></span></p>
+            </div>
+            <div class="buttonContainer">
+                <button id="btn1" type="button" class="button" onclick="closeWarranty()">Close</button>
+            </div>
+        </div>
+    </div>
+
+
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/theme/dashboard-theme.js"></script>
     <script>
@@ -142,5 +147,16 @@ $userID = $_SESSION['user_id'];
         window.history.back();
     }
     </script>
+
+<script>
+    function showWarranty() {
+        document.getElementById('warrantyContainer').style.display = 'block';
+    }
+
+    function closeWarranty() {
+        document.getElementById('warrantyContainer').style.display = 'none';
+    }
+</script>
+
 </body>
 </html>
