@@ -1,17 +1,13 @@
 <?php
-include_once "../functions/saveEquip2.php";
+include_once "../functions/saveEquip.php";
 include_once "../functions/header.php";
 
-$users = []; 
-$query = "SELECT fullname FROM users WHERE role = 'user'";
+$users = [];
+$query = "SELECT id, fullname FROM users WHERE role = 'user'";
 $result = mysqli_query($conn, $query);
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $users[] = $row['fullname'];
-    }
+while ($row = mysqli_fetch_assoc($result)) {
+    $users[$row['id']] = $row['fullname'];
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -79,18 +75,21 @@ if ($result) {
                         </div>
         
                         <div class="uploadButtonContainer">
-                            <input class="uploadButton" name="image" type="file" required>
+                            <label for="image" class="uploadButton">
+                                <input id="image" name="image" type="file" style="display: none;">
+                                <span class="plusIcon">+</span>
+                            </label>
                         </div>
                     </div>
     
                     <div class="infoContainer">
                         <div class="subInfoContainer">
-                        <select class="inputInfo" name="username" id="username">
-                            <?php foreach ($users as $username) { ?>
-                                <option value="<?php echo $username; ?>"><?php echo $username; ?></option>
-                            <?php } ?>
-                        </select>
-
+                        <?php
+                            $fullname = $userInfo['id'] ?? '';
+                            if (isset($users[$fullname])) {
+                                echo '<input class="inputInfo" name="fullname" type="text" placeholder="Full Name" value="' . $users[$fullname] . '" readonly>';
+                            }
+                        ?>
                         </div>
                         
                         <div class="subInfoContainer">

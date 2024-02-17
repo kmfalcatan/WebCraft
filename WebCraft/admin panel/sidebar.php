@@ -1,5 +1,5 @@
 <?php
-include ('../authentication/auth.php');
+include_once "../authentication/auth.php";
 ?>
 
 <div class='sideNavBarContainer'>

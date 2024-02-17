@@ -9,7 +9,7 @@
 
 .subContainer{
     outline: red dashed 1px;
-    height: 40rem;
+    height: 45rem;
     width: 90%;
     border-radius: 0.5rem;
     overflow: auto;
@@ -78,7 +78,7 @@
 
 .subTableContainer{
     outline: red dashed 1px;
-    height: 38rem;
+    height: 48rem;
     width: 90%;
     background-color: snow;
     overflow: auto;

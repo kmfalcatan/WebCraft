@@ -1,6 +1,7 @@
 <?php
-include ('../dbConfig/dbconnect.php');
-include ('../functions/header.php');
+include_once "../dbConfig/dbconnect.php";
+include_once "../functions/header.php";
+include_once "../authentication/auth.php";
 
 $sql = "SELECT * FROM appointment";
 $result = mysqli_query($conn, $sql);
@@ -11,13 +12,12 @@ $result = mysqli_query($conn, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../assets/img/webcraftLogo.png">
-    <title>MedEquip Tracker</title>
+    <title>Document</title>
 
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/appointment.css">
 </head>
-<body id="body">
+<body>
     <div class="container1">
         <div class="headerContainer">
             <div class="subHeaderContainer">
@@ -43,14 +43,12 @@ $result = mysqli_query($conn, $sql);
                         </div>
 
                         <div class="subProfileContainer">
-                            <div class='menubarContainer' onclick='toggleMenu(this)'>
-                                <div class='line'></div>
-                                <div class='line'></div>
-                                <div class='line'></div>
-                            </div>
-
-                            <p class="adminName"><?php echo $userInfo['username'] ?? ''; ?></p>
+                        <div class='menubarContainer' onclick='toggleMenu(this)'>
+                            <div class='line'></div>
+                            <div class='line'></div>
+                            <div class='line'></div>
                         </div>
+                        <p class="userName"><?php echo $userInfo['username'] ?? ''; ?></p>
                     </div>
                 </div>
             </div>
@@ -82,14 +80,15 @@ $result = mysqli_query($conn, $sql);
                 </div>
            </div>
 
-           <div class="tableContainer">
+           <div class="tableContainer1">
                 <table>
                     <thead>
                         <tr>
                             <th>EQUIPMENT IMAGE</th>
                             <th>EQUIPMENT NAME</th>
-                            <th>ID</th>
+                            <th>UNIT ID</th>
                             <th>DATE</th>
+                            <th>STATUS</th>
                             <th>ACTION</th>
                         </tr>
                     </thead>
@@ -97,14 +96,14 @@ $result = mysqli_query($conn, $sql);
                     <tbody>
                         <?php   
                         while ($row = mysqli_fetch_assoc($result)) { 
-                        $equipment_ID = date('Y') . '-' . str_pad($row['equipment_ID'], 5, '0', STR_PAD_LEFT);
                             echo "<tr>";
-                            echo "<td><img src='../uploads/{$row['equipment_img']}' alt='Equipment Image'></td>";
+                            echo "<td><img src='../uploads/{$row['equip_img']}' alt='Equipment Image' width='100' height='100'></td>";
                             echo "<td>{$row['article']}</td>";
-                            echo "<td>{$equipment_ID}</td>";
+                            echo "<td>{$row['unit_ID']}</td>";
                             echo "<td>{$row['date_request']}</td>";
+                            echo "<td>{$row['status']}</td>";
                             echo "<td class='actionContainer'>";
-                            echo "<a href='../admin panel/viewAppointment.php'><button class='action'>View</button></a>";
+                            echo "<a href='../admin panel/approveAppointment.php?request_ID={$row['request_ID']}&id={$userID}'><button class='action'>View</button></a>";
                             echo "<button class='action'>Delete</button>";
                             echo "</td>";
                             echo "</tr>";
@@ -117,6 +116,5 @@ $result = mysqli_query($conn, $sql);
     </div>
 
     <script src="../assets/js/dashboard.js"></script>
-    <script src="../assets/js/theme/dashboard-theme.js"></script>
 </body>
 </html>

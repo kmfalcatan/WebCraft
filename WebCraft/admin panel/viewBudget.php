@@ -2,6 +2,43 @@
 include_once "../dbConfig/dbconnect.php";
 include_once "../authentication/auth.php";
 include_once "../functions/header.php";
+
+if (!isset($_GET['request_ID']) || empty($_GET['request_ID'])) {
+    echo "Request ID is not provided.";
+    exit();
+}
+
+$requestID = $_GET['request_ID'];
+$query = "SELECT * FROM approved_requests WHERE request_ID = $requestID";
+$result = $conn->query($query);
+
+if ($result->num_rows > 0) {
+
+    $row = $result->fetch_assoc();
+    $equipmentName = $row['equipment_name'];
+    $dateApproved = $row['date_approved'];
+    $detailsOfEquipment = $row['details_of_equipment'];
+    $budget = $row['budget'];
+
+    $unitQuery = "SELECT unit_ID FROM appointment WHERE request_ID = $requestID";
+    $unitResult = $conn->query($unitQuery);
+    $unitRow = $unitResult->fetch_assoc();
+    $unit_ID = $unitRow['unit_ID'];
+
+    $appointmentQuery = "SELECT fullname FROM appointment WHERE request_ID = $requestID";
+    $appointmentResult = $conn->query($appointmentQuery);
+    $appointmentRow = $appointmentResult->fetch_assoc();
+    $requestedBy = $appointmentRow['fullname'];
+
+    $maintenanceQuery = "SELECT name FROM maintenance_contact WHERE request_ID = $requestID";
+    $maintenanceResult = $conn->query($maintenanceQuery);
+    $maintenanceRow = $maintenanceResult->fetch_assoc();
+    $approvedBy = $maintenanceRow['name'];
+    
+} else {
+    echo "No record found for the provided Request ID.";
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -58,21 +95,22 @@ include_once "../functions/header.php";
             <div class="equipInfoContainer">
                 <div class="imageContainer1">
                     <div class="subImageContainer1">
-                        <img class="image3" src="../assets/img/img_placeholder.jpg" alt="Mountain Placeholder">
+                    <img class="image3" src="../uploads/<?php echo $row['equip_img']; ?>" alt="Equipment Image">
                     </div>
                 </div>
 
                 <div class="infoContainer">
                     <div class="equipNameContainer">
-                        <p>Budget Approved | January 20, 2024</p>
+                        <p class="equip-name"><?php echo $equipmentName; ?> | <?php echo $unit_ID; ?></p>
                     </div>
 
                     <div class="equipNameContainer">
-                        <p>For maintenance:</p>
+                        <p>Budget Approved | <?php echo $dateApproved; ?></p>
                     </div>
 
+
                     <div class="equipNameContainer">
-                        <p>Details of equipment:</p>
+                        <p>Issue: <?php echo $detailsOfEquipment; ?></p>
                     </div>
                 </div>
             </div>
@@ -80,12 +118,12 @@ include_once "../functions/header.php";
             <div class="damageContainer">
                 <div class="budgetContainer">
                     <div class="textContainer">
-                        <p>Budget release:</p>
+                        <p>BUDGET RELEASE:</p>
                     </div>
 
                     <div class="subBudgetContainer">
                         <div class="budget1">
-                            <p>20,000</p>
+                            <p><?php echo $budget; ?></p>
                         </div>
                     </div>
                 </div>
@@ -93,11 +131,11 @@ include_once "../functions/header.php";
 
             <div class="maintenanceContainer">
                 <div class="subMaintenanceContainer">
-                    <p><span>Approved by:</span> km</p>
+                    <p><span>Approved by:</span> <?php echo $approvedBy; ?></p>
                 </div>
 
                 <div class="subMaintenanceContainer">
-                    <p><span>Requested by:</span> km</p>
+                    <p><span>Requested by:</span> <?php echo $requestedBy; ?></p>
                 </div>
             </div>
 
@@ -105,7 +143,6 @@ include_once "../functions/header.php";
                 <button class="button1">
                     <img class="image7" src="../assets/img/th (3).jpg" alt="">
                 </button>
-                <button class="button">Send email</button>
                 <a href="../admin panel/budget.php?id=<?php echo $userID; ?>">
                     <button class="button">Back</button>
                 </a>

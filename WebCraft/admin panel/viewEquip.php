@@ -1,21 +1,18 @@
 <?php
 include_once "../dbConfig/dbconnect.php";
-include_once "../authentication/auth.php";
 include_once "../functions/header.php";
 
 $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
+$userID = isset($_GET['id']) ? $_GET['id'] : null; 
+$sql2 = "SELECT image FROM equipment WHERE equipment_ID = '$equipment_ID'";
+$sql = "SELECT * FROM units WHERE equipment_ID = '$equipment_ID'";
+$result_units = $conn->query($sql);
+$result_equipment = $conn->query($sql2);
 
-$sql = "SELECT * FROM equipment WHERE equipment_ID = '$equipment_ID'";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
+if ($result_equipment->num_rows > 0) {
+    $row = $result_equipment->fetch_assoc();
     $imageFilename = $row['image'];
     $imageURL = "../uploads/" . $imageFilename;
-    $article = $row['article'];
-    $yearReceived = $row['year_received'];
-    $remarks = $row['remarks'];
-} else {
 }
 
 $conn->close();
@@ -71,53 +68,57 @@ $conn->close();
             </div>
         </div>
     </div>
-
     <div class="container1">
         <div class="subContainer">
-            <a href="equipOtherInfo.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">
-                <div class="subContainer1">
-                    <div class="equipmentCoontainer">
-                        <div class="imageContainer1">
-                            <div class="subImageContainer1">
-                                <img class="image3" src="<?php echo $imageURL; ?>" alt="">
-                            </div>
-                        </div>
+            <?php
+                while ($row1 = $result_units->fetch_assoc()) {
+                    $equipment_name = $row1['equipment_name'];
+                    $unit_ID = $row1['unit_ID'];
+                    $status = $row1['status'];
+                    
+                    $unitPrefix = 'UNIT';
+                    $defaultUnitID = '0000';
+                    $unitID = $unitPrefix . '-' . str_pad($unit_ID, strlen($defaultUnitID), '0', STR_PAD_LEFT);
+                    
+                    echo "<a href='equipOtherInfo.php?equipment_ID=$equipment_ID&id=$userID'>";
+                        echo "<div class='subContainer1'>";
+                            echo "<div class='equipmentContainer'>";
+                                echo "<div class='imageContainer1'>";
+                                    echo "<div class='subImageContainer1'>";
+                                        echo "<img class='image3' src='$imageURL' alt=''>";
+                                    echo "</div>";
+                                echo "</div>";
+                                echo "<div class='infoContainer'>";
+                                    echo "<div class='statusContainer'>";
+                                        echo "<div class='subStatusContainer'>";
+                                            echo "<div class='status'>";
+                                                echo "<p class='subStatus'>OLD</p>";
+                                            echo "</div>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                    echo "<div class='subInfoContainer'>";
+                                        echo "<p> $equipment_name</p>";
+                                    echo "</div>";
+                                    echo "<div class='subInfoContainer'>";
+                                        echo "<p>ID: $unitID</p>";
+                                    echo "</div>";
+                                    echo "<div class='subInfoContainer'>";
+                                        echo "Status: $status";
+                                    echo "</div>";
+                                echo "</div>";
+                            echo "</div>";
+                        echo "</div>";
+                    echo "</a>";
+                }
+            ?>
         
-                        <div class="infoContainer">
-                            <div class="statusContainer">
-                                <div class="subStatusContainer">
-                                    <div class="status">
-                                        <p class="subStatus">OLD</p>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <div class="subInfoContainer">
-                                <p>Apparatus name: <?php echo $article; ?></p>
-                            </div>
-        
-                            <div class="subInfoContainer">
-                                <p>ID: <?php echo $yearReceived; ?></p>
-                            </div>
-        
-                            <div class="subInfoContainer">
-                                Status: <?php echo $remarks; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
         </div>
-
         <div class="buttonContainer">
             <a href="dashboard.php?id=<?php echo $userID; ?>">
-                <button class="button" >
-                    Back
-                </button>
+                    <button class="button">Back</button>
             </a>
         </div>
     </div>
-
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/viewEquipt.js"></script>
     <script src="../assets/js/theme/dashboard-theme.js"></script>

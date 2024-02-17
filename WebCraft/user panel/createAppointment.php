@@ -10,10 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $contact_number = $_POST['contact_number'];
     $article = $_POST['article'];
+    $unit_ID = $_POST['unit_ID']; 
     $date_request = $_POST['date_request'];
     $description = $_POST['description'];
 
-    // Handle file upload for equipment image
     $equipImgName = $_FILES['equip_img']['name'];
     $equipImgTemp = $_FILES['equip_img']['tmp_name'];
     $equipImgPath = "../uploads/" . $equipImgName;
@@ -34,8 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($row !== null) {
             $equipment_ID = $row['equipment_ID'];
 
-            $sql = "INSERT INTO appointment (equip_img, equipment_ID, article, date_request, description, fullname, email, contact_number) 
-            VALUES ('$equipImgName', '$equipment_ID', '$article', '$date_request', '$description', '$fullname', '$email', '$contact_number')";
+            $sql = "INSERT INTO appointment (equip_img, equipment_ID, unit_ID, article, date_request, description, fullname, email, contact_number) 
+            VALUES ('$equipImgName', '$equipment_ID', '$unit_ID', '$article', '$date_request', '$description', '$fullname', '$email', '$contact_number')";
             if (mysqli_query($conn, $sql)) {
                 $message = "Request sent successfully.";
                 header("Location: ../user panel/appointment.php?id=$userID");
@@ -130,18 +130,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <div class="infoContainer">
                         <div class="equipNameContainer">
-                            <select class="inputName" name="article" id="">
-                                <option value="">Select Equipment:</option>
-                                <?php
-                                $sql = "SELECT article FROM equipment";
-                                $result = mysqli_query($conn, $sql);
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<option value='" . $row['article'] . "'>" . $row['article'] . "</option>";
-                                }
-                                ?>
-                            </select>
+                        <select class="inputName" name="article" id="">
+                            <option value="">Select Equipment:</option>
+                            <?php
+                            $sql = "SELECT article FROM equipment";
+                            $result = mysqli_query($conn, $sql);
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<option value='" . $row['article'] . "'>" . $row['article'] . "</option>";
+                            }
+                            ?>
+                        </select>
                         </div>
 
+                        <div class="equipNameContainer">
+                        <select class="inputName" name="unit_ID" id="unitSelect">
+                            <option value="">Select Unit:</option>
+                        </select>
+
+                        </div>
+                        
                         <div class="equipNameContainer">
                             <input class="inputName" type="date" name="date_request" id="date" placeholder="Date of appointmnet:">
                         </div>
@@ -150,11 +157,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input class="inputName" type="text" name="description" id="" placeholder="Enter reason for requesting appoinment">
                         </div>
 
-                        <div class="equipNameContainer">
-                            <select class="inputName" name="article" id="">
-                                <option value="">Unit field:</option>
-                            </select>
-                        </div>
                     </div>
                 </div>
 
@@ -173,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
 
                         <div class="uploadImageContainer">
-                            <input class="uploadButton" type="file">
+                            <input class="uploadButton" name="damage_img" type="file">
                         </div>
                     </div>
 
@@ -199,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <div class="buttonContainer">
-                        <button class="button" type="submit" id="btn1">Send Request</button>
+                    <button class="button" type="submit" id="btn1">Send Request</button>
                     <a href="../user panel/appointment.php?id=<?php echo $userID; ?>">
                         <button class="button" type="button">Back</button>
                     </a>
@@ -209,5 +211,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <script src="../assets/js/login.js"></script>
         <script src="../assets/js/uploadImg.js"></script>
+       <script src="../assets/js/unitID.js"></script>
+
 </body>
 </html>

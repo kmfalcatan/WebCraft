@@ -21,8 +21,8 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="icon" type="image/png" href="../assets/img/webcraftLogo.png">
     <title>MedEquip Tracker</title>
 
-    <link rel="stylesheet" href="/WebCraft/assets/css/index.css">
-    <link rel="stylesheet" href="/WebCraft/assets/css/guest.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/guest.css">
 </head>
 <body id="body">
     <div class="container1">
@@ -105,7 +105,7 @@ if (mysqli_num_rows($result) > 0) {
     <script src="../assets/js/guest.js"></script>
     <script src="../assets/js/theme/guest-theme.js"></script>
 
-     <script> //script para sa display
+     <script> 
         function showDetails(equipmentName) {
             var equipment = <?php echo json_encode($equipmentData); ?>;
             var selectedEquipment = equipment[equipmentName];

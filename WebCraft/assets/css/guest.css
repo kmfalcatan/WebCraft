@@ -17,6 +17,7 @@
     color: rgb(41,41,41);
     cursor: pointer;
     transition: all 0.15s;
+    font-weight: bold;
 }
 
 .button1:hover{
@@ -46,7 +47,7 @@
 
 .equipContainer{
     height: 34rem;
-    width: 10rem;
+    width: 15rem;
     padding: 0.5rem;
 }
 

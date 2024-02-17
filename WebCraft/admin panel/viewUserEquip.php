@@ -103,7 +103,9 @@ if ($userID !== null) {
                                         <td><?php echo $item['total_value']; ?></td>
                                         <td><?php echo $item['remarks']; ?></td>
                                         <td class="actionContainer">
-                                            <button class="action">View</button>
+                                            <a href="../admin panel/viewEquip.php?equipment_ID={$row['equipment_ID']}&id={$userID}">
+                                                <button class="action">View</button>
+                                            </a>
                                             <button class="action">Delete</button>
                                         </td>
                                     </tr>

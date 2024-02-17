@@ -1,6 +1,6 @@
 <?php
-include ('../dbConfig/dbconnect.php');
-include ('../functions/header.php');
+include_once '../dbConfig/dbconnect.php';
+include_once '../functions/header.php';
 ?>
 
 <!DOCTYPE html>
@@ -88,22 +88,39 @@ include ('../functions/header.php');
                             <th>BUDGET FOR</th>
                             <th>DATE APPROVED</th>
                             <th>BUDGET</th>
+                            <th>UNIT</th>
                             <th>ACTION</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td class='actionContainer'>
-                            <a href='../admin panel/viewBudget.php?id=<?php echo $userID; ?>'><button class='action'>View</button></a>
-                            <button class='action'>Delete</button>
-                            </td>
-                        </tr>
+                        <?php
+                        $query = "SELECT * FROM approved_requests";
+                        $result = $conn->query($query);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td><img src='../uploads/{$row['equip_img']}' alt='Equipment Image' width='100' height='100'></td>";
+                                echo "<td>{$row['equipment_name']}</td>";
+                                echo "<td>{$row['details_of_equipment']}</td>";
+                                echo "<td>{$row['date_approved']}</td>";
+                                echo "<td>{$row['budget']}</td>";
+                                $requestID = $row['request_ID'];
+                                $unitResult = $conn->query("SELECT unit_ID FROM appointment WHERE request_ID = $requestID");
+                                $unitRow = $unitResult->fetch_assoc();
+                                echo "<td>{$unitRow['unit_ID']}</td>";
+                                echo "<td class='actionContainer'>";
+                                echo "<a href='../admin panel/viewBudget.php?request_ID={$requestID}&id={$userID}'><button class='action'>View</button></a>";
+                                echo "<button class='action'>Delete</button>";
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            // Display a message if there are no records
+                            echo "<tr><td colspan='7'>No records found</td></tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
            </div>

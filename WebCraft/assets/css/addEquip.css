@@ -39,16 +39,38 @@
     width: 100%;
 }
 
-.uploadButtonContainer{
+/* .uploadButtonContainer{
     height: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
-.uploadButton{
+.uploadButtonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: -2.5rem;
+  }
+  
+  .uploadButton {
     color: transparent;
-    margin-left: 38%;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f1f1f1d7;
+    border-radius: 5rem;
+    border: 0.1rem solid #ccc;
+    padding: 0.8rem 1.5rem;
+    margin: 0 auto;
+  }
+
+.plusIcon {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: #333;
+    text-align: center;
 }
 
 .subImageContainer1{

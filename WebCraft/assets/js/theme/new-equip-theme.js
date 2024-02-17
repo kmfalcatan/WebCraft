@@ -7,10 +7,10 @@ function applySavedColor() {
             document.getElementById('body').style.background = color;
             document.getElementById('addEquipButton').style.background = color;
             var buttonContainer = document.querySelector('.buttonContainer');
-            buttonContainer.style.color = (color === 'rgba(185, 26, 26, 0.91)') ? '#f0f0f0' : '#535353';
+            buttonContainer.style.color = (color === '#b80f0A') ? '#f0f0f0' : '#535353';
             var buttons = document.getElementsByClassName('button');
             for (var j = 0; j < buttons.length; j++) {
-                buttons[j].style.color = (color === 'rgba(185, 26, 26, 0.91)') ? '#f0f0f0' : '#535353';
+                buttons[j].style.color = (color === '#b80f0A') ? '#ddd' : '#535353';
             }
             break;
         }
