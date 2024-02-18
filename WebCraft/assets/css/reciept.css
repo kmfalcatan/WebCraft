@@ -186,4 +186,14 @@ body{
     .subContainer{
         width: 40rem;
     }
+
+    .subInfoContainer3{
+        display: flex;
+        column-gap: 63%;
+    }
+    
+    .subInfoContainer2{
+        display: flex;
+        column-gap: 55%;
+    }
 }
