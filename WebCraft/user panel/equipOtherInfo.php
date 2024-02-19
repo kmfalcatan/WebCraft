@@ -117,7 +117,7 @@ include_once "../functions/warranty.php";
     
                     <!-- Temporary link -->
                     <div class="buttonsContainer">
-                        <button class="button" id="btn1"><a href="updateEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Update</a></button>
+                        <button class="button" id="btn1"><a href="../user panel/updateEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Update</a></button>
                     
                         <button class="button" id="btn2" type="button" onclick="showWarranty()">Check warranty</button>
                     

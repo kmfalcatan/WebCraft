@@ -102,7 +102,7 @@ $result = mysqli_query($conn, $sql);
                             echo "<td>{$row['date_request']}</td>";
                             echo "<td>{$row['status']}</td>";
                             echo "<td class='actionContainer'>";
-                            echo "<a href='../user panel/viewAppointment.php?request_ID={$row['request_ID']}'><button class='action'>View</button></a>";
+                            echo "<a href='../user panel/viewAppointment.php?request_ID={$row['request_ID']}&id={$userID}'><button class='action'>View</button></a>";
                             echo "<button class='action'>Delete</button>";
                             echo "</td>";
                             echo "</tr>";

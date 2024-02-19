@@ -148,15 +148,15 @@ include_once "../functions/warranty.php";
     }
     </script>
 
-<script>
-    function showWarranty() {
-        document.getElementById('warrantyContainer').style.display = 'block';
-    }
+    <script>
+        function showWarranty() {
+            document.getElementById('warrantyContainer').style.display = 'block';
+        }
 
-    function closeWarranty() {
-        document.getElementById('warrantyContainer').style.display = 'none';
-    }
-</script>
+        function closeWarranty() {
+            document.getElementById('warrantyContainer').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>

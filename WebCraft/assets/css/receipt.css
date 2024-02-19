@@ -1,0 +1,220 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: radial-gradient(rgb(255,252,0), rgb(231, 139, 0));
+}
+
+/* .container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+#receiptModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.receiptContainer{
+    height: 48rem;
+    width: 24rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: snow;
+    display: flex;
+    flex-direction: column;
+    border: solid gray 1px;
+    margin: 0.5rem auto;
+}
+
+.logoContainer{
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.recieptContainer{
+    height: 100%;
+    width: 10rem;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.subLogoContainer{
+    height: 100%;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    height: 100%;
+    background-color: snow;
+    border-radius: 5rem;
+}
+
+.infoContainer{
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    column-gap: -2rem;
+}
+
+.subInfoContainer{
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(205, 164, 0);
+}
+
+.subInfoContainer1{
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.infoContainer1{
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    background-color: rgb(255, 241, 170);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.text{
+    color: rgb(205, 164, 0);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.infoContainer2{
+    height: 7.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.subInfoContainer2{
+    height: 2.5rem;
+    background-color: rgb(231,233,236);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 9rem;
+    font-weight: 600;
+}
+
+.subInfoContainer3{
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 9rem;
+    border-bottom: solid rgb(249, 210, 53) 3px;
+}
+
+.subInfoContainer4{
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    column-gap: 2rem;
+    padding-right: 1.7rem
+}
+
+.subInfoContainer5{
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 9rem;
+}
+
+.infoContainer3{
+    height: 5rem;
+    margin-top: 1rem;
+}
+
+.ModalButtons {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backButton{
+    height: 2rem;
+    width: 5rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
+    cursor: pointer;
+}
+
+.ModalButtons .backButton:hover{
+    background: linear-gradient(to right, rgb(180, 177, 3), rgb(153, 92, 1));
+    color: white;
+}
+
+.ModalButtons .backButton:active{
+    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
+}
+
+.ModalButtons .printButton{
+    height: 2.5rem;
+    margin-right: 1rem;
+    border-radius: 5rem;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
+    cursor: pointer;
+}
+
+
+
+/*tablet*/
+@media only screen and (min-width: 601px){
+    .recieptContainer{
+        width: 40rem;
+    }
+
+    .subInfoContainer3{
+        display: flex;
+        column-gap: 63%;
+    }
+    
+    .subInfoContainer2{
+        display: flex;
+        column-gap: 55%;
+        font-weight: 600;
+    }
+}

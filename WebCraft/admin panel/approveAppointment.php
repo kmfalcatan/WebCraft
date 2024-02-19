@@ -2,42 +2,7 @@
 include_once "../dbConfig/dbconnect.php";
 include_once "../functions/header.php";
 include_once "../authentication/auth.php";
-
-function approveRequest($conn, $userID, $requestID, $equipImg, $equipmentName, $budget, $detailsOfEquipment) {
-    // Prepare and execute the SQL statement to insert data into the approved_request table
-    $stmt = $conn->prepare("INSERT INTO approved_requests (request_ID, equip_img, equipment_name, budget, details_of_equipment) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("issss", $requestID, $equipImg, $equipmentName, $budget, $detailsOfEquipment);
-    $stmt->execute();
-    $stmt->close();
-
-    // Redirect to budget.php with the userID
-    header("Location: budget.php?id=$userID");
-    exit();
-}
-
-if (!isset($_GET['request_ID']) || !($row = $conn->query("SELECT * FROM appointment WHERE request_ID = {$_GET['request_ID']}")->fetch_assoc())) {
-    echo "Request ID is not provided or no appointment found with the provided ID.";
-    exit();
-}
-
-$equipment_name = $row['article'] ?? '';
-$date_of_appointment = $row['date_request'] ?? '';
-$details_of_equipment = $row['description'] ?? '';
-
-$budgetResult = $conn->query("SELECT * FROM budget WHERE request_ID = {$_GET['request_ID']}");
-$budgetRow = $budgetResult->fetch_assoc();
-$budget = $budgetRow['budget'] ?? '';
-
-$maintenanceResult = $conn->query("SELECT * FROM maintenance_contact WHERE request_ID = {$_GET['request_ID']}");
-$maintenanceRow = $maintenanceResult->fetch_assoc();
-$admin_email = $maintenanceRow['admin_email'] ?? '';
-$name = $maintenanceRow['name'] ?? '';
-$maintenance_email = $maintenanceRow['maintenance_email'] ?? '';
-$contact_number = $maintenanceRow['contact_number'] ?? '';
-
-if (isset($_POST['approve'])) {
-    approveRequest($conn, $userID, $_GET['request_ID'], $row['equip_img'], $equipment_name, $budget, $details_of_equipment);
-}
+include_once "../functions/approveRequest.php";
 ?>
 
 <!DOCTYPE html>
@@ -139,6 +104,7 @@ if (isset($_POST['approve'])) {
 
                         <div class="subBudgetContainer">
                             <input type="text" class="budget" name="budget" placeholder="Budget:" value="<?php echo $budget; ?>" readonly>
+                            <input type="text" class="budget" name="admin_name" placeholder="Admin name:" value="<?php echo $admin_name; ?>" readonly>
                             <input type="email" class="budget" name="admin_email" placeholder="Admin email:"  value="<?php echo $admin_email; ?>" readonly>
                         </div>
                     </div>
@@ -150,7 +116,7 @@ if (isset($_POST['approve'])) {
                     </div>
 
                     <div class="subMaintenanceContainer">
-                        <input type="text" class="budget" name="name" placeholder="Name:" value="<?php echo $name; ?>" readonly>
+                        <input type="text" class="budget" name="maintenance_name" placeholder="Name:" value="<?php echo $maintenance_name; ?>" readonly>
                     </div>
 
                     <div class="subMaintenanceContainer">
@@ -179,24 +145,7 @@ if (isset($_POST['approve'])) {
         </form>
         
         <script src="../assets/js/theme/dashboard-theme.js"></script>
-        <script>
-        window.onload = function() {
-            var equipmentName = "<?php echo $equipment_name; ?>";
-            var dateOfAppointment = "<?php echo $date_of_appointment; ?>";
-            var detailsOfEquipment = "<?php echo $details_of_equipment; ?>";
-            var budget = "<?php echo $budget; ?>";
-            var adminEmail = "<?php echo $admin_email; ?>";
-            var name = "<?php echo $name; ?>";
-            var maintenanceEmail = "<?php echo $maintenance_email; ?>";
-            var contactNumber = "<?php echo $contact_number; ?>";
-
-            if (equipmentName !== "" && dateOfAppointment !== "" && detailsOfEquipment !== "" && budget !== "" && adminEmail !== "" && name !== "" && maintenanceEmail !== "" && contactNumber !== "") {
-                document.getElementById("approveButton").disabled = false;
-            } else {
-                document.getElementById("approveButton").disabled = true;
-            }
-        };
-    </script>
+        <script src="../assets/js/approveReq.js"></script>
 
 </body>
 </html>

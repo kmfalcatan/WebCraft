@@ -2,15 +2,7 @@
 include_once "../dbConfig/dbconnect.php";
 include_once "../functions/header.php";
 include_once "../authentication/auth.php";
-
-if (!isset($_GET['request_ID']) || !($row = $conn->query("SELECT * FROM appointment WHERE request_ID = {$_GET['request_ID']}")->fetch_assoc())) {
-    echo "Request ID is not provided or no appointment found with the provided ID.";
-    exit();
-}
-
-$equipment_name = $row['article'];
-$date_of_appointment = $row['date_request'];
-$details_of_equipment = $row['description'];
+include_once "../functions/approveRequest.php";
 ?>
 
 <!DOCTYPE html>
@@ -61,26 +53,28 @@ $details_of_equipment = $row['description'];
             </div>
         </div>
 
-        <div class="container2">
+        <form class="container2" method="POST" enctype="multipart/form-data" >
             <div class="subContainer">
                 <div class="equipInfoContainer">
                     <div class="imageContainer1">
-                        <div class="subImageContainer1">
-                            <img class="image3" src="../uploads/<?php echo $row['equip_img']; ?>" alt="Equipment Image">
-                        </div>
+                        <!-- img di pa nasasave sa database table budget -->
+                    <div class="subImageContainer1">
+                        <img class="image3" src="../uploads/<?php echo $row['equip_img']; ?>" alt="Equipment Image">
+                        <input type="hidden" name="equip_img">
+                    </div>
                     </div>
 
                     <div class="infoContainer">
                         <div class="equipNameContainer">
-                            <p><?php echo $equipment_name; ?></p>
+                            <input name="equipment_name" value="<?php echo $equipment_name; ?>" readonly>
                         </div>
 
                         <div class="equipNameContainer">
-                            <p>Appointment Date: <?php echo $date_of_appointment; ?></p>
+                            <input name="date_of_appointment" value="Appointment Date: <?php echo $date_of_appointment; ?>" readonly>
                         </div>
 
                         <div class="equipNameContainer">
-                            <p>Reason for request: <?php echo $details_of_equipment; ?>
+                            <input name="details_of_equipment" value="Reason: <?php echo $details_of_equipment; ?>" readonly>
                         </div>
                     </div>
                 </div>
@@ -109,8 +103,9 @@ $details_of_equipment = $row['description'];
                         </div>
 
                         <div class="subBudgetContainer">
-                            <input type="text" class="budget" placeholder="Budget:">
-                            <input type="text" class="budget" placeholder="Admin email:">
+                            <input type="text" class="budget" name="budget" placeholder="Budget:" value="<?php echo $budget; ?>" readonly>
+                            <input type="text" class="budget" name="admin_name" placeholder="Admin name:" value="<?php echo $admin_name; ?>" readonly>
+                            <input type="email" class="budget" name="admin_email" placeholder="Admin email:"  value="<?php echo $admin_email; ?>" readonly>
                         </div>
                     </div>
                 </div>
@@ -121,34 +116,33 @@ $details_of_equipment = $row['description'];
                     </div>
 
                     <div class="subMaintenanceContainer">
-                        <input type="text" class="budget" placeholder="Name:">
+                        <input type="text" class="budget" name="maintenance_name" placeholder="Name:" value="<?php echo $maintenance_name; ?>" readonly>
                     </div>
 
                     <div class="subMaintenanceContainer">
-                        <input type="text" class="budget" placeholder="Email:">
+                        <input type="email" class="budget" name="maintenance_email" placeholder="Email:" value="<?php echo $maintenance_email; ?>" readonly>
                     </div>
 
                     <div class="subMaintenanceContainer">
-                        <input type="text" class="budget" placeholder="Contact No.:">
+                        <input type="number" class="budget" name="contact_number" placeholder="Contact No.:" value="<?php echo $contact_number; ?>" readonly>
                     </div>
                 </div>
 
                 <div class="buttonContainer">
-                    <button class="button1">
-                        <img class="image7" src="../assets/img/th (3).jpg" alt="">
-                    </button>
-                    <button class="button">Send email</button>
-                    <button class="button">Approve</button>
-                    <button class="button" type="button" onclick="goBack()">Back</button>
+                    <!-- <a href="viewAppointment.php?request_ID=<?php echo $_GET['request_ID']; ?>&id=<?php echo $userID; ?>">
+                        <button class="button" type="button">Edit Form</button>
+                    </a>
+                    
+                    <button class="button" type="submit" name="approve" id="approveButton" disabled>Approve</button> -->
+                    <a href="../user panel/appointment.php?id=<?php echo $userID; ?>">
+                        <button class="button" type="button">Back</button>
+                    </a>
                 </div>
             </div>
-        </div>
+        </form>
         
         <script src="../assets/js/theme/dashboard-theme.js"></script>
-        <script>
-            function goBack() {
-                window.history.back();
-            }
-        </script>
+        <script src="../assets/js/approveReq.js"></script>
+
 </body>
 </html>

@@ -117,7 +117,6 @@ include_once '../functions/header.php';
                                 echo "</tr>";
                             }
                         } else {
-                            // Display a message if there are no records
                             echo "<tr><td colspan='7'>No records found</td></tr>";
                         }
                         ?>

@@ -1,5 +1,8 @@
 <?php
+include_once "../dbConfig/dbconnect.php";
 include_once "../authentication/auth.php";
+include_once "../functions/header.php";
+include_once "../functions/budget.php";
 ?>
 
 <!DOCTYPE html>
@@ -7,13 +10,16 @@ include_once "../authentication/auth.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/png" href="../assets/img/webcraftLogo.png">
+    <title>MedEquip Tracker</title>
 
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/viewBudget.css">
+    <link rel="stylesheet" href="../assets/css/receipt.css">
     <link rel="stylesheet" href="../assets/css/viewAppointment.css">
+    
 </head>
-<body>
+<body id="body">
     <div class="headerContainer">
         <div class="subHeaderContainer">
             <div class="imageContainer">
@@ -28,32 +34,49 @@ include_once "../authentication/auth.php";
 
             <div class="profileContainer">
                 <div class="subProfileContainer">
-                    <img class="image1" src="../assets/img/person-circle.png" alt="">
+                    <?php
+                        if (!empty($userInfo['profile_img'])) {
+                            echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
+                        } else {
+                            echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
+                        }
+                    ?>
+                    </div>
+
+                    <div class="subProfileContainer">
+                        <div class='menubarContainer' onclick='toggleMenu(this)'>
+                            <div class='line'></div>
+                            <div class='line'></div>
+                            <div class='line'></div>
+                        </div>
+
+                        <p class="adminName"><?php echo $userInfo['username'] ?? ''; ?></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <div class="container2">
         <div class="subContainer">
             <div class="equipInfoContainer">
                 <div class="imageContainer1">
                     <div class="subImageContainer1">
-                        <img class="image3" src="../assets/img/img_placeholder.jpg" alt="Mountain Placeholder">
+                    <img class="image3" src="../uploads/<?php echo $row['equip_img']; ?>" alt="Equipment Image">
                     </div>
                 </div>
 
                 <div class="infoContainer">
                     <div class="equipNameContainer">
-                        <p>Budget Approved | January 20, 2024</p>
+                        <p class="equip-name"><?php echo $equipmentName; ?> | <?php echo $unit_ID; ?></p>
                     </div>
 
                     <div class="equipNameContainer">
-                        <p>For maintenance:</p>
+                        <p>Budget Approved | <?php echo $dateApproved; ?></p>
                     </div>
 
+
                     <div class="equipNameContainer">
-                        <p>Details of equipment:</p>
+                        <p>Issue: <?php echo $detailsOfEquipment; ?></p>
                     </div>
                 </div>
             </div>
@@ -61,12 +84,12 @@ include_once "../authentication/auth.php";
             <div class="damageContainer">
                 <div class="budgetContainer">
                     <div class="textContainer">
-                        <p>Budget release:</p>
+                        <p>BUDGET RELEASE:</p>
                     </div>
 
                     <div class="subBudgetContainer">
                         <div class="budget1">
-                            <p>20,000</p>
+                            <p><?php echo $budget; ?></p>
                         </div>
                     </div>
                 </div>
@@ -74,11 +97,11 @@ include_once "../authentication/auth.php";
 
             <div class="maintenanceContainer">
                 <div class="subMaintenanceContainer">
-                    <p><span>Approved by:</span> km</p>
+                    <p><span>Approved by:</span><?php echo $approvedBy; ?></p>
                 </div>
 
                 <div class="subMaintenanceContainer">
-                    <p><span>Requested by:</span> km</p>
+                    <p><span>Requested by:</span><?php echo $requestedBy; ?></p>
                 </div>
             </div>
 
@@ -86,12 +109,28 @@ include_once "../authentication/auth.php";
                 <button class="button1">
                     <img class="image7" src="../assets/img/th (3).jpg" alt="">
                 </button>
-                <button class="button">Send email</button>
                 <a href="../user panel/budget.php?id=<?php echo $userID; ?>">
                     <button class="button">Back</button>
                 </a>
             </div>
         </div>
-    </div> 
+    </div>
+
+    <div id="receiptModal" class="receiptModal" style="display: none;">
+        <div class="ModalButtons">
+             <button class="printButton">
+                 <img class="logo" src="../assets/img/th (3).jpg" alt="">
+             </button>
+             
+            <button class="backButton">Close</button>
+        </div>
+        <?php include('receipt.php'); ?>
+
+    </div>
+    
+    <script src="../assets/js/theme/dashboard-theme.js"></script>
+   
+    <script src="../assets/js/receipt.js"></script>
+
 </body>
 </html>

@@ -8,13 +8,14 @@ if(isset($_POST['submit'])) {
     $details_of_equipment = $_POST['details_of_equipment'];
     $budget = $_POST['budget'];
     $admin_email = $_POST['admin_email'];
-    $name = $_POST['name'];
+    $admin_name = $_POST['admin_name'];
+    $maintenance_name = $_POST['maintenance_name'];
     $maintenance_email = $_POST['maintenance_email'];
     $contact_number = $_POST['contact_number'];
     $request_ID = $_GET['request_ID'];
 
-    $maintenance_query = "INSERT INTO maintenance_contact (request_ID, name, maintenance_email, contact_number, admin_email) 
-                         VALUES ('$request_ID', '$name', '$maintenance_email', '$contact_number', '$admin_email')";
+    $maintenance_query = "INSERT INTO maintenance_contact (request_ID, maintenance_name, maintenance_email, contact_number, admin_email, admin_name) 
+                         VALUES ('$request_ID', '$maintenance_name', '$maintenance_email', '$contact_number', '$admin_email', '$admin_name')";
     $maintenance_result = $conn->query($maintenance_query);
 
     $budget_query = "INSERT INTO budget (request_ID, budget, equipment_name, details_of_equipment, equip_img) 

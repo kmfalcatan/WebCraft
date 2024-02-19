@@ -112,6 +112,7 @@ $details_of_equipment = $row['description'];
 
                         <div class="subBudgetContainer">
                             <input type="text" class="budget" name="budget" placeholder="Budget:">
+                            <input type="text" class="budget" name="admin_name" placeholder="Admin Name:">
                             <input type="email" class="budget" name="admin_email" placeholder="Admin email:">
                         </div>
                     </div>
@@ -123,7 +124,7 @@ $details_of_equipment = $row['description'];
                     </div>
 
                     <div class="subMaintenanceContainer">
-                        <input type="text" class="budget" name="name" placeholder="Name:">
+                        <input type="text" class="budget" name="maintenance_name" placeholder="Name:">
                     </div>
 
                     <div class="subMaintenanceContainer">
