@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2024 at 10:45 PM
+-- Generation Time: Feb 18, 2024 at 09:40 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -37,16 +37,62 @@ CREATE TABLE `appointment` (
   `email` varchar(255) DEFAULT NULL,
   `contact_number` varchar(20) DEFAULT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'pending',
-  `equipment_img` varchar(255) DEFAULT NULL,
-  `equip_img` varchar(255) DEFAULT NULL
+  `damage_img` varchar(255) DEFAULT NULL,
+  `equip_img` varchar(255) DEFAULT NULL,
+  `unit_ID` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`request_ID`, `equipment_ID`, `article`, `date_request`, `description`, `fullname`, `email`, `contact_number`, `status`, `equipment_img`, `equip_img`) VALUES
-(1, 4, 'Extension Wire', '2024-02-23', 'damage', 'Padwa Tingkasan ', 'powie@gmail.com', '1234567890', 'pending', NULL, 'images (11).jpeg');
+INSERT INTO `appointment` (`request_ID`, `equipment_ID`, `article`, `date_request`, `description`, `fullname`, `email`, `contact_number`, `status`, `damage_img`, `equip_img`, `unit_ID`) VALUES
+(1, 28, 'White Board', '2024-03-01', 'damage', 'Padwa Tingkasan ', 'powie@gmail.com', '1234567890', 'Pending', NULL, 'bg.png', 'UNIT-0003');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `approved_requests`
+--
+
+CREATE TABLE `approved_requests` (
+  `approved_ID` int(11) NOT NULL,
+  `request_ID` int(11) DEFAULT NULL,
+  `equip_img` varchar(255) DEFAULT NULL,
+  `equipment_name` varchar(255) DEFAULT NULL,
+  `budget` decimal(10,2) DEFAULT NULL,
+  `details_of_equipment` text DEFAULT NULL,
+  `date_approved` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `approved_requests`
+--
+
+INSERT INTO `approved_requests` (`approved_ID`, `request_ID`, `equip_img`, `equipment_name`, `budget`, `details_of_equipment`, `date_approved`) VALUES
+(1, 1, 'bg.png', 'White Board', 5.00, 'damage', '2024-02-17 18:30:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `budget`
+--
+
+CREATE TABLE `budget` (
+  `budget_ID` int(11) NOT NULL,
+  `budget` decimal(10,2) DEFAULT NULL,
+  `equipment_name` varchar(255) DEFAULT NULL,
+  `equip_img` varchar(255) DEFAULT NULL,
+  `details_of_equipment` text DEFAULT NULL,
+  `request_ID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `budget`
+--
+
+INSERT INTO `budget` (`budget_ID`, `budget`, `equipment_name`, `equip_img`, `details_of_equipment`, `request_ID`) VALUES
+(3, 5.00, 'White Board', '', 'Reason: damage', 1);
 
 -- --------------------------------------------------------
 
@@ -89,7 +135,30 @@ INSERT INTO `equipment` (`equipment_ID`, `image`, `article`, `description`, `dep
 (7, 'TL-SG1016D_UN_7.0_01_1499779712369t.jpg', 'Internet Switch', 'TP-link internet Switch 16 ports 10/100 MBPS, Auto Negotiation ', 'College of Medicine', 'Vincent Robinson Balido', 'ICS=22-F101-0361', '1-04-05-130', '1', '1450', '1450', 'Operational', 2022, 'Electrical-Contractor-Warranty-Form.jpg', '2024-02-06', '2025-02-06', '20500', 'Setting Up a 16-Port Switch\r\nSetting up a 16-port switch might sound daunting, but it’s simpler than you might think. Here’s a straightforward guide to get you started:\r\n1.	Location and Connections: First, choose a central location for your switch. This should be a place where all your devices can easily connect. Plug one end of an Ethernet cable into each device you want to connect, and then plug the other end into any of the available ports on the switch. The ports on the switch are like the outlets in your home – they’re where your devices plug in.\r\n2.	Powering Up: Connect the power adapter to the switch and plug it into a power outlet. Once powered up, the switch’s lights should start blinking, indicating that it’s working. These lights help you see which ports are active and connected.\r\n3.	Configuration (If Needed): In most cases, a 16-port switch is ready to use as soon as it’s powered up and devices are connected. However, if you have specific needs or want to optimize your network further, some switches might offer a web interface for more advanced configuration. You can access this interface through a web browser by typing in the switch’s IP address.\r\nIn essence, setting up a 16-port switch involves connecting your devices to its ports, supplying power, and then enjoying smoother and faster network connections. It’s a small effort that leads to a big improvement in your digital experience.\r\n\r\n'),
 (8, 'study_chair1.jpg', 'Monoblock Chair', 'uno Study Chair, whit Arm and Writing pad, 100% virgin Plastic resin (from Araceli lim)', 'College of Medicine', 'Vincent Robinson Balido', 'ICS-21-STF-0110/264-1-100', '1-04-06-010', '100', '998', '99800', 'All Operational', 2022, 'Electrical-Contractor-Warranty-Form.jpg', '2024-02-06', '2025-02-06', '20500', 'Encourages Movement — The first point we must tackle is the chair’s ability to allow movement.\r\n\r\nAdequate Space — Did you know that in the 20th Century, the classroom furniture was produced to encourage upright posture?\r\n\r\n“A 135-degree body-thigh sitting posture was demonstrated to be the best biomechanical sitting position, as opposed to a 90-degree posture, which most people consider normal.\r\n\r\nWe were not created to sit down for long hours, but somehow modern life requires the vast majority of the global population to work in a seated position,” stated Dr. Waseem Bashir, MBChB from the University of Alberta Hospital, Canada.\r\n\r\nFlexible — Flexibility talks about the chair’s lightweight design that can accommodate different teaching techniques and learning styles.\r\n\r\nRight Fit — We should not forget the size of the chair. If you have long legs you wouldn’t want to sit on a chair shorter than you. The same applies to classroom chairs.\r\n\r\nIt’s not just the left or right-handed chairs that teachers need to ask about but also if there are chairs that can fit the height of the children.'),
 (9, 'images (12).jpeg', 'Monoblock Chair', 'UNO Monoblock Chair with Writing Desk- for adult user with writing desk, without armrest 100% virgin plastic resin (15 units for lest handed, 40 units for right handed)', 'College of Medicine', 'Vincent Robinson Balido', 'ICS-22-STF-00173/55-1-55', '1-04-06-010', '55', '1000', '55000', 'Operational', 2022, 'Electrical-Contractor-Warranty-Form.jpg', '2024-02-06', '2025-02-06', '20500', '1. Chair size\r\n\r\nSchools require chairs of different sizes because students come from various age groups. Hence, the chair should:\r\n\r\nFit their body height, size, and weight.\r\nEnsure comfort and good body posture.\r\nProvide adequate support for the back, shoulders, and arms.\r\n2. Chair material\r\n\r\nGenerally, school chairs are made from leather, wood, hard plastic, and soft plastic. These materials impact the chair’s comfort, look, durability, and maintenance. Without a doubt, leather and mesh chairs are highly recommended if you want to tick all the boxes. Lower-quality materials are, of course, prone to more wear and tear. Hence, it’s best to choose what gives more value to your money.\r\n\r\n3. Chair colour\r\n\r\nSchool furniture is no longer restricted to drab, dull, and mundane colours like brown, beige, and grey. However, picking a colour tone that aligns with the purpose is essential. Light colour tones are known for their soothing effect, while mid-tones stimulate the senses and creative elements.\r\n\r\n4. Adjustable features\r\n\r\nIf these chairs are used in a classroom setting, they should have height adjustability features to accommodate students of all ages. Leg and armrests make the chair more ergonomic. Students can sit comfortably through long exams or lectures without fidgeting or squirming if it is slightly tiltable.\r\n\r\n5. Storage space\r\n\r\nNowadays, student chairs with writing pads come with book baskets fixed under the chair. This feature serves a dual purpose:\r\nIt eliminates the need for a separate desk or shelf for storing books and other paraphernalia.\r\nIt offers easy access to school supplies without disturbing the classroom or moving things around.\r\n\r\n6. Writing pad size\r\n\r\nThe larger the writing pad, the more workspace it provides. The desk and chair combo comes with a tablet for student writing and is generally equipped with casters to facilitate collaborative and dynamic learning environments in the classroom.\r\n\r\nHas our blog piqued your interest in buying student chairs with writing pads? To purchase your chairs, look no further than Inspace, the furniture industry pioneers who specialize in custom-made, ergonomic school furniture.'),
-(28, 'bg.png', 'White Board', 'sadasdasd', 'College of Medicine', '', 'ICS1243', '01-02-05-1996', '3', '', '1.788', '', 2022, 'bg.png', '2024-01-31', '2024-03-09', '2,000', 'dfsdfsddfsdf');
+(28, 'bg.png', 'White Board', 'sadasdasd', 'College of Medicine', '', 'ICS1243', '01-02-05-1996', '2', '', '1.788', '', 2022, 'bg.png', '2024-01-31', '2024-03-09', '2,000', 'dfsdfsddfsdf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `maintenance_contact`
+--
+
+CREATE TABLE `maintenance_contact` (
+  `maintenance_ID` int(11) NOT NULL,
+  `maintenance_name` varchar(255) DEFAULT NULL,
+  `maintenance_email` varchar(255) DEFAULT NULL,
+  `contact_number` varchar(20) NOT NULL,
+  `request_ID` int(11) DEFAULT NULL,
+  `admin_email` varchar(255) DEFAULT NULL,
+  `admin_name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `maintenance_contact`
+--
+
+INSERT INTO `maintenance_contact` (`maintenance_ID`, `maintenance_name`, `maintenance_email`, `contact_number`, `request_ID`, `admin_email`, `admin_name`) VALUES
+(3, 'Padwa Tingkasan', 'powie@gmail.com', '1234567890', 1, 'admin@wmsu.edu.ph', 'Kyle Kuzma');
 
 -- --------------------------------------------------------
 
@@ -140,7 +209,9 @@ CREATE TABLE `units` (
 INSERT INTO `units` (`unit_ID`, `equipment_ID`, `equipment_name`, `status`) VALUES
 (1, 28, 'White Board', 'Available'),
 (2, 28, 'White Board', 'Available'),
-(3, 28, 'White Board', 'Available');
+(3, 28, 'White Board', 'Available'),
+(4, 28, 'White Board', 'Available'),
+(5, 28, 'White Board', 'Available');
 
 -- --------------------------------------------------------
 
@@ -184,10 +255,31 @@ ALTER TABLE `appointment`
   ADD KEY `equipment_ID` (`equipment_ID`);
 
 --
+-- Indexes for table `approved_requests`
+--
+ALTER TABLE `approved_requests`
+  ADD PRIMARY KEY (`approved_ID`),
+  ADD KEY `request_ID` (`request_ID`);
+
+--
+-- Indexes for table `budget`
+--
+ALTER TABLE `budget`
+  ADD PRIMARY KEY (`budget_ID`),
+  ADD KEY `fk_budget_request_id` (`request_ID`);
+
+--
 -- Indexes for table `equipment`
 --
 ALTER TABLE `equipment`
   ADD PRIMARY KEY (`equipment_ID`);
+
+--
+-- Indexes for table `maintenance_contact`
+--
+ALTER TABLE `maintenance_contact`
+  ADD PRIMARY KEY (`maintenance_ID`),
+  ADD KEY `fk_maintenance_contact_request_id` (`request_ID`);
 
 --
 -- Indexes for table `recycle_bin`
@@ -220,10 +312,28 @@ ALTER TABLE `appointment`
   MODIFY `request_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `approved_requests`
+--
+ALTER TABLE `approved_requests`
+  MODIFY `approved_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `budget`
+--
+ALTER TABLE `budget`
+  MODIFY `budget_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `equipment`
 --
 ALTER TABLE `equipment`
   MODIFY `equipment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `maintenance_contact`
+--
+ALTER TABLE `maintenance_contact`
+  MODIFY `maintenance_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `recycle_bin`
@@ -235,7 +345,7 @@ ALTER TABLE `recycle_bin`
 -- AUTO_INCREMENT for table `units`
 --
 ALTER TABLE `units`
-  MODIFY `unit_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `unit_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -252,6 +362,24 @@ ALTER TABLE `users`
 --
 ALTER TABLE `appointment`
   ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`equipment_ID`) REFERENCES `equipment` (`equipment_ID`);
+
+--
+-- Constraints for table `approved_requests`
+--
+ALTER TABLE `approved_requests`
+  ADD CONSTRAINT `approved_requests_ibfk_1` FOREIGN KEY (`request_ID`) REFERENCES `appointment` (`request_ID`);
+
+--
+-- Constraints for table `budget`
+--
+ALTER TABLE `budget`
+  ADD CONSTRAINT `fk_budget_request_id` FOREIGN KEY (`request_ID`) REFERENCES `appointment` (`request_ID`);
+
+--
+-- Constraints for table `maintenance_contact`
+--
+ALTER TABLE `maintenance_contact`
+  ADD CONSTRAINT `fk_maintenance_contact_request_id` FOREIGN KEY (`request_ID`) REFERENCES `appointment` (`request_ID`);
 
 --
 -- Constraints for table `recycle_bin`

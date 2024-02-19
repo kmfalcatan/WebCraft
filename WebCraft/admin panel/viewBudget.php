@@ -2,43 +2,7 @@
 include_once "../dbConfig/dbconnect.php";
 include_once "../authentication/auth.php";
 include_once "../functions/header.php";
-
-if (!isset($_GET['request_ID']) || empty($_GET['request_ID'])) {
-    echo "Request ID is not provided.";
-    exit();
-}
-
-$requestID = $_GET['request_ID'];
-$query = "SELECT * FROM approved_requests WHERE request_ID = $requestID";
-$result = $conn->query($query);
-
-if ($result->num_rows > 0) {
-
-    $row = $result->fetch_assoc();
-    $equipmentName = $row['equipment_name'];
-    $dateApproved = $row['date_approved'];
-    $detailsOfEquipment = $row['details_of_equipment'];
-    $budget = $row['budget'];
-
-    $unitQuery = "SELECT unit_ID FROM appointment WHERE request_ID = $requestID";
-    $unitResult = $conn->query($unitQuery);
-    $unitRow = $unitResult->fetch_assoc();
-    $unit_ID = $unitRow['unit_ID'];
-
-    $appointmentQuery = "SELECT fullname FROM appointment WHERE request_ID = $requestID";
-    $appointmentResult = $conn->query($appointmentQuery);
-    $appointmentRow = $appointmentResult->fetch_assoc();
-    $requestedBy = $appointmentRow['fullname'];
-
-    $maintenanceQuery = "SELECT name FROM maintenance_contact WHERE request_ID = $requestID";
-    $maintenanceResult = $conn->query($maintenanceQuery);
-    $maintenanceRow = $maintenanceResult->fetch_assoc();
-    $approvedBy = $maintenanceRow['name'];
-    
-} else {
-    echo "No record found for the provided Request ID.";
-    exit();
-}
+include_once "../functions/budget.php";
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +15,9 @@ if ($result->num_rows > 0) {
 
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/viewBudget.css">
+    <link rel="stylesheet" href="../assets/css/receipt.css">
     <link rel="stylesheet" href="../assets/css/viewAppointment.css">
+    
 </head>
 <body id="body">
     <div class="headerContainer">
@@ -131,11 +97,11 @@ if ($result->num_rows > 0) {
 
             <div class="maintenanceContainer">
                 <div class="subMaintenanceContainer">
-                    <p><span>Approved by:</span> <?php echo $approvedBy; ?></p>
+                    <p><span>Approved by:</span><?php echo $approvedBy; ?></p>
                 </div>
 
                 <div class="subMaintenanceContainer">
-                    <p><span>Requested by:</span> <?php echo $requestedBy; ?></p>
+                    <p><span>Requested by:</span><?php echo $requestedBy; ?></p>
                 </div>
             </div>
 
@@ -149,7 +115,22 @@ if ($result->num_rows > 0) {
             </div>
         </div>
     </div>
+
+    <div id="receiptModal" class="receiptModal" style="display: none;">
+        <div class="ModalButtons">
+             <button class="printButton">
+                 <img class="logo" src="../assets/img/th (3).jpg" alt="">
+             </button>
+             
+            <button class="backButton">Close</button>
+        </div>
+        <?php include('receipt.php'); ?>
+
+    </div>
     
     <script src="../assets/js/theme/dashboard-theme.js"></script>
+   
+    <script src="../assets/js/receipt.js"></script>
+
 </body>
 </html>

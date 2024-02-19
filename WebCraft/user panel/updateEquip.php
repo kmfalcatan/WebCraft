@@ -66,7 +66,7 @@ include_once '../functions/header.php';
     
                     <div class="infoContainer">
                         <div class="subInfoContainer">
-                            <textarea class="inputInfo" name="user" cols="30" rows="10" placeholder="User name:"><?php echo $user; ?></textarea>
+                            <textarea class="inputInfo" name="user" cols="30" rows="10" placeholder="User name:" readonly><?php echo $user; ?></textarea>
                         </div>
                         
                         <div class="subInfoContainer">
