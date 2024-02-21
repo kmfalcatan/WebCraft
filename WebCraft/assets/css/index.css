@@ -478,7 +478,7 @@ body{
     }
 
     .sideNavBarContainer{
-        height: 25rem;
+        height: 28rem;
         position: absolute;
         left: -9.7rem;
         top: 15rem;
@@ -521,7 +521,7 @@ body{
         position: absolute;
         height: 1.5rem;
         right: 0;
-        top: 1.5rem;
+        top: 4.5rem;
     }
 
     .tableContainer{
@@ -612,7 +612,7 @@ body{
     }
 
     .sideNavBarContainer{
-        height: 25rem;
+        height: 28rem;
         position: absolute;
         left: -9.7rem;
         top: 15rem;
@@ -660,7 +660,7 @@ body{
         position: absolute;
         height: 1.5rem;
         right: 0;
-        top: 1.5rem;
+        top: 4.5rem;
     }
 
     .profileContainer{
