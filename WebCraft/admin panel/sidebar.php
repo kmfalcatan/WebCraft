@@ -1,12 +1,20 @@
-<?php
-include_once "../authentication/auth.php";
-?>
-
 <div class='sideNavBarContainer'>
-    <div class='sideNavBar1'>
+                <div class='sideNavBar1'>
+                    <div class="subSideNavBar">
+                        <a class='profile' href='../admin panel/dashboard.php?id=<?php echo $userID; ?>'>
+                            Inventory
+                        </a>
+                    </div>
+            
+                    <div class="image2">
+                        <img class="image3" src="../assets/img/file-text-circle.png" alt="">
+                    </div>
+                </div>
+
+    <div class='sideNavBar'>
         <div class="subSideNavBar">
             <a class='profile' href='../admin panel/addEquip.php?id=<?php echo $userID; ?>'>
-                New Equipment
+                Dashboard
             </a>
         </div>
 

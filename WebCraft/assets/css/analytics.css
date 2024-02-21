@@ -1,0 +1,150 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    outline: red dashed 1px;
+    height: 100vh;
+    background-color: snow;
+    display: flex;
+    flex-direction: row;
+}
+
+.sideBarContainer{
+    outline: red dashed 1px;
+    width: 3.5rem;
+    position: fixed;
+    height: 100%;
+    background-color: rgb(230,173,0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.subSideBarContainer{
+    outline: red dashed 1px;
+    height: 3.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image{
+    outline: red dashed 1px;
+    height: 80%;
+    width: 80%;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: all 0.15s;
+}
+
+.image:hover{
+    background-color: rgb(136, 103, 3);
+}
+
+.image:active{
+    background-color: rgb(248, 209, 92);
+}
+
+a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subContainer{
+    outline: red dashed 1px;
+    height: 100%;
+    width: 100%;
+    margin-left: 4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.graphContainer{
+    outline: red dashed 1px;
+    height: 10rem;
+    width: 95%;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: rgb(230,173,0);
+    gap: 0.5rem;
+}
+
+.subGraphContainer{
+    outline: red dashed 1px;
+    height: 9rem;
+    width: 9rem;
+    border-radius: 0.5rem;
+    background-color: snow;
+}
+
+.graphContainer1, .graphContainer2{
+    outline: red dashed 1px;
+    width: 95%;
+    margin-top: 1rem;
+}
+
+.subGraphContainer1, .subGraphContainer2{
+    outline: red dashed 1px;
+    height: 20rem;
+    border-radius: 0.5rem;
+    background-color: rgb(230,173,0);
+    margin-bottom: 0.5rem;
+}
+
+.subGraphContainer4, .subGraphContainer3{
+    outline: red dashed 1px;
+    height: 20rem;
+    border-radius: 0.5rem;
+    background-color: rgb(230,173,0);
+    margin-top: 0.5rem;
+}
+
+/*laptop*/
+@media only screen and (min-width: 1025px){
+    .graphContainer1{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .subGraphContainer1{
+        width: 100%;
+        margin: 0;
+    }
+
+    .subGraphContainer2{
+        width: 30rem;
+        margin-left: 1rem;
+        margin-bottom: 0;
+    }
+
+    .graphContainer2{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .subGraphContainer4{
+        width: 30rem;
+    }
+
+    .subGraphContainer3{
+        width: 100%;
+        margin-left: 1rem;
+    }
+}
