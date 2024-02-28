@@ -1,18 +1,6 @@
 <?php
 include "../dbConfig/dbconnect.php";
-
-$id = isset($_GET['id']) ? $_GET['id'] : null;
-
-function getUserInfo($conn, $id) {
-    $sql = "SELECT * FROM users WHERE id = '$id'";
-    $result = $conn->query($sql);
-
-    if ($result && $result->num_rows > 0) {
-        return $result->fetch_assoc();
-    } else {
-        return null; 
-    }
-}
+include "../functions/header.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -31,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             department = '$department',
             address = '$address',
             gender = '$gender'
-            WHERE id = '$id'";
+            WHERE id = '$userID'";
 
     if ($conn->query($sql) === TRUE) {
         echo "Record updated successfully";
@@ -46,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (move_uploaded_file($_FILES['profile_img']['tmp_name'], $target_file)) {
            
-            $sql = "UPDATE users SET profile_img = '$image_name' WHERE id = '$id'";
+            $sql = "UPDATE users SET profile_img = '$image_name' WHERE id = '$userID'";
             
             if ($conn->query($sql) === TRUE) {
                 echo "Profile image updated successfully";
@@ -58,18 +46,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $userInfo = getUserInfo($conn, $id);
+    $userInfo = getUserInfo($conn, $userID);
     $role = $userInfo['role'];
 
     if ($role === 'admin') {
-        header("Location: ../admin panel/userProfile.php?id=" . $id);
+        header("Location: ../admin panel/userProfile.php?id=" . $userID);
     } else {
-        header("Location: ../user panel/userProfile.php?id=" . $id);
+        header("Location: ../user panel/userProfile.php?id=" . $userID);
     }
     
     exit();
 }
-
-$userInfo = getUserInfo($conn, $id);
 
 ?>

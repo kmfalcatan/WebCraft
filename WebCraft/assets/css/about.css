@@ -4,7 +4,7 @@
 }
 
 body{
-    background: radial-gradient(rgb(255,252,0, 0.4), rgb(231, 139, 0));
+    background: rgb(255, 255, 255);
     font-family: system-ui, -apple-system;
 }
 
@@ -22,7 +22,7 @@ body{
 
 .backContainer{
     height: 100%;
-    background-color: rgba(231, 139, 0, 0.228);
+    background-color: rgba(255, 255, 255, 0.521);
 }
 
 .subBackContainer{
@@ -67,6 +67,10 @@ body{
     flex-direction: row;
 }
 
+.logoContainer p{
+    color: rgb(2, 116, 200);
+}
+
 .subLogoContainer{
     height: 100%;
     width: 4rem;
@@ -89,10 +93,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 6rem;
+    font-size: 3.5rem;
     font-weight: bold;
     margin: auto;
     text-align: center;
+    color: rgb(0, 95, 163);
 }
 
 .MemberContainer{
@@ -108,6 +113,10 @@ body{
     margin: 2rem auto;
     font-family: Impact;
     text-align: center;
+}
+
+.systemName p{
+    color: rgb(2, 116, 200);
 }
 
 .memberPicContainer{
@@ -177,10 +186,11 @@ body{
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    background-color:#f5f3f3;
+    background-color: rgb(2, 116, 200);
     border: solid #737373 1px;
     border-radius: 0 0 0.5rem 0.5rem;
     text-align: center;
+    color: #fff;
 }
 
 @media only screen and (min-width: 986px){

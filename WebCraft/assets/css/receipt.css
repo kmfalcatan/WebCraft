@@ -4,15 +4,8 @@
 }
 
 body{
-    background: radial-gradient(rgb(255,252,0), rgb(231, 139, 0));
+    background: rgb(207, 224, 236);
 }
-
-/* .container{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
 
 #receiptModal {
     display: none;
@@ -33,7 +26,7 @@ body{
     width: 24rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    background-color: snow;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     border: solid gray 1px;
@@ -84,7 +77,7 @@ body{
     align-items: center;
     font-size: 1.2rem;
     font-weight: bold;
-    color: rgb(205, 164, 0);
+    color: rgb(2, 116, 200);
 }
 
 .subInfoContainer1{
@@ -99,14 +92,14 @@ body{
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
-    background-color: rgb(255, 241, 170);
+    background-color: rgb(207, 224, 236);
     border-radius: 0.5rem;
     padding: 0.5rem;
     margin-bottom: 1rem;
 }
 
 .text{
-    color: rgb(205, 164, 0);
+    color:rgb(2, 116, 200);
     font-size: 1.2rem;
     font-weight: bold;
 }
@@ -133,7 +126,7 @@ body{
     align-items: center;
     justify-content: space-around;
     column-gap: 9rem;
-    border-bottom: solid rgb(249, 210, 53) 3px;
+    border-bottom: solid rgb(2, 116, 200) 3px;
 }
 
 .subInfoContainer4{
@@ -176,17 +169,17 @@ body{
     border: none;
     cursor: pointer;
     font-size: 1.2rem;
-    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
+    background: rgb(2, 116, 200);
     cursor: pointer;
+    color: #fff;
 }
 
 .ModalButtons .backButton:hover{
-    background: linear-gradient(to right, rgb(180, 177, 3), rgb(153, 92, 1));
-    color: white;
+    background-color: rgba(2, 117, 200, 0.297);
 }
 
 .ModalButtons .backButton:active{
-    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
+    background-color: rgba(2, 117, 200, 0.76);
 }
 
 .ModalButtons .printButton{

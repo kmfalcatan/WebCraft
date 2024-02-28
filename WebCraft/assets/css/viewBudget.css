@@ -1,12 +1,51 @@
+#container2{
+    flex-direction: column;
+}
+
+.topContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+    width: 61%;
+    background-color: rgb(2, 116, 200);
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.topContainer h2{
+    margin-right: auto;
+    color: #fff;
+}
+
+.topContainer img{
+    width: 4rem;
+    height: 4rem;
+    margin-left: 2rem;
+    filter: invert(100%);
+}
+
+#subContainer{
+    width: 60%;
+    border-radius: 0 0 0.5rem 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.subImageContainer1 img{
+    background-color: #f7f7ff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
 .budget1{
     height: 7rem;
     width: 100%;
-    background-color: snow;
+    background-color: #f7f7ff;
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
     font-size: 1.2rem;
     justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .equip-name{

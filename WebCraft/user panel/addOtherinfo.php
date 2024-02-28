@@ -2,7 +2,6 @@
 include_once "../functions/saveOtherinfo.php";
 
 
-session_start();
 $equipment_ID = $_SESSION['equipment_ID'] ?? null;
 
 if (!$equipment_ID) {
@@ -78,8 +77,8 @@ if (!$equipment_ID) {
 
         <div class="buttonContainer">
             <button class="button" name="submit_form2" >Add to inventory</button>
-            <a href="../admin panel/addEquip.html?id=<?php echo $userID; ?>">
-                <button class="button">Back</button>
+            <a href="../user panel/addEquip.php?id=<?php echo $userID; ?>">
+                <button type="button" class="button">Back</button>
             </a>
         </div>
     </div>

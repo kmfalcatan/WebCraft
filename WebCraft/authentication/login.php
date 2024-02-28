@@ -17,7 +17,7 @@ $message = "";
 </head>
 <body id="body">
     <div class="container">
-        <div class="subContainer">
+        <div class="subContainer" style="width: 90%;">
             <div class="imageContainer" id="image">
                 <img class="image" src="../assets/img/R.png" alt="">
                 <div class="backgroundContainer">
@@ -101,6 +101,6 @@ $message = "";
     </div>
 
     <script src="../assets/js/login.js"></script>
-    <script src="../assets/js/theme/login-theme.js"></script>
+    <!-- <script src="../assets/js/theme/login-theme.js"></script> -->
 </body>
 </html>

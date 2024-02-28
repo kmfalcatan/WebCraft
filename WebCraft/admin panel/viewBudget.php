@@ -19,7 +19,7 @@ include_once "../functions/budget.php";
     <link rel="stylesheet" href="../assets/css/viewAppointment.css">
     
 </head>
-<body id="body">
+<body>
     <div class="headerContainer">
         <div class="subHeaderContainer">
             <div class="imageContainer">
@@ -28,7 +28,7 @@ include_once "../functions/budget.php";
                 </div>
 
                 <div class="nameContainer">
-                    <p class="companyName">MedEquip Tracker</p>
+                    <img src="../assets/img/system-name.png" alt="">
                 </div>
             </div>
 
@@ -56,12 +56,16 @@ include_once "../functions/budget.php";
             </div>
         </div>
 
-    <div class="container2">
-        <div class="subContainer">
+    <div class="container2" id="container2"> 
+        <div class="topContainer">
+            <img class="top-img" src="../assets/img/th__1_-removebg-preview.png" alt="" >
+            <h2>BUDGET PROPOSED</h2>
+        </div>
+        <div class="subContainer" id="subContainer">
             <div class="equipInfoContainer">
                 <div class="imageContainer1">
                     <div class="subImageContainer1">
-                    <img class="image3" src="../uploads/<?php echo $row['equip_img']; ?>" alt="Equipment Image">
+                        <img class="image3" src="../uploads/<?php echo $row['equip_img']; ?>" alt="Equipment Image">
                     </div>
                 </div>
 
@@ -127,8 +131,6 @@ include_once "../functions/budget.php";
         <?php include('receipt.php'); ?>
 
     </div>
-    
-    <script src="../assets/js/theme/dashboard-theme.js"></script>
    
     <script src="../assets/js/receipt.js"></script>
 

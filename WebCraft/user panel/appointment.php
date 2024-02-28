@@ -26,7 +26,7 @@ $result = mysqli_query($conn, $sql);
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
@@ -76,13 +76,18 @@ $result = mysqli_query($conn, $sql);
                     <div class="filter" onclick="changeColor(this)">
                         <p class="year">2022</p>
                     </div>
+
+                    <div class="med-icon">
+                        <h1>+</h1>
+                    </div>
                 </div>
            </div>
 
-           <div class="tableContainer1">
+           <div class="tableContainer">
                 <table>
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>EQUIPMENT IMAGE</th>
                             <th>EQUIPMENT NAME</th>
                             <th>UNIT ID</th>
@@ -93,19 +98,22 @@ $result = mysqli_query($conn, $sql);
                     </thead>
 
                     <tbody>
-                        <?php   
+                        <?php
+                        $count = 1; 
                         while ($row = mysqli_fetch_assoc($result)) { 
                             echo "<tr>";
+                            echo "<td>{$count}</td>";
                             echo "<td><img src='../uploads/{$row['equip_img']}' alt='Equipment Image' width='100' height='100'></td>";
                             echo "<td>{$row['article']}</td>";
                             echo "<td>{$row['unit_ID']}</td>";
                             echo "<td>{$row['date_request']}</td>";
                             echo "<td>{$row['status']}</td>";
                             echo "<td class='actionContainer'>";
-                            echo "<a href='../user panel/viewAppointment.php?request_ID={$row['request_ID']}&id={$userID}'><button class='action'>View</button></a>";
-                            echo "<button class='action'>Delete</button>";
+                            echo "<a href='../user panel/viewAppointment.php?request_ID={$row['request_ID']}&id={$userID}'><img src='../assets/img/view.png' alt='View' class='action-img' style='width: 2.5rem; height: 1.rem;</a>";
+                            echo "<button class='action'><img src='../assets/img/trash.png' alt='View' class='action-img' style='width: 1.7rem; height: 1.7rem;'></button>";
                             echo "</td>";
                             echo "</tr>";
+                            $count++; 
                         }
                         ?>
                     </tbody>

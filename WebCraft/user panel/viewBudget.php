@@ -28,7 +28,7 @@ include_once "../functions/budget.php";
                 </div>
 
                 <div class="nameContainer">
-                    <p class="companyName">MedEquip Tracker</p>
+                    <img src="../assets/img/system-name.png" alt="">
                 </div>
             </div>
 
@@ -57,7 +57,11 @@ include_once "../functions/budget.php";
         </div>
 
     <div class="container2">
-        <div class="subContainer">
+        <div class="topContainer">
+            <img class="top-img" src="../assets/img/th__1_-removebg-preview.png" alt="" >
+            <h2>BUDGET PROPOSED</h2>
+        </div>
+        <div class="subContainer" id="subContainer">
             <div class="equipInfoContainer">
                 <div class="imageContainer1">
                     <div class="subImageContainer1">

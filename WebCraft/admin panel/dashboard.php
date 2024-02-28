@@ -7,6 +7,7 @@ $result = $conn->query($sql);
 $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
 
     <link rel="stylesheet" href="../assets/css/index.css">
 </head>
-<body id="body">
+<body>
     <div class="container1">
         <div class="headerContainer">
             <div class="subHeaderContainer">
@@ -27,7 +28,7 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
@@ -48,10 +49,9 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                             <div class='line'></div>
                             <div class='line'></div>
                         </div>
-                        <p class="adminName"><?php echo $userInfo['username'] ?? ''; ?></p>
+                        <p class="userName"><?php echo $userInfo['username'] ?? ''; ?></p>
                     </div>
                 </div>
-
             </div>
             <?php include('sidebar.php'); ?>
         </div>
@@ -82,6 +82,10 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                         <div class="filter" onclick="filterByYear(2022)">
                             <p class="year">2022</p>
                         </div>
+
+                        <div class="med-icon">
+                            <h1>+</h1>
+                        </div>
                 </div>
            </div>
 
@@ -89,42 +93,23 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                 <table>
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>ARTICLE</th>
-                            <th>DESCRIPTION</th>
+                            <!-- <th>DESCRIPTION</th>
                             <th>DEPLOYMENT</th>
-                            <th>USER</th>
+                            <th>USER</th> -->
                             <th>PROPERTY NUMBER</th>
                             <th>ACCOUNT CODE</th>
                             <th>UNITS</th>
                             <th>UNIT VALUE</th>
                             <th>TOTAL VALUE</th>
                             <th>REMARKS</th>
-                            <th>ACTION</th>
+                            <th>OPTIONS</th>
                         </tr>
                     </thead>
 
                     <tbody id="tblBody">
-                        <?php
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<tr data-equipment-id='{$row['equipment_ID']}'>";
-                                echo "<td>{$row['article']}</td>";
-                                echo "<td>{$row['description']}</td>";
-                                echo "<td>{$row['deployment']}</td>";
-                                echo "<td>{$row['user']}</td>";
-                                echo "<td>{$row['property_number']}</td>";
-                                echo "<td>{$row['account_code']}</td>";
-                                echo "<td>{$row['units']}</td>";
-                                echo "<td>{$row['unit_value']}</td>";
-                                echo "<td>{$row['total_value']}</td>";
-                                echo "<td>{$row['remarks']}</td>";
-                                echo "<td class='actionContainer'>";
-                                echo "<a href='../admin panel/viewEquip.php?equipment_ID={$row['equipment_ID']}&id={$userID}'><button class='action'>View</button></a>";
-                                echo "<button id='deleteBtn{$row['equipment_ID']}' class='action' onclick='removeEquipmentRow({$row['equipment_ID']})'>Delete</button>";
-
-                                echo "</td>";
-                                echo "</tr>";
-                            }
-                        ?>
+                      
                     </tbody>
                 </table>
            </div>

@@ -1,3 +1,19 @@
+body{
+    background-color: #fff;
+}
+
+.nameContainer{
+    margin-left: 0.3rem;
+}
+
+.nameContainer img{
+    width: 14rem;
+    height: 2.5rem;
+}
+
+.subHeaderContainer{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
 .container{
     height: 17rem;
     width: 97%;
@@ -8,7 +24,7 @@
 
 .subContainer{
     height: 12rem;
-    background-color: rgb(231, 139, 0);
+    background-color: rgb(2, 116, 200);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,12 +45,13 @@
 
 .adminContainer{
     height: 5rem;
-    background-color: rgb(218, 153, 55);
+    background-color: rgba(2, 117, 200, 0.566);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #fff;
     border-radius: 0 0 0.5rem 0.5rem ;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .newEquipContainer{
@@ -46,12 +63,13 @@
 
 .subNewEquipContainer{
     height: 5rem;
-    background-color: rgb(218, 153, 55);
+    background-color: rgba(2, 117, 200, 0.151);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #000;
     border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .imageContainer1{
@@ -105,8 +123,8 @@
     align-items: center;
     justify-content: center;
     border-radius: 5rem;
-    color: white;
-    background-color: rgb(231, 139, 0);
+    color: #fff;
+    background-color: rgb(2, 116, 200);
     margin-right: 0.5rem;
 }
 
@@ -116,9 +134,9 @@
     display: flex;
     align-items: center;
     font-size: 1.2rem;
-    background-color: rgb(231, 139, 0);
+    background-color: rgb(2, 116, 200);
     border-radius: 0.5rem;
-    color: white;
+    color: #fff;
     padding-left: 0.5rem;
 }
 

@@ -1,31 +1,72 @@
+body{
+    overflow: hidden;
+}
+
 .container2{
-    outline: red dashed 1px;
-    height: 100vh;
+    /* outline: red dashed 1px; */
+    height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 1rem;
+}
+
+.topContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+    width: 90%;
+    background-color: rgb(2, 116, 200);
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin-top: 2rem;
+}
+
+.topContainer h2{
+    margin-right: auto;
+    color: #fff;
+}
+
+.topContainer img{
+    width: 4rem;
+    height: 4rem;
+    margin-left: 2rem;
+    filter: invert(100%);
+}
+
+.topContainer .backbtn{
+    background-color: transparent;
+    border: none;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+.backbtn img {
+    filter: invert(100%);
 }
 
 .subContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 45rem;
     width: 90%;
     border-radius: 0.5rem;
-    overflow: auto;
-    background-color: rgba(255, 250, 250, 0.582);
+    /* overflow: auto; */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .userInfoContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 10rem;
     border-bottom: solid gray 1px;
     display: flex;
     flex-direction: row;
+    margin-left: 5rem;
 }
 
 .imageContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 100%;
     width: 10rem;
     display: flex;
@@ -34,7 +75,7 @@
 }
 
 .subImageContainer3{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 9rem;
     width: 9rem;
     border-radius: 5rem;
@@ -52,24 +93,30 @@
 }
 
 .inforContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 100%;
     width: 57%;
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
+    row-gap: 0.001rem;
 }
 
 .subInfoContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 3rem;
     display: flex;
     align-items: center;
     font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.subInfoContainer #name{
+    text-transform: uppercase;
+    font-size: 1.5rem;
 }
 
 .tableContainer1{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 100%;
     margin-top: 1rem;
     display: flex;
@@ -77,40 +124,14 @@
 }
 
 .subTableContainer{
-    outline: red dashed 1px;
+    /* outline: red dashed 1px; */
     height: 48rem;
     width: 90%;
-    background-color: snow;
+    background-color: #f7f7f7;
     overflow: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.buttonContainer{
-    outline: red dashed 1px;
-    height: 4rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-button{
-    height: 3rem;
-    width: 10rem;
-    border-radius: 0.5rem;
-    border: none;
-    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
-    transition: all 0.15s;
-    cursor: pointer;
-}
-
-button:hover{
-    background: linear-gradient(to right, rgb(180, 177, 3), rgb(153, 92, 1));
-    color: white;
-}
-
-button:active{
-    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
-}
 
 /*tablet*/
 @media only screen and (min-width: 601px) and (max-width: 1024px) {

@@ -1,32 +1,5 @@
-.buttonContainer{
-    height: 100%;
-    width: 12rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 0.5rem;
-    margin-right: 0.5rem;
-}
-
-.button1{
-    height: 2rem;
-    width: 5rem;
-    border-radius: 1rem;
-    border: none;
-    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
-    color: rgb(41,41,41);
-    cursor: pointer;
-    transition: all 0.15s;
-    font-weight: bold;
-}
-
-.button1:hover{
-    background: linear-gradient(to right, rgb(180, 177, 3), rgb(153, 92, 1));
-    color: white;
-}
-
-.button1:active{
-    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
+body{
+    background-color: rgb(2, 116, 200);
 }
 
 .container2{
@@ -34,7 +7,60 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    margin-top: 1.5rem;
 }
+
+.topContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+    width: 80%;
+    background-color: #fff;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+img.top-img{
+    width: 2rem;
+    height: 2rem;
+}
+
+.backbtn{
+    margin-left: 1rem;
+    cursor: pointer;
+
+}
+
+.backbtn img{
+    width: 1.5rem;
+    height: 1.5rem;
+    opacity: 0.7;
+}
+
+.buttonContainer{
+    height: 100%;
+    width: 12rem;
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    margin-right: 4rem;
+    margin-left: auto;
+}
+
+.button1{
+    height: 3rem;
+    width: 7rem;
+    border-radius: 0.5rem;
+    border: none;
+    background:  rgb(2, 116, 200);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 1.2rem;
+    font-weight: 500;  
+}
+
 
 .subContainer2{
     height: 35rem;
@@ -43,11 +69,12 @@
     border-radius: 0.5rem;
     display: flex;
     flex-direction: row;
+    border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .equipContainer{
     height: 34rem;
-    width: 15rem;
+    width: 20rem;
     padding: 0.5rem;
 }
 
@@ -89,17 +116,18 @@
     align-items: center;
     cursor: pointer;
     transition: all 0.15s;
-    background-color: rgb(223, 223, 223);
+    background-color: #f7f7f7;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .equipment:hover{
-    background-color: rgb(179, 178, 178);
-    color: white;
+    background-color: rgba(2, 117, 200, 0.297);
+    color: #000;
 }
 
 .equipment:active{
-    background-color: gray;
+    background-color: rgba(2, 117, 200, 0.76);
 }
 
 .detailsContainer{
@@ -126,7 +154,7 @@
     height: 10rem;
     width: 10rem;
     margin-top: 0.5rem;
-    background-color: gray;
+    background-color: #f7f7f7;
     border-radius: 0.5rem;
 }
 
@@ -140,23 +168,37 @@
     height: 3rem;
     width: 90%;
     margin-top: 0.5rem;
-    background-color: rgb(223, 223, 223);
+    background-color: #f7f7f7;
     border-radius: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#equipmentName{
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .descriptionContainer{
     height: 7rem;
     width: 90%;
     margin-top: 0.5rem;
-    background-color: rgb(223, 223, 223);
+    background-color: #f7f7f7;
     border-radius: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#equipmentDescription{
+    width: 85%;
+    text-align: justify;
+    font-size: 1.2rem;
 }
 
 .howToUseContainer{
@@ -165,16 +207,30 @@
     justify-content: center;
 }
 
+.howToUseContainer #howToUse{
+    width: 85%;
+    height: 20rem;
+    text-align: justify;
+    font-size: 1.2rem;
+}
+
 .subHowToUseContainer{
     height: 14rem;
     width: 90%;
     margin-top: 0.5rem;
-    background-color: rgb(223, 223, 223);
+    background-color: #f7f7f7;
     border-radius: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.subHowToUseContainer label{
+    margin-bottom: 15rem;
+    font-size: 2rem;
+    font-weight: 600;
 }
 
 .subEquipNameContainer{
@@ -191,6 +247,10 @@
         justify-content: center;
         align-items: center;
     }
+
+    .topContainer{
+        width: 90%;
+    }
 }
 
 /*laptop*/
@@ -198,6 +258,10 @@
     .subContainer2{
         width: 90%;
         height: 40rem;
+    }
+
+    .topContainer{
+        width: 90%;
     }
 
     .imageContainer1{

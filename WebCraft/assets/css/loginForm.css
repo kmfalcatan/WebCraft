@@ -4,7 +4,7 @@
 }
 
 body{
-background: radial-gradient(rgb(255,252,0, 0.7), rgb(231, 139, 0));
+background:  rgb(2, 116, 200);
 font-family: system-ui, -apple-system;
 }
 
@@ -20,7 +20,7 @@ align-items: center ;
 /* outline: red dashed 1px; */
 height: 85%;
 width: 90%;
-background-color: snow;
+background-color: #fff;
 border: solid black 1px;
 position: relative;
 }
@@ -73,9 +73,10 @@ top: 0;
 /* outline: red dashed 1px; */
 height: 23rem;
 width: 90%;
-border-radius: 1rem;
-background-color: rgb(238, 238, 240);
-padding: 10px 10px;
+border-radius: 0.5rem;
+background-color: #fff;
+padding: 12px 12px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .logIntextContainer{
@@ -90,7 +91,7 @@ align-items: center;
 margin-left: 1rem;
 margin-bottom: 1.5rem;
 font-size: 1.5rem;
-color: gray;
+color: #000;
 }
 
 .alert-danger{
@@ -136,7 +137,7 @@ align-items: center;
     width: 90%;
     border: none;
     border-radius: 0.2rem;
-    background-color: rgb(225, 225, 225);
+    background-color: #f2f2f2;
     padding-left: 0.5rem;
     font-size: 1rem;
 }
@@ -172,7 +173,7 @@ height: 2rem;
 width: 17rem;
 border-radius: 0.5rem;
 border: none;
-background-color: black;
+background-color: rgb(2, 116, 200);
 color: white;
 font-size: 1rem;
 cursor: pointer;
@@ -180,11 +181,11 @@ transition: all 0.15s;
 }
 
 .signInButton:hover{
-background-color: rgb(78, 78, 78);
+    background-color: rgba(2, 117, 200, 0.297);
 }
 
 .signInButton:active{
-background-color: rgb(128, 128, 128);
+    background-color: rgba(2, 117, 200, 0.76)
 }
 
 .forgotContainer{
@@ -209,55 +210,6 @@ color: rgb(21, 3, 189);
 .forgot:active{
 caret-color: rgb(78, 78, 78);
 }
-
-/* .signUpContainer{
-outline: red dashed 1px;
-height: 7rem;
-width: 100%;
-}
-
-.subSignUpContainer{
-outline: red dashed 1px;
-height: 3rem;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-
-.signUpButtonContainer{
-outline: red dashed 1px;
-height: 4rem;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-
-.signUpButton{
-height: 2.5rem;
-width: 10rem;
-background-color: transparent;
-border: solid gray 1px;
-border-radius: 5rem;
-font-size: 1rem;
-transition: all 0.15s;
-}
-
-.signUpButton a{
-    text-decoration: none;
-    color: #000;
-}
-
-.signUpButton a:hover{
-    color: #fff;
-}
-.signUpButton:hover{
-background-color: black;
-color: white;
-}
-
-.signUpButton:active{
-background-color: gray;
-} */
 
 .logInFormContainer1{
 height: 100%;
@@ -313,7 +265,7 @@ display: none;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background: radial-gradient(rgb(255,252,0, 0.7), rgb(231, 139, 0));
+    background-color: rgba(2, 117, 200, 0.475);
 }
 
 .image{
@@ -415,7 +367,7 @@ display: none;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background: radial-gradient(rgb(255,252,0, 0.7), rgb(231, 139, 0));
+    background-color: rgba(2, 117, 200, 0.475);
 }
 
 .image{

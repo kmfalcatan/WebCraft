@@ -11,6 +11,55 @@ if (!isset($_GET['request_ID']) || !($row = $conn->query("SELECT * FROM appointm
 $equipment_name = $row['article'];
 $date_of_appointment = $row['date_request'];
 $details_of_equipment = $row['description'];
+
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../php-mailer/src/Exception.php';
+require '../php-mailer/src/PHPMailer.php';
+require '../php-mailer/src/SMTP.php';
+
+if (isset($_POST['submit'])) {
+    
+    $maintenance_email = $_POST['maintenance_email']; 
+
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; 
+        $mail->SMTPAuth = true;
+        $mail->Username = 'pawtingkasan20@gmail.com'; 
+        $mail->Password = 'ixgx velx feaw sgit';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+        $mail->setFrom('pawtingkasan20@gmail.com'); 
+        $mail->addAddress($maintenance_email);
+
+        $mail->isHTML(true);
+        $mail->Subject = "Appointment Details";
+        $mail->Body = "
+            <h2>Appointment Details</h2>
+            <p>Equipment Name: $equipment_name</p>
+            <p>Appointment Date: $date_of_appointment</p>
+            <p>Reason: $details_of_equipment</p>
+            <hr>
+            <p>Admin Name: {$_POST['admin_name']}</p>
+            <p>Budget: {$_POST['budget']}</p>
+        ";
+
+        $equip_img = $row['equip_img'];
+        if (!empty($equip_img)) {
+            $mail->addAttachment("../uploads/$equip_img");
+        }
+
+        $mail->send();
+        echo "Email sent successfully.";
+    } catch (Exception $e) {
+        echo "Failed to send email. Error: {$e->getMessage()}";
+    }    
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +83,7 @@ $details_of_equipment = $row['description'];
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
@@ -62,7 +111,12 @@ $details_of_equipment = $row['description'];
         </div>
 
         <form class="container2" method="POST" enctype="multipart/form-data" action="../functions/saveAppointment.php?request_ID=<?php echo $_GET['request_ID']; ?>">
-            <div class="subContainer">
+            <div class="topContainer">
+                <img class="top-img" src="../assets/img/calendar.png" alt="" >
+                <h2>SEND APPOINTMENT</h2>
+            </div>
+        
+            <div class="subContainer" id="subContainer">
                 <div class="equipInfoContainer">
                     <div class="imageContainer1">
                         <!-- img di pa nasasave sa database table budget -->
@@ -113,7 +167,7 @@ $details_of_equipment = $row['description'];
                         <div class="subBudgetContainer">
                             <input type="text" class="budget" name="budget" placeholder="Budget:">
                             <input type="text" class="budget" name="admin_name" placeholder="Admin Name:">
-                            <input type="email" class="budget" name="admin_email" placeholder="Admin email:">
+                            <!-- <input type="email" class="budget" name="admin_email" placeholder="Admin email:"> -->
                         </div>
                     </div>
                 </div>

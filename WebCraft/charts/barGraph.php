@@ -1,7 +1,7 @@
 <?php
 include_once "../dbConfig/dbconnect.php";
 
-$query = "SELECT article, SUM(units) AS total_units FROM equipment GROUP BY article";
+$query = "SELECT article, SUM(units) AS units FROM equipment GROUP BY article";
 $result = mysqli_query($conn, $query);
 
 $articleNames = [];
@@ -10,19 +10,21 @@ $colors = [];
 
 $totalUnits = 0;
 while ($row = mysqli_fetch_assoc($result)) {
-    $totalUnits += $row['total_units'];
+    $totalUnits += $row['units'];
 }
 
 mysqli_data_seek($result, 0); 
 while ($row = mysqli_fetch_assoc($result)) {
     $articleNames[] = $row['article'];
-    $unitPercentages[] = ($row['total_units'] / $totalUnits) * 100;
+    $unitPercentages[] = ($row['units'] / $totalUnits) * 100;
 
-    $colors[] = 'rgba(' . rand(0, 255) . ', ' . rand(0, 255) . ', ' . rand(0, 255) . ', 0.5)';
+    $shade = rand(50, 200);
+    $grayColor = "rgb($shade, $shade, $shade)";
+    $colors[] = $grayColor;
 }
 
 $borderColors = array_map(function($color) {
-    list($r, $g, $b) = sscanf($color, "rgba(%d, %d, %d, %f)");
+    list($r, $g, $b) = sscanf($color, "rgb(%d, %d, %d)");
     $r = min(255, $r + 30);
     $g = min(255, $g + 30);
     $b = min(255, $b + 30);
@@ -37,7 +39,6 @@ $borderColors = array_map(function($color) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipment Summary</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .container {
             width: 800px;
@@ -47,7 +48,7 @@ $borderColors = array_map(function($color) {
             border: 1px solid #ccc;
         }
 
-        #equipmentChart {
+        #barGraph {
             position: absolute;
             left: 50%;
             top: 50%;
@@ -56,9 +57,7 @@ $borderColors = array_map(function($color) {
     </style>
 </head>
 <body>
-    <div class="container" id="container">
-        <canvas id="equipmentChart" width="400" height="400"></canvas>
-    </div>
+        <canvas id="barGraph" width="800" height="300"></canvas>
 
     <script>
         const equipmentData = {
@@ -72,12 +71,12 @@ $borderColors = array_map(function($color) {
             }]
         };
 
-        const ctx = document.getElementById('equipmentChart').getContext('2d');
-        const equipmentChart = new Chart(ctx, {
+        const ctx = document.getElementById('barGraph').getContext('2d');
+        const barGraph = new Chart(ctx, {
             type: 'bar',
             data: equipmentData,
             options: {
-                responsive: false, 
+                responsive: true, 
                 maintainAspectRatio: false, 
                 scales: {
                     y: {

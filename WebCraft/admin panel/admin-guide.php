@@ -24,7 +24,7 @@ include_once "../authentication/auth.php";
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 

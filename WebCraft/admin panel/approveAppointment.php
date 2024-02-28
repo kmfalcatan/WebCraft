@@ -26,7 +26,7 @@ include_once "../functions/approveRequest.php";
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
@@ -54,7 +54,11 @@ include_once "../functions/approveRequest.php";
         </div>
 
         <form class="container2" method="POST" enctype="multipart/form-data" >
-            <div class="subContainer">
+            <div class="topContainer">
+                <img class="top-img" src="../assets/img/calendar.png" alt="" >
+                <h2>APPROVED APPOINTMENT</h2>
+            </div>
+            <div class="subContainer" id="subContainer">
                 <div class="equipInfoContainer">
                     <div class="imageContainer1">
                         <!-- img di pa nasasave sa database table budget -->

@@ -1,8 +1,10 @@
 <?php
-$id = isset($_GET['id']) ? $_GET['id'] : null;
+include_once "../dbConfig/dbconnect.php";
 
-function getUserInfo($conn, $id) {
-    $sql = "SELECT * FROM users WHERE id = '$id'";
+$userID = isset($_GET['id']) ? $_GET['id'] : null;
+
+function getUserInfo($conn, $userID) {
+    $sql = "SELECT * FROM users WHERE id = '$userID'";
     $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
@@ -12,13 +14,5 @@ function getUserInfo($conn, $id) {
     }
 }
 
-$userInfo = getUserInfo($conn, $id);
-?>
-
-<?php
-    // if (!empty($userInfo['profile_img'])) {
-    //     echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
-    // } else {
-    //     echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
-    // }
+$userInfo = getUserInfo($conn, $userID);
 ?>

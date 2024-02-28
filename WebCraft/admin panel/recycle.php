@@ -79,6 +79,10 @@ include_once "../functions/header.php";
                     <div class="filter" onclick="filterByYear(2022)">
                         <p class="year">2022</p>
                     </div>
+
+                    <div class="med-icon">
+                        <h1>+</h1>
+                    </div>
                 </div>
             </div>
 
@@ -87,16 +91,13 @@ include_once "../functions/header.php";
                     <thead>
                         <tr>
                             <th>ARTICLE</th>
-                            <th>DESCRIPTION</th>
-                            <th>DEPLOYMENT</th>
-                            <th>USER</th>
                             <th>PROPERTY NUMBER</th>
                             <th>ACCOUNT CODE</th>
                             <th>UNITS</th>
                             <th>UNIT VALUE</th>
                             <th>TOTAL VALUE</th>
                             <th>REMARKS</th>
-                            <th>ACTION</th>
+                            <th>OPTIONS</th>
                         </tr>
                     </thead>
 
@@ -109,12 +110,9 @@ include_once "../functions/header.php";
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                             <td class='actionContainer'>
-                            <a href=''><button class='action'>Restore</button></a>
-                            <button class='action'>Delete</button>
+                            <a href=''><img src='../assets/img/restore.png' alt='View' class='action-img' style='width: 1.5rem; height: 0.5.rem;'></a>
+                            <img src='../assets/img/trash.png' alt='View' class='action-img' style='width: 1.7rem; height: 1.7rem;'>
                             </td>
                         </tr>
                     </tbody>

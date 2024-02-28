@@ -31,7 +31,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
@@ -65,6 +65,10 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     <form action="../functions/saveEquip.php" enctype="multipart/form-data" method="post"  id="Form1">
         <div class="container3">
+            <div class="topContainer">
+                <img class="top-img" src="../assets/img/stet-icon.png" alt="" >
+                <h2>ADD EQUIPMENT</h2>
+            </div>
             <div class="subContainer2">
                 <div class="imageContainer1">
                     <div class="subImageContainer1">
@@ -76,7 +80,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         
                         <div class="uploadButtonContainer">
                             <label for="image" class="uploadButton">
-                                <input id="image" name="image" type="file" style="display: none;">
+                                <input id="image" name="image" type="file" style="display: none;" required>
                                 <span class="plusIcon">+</span>
                             </label>
                         </div>
@@ -87,7 +91,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                         <?php
                             $fullname = $userInfo['id'] ?? '';
                             if (isset($users[$fullname])) {
-                                echo '<input class="inputInfo" name="fullname" type="text" placeholder="Full Name" value="' . $users[$fullname] . '" readonly>';
+                                echo '<input class="inputInfo" name="user" type="text" placeholder="Full Name" value="' . $users[$fullname] . '" readonly>';
                             }
                         ?>
                         </div>

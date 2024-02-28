@@ -2,10 +2,8 @@
 include_once "../dbConfig/dbconnect.php";
 include_once "../functions/header.php";
 
-// Get the full name to match against the 'user' column
 $fullName = isset($_GET['fullname']) ? $_GET['fullname'] : null;
 
-// Prepare the SQL query
 $sql = "SELECT * FROM equipment";
 if ($fullName) {
   $sql .= " WHERE user LIKE '%$fullName%'";
@@ -35,7 +33,7 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
@@ -75,20 +73,25 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                     </div>
 
                     <div class="filter" onclick="filterByYear('all')">
-                            <p class="year">All</p>
-                        </div>
+                        <p class="year">All</p>
+                    </div>
 
-                        <div class="filter" onclick="filterByYear(2024)">
-                            <p class="year">2024</p>
-                        </div>
+                    <div class="filter" onclick="filterByYear(2024)">
+                        <p class="year">2024</p>
+                    </div>
 
-                        <div class="filter" onclick="filterByYear(2023)">
-                            <p class="year">2023</p>
-                        </div>
+                    <div class="filter" onclick="filterByYear(2023)">
+                        <p class="year">2023</p>
+                    </div>
 
-                        <div class="filter" onclick="filterByYear(2022)">
-                            <p class="year">2022</p>
-                        </div>
+                    <div class="filter" onclick="filterByYear(2022)">
+                        <p class="year">2022</p>
+                    </div>
+
+                    <div class="med-icon">
+                        <h1>+</h1>
+                    </div>
+
                 </div>
            </div>
 
@@ -96,46 +99,28 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                 <table>
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>ARTICLE</th>
-                            <th>DESCRIPTION</th>
+                            <!-- <th>DESCRIPTION</th>
                             <th>DEPLOYMENT</th>
-                            <th>USER</th>
+                            <th>USER</th> -->
                             <th>PROPERTY NUMBER</th>
                             <th>ACCOUNT CODE</th>
                             <th>UNITS</th>
                             <th>UNIT VALUE</th>
                             <th>TOTAL VALUE</th>
                             <th>REMARKS</th>
-                            <th>ACTION</th>
+                            <th colspan="4">OPTION</th>
                         </tr>
                     </thead>
 
-                    <tbody id="tableBody">
-                        <?php
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<tr data-equipment-id='{$row['equipment_ID']}'>";
-                                echo "<td>{$row['article']}</td>";
-                                echo "<td>{$row['description']}</td>";
-                                echo "<td>{$row['deployment']}</td>";
-                                echo "<td>{$row['user']}</td>";
-                                echo "<td>{$row['property_number']}</td>";
-                                echo "<td>{$row['account_code']}</td>";
-                                echo "<td>{$row['units']}</td>";
-                                echo "<td>{$row['unit_value']}</td>";
-                                echo "<td>{$row['total_value']}</td>";
-                                echo "<td>{$row['remarks']}</td>";
-                                echo "<td class='actionContainer'>";
-                                echo "<a href='../user panel/viewEquip.php?equipment_ID={$row['equipment_ID']}'><button class='action'>View</button></a>";
-                                echo "<button class='action'>Delete</button>";
-                                echo "</td>";
-                                echo "</tr>";
-                            }
-                        ?>
+                    <tbody id="tblBody">
                     </tbody>
                 </table>
            </div>
         </div>
     </div>
+    
 
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/search.js"></script>

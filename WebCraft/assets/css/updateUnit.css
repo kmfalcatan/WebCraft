@@ -1,0 +1,60 @@
+.subContainer3 {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100%;
+}
+
+.container3 {
+    width: 80%; 
+}
+
+.subContainer2 {
+    justify-content: center;
+    align-items: center; 
+}
+
+.imageContainer1 {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-left: 16rem;
+}
+
+.subImageContainer1 {
+    margin: auto; 
+    text-align: center; 
+}
+
+
+.subOtherInfoContainer{
+    flex-direction: column;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 5rem;
+}
+
+.subInputInfoContainer2{
+    padding-bottom: 1rem;
+}
+
+.subInputInfoContainer2 textarea{
+    font-size: 1.2rem;
+}
+
+.buttonsContainer{
+    margin-top: 6rem;
+}
+
+@media only screen and (max-width: 600px){
+    .imageContainer1{
+        margin-left: -2rem;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px){
+    .imageContainer1{
+        margin-left: 5.5rem; 
+    }
+}

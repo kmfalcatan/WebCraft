@@ -4,7 +4,8 @@
 }
 
 body{
-    background: radial-gradient(rgb(255,252,0), rgb(231, 139, 0));
+    background: rgb(207, 224, 236);
+    font-family: system-ui, -apple-system;
 }
 
 .container{
@@ -178,17 +179,17 @@ body{
     height: 3rem;
     border-radius: 0.5rem;
     border: solid gray 1px;
-    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
+    background: rgb(2, 116, 200);
     cursor: pointer;
+    color: #fff;
 }
 
 .button:hover{
-    background: linear-gradient(to right, rgb(180, 177, 3), rgb(153, 92, 1));
-    color: white;
+    background-color: rgba(2, 117, 200, 0.297);
 }
 
 .button:active{
-    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
+    background-color: rgba(2, 117, 200, 0.76);
 }
 
 /*tablet*/

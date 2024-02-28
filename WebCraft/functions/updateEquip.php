@@ -1,5 +1,8 @@
 <?php
 include_once "../dbConfig/dbconnect.php";
+include_once "../functions/header.php";
+include_once "../authentication/auth.php";
+
 
 $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
 
@@ -34,11 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             remarks = '$remarks',
             description = '$description'
             WHERE equipment_ID = '$equipment_ID'";
-
+    
     if ($conn->query($sql) === TRUE) {
-        echo "Record updated successfully";
-    } else {
-        echo "Error updating record: " . $conn->error;
+        $updateUnitsQuery = "UPDATE units SET equipment_name = '$article' WHERE equipment_ID = '$equipment_ID'";
+        if ($conn->query($updateUnitsQuery) === TRUE) {
+            echo "Record updated successfully";
+        } else {
+            echo "Error updating units table: " . $conn->error;
+        }
     }
 
     if ($unitsDiff != 0) {
@@ -62,9 +68,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    header("Location: ../admin panel/EquipOtherInfo.php?equipment_ID=" . $equipment_ID);
-    exit();
-}
+
+            $userInfo = getUserInfo($conn, $userID);
+            $role = $userInfo['role'];
+
+            if ($role === 'admin') {
+                header("Location: ../admin panel/EquipOtherInfo.php?equipment_ID={$equipment_ID}&id={$userID}");
+            } else {
+                header("Location: ../user panel/EquipOtherInfo.php?equipment_ID={$equipment_ID}&id={$userID}");
+            }
+            exit();
+        }
 
 $sql = "SELECT * FROM equipment WHERE equipment_ID = '$equipment_ID'";
 $result = $conn->query($sql);
