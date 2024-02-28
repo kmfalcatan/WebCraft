@@ -1,6 +1,14 @@
 <?php
  include_once "../authentication/auth.php";
 ?>
+<style>
+    .sideNavBarContainer{
+        height: 25rem;
+    }
+    .image5{
+        top: 1.5rem;
+    }
+</style>
     <div class='sideNavBarContainer'>
         <div class='sideNavBar1'>
             <div class="subSideNavBar">

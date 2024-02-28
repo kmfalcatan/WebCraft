@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
@@ -98,8 +98,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <form class="container2" method="POST" enctype="multipart/form-data">
-            <div class="subContainer">
-
+            <div class="topContainer">
+                <img class="top-img" src="../assets/img/stet-icon.png" alt="" >
+                <h2>CREATE APPOINTMENT REQUEST</h2>
+            </div>
+            <div class="subContainer" id="subContainer"> 
                 <div class="form-header">
                 <h2>Request Maintenance</h2>
                 <div class="msg" id="alert">

@@ -1,8 +1,8 @@
 <?php
 include_once "../functions/saveOtherinfo.php";
+include_once "../functions/header.php";
+include_once "../authentication/auth.php";
 
-
-session_start();
 $equipment_ID = $_SESSION['equipment_ID'] ?? null;
 
 if (!$equipment_ID) {
@@ -26,7 +26,7 @@ if (!$equipment_ID) {
 
 <form action="../functions/saveOtherinfo.php" enctype="multipart/form-data" method="POST" id="Form2">
     <div class="container">
-        <div class="subContainer">
+        <div class="subContainer" id="subContainer">
             <div class="textContainer">
                 <p class="text">Warranty</p>
             </div>
@@ -79,7 +79,7 @@ if (!$equipment_ID) {
         <div class="buttonContainer">
             <button class="button" name="submit_form2" >Add to inventory</button>
             <a href="../admin panel/addEquip.html?id=<?php echo $userID; ?>">
-                <button class="button">Back</button>
+                <button type="button" class="button">Back</button>
             </a>
         </div>
     </div>

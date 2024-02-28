@@ -16,9 +16,10 @@ include_once "../authentication/auth.php";
 </head>
 <body id="body">
     <div class="container">
-        <form class="subContainer" method="POST" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $id; ?>" enctype="multipart/form-data">
-            <div class="textContainer">
-                <p class="text">Edit Profile</p>
+        <form class="subContainer" id="subContainer"  method="POST" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $userID; ?>" enctype="multipart/form-data">
+            <div class="topContainer">
+                <img class="top-img" src="../assets/imG/person-circle.png" alt="" >
+                <h2>EDIT PROFILE</h2>
             </div>
 
             <div class="imageContainer">
@@ -33,7 +34,10 @@ include_once "../authentication/auth.php";
                 </div>
 
                 <div class="uploadButtonContainer">
-                    <input class="uploadButton" name="profile_img" type="file">
+                    <label for="profile_img" class="uploadButton">
+                        <input id="profile_img" name="profile_img" type="file" style="display: none;">
+                        <span class="plusIcon">+</span>
+                    </label>
                 </div>
             </div>
 
@@ -60,7 +64,7 @@ include_once "../authentication/auth.php";
 
                 <div class="userInfoContainer">
                     <div class="subUserInfoContainer">
-                        <select class="userInfo2" name="department" id="">
+                        <select class="userInfo2" name="department" id="gender">
                             <option value="" disabled selected hidden>Choose a department</option>
                             <option value="College of Medicine">College of Medicine</option>
                             <option value="College of Science and Mathematics">College of Science and Mathematics</option>
@@ -71,7 +75,7 @@ include_once "../authentication/auth.php";
                     </div>
                     
                     <div class="subUserInfoContainer">
-                        <input type="text" class="userInfo2" placeholder="Address">
+                        <input type="text" name="address" class="userInfo2" placeholder="Address">
                     </div>
                     
                     <div class="subUserInfoContainer">

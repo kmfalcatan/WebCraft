@@ -3,15 +3,38 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-.subContainer{
+.topContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+    width: 61%;
+    background-color: rgb(2, 116, 200);
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.topContainer h2{
+    margin-right: auto;
+    color: #fff;
+}
+
+.topContainer img{
+    width: 4rem;
+    height: 4rem;
+    margin-left: 2rem;
+    filter: invert(100%);
+}
+
+#subContainer{
     height: 39rem;
-    width: 90%;
-    border-radius: 0.5rem;
-    background-color: rgba(255, 250, 250, 0.582);
+    width: 60%;
+    border-radius: 0 0 0.5rem 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     padding: 0.5rem;
-    border: solid gray 1px;
 }
 
 .equipInfoContainer{
@@ -33,10 +56,11 @@
     height: 90%;
     width: 90%;
     border-radius: 0.5rem;
-    background-color: snow;
+    background-color: #f7f7f7;
     position: relative;
     display: flex;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .infoContainer{
@@ -54,9 +78,10 @@
     display: flex;
     align-items: center;
     border-radius: 0.5rem;
-    background-color: snow;
+    background-color: #f7f7f7;
     padding-left: 0.5rem;
     border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .damageContainer{
@@ -103,6 +128,7 @@
     align-items: center;
     font-weight: bold;
     text-align: center;
+    color: rgb(2, 116, 200);
 }
 
 .budgetContainer{
@@ -123,12 +149,13 @@
 .budget{
     height: 3rem;
     width: 100%;
-    background-color: snow;
+    background-color: #f7f7f7;
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
     padding-left: 0.5rem;
     border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .maintenanceContainer{
@@ -148,6 +175,7 @@
 .maintenance{
     font-size: 1.3rem;
     font-weight: bold;
+    color: rgb(2, 116, 200);
 }
 
 span{
@@ -167,19 +195,12 @@ span{
     width: 5rem;
     border-radius: 0.5rem;
     border: none;
-    background-color: rgb(152,152,152);
+    background-color: rgb(2, 116, 200);
     transition: all 0.15s;
-    border: solid gray 1px;
+    border: none;
     cursor: pointer;
     font-weight: bold;
-}
-
-.button:hover{
-    background-color: rgb(189,189,189);
-}
-
-.button:active{
-    background-color: rgb(124,124,124);
+    color: #fff;
 }
 
 .button1{
@@ -187,22 +208,26 @@ span{
     width: 2.5rem;
     border-radius: 5rem;
     border: none;
-    background-color: rgb(152,152,152);
+    background-color: rgb(2, 116, 200);
     transition: all 0.15s;
-    border: solid gray 1px;
+    border: none;
     cursor: pointer;
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #ffff;
 }
 
+.button:hover,
 .button1:hover{
-    background-color: rgb(189,189,189);
+    background-color: rgba(2, 117, 200, 0.297);
+    color: #000;
 }
 
+.button:active,
 .button1:active{
-    background-color: rgb(124,124,124);
+    background-color: rgba(2, 117, 200, 0.76);
 }
 
 .image7{

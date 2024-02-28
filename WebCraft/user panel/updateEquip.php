@@ -24,7 +24,7 @@ include_once '../functions/header.php';
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
@@ -54,6 +54,10 @@ include_once '../functions/header.php';
 
     <form class="subContainer3" action="" enctype="multipart/form-data" method="post">
         <div class="container3">
+            <div class="topContainer">
+                <img class="top-img" src="../assets/img/th-removebg-preview.png" alt="" >
+                <h2>EDIT EQUIPMENT</h2>
+            </div>
             <div class="subContainer2">
                 <div class="imageContainer1">
                     <div class="subImageContainer1">
@@ -112,7 +116,7 @@ include_once '../functions/header.php';
                         <textarea class="inputInfo4" name="description" cols="30" rows="10" placeholder="Description:"><?php echo $description; ?></textarea>
                     </div>
     
-                    <div class="buttonsContainer">
+                    <div class="buttonsContainer"  style="margin-top: 2.4rem;">
                         <a href="../admin panel/updateEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">
                             <button class="button" type="submit" id="btn1">Save</button>
                         </a>

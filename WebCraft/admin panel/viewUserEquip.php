@@ -42,6 +42,15 @@ if ($userID !== null) {
 </head>
 <body id="body">
     <div class="container2">
+        <div class="topContainer" id="topContainer">
+            <button class="backbtn" type="button" onclick="goBack()">
+                <img src="../assets//img/left-arrow.png" style="width: 1.5rem; height: 1.5rem;" >
+            </button>
+
+            <img class="top-img" src="../assets/img/person-circle.png" alt="" >
+            <h2>USER EQUIPMENT</h2>
+        </div>
+
         <div class="subContainer">
             <div class="userInfoContainer">
                 <div class="imageContainer">
@@ -56,7 +65,7 @@ if ($userID !== null) {
 
                 <div class="inforContainer">
                     <div class="subInfoContainer">
-                        <p>Name: <?php echo isset($user['fullname']) ? $user['fullname'] : ""; ?></p>
+                        <p id="name"><?php echo isset($user['fullname']) ? $user['fullname'] : ""; ?></p>
                     </div>
 
                     <div class="subInfoContainer">
@@ -64,7 +73,7 @@ if ($userID !== null) {
                     </div>
 
                     <div class="subInfoContainer">
-                        <p>DEPARTMENT: <?php echo isset($user['department']) ? $user['department'] : ""; ?></p>
+                        <p>Department: <?php echo isset($user['department']) ? $user['department'] : ""; ?></p>
                     </div>
                 </div>
             </div>
@@ -74,10 +83,11 @@ if ($userID !== null) {
                     <table>
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>ARTICLE</th>
-                                <th>DESCRIPTION</th>
+                                <!-- <th>DESCRIPTION</th>
                                 <th>DEPLOYMENT</th>
-                                <th>USER</th>
+                                <th>USER</th> -->
                                 <th>PROPERTY NUMBER</th>
                                 <th>ACCOUNT CODE</th>
                                 <th>UNITS</th>
@@ -90,12 +100,14 @@ if ($userID !== null) {
     
                         <tbody>
                             <?php if (isset($equipment)): ?>
+                                <?php $counter = 1; ?>
                                 <?php foreach ($equipment as $item): ?>
                                     <tr>
+                                        <td><?php echo $counter++; ?></td>
                                         <td><?php echo $item['article']; ?></td>
-                                        <td><?php echo $item['description']; ?></td>
+                                        <!-- <td><?php echo $item['description']; ?></td>
                                         <td><?php echo $item['deployment']; ?></td>
-                                        <td><?php echo $item['user']; ?></td>
+                                        <td><?php echo $item['user']; ?></td> -->
                                         <td><?php echo $item['property_number']; ?></td>
                                         <td><?php echo $item['account_code']; ?></td>
                                         <td><?php echo $item['units']; ?></td>
@@ -103,10 +115,10 @@ if ($userID !== null) {
                                         <td><?php echo $item['total_value']; ?></td>
                                         <td><?php echo $item['remarks']; ?></td>
                                         <td class="actionContainer">
-                                            <a href="../admin panel/viewEquip.php?equipment_ID={$row['equipment_ID']}&id={$userID}">
-                                                <button class="action">View</button>
-                                            </a>
-                                            <button class="action">Delete</button>
+                                            <a href="../admin panel/equipOtherInfo.php?equipment_ID={$row['equipment_ID']}&id={$userID}">
+                                            <img src='../assets/img/view.png' alt='View' class='action-img'style='width: 2.5rem; height: 1.rem;'>
+                                                                </a>
+                                            <img src='../assets/img/trash.png' alt='View' class='action-img' style='width: 1.7rem; height: 1.7rem;'>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -117,9 +129,9 @@ if ($userID !== null) {
             </div>
         </div>
 
-        <div class="buttonContainer">
+        <!-- <div class="buttonContainer">
         <button type="button" class="button" onclick="goBack()">Back</button>
-        </div>
+        </div> -->
     </div>
 
         <script>

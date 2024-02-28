@@ -1,5 +1,7 @@
 <?php
 include '../dbConfig/dbconnect.php';
+include '../functions/header.php';
+include '../authentication/auth.php';
 
 if (isset($_POST['submit_form1'])) {
 
@@ -9,6 +11,7 @@ if (isset($_POST['submit_form1'])) {
     $property_number = $_POST['property_number'];
     $account_code = $_POST['account_code'];
     $units = $_POST['units'];
+    $unit_value = $_POST['unit_value'];
     $total_value = $_POST['total_value'];
     $remarks = $_POST['remarks'];
     $description = $_POST['description'];
@@ -53,8 +56,8 @@ if (isset($_POST['submit_form1'])) {
                 $unit_id = 1;
             }
 
-            $sql = "INSERT INTO equipment (user, article, deployment, property_number, account_code, units, total_value, remarks, description, year_received, image) 
-                    VALUES ('$user', '$equipment_name', '$deployment', '$property_number', '$account_code', '$units', '$total_value', '$remarks', '$description', '$year_received', '$image_name')";
+            $sql = "INSERT INTO equipment (user, article, deployment, property_number, account_code, units, unit_value, total_value, remarks, description, year_received, image) 
+                    VALUES ('$user', '$equipment_name', '$deployment', '$property_number', '$account_code', '$units', '$unit_value', '$total_value', '$remarks', '$description', '$year_received', '$image_name')";
 
             if ($conn->query($sql) === TRUE) {
                 $equipment_ID = $conn->insert_id;
@@ -68,13 +71,15 @@ if (isset($_POST['submit_form1'])) {
                     $unit_id++;
                 }
 
-                session_start();
                 $_SESSION['equipment_ID'] = $equipment_ID;
 
-                if ($userInfo['role'] == 'admin') {
-                    header("Location: ../admin panel/addOtherinfo.php");
+                $userInfo = getUserInfo($conn, $userID);
+                $role = $userInfo['role'];
+
+                if ($role === 'admin') {
+                    header("Location: ../admin panel/addOtherinfo.php?id={$userID}");
                 } else {
-                    header("Location: ../user panel/addOtherinfo.php");
+                    header("Location: ../user panel/addOtherinfo.php?id={$userID}");
                 }
                 exit();
             } else {

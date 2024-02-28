@@ -1,6 +1,7 @@
 <?php
 include_once "../dbConfig/dbconnect.php";
 include_once "../functions/header.php";
+include_once "../authentication/auth.php";
 
 $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
 $userID = isset($_GET['id']) ? $_GET['id'] : null; 
@@ -15,7 +16,10 @@ if ($result_equipment->num_rows > 0) {
     $imageURL = "../uploads/" . $imageFilename;
 }
 
-$conn->close();
+$recordsPerPage = 9;
+
+$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+$offset = ($currentPage - 1) * $recordsPerPage;
 ?>
 
 <!DOCTYPE html>
@@ -32,17 +36,17 @@ $conn->close();
 <body id="body">
     
 <div class="container2">
-        <div class="headerContainer">
+    <div class="headerContainer">
         <div class="subHeaderContainer">
-                <div class="imageContainer">
-                    <div class="subImageContainer">
-                        <img class="image" src="../assets/img/medLogo.png" alt="">
-                    </div>
-
-                    <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
-                    </div>
+            <div class="imageContainer">
+                <div class="subImageContainer">
+                    <img class="image" src="../assets/img/medLogo.png" alt="">
                 </div>
+
+                <div class="nameContainer">
+                    <img src="../assets/img/system-name.png" alt="">
+                </div>
+            </div>
 
                 <div class="profileContainer">
                     <div class="subProfileContainer">
@@ -68,9 +72,28 @@ $conn->close();
             </div>
         </div>
     </div>
+    
     <div class="container1">
+        <div class="header">
+            <button class="backbtn">
+                <a href="dashboard.php?id=<?php echo $userID; ?>"><img src="../assets//img/left-arrow.png" style="width: 1.5rem; height: 1.5rem;" ></a>
+            </button>
+            <?php
+                $result_article = $conn->query("SELECT article FROM equipment WHERE equipment_ID = '$equipment_ID'");
+
+                if ($result_article->num_rows > 0 && $article = $result_article->fetch_assoc()) {
+                    echo "<h2>{$article['article']} unit list</h2>";
+                }
+            ?>
+        <div class="searchContainer">
+            <input class="searchBar" type="text" id="searchInput" placeholder="Search..." oninput="liveSearch()">
+        </div>
+    </div>
         <div class="subContainer">
             <?php
+                $sql = "SELECT * FROM units WHERE equipment_ID = '$equipment_ID' LIMIT $offset, $recordsPerPage";
+                $result_units = $conn->query($sql);
+
                 while ($row1 = $result_units->fetch_assoc()) {
                     $equipment_name = $row1['equipment_name'];
                     $unit_ID = $row1['unit_ID'];
@@ -80,7 +103,7 @@ $conn->close();
                     $defaultUnitID = '0000';
                     $unitID = $unitPrefix . '-' . str_pad($unit_ID, strlen($defaultUnitID), '0', STR_PAD_LEFT);
                     
-                    echo "<a href='equipOtherInfo.php?equipment_ID=$equipment_ID&id=$userID'>";
+                    echo "<a href='updateUnit.php?equipment_ID=$equipment_ID&unit_ID=$unit_ID&id=$userID'>";
                         echo "<div class='subContainer1'>";
                             echo "<div class='equipmentContainer'>";
                                 echo "<div class='imageContainer1'>";
@@ -97,7 +120,7 @@ $conn->close();
                                         echo "</div>";
                                     echo "</div>";
                                     echo "<div class='subInfoContainer'>";
-                                        echo "<p> $equipment_name</p>";
+                                        echo "<p class='equip-name'> $equipment_name</p>";
                                     echo "</div>";
                                     echo "<div class='subInfoContainer'>";
                                         echo "<p>ID: $unitID</p>";
@@ -114,13 +137,31 @@ $conn->close();
         
         </div>
         <div class="buttonContainer">
-            <a href="dashboard.php?id=<?php echo $userID; ?>">
-                    <button class="button">Back</button>
-            </a>
+            <div class="next-previous">
+                <?php
+                    $prevPage = $currentPage > 1 ? $currentPage - 1 : 1;
+                    echo "<a href='viewEquip.php?equipment_ID=$equipment_ID&id=$userID&page=$prevPage'><button class='previousbtn'>";
+                    echo "<span><img src='../assets/img/chevron-left (1).png' alt='' style='height: 1rem; width: 1rem;'></span>";
+                    echo "<span>Previous</span>";
+                    echo "</button></a>";
+                ?>
+
+                <div class="pageIndicator"><?php echo $currentPage; ?></div>
+
+                <?php
+                    $nextPage = $currentPage + 1;
+                    echo "<a href='viewEquip.php?equipment_ID=$equipment_ID&id=$userID&page=$nextPage'><button class='nextbtn'>";
+                    echo "<span>Next</span>";
+                    echo "<span><img src='../assets/img/chevron-right.png' alt='' style='height: 1rem; width: 1rem;'></span>";
+                    echo "</button></a>";
+                ?>
+            </div>
         </div>
     </div>
+    </script>
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/viewEquipt.js"></script>
     <script src="../assets/js/theme/dashboard-theme.js"></script>
+    <script src="../assets/js/nextPrev.js"></script>
 </body>
 </html>

@@ -1,21 +1,7 @@
 <?php
 include_once "../dbConfig/dbconnect.php";
 include_once "../authentication/auth.php";
-
-$userID = isset($_GET['id']) ? $_GET['id'] : null;
-
-function getUserInfo($conn, $userID) {
-    $sql = "SELECT * FROM users WHERE id = '$userID'";
-    $result = $conn->query($sql);
-
-    if ($result && $result->num_rows > 0) {
-        return $result->fetch_assoc();
-    } else {
-        return null; 
-    }
-}
-
-$userInfo = getUserInfo($conn, $userID);
+include_once "../functions/header.php";
 
 ?>
 
@@ -31,10 +17,12 @@ $userInfo = getUserInfo($conn, $userID);
     <link rel="stylesheet" href="../assets/css/profile.css">
 </head>
 <body id="body">
+    
     <div class="container">
-        <form class="subContainer" method="POST"  action="../admin panel/editProfile.php?id=<?php echo $userID; ?>">
-            <div class="textContainer">
-                <p class="text">Profile</p>
+        <form class="subContainer" id="subContainer" method="POST"  action="../admin panel/editProfile.php?id=<?php echo $userID; ?>">
+            <div class="topContainer">
+                <img class="top-img" src="../assets/imG/person-circle.png" alt="" >
+                <h2>USER PROFILE</h2>
             </div>
 
             <input type="hidden" name="id" value="<?php echo $userID; ?>">
@@ -82,7 +70,7 @@ $userInfo = getUserInfo($conn, $userID);
                     </div>
                     
                     <div class="subUserInfoContainer">
-                        <input class="startWarranty" name="gender" type="text" placeholder="Gender" value="<?php echo $userInfo['gender'] ?? ''; ?>" readonly>
+                        <input class="" id="gender" name="gender" type="text" placeholder="Gender" value="<?php echo $userInfo['gender'] ?? ''; ?>" readonly>
                     </div>
                 </div>
             </div>

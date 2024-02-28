@@ -27,7 +27,7 @@ include_once "../functions/warranty.php";
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
@@ -57,6 +57,10 @@ include_once "../functions/warranty.php";
 
     <form class="subContainer3" action="" enctype="multipart/form-data" method="post">
         <div class="container3">
+            <div class="topContainer">
+                <img class="top-img" src="../assets/img/th-removebg-preview.png" alt="" >
+                <h2>VIEW EQUIPMENT</h2>
+            </div>
             <div class="subContainer2">
                 <div class="imageContainer1">
                     <div class="subImageContainer1">
@@ -117,11 +121,11 @@ include_once "../functions/warranty.php";
     
                     <!-- Temporary link -->
                     <div class="buttonsContainer">
-                        <button class="button" id="btn1"><a href="../user panel/updateEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Update</a></button>
+                        <button class="button2" id="btn2" type="button" onclick="showWarranty()">Check<span style="margin-left: 0.5rem;">Warranty</span></button>
+
+                        <button class="button1" id="btn1"><a href="updateEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Edit</a></button>
                     
-                        <button class="button" id="btn2" type="button" onclick="showWarranty()">Check warranty</button>
-                    
-                        <button class="button" id="btn3" type="button" onclick="goBack()">Back</button>
+                        <button class="button3" id="btn3" type="button"><a href="dashboard.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Back</a></button>
                     </div>
                 </div>
             </div>

@@ -1,19 +1,7 @@
 <?php
 include_once "../dbConfig/dbconnect.php";
 include_once "../authentication/auth.php";
-
-function getUserInfo($conn, $userID) {
-    $sql = "SELECT * FROM users WHERE id = '$userID'";
-    $result = $conn->query($sql);
-
-    if ($result && $result->num_rows > 0) {
-        return $result->fetch_assoc();
-    } else {
-        return null; 
-    }
-}
-
-$userInfo = getUserInfo($conn, $userID);
+include_once "../functions/header.php";
 
 ?>
 
@@ -90,7 +78,7 @@ $userInfo = getUserInfo($conn, $userID);
             </div>
 
             <div class="buttonContainer2">
-                <a href="../user panel/edrritProfile.php?id=<?php echo $userID; ?>">
+                <a href="../user panel/editProfile.php?id=<?php echo $userID; ?>">
                     <button class="button" id="btn1"><a href="../user panel/editProfile.php?id=<?php echo $userID; ?>">Edit</a></button>
                 </a>
                 <button class="button" id="btn2"><a href="../user panel/setting.php?id=<?php echo $userID; ?>">Back </a></button>

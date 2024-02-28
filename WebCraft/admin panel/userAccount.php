@@ -1,6 +1,7 @@
 <?php
 include_once '../dbConfig/dbconnect.php';
 include_once '../functions/header.php';
+include_once '../authentication/auth.php';
 
 $sql = "SELECT * FROM users WHERE role = 'user'";
 $result = $conn->query($sql);
@@ -15,7 +16,6 @@ if ($result->num_rows > 0) {
     $users = array();
 }
 
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ $conn->close();
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
@@ -73,11 +73,15 @@ $conn->close();
                 <input class="searchBar" placeholder="Search..." type="text">
            </div>
 
-           <h2>User Lists</h2>
-           <div class="userContainer">
+           
+           <div class="topContainer" id="topContainer">
+                <img class="top-img" src="../assets/img/person-circle.png" alt="" >
+                <h2>USER LIST</h2>
+            </div>
+           <div class="userContainer" id="userContainer">
                <?php foreach ($users as $user): ?>
-                <a class="link" href="../admin panel/viewUserEquip.php?id=<?php echo $user['id']; ?>">
-                    <div class="subUserContainer">
+                <!-- <a class="link" href="../admin panel/viewUserEquip.php?id=<?php echo $user['id']; ?>"> -->
+                    <div class="subUserContainer"  onclick="toggleSidebarAndProfile(this)" data-userid="<?php echo $user['id']; ?>">
                         <div class="imageContainer2">
                             <div class="subImageContainer2">
                                 <?php if (!empty($user['profile_img'])): ?>
@@ -96,6 +100,26 @@ $conn->close();
                 <?php endforeach; ?>
             </div>
 
+            <div class="container2" id="profileContainer" >
+                <button class="closeButton" onclick="closeProfileContainer()">Close</button>
+                <img class="profile_img_circle" src="../uploads/<?php echo $user['profile_img']; ?>" alt="">
+                <p id="name"><?php echo $user['fullname'] ?? ''; ?></p>
+                <p id="id"><?php echo date("Y") . "-" . str_pad($user['id'], 4, "0", STR_PAD_LEFT) ?? ''; ?></p>
+                <div class="infoContainer">
+                    <div class="infoGroup">
+                        <p><?php echo $user['username'] ?? ''; ?></p>
+                        <p><?php echo $user['email'] ?? ''; ?></p>
+                        <p><?php echo $user['contact'] ?? ''; ?></p>
+                    </div>
+                    <div class="infoGroup">
+                        <p><?php echo $user['department'] ?? ''; ?></p>
+                        <p><?php echo $user['address'] ?? ''; ?></p>
+                        <p><?php echo $user['gender'] ?? ''; ?></p>
+                    </div>
+                </div>
+                <a class="link" href="../admin panel/viewUserEquip.php?id=<?php echo $user['id']; ?>">View Equipment</a>
+            </div>
+
             <div class="addIcon">
                 <div class="subAddIcon">
                     <a href="../admin panel/addUser.php?id=<?php echo $userID; ?>">
@@ -108,5 +132,10 @@ $conn->close();
     
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/theme/user-theme.js"></script>
+    <script>
+        var users = <?php echo json_encode($users); ?>;
+    </script>
+
+    <script src="../assets/js/userAccount.js"></script>
 </body>
 </html>

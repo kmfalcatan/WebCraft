@@ -1,9 +1,9 @@
 <?php
 include '../dbConfig/dbconnect.php';
-
+include '../functions/header.php';
+include '../authentication/auth.php';
 
 if(isset($_POST['submit_form2'])){
-
     if(isset($_POST['equipment_ID'])){
         $equipment_ID = $_POST['equipment_ID'];
 
@@ -23,7 +23,15 @@ if(isset($_POST['submit_form2'])){
                 WHERE equipment_ID = $equipment_ID";
 
         if ($conn->query($sql) === TRUE) {
-            header("Location: ../admin panel/dashboard.php"); 
+            
+            $userInfo = getUserInfo($conn, $userID);
+            $role = $userInfo['role'];
+            
+            if ($role === 'admin') {
+                header("Location: ../admin panel/dashboard.php?id={$userID}");
+            } else {
+                header("Location: ../user panel/dashboard.php?id={$userID}");
+            }
             exit();
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;

@@ -17,7 +17,7 @@ $userInfo = getUserInfo($conn, $userID);
 </head>
 <body id="body">
     <div class="container" style="height: 100vh;">
-        <form class="subContainer" style="height: 70vh;" method="POST" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $id; ?>" enctype="multipart/form-data">
+        <form class="subContainer" style="height: 70vh;" method="POST" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $userID; ?>" enctype="multipart/form-data">
             <div class="textContainer">
                 <p class="text">Edit Profile</p>
             </div>
@@ -94,17 +94,14 @@ $userInfo = getUserInfo($conn, $userID);
 
             <div class="buttonContainer2">
                 <button class="button" type="submit" id="btn1">Save</button>
-                <button type="button" class="button" id="btn2" onclick="goBack()">Back</button>
+                <a href="../admin panel/setting.php">
+                    <button class="button" id="btn2">Back</button>
+                </a>
             </div>
         </form>
     </div>
 
     <script src="../assets/js/uploadImg.js"></script>
     <script src="../assets/js/theme/setting.js"></script>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
 </body>
 </html>

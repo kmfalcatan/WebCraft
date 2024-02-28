@@ -6,15 +6,17 @@
 body{
     overflow: hidden;
     font-family: 'Lucida Sans';
+    background-color: rgb(2, 116, 200);
 }
 
 .headerContainer{
-    height: 5rem;
+    height: 7rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     animation: fading 2s linear ;
-    margin-top: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .logoContainer{
@@ -31,16 +33,17 @@ body{
 
 .logo{
     height: 4rem;
+    background-color: #f5f5f5;
+    border-radius: 2rem;
 }
 
 .nameContainer{
-    margin-left: -1.5rem;
+    margin-left: 0.5rem;
 }
 
-.nameContainer p{
-    font-size: 1.5rem;
-    font-family:'Lucida Sans';
-    font-weight: bolder;
+.nameContainer img{
+    width: 20rem;
+    height: 3rem;
 }
 
 .buttonContainer{
@@ -50,10 +53,11 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    column-gap: 0.5rem;
+    column-gap: 2rem;
+    margin-right: 4rem;
 }
 
-.subButtonContainer{
+.subButtonContainer {
     height: 100%;
     width: 5.5rem;
     display: flex;
@@ -62,31 +66,58 @@ body{
 }
 
 .subButtonContainer button{
+    position: relative;
+    display: inline-block;
     height: 2rem;
     width: 100%;
-    font-size: 1rem;
+    font-size: 1.3rem;
+    font-weight: lighter;
+    font-family: "Montserrat", sans-serif;
     border-radius: 0.5rem;
     border: none;
-    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
     cursor: pointer;
     padding: 0.5rem 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: transparent;
 }
 
-.button:hover{
-    background: linear-gradient(to right, rgb(180, 177, 3), rgb(153, 92, 1));
-    color: white;
+.subButtonContainer .button1::before,
+.subButtonContainer .button2::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: rgb(2, 116, 200);
+    transition: width 0.3s ease-in-out;
+}
+
+.subButtonContainer .button1:hover::before,
+.subButtonContainer .button2:hover::before {
+    width: 100%;
+}
+
+.subButtonContainer .button3{
+    background-color: rgb(2, 116, 200);
+    color: #fff;
+    padding: 1rem 2rem;
+    margin-left: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.subButtonContainer .button3:hover{
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    color: #000;
 }
 
 button a{
     text-decoration: none;
     color: #000;
-}
-
-.button:active{
-    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
 }
 
 .container{
@@ -98,10 +129,11 @@ button a{
 }
 
 .subContainer{
-    height: 90%;
+    height: 80%;
     width: 95%;
-    border-radius: 2rem;
-    background: radial-gradient(rgb(255,252,0, 0.7), rgb(231, 139, 0));
+    border-radius: 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .textContainer, .imageContainer{
@@ -110,7 +142,9 @@ button a{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin-left: 6rem;
 }
+
 
 .textContainer{
     animation: fading 2s linear, moveleft 1s linear ;
@@ -118,24 +152,6 @@ button a{
 
 .imageContainer{
     animation: fading 2s linear, moveright 1s linear ;
-}
-
-.settingContainer{
-    height: 3rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.subSettingContainer{
-    height: 100%;
-    width: 3rem;
-    margin-left: 3rem;
-}
-
-.setting{
-    height: 3rem;
-    cursor: pointer;
 }
 
 .welcomeContainer{
@@ -147,11 +163,17 @@ button a{
 
 .subWelcomeContainer{
     height: 100%;
-    width: 90%;
+    width: 100%;
     margin-left: 3rem;
     display: flex;
     align-items: center;
     font-size: 2.3rem;
+    font-weight: 500;
+    font-family:fantasy;
+}
+
+.subWelcomeContainer p{
+    width: 70rem;
 }
 
 .paragraphContainer{
@@ -189,17 +211,21 @@ button a{
 .viewButton{
     height: 2rem;
     width: 10.7rem;
+    font-family: "Montserrat", sans-serif;
     border-radius: 0.7rem;
-    border: solid rgb(175, 175, 175) 1px;
-    background-color: rgba(245, 245, 245, 0.5);
-    cursor: pointer;
+    background-color: rgb(2, 116, 200);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    border: none;
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .viewButton:hover{
     background: #f5f5f5;
+    color: #000;
 }
 
 .viewButton:active{
@@ -211,58 +237,25 @@ a{
 }
 
 .subImageContainer{
-    height: 90%;
-    width: 90%;
+    height: 63%;
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 15rem;
+    background-color: rgb(2, 116, 200);
 }
 
-.image{
-    height: 15rem;
+.subImageContainer{
+    font-size: 15rem;
+    font-family: fantasy;
+    color: #fff;
 }
 
 .nameContainer{
     display: none;
 }
 
-.colorContainer{
-    height: 100%;
-    width: 7rem;
-    padding-left: 0.5rem;
-    display: none;
-}
-
-.colorOptions{
-    background-color: snow;
-    height: 80%;
-    width: 100%;
-    border-radius: 0.5rem;
-    align-items: center;
-    text-align: center;
-}
-
-
-.colorOptions ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-    text-align: center;
-  }
-
-  .colorOptions li {
-    display: inline-block;
-    cursor: pointer;
-    margin: 0.5rem auto;
-  }
-  
-  .colorOptions li.color {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    border: #817f7f solid 0.5px;
-  }
 @keyframes fading {
     from{
         opacity: 0.2;
@@ -300,7 +293,8 @@ a{
     }
 
     .image{
-        height: 20rem;
+        height: 15rem;
+        width: 15rem;
     }
 
     .welcomeContainer{

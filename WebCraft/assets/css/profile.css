@@ -1,13 +1,36 @@
+.topContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+    width: 100%;
+    background-color: rgb(2, 116, 200);
+    border-radius: 0.5rem 0.5rem 0 0;
+}
 
+.topContainer h2{
+    margin-right: auto;
+    color: #fff;
+}
+
+.topContainer img{
+    width: 4rem;
+    height: 4rem;
+    margin-left: 2rem;
+    filter: invert(100%);
+}
 
 .subWarrantyContainer{
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     height: 30.5rem;
 }
 
-.subContainer{
-    overflow: auto;
-    height: 47rem;
+#subContainer{
+    height: 80%;
+    width: 60%;
+    border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .subImageContainer img{
@@ -47,10 +70,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-.userInfo2{
+.userInfo2,
+#gender{
     height: 100%;
     width: 90%;
     display: flex;
@@ -58,10 +82,11 @@
     align-items: center;
     border-radius: 0.5rem;
     border: none;
-    background-color: snow;
+    background-color: #f7f7f7;
     border: solid gray 1px;
     font-size: 1.2rem;
     padding-left: 0.5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .userInfo3{
@@ -99,7 +124,7 @@
 
 .buttonContainer2{
     height: 4rem;
-    margin-top: 0.5rem;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,32 +136,35 @@
     width: 8rem;
     border-radius: 0.5rem;
     border: solid gray 1px;
-    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
+    background: rgb(2, 116, 200);
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
     transition: all 0.15s;
+    color: #fff;
 }
 
 button a{
-    color: #000;
+    color: #fff;
 }
 
 .button:hover{
-    background: linear-gradient(to right, rgb(180, 177, 3), rgb(153, 92, 1));
+    background-color: rgba(2, 117, 200, 0.297);
     color: white;
 }
 
 .button:active{
-    background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
+    background-color: rgba(2, 117, 200, 0.76);
 }
 
 button a{
     text-decoration: none;
 }
-.subUserInfoContainer select{
+.subUserInfoContainer select #gender{
     cursor: pointer;
     width: 18rem;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 /*tablet*/
 @media only screen and (min-width: 601px){

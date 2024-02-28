@@ -18,6 +18,7 @@ if (mysqli_num_rows($result) > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
     <link rel="icon" type="image/png" href="../assets/img/webcraftLogo.png">
     <title>MedEquip Tracker</title>
 
@@ -34,24 +35,32 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                       <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
-                <div class="buttonContainer">
-                    <a href="about.php">
-                        <button class="button1" id="btn">About</button>
-                    </a>
-                    <a href="../authentication/login.php">
-                        <button class="button1" id="btn2">Sign in</button>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
 
-    <div class="container2">
-        <div class="subContainer2">
+    <div class="container2" id="container2">
+        
+        <div class="topContainer">
+            <div class="backbtn">
+                <a href="../landing_page.php"><img src="../assets/img/left-arrow.png" alt=""></a>
+            </div>
+            
+            <div class="buttonContainer">
+                <a href="about.php">
+                    <button class="button1" id="btn">About</button>
+                </a>
+                <a href="../authentication/login.php">
+                    <button class="button1" id="btn2">Sign in</button>
+                </a>
+            </div>
+        </div>
+        
+        <div class="subContainer2" style="width: 80%;">
             <div class="equipContainer">
                 <div class="searchBarContainer1">
                     <input class="searchBar1" type="text" placeholder="Search.." oninput="filterEquipment(this.value)">
@@ -78,7 +87,7 @@ if (mysqli_num_rows($result) > 0) {
                 <div class="subDetailsContainer">
                     <div class="imageContainer1">
                         <div class="subImageContainer1">
-                            <img class="image12" src="" alt="">
+                            <img class="image12" src="../assets/img/img_placeholder.jpg">
                         </div>
 
                         <div class="subEquipNameContainer">
@@ -87,14 +96,14 @@ if (mysqli_num_rows($result) > 0) {
                             </div>
     
                             <div class="descriptionContainer">
-                                <p id="equipmentDescription">Description</p>
+                                <p id="equipmentDescription"></p>
                             </div>
                         </div>
                     </div>
 
                     <div class="howToUseContainer">
                         <div class="subHowToUseContainer">
-                            <p id="howToUse">How to use</p>
+                            <p id="howToUse"></p>
                         </div>
                     </div>
                 </div>

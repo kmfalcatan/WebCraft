@@ -25,7 +25,7 @@ include ('../authentication/auth.php');
                     </div>
 
                     <div class="textContainer1">
-                        MEDEQUIP TRACKER
+                        <h1>MEDEQUIP TRACKER</h1>
                     </div>
                 </div>
             </div>

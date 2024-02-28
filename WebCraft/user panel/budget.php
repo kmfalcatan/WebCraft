@@ -25,7 +25,7 @@ include_once '../functions/header.php';
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
@@ -76,6 +76,10 @@ include_once '../functions/header.php';
                     <div class="filter" onclick="changeColor(this)">
                         <p class="year">2022</p>
                     </div>
+
+                    <div class="med-icon">
+                        <h1>+</h1>
+                    </div>
                 </div>
            </div>
 
@@ -83,13 +87,14 @@ include_once '../functions/header.php';
                 <table>
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>EQUIPMENT IMAGE</th>
                             <th>EQUIPMENT NAME</th>
                             <th>BUDGET FOR</th>
                             <th>DATE APPROVED</th>
                             <th>BUDGET</th>
                             <th>UNIT</th>
-                            <th>ACTION</th>
+                            <th>OPTIONS</th>
                         </tr>
                     </thead>
 
@@ -99,8 +104,10 @@ include_once '../functions/header.php';
                         $result = $conn->query($query);
 
                         if ($result->num_rows > 0) {
+                            $count = 1; 
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
+                                echo "<td>{$count}</td>";
                                 echo "<td><img src='../uploads/{$row['equip_img']}' alt='Equipment Image' width='100' height='100'></td>";
                                 echo "<td>{$row['equipment_name']}</td>";
                                 echo "<td>{$row['details_of_equipment']}</td>";
@@ -111,10 +118,11 @@ include_once '../functions/header.php';
                                 $unitRow = $unitResult->fetch_assoc();
                                 echo "<td>{$unitRow['unit_ID']}</td>";
                                 echo "<td class='actionContainer'>";
-                                echo "<a href='../user panel/viewBudget.php?request_ID={$requestID}&id={$userID}'><button class='action'>View</button></a>";
-                                echo "<button class='action'>Delete</button>";
+                                echo "<a href='../user panel/viewBudget.php?request_ID={$requestID}&id={$userID}'><img src='../assets/img/view.png' alt='View' class='action-img' style='width: 2.5rem; height: 1.rem;</a>";
+                                echo "<button class='action'><img src='../assets/img/trash.png' alt='View' class='action-img' style='width: 1.7rem; height: 1.7rem;'></button>";
                                 echo "</td>";
                                 echo "</tr>";
+                                $count++; 
                             }
                         } else {
                             echo "<tr><td colspan='7'>No records found</td></tr>";

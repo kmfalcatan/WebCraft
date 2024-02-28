@@ -33,7 +33,7 @@ if ($result) {
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
@@ -67,6 +67,10 @@ if ($result) {
 
     <form action="../functions/saveEquip.php" enctype="multipart/form-data" method="post"  id="Form1">
         <div class="container3">
+            <div class="topContainer">
+                <img class="top-img" src="../assets/img/stet-icon.png" alt="" >
+                <h2>ADD EQUIPMENT</h2>
+            </div>
             <div class="subContainer2">
                 <div class="imageContainer1">
                     <div class="subImageContainer1">
@@ -86,7 +90,7 @@ if ($result) {
     
                     <div class="infoContainer">
                         <div class="subInfoContainer">
-                        <select class="inputInfo" name="username" id="username">
+                        <select class="inputInfo" name="user" id="username">
                             <?php foreach ($users as $username) { ?>
                                 <option value="<?php echo $username; ?>"><?php echo $username; ?></option>
                             <?php } ?>
@@ -95,24 +99,24 @@ if ($result) {
                         </div>
                         
                         <div class="subInfoContainer">
-                            <textarea class="inputInfo" name="article" cols="30" rows="10" placeholder="Article:" required></textarea>
+                            <input class="inputInfo" name="article" cols="30" rows="10" placeholder="Article:" ></input>
                         </div>
                         
                         <div class="subInfoContainer">
-                            <textarea class="inputInfo" name="deployment" cols="30" rows="10" placeholder="Deployment:" required></textarea>
+                            <input class="inputInfo" name="deployment" cols="30" rows="10" placeholder="Deployment:" ></input>
                         </div>
     
                         <div class="subInfoContainer">
                             <div class="subInputInfoContainer2">
-                                <textarea class="inputInfo3" name="property_number" cols="30" rows="10" placeholder="Property number:" required></textarea>
+                                <input class="inputInfo3" name="property_number" cols="30" rows="10" placeholder="Property number:" ></input>
                             </div>
     
                             <div class="subInputInfoContainer2">
-                                <textarea class="inputInfo3" name="account_code" cols="30" rows="10" placeholder="Account code:" required></textarea>
+                                <input class="inputInfo3" name="account_code" cols="30" rows="10" placeholder="Account code:" ></input>
                             </div>
     
                             <div class="subInputInfoContainer2">
-                                <textarea class="inputInfo3" name="units" cols="30" rows="10" placeholder="Units:" required></textarea>
+                                <input class="inputInfo3" name="units" cols="30" rows="10" placeholder="Units:" ></input>
                             </div>
                         </div>
                     </div>
@@ -121,25 +125,25 @@ if ($result) {
                 <div class="otherInfoContainer">
                     <div class="subOtherInfoContainer">
                         <div class="subInputInfoContainer2">
-                            <textarea class="inputInfo3" name="unit_value" cols="30" rows="10" placeholder="Unit value:" required></textarea>
+                            <input class="inputInfo3" name="unit_value" cols="30" rows="10" placeholder="Unit value:" ></input>
                         </div>
     
                         <div class="subInputInfoContainer2">
-                            <textarea class="inputInfo3" name="total_value" cols="30" rows="10" placeholder="Total value:" required></textarea>
+                            <input class="inputInfo3" name="total_value" cols="30" rows="10" placeholder="Total value:" ></input>
                         </div>
     
                         <div class="subInputInfoContainer2">
-                            <textarea class="inputInfo3" name="remarks" cols="30" rows="10" placeholder="remarks:"></textarea>
+                            <input class="inputInfo3" name="remarks" cols="30" rows="10" placeholder="remarks:"></input>
                         </div>
                     </div>
     
                     <div class="descriptionContainer">
-                        <textarea class="inputInfo4" name="description" cols="30" rows="10" placeholder="Description:" required></textarea>
+                        <input class="inputInfo4" name="description" cols="30" rows="10" placeholder="Description:" ></input>
                     </div>
 
                     <div class="dropdownContainer">
                         <label for="year">Year:</label>
-                        <select id="year" name="year_received" class="yearDropdown" required>
+                        <select id="year" name="year_received" class="yearDropdown" >
                             <option value="2022">2022</option>
                             <option value="2023">2023</option>
                             <option value="2024">2024</option>
@@ -156,6 +160,5 @@ if ($result) {
 
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/uploadImg.js"></script>
-    <script src="../assets/js/theme/new-equip-theme.js"></script>
 </body>
 </html>

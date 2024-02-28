@@ -1,5 +1,6 @@
 <?php
 require_once "../dbConfig/dbconnect.php";
+include_once "../authentication/auth.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -19,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sql = "INSERT INTO users (email, password, role, fullname) VALUES ('$email', '$hashedPassword', '$role', '$fullname')";
 
     if ($conn->query($sql) === TRUE) {
-       header('Location: ../admin panel/userAccount.php');
+        header("Location: ../admin panel/userAccount.php?id={$userID}");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

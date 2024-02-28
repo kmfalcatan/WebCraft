@@ -4,7 +4,7 @@
 }
 
 body{
-    background: radial-gradient(rgb(255,252,0, 0.7), rgb(231, 139, 0));
+    background: rgb(207, 224, 236);
     font-family: system-ui, -apple-system;
 }
 
@@ -18,13 +18,14 @@ body{
 
 .subHeaderContainer{
     height: 4rem;
-    width: 90%;
+    width: 93%;
     border-radius: 1rem;
     backdrop-filter: blur(1rem);
     background-color: rgb(255,252,252);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .imageContainer{
@@ -44,12 +45,12 @@ body{
 }
 
 .nameContainer{
-    height: 100%;
-    width: 14rem;
+    margin-left: 0.3rem;
 }
 
-.nameContainer p{
-    font-size: 1.3rem;
+.nameContainer img{
+    width: 14rem;
+    height: 2.5rem;
 }
 
 .profileContainer{
@@ -225,7 +226,7 @@ body{
 .searchBar{
     height: 3rem;
     width: 86%;
-    border-radius: 10rem;
+    border-radius: 1.5rem;
     border: solid gray 1px;
     padding-left: 1rem;
     font-size: 1.3rem;
@@ -233,9 +234,9 @@ body{
 }
 
 .filterContainer{
-    height: 2rem;
+    height: 3rem;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -243,12 +244,13 @@ body{
 
 .subFilterContainer{
     height: 100%;
-    width: 90%;
+    width: 93%;
     background-color: snow;
     border-radius: 0.5rem 0.5rem 0rem 0rem;
     overflow-y: auto;
     display: flex;
     flex-direction: row;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
 .sortContainer{
@@ -264,8 +266,13 @@ body{
     height: 2rem;
 }
 
+.sort:hover{
+    background-color: rgb(2, 116, 200);
+    color: #fff;
+}
+
 .sort:active{
-    background-color: rgb(124,124,124);
+    background-color: rgb(3, 102, 172);
 }
 
 .filter{
@@ -277,19 +284,50 @@ body{
     cursor: pointer;
 }
 
+.filter:hover{
+    background-color: rgb(2, 116, 200);
+    color: #fff;
+}
+
 .year{
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     font-weight: bold;
 }
 
-.tableContainer{
-    height: 71%;
-    width: 90%;
-    background-color: rgba(255, 250, 250, 0.582);
-    overflow-x: auto;
+.med-icon{
+    height: 2.5rem;
+    width: 2.5rem;
+    border: none;
+    border-radius: 2rem;
+    background-color: rgb(2, 116, 200);
+    margin-left: auto;
+    margin-right: 0.5rem;
+    margin-top: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.action{
+.med-icon h1{
+    font-size: 3rem;
+    font-family: fantasy;
+    color: #fff;
+}
+
+.tableContainer{
+    height: 70%;
+    width: 93%;
+    background-color: rgba(255, 250, 250, 0.582);
+    overflow-x: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+
+}
+
+.actionContainer img:hover{
+    transform: scale(1.2);
+}
+
+.action {
     height: 2rem;
     width: 4rem;
     border-radius: 1rem;
@@ -309,7 +347,17 @@ body{
     background: linear-gradient(to right, rgb(255,252,0), rgb(231, 139, 0));
 }
 
+#tblBody{
+    cursor: pointer;
+}
 
+#tblBody tr:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+th{
+    background-color: rgb(2, 116, 200);
+}
 /*Cellphone*/
 @media only screen and (max-width: 600px){
     table{
@@ -319,14 +367,14 @@ body{
     }
 
     th{
-        background-color: rgb(82,82,82);
+        background-color: rgb(2, 116, 200);
         color: rgb(239,239,239);
     }
 
     th, td{
         display: flex;
         flex-direction: column;
-        border: solid black 1px;
+        border: solid #ccc 0.2px;
         height: 2.5rem;
         padding: 0.5rem;
         justify-content: center;
@@ -392,7 +440,7 @@ body{
     
     .tableContainer{
         height: 71%;
-        width: 90%;
+        width: 93%;
         background-color: rgba(255, 250, 250, 0.582);
         overflow-x: auto;
     }
@@ -404,12 +452,12 @@ body{
     }
     
     th{
-        background-color: rgb(82,82,82);
+        background-color: rgb(2, 116, 200);
         color: rgb(239,239,239);
     }
     
     th, td{
-        border: solid black 1px;
+        border: solid #ccc 0.2px;
         height: 2.5rem;
         padding: 0.5rem;
         justify-content: center;
@@ -526,7 +574,7 @@ body{
 
     .tableContainer{
         height: 71%;
-        width: 90%;
+        width: 93%;
         background-color: rgba(255, 250, 250, 0.582);
         overflow-x: auto;
     }
@@ -552,17 +600,17 @@ body{
     }
     
     th{
-        background-color: rgb(82,82,82);
+        background-color: rgb(2, 116, 200);
         color: rgb(239,239,239);
     }
     
     th, td{
-        border: solid black 1px;
+        border: solid #ccc 0.2px;
         height: 2.5rem;
         padding: 0.5rem;
         justify-content: center;
         align-items: center;
-        font-size: 1.2rem;
+        font-size: 1.05rem;
     }
 }
 
@@ -669,7 +717,7 @@ body{
 
     .tableContainer{
         height: 79%;
-        width: 90%;
+        width: 93%;
         background-color: rgba(255, 250, 250, 0.582);
         overflow-x: auto;
     }
@@ -695,16 +743,16 @@ body{
     }
     
     th{
-        background-color: rgb(82,82,82);
+        background-color: rgb(2, 116, 200);
         color: rgb(239,239,239);
     }
     
     th, td{
-        border: solid black 1px;
+        border: solid #8b8b8b 0.2px;
         height: 2.5rem;
         padding: 0.5rem;
         justify-content: center;
         align-items: center;
-        font-size: 1.2rem;
+        font-size: 1.05rem;
     }
 }

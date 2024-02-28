@@ -1,13 +1,5 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-$userID = $_SESSION['user_id'];
-
+include_once "../authentication/auth.php";
 ?>
 
 <!DOCTYPE html>
