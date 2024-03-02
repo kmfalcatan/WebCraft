@@ -14,6 +14,7 @@ include_once "../functions/header.php";
 
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/setting.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
 </head>
 
 <body id="body">
@@ -30,7 +31,7 @@ include_once "../functions/header.php";
             </div>
 
             <div class="profileContainer">
-                <div class="subProfileContainer">
+                <div class="subProfileContainer" id="profileContainer">
                     <?php
                         if (!empty($userInfo['profile_img'])) {
                             echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
@@ -85,6 +86,42 @@ include_once "../functions/header.php";
         </div>
     </div>
 
+    <!-- sidebar show -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-profile">
+            <div class="subProfileContainer">
+                <?php
+                    if (!empty($userInfo['profile_img'])) {
+                        echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
+                    } else {
+                        echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
+                    }
+                ?>
+            </div>
+            <div class="user-info">
+                <p class="userName"><?php echo $userInfo['fullname'] ?? ''; ?></p>
+                <p class="email"><?php echo $userInfo['email'] ?? ''; ?></p>
+            </div>
+            <button class="close-btn" onclick="toggleSidebar()" style="left: 40%;">x</button>
+        </div>
+
+        <a href="../admin panel/userProfile.php?id=<?php echo $userID; ?>">
+            <div class="profile-menu">
+                <div class="profile-icon">
+                    <img src="../assets/img/person-circle.png" alt=""> 
+                </div> 
+                <p>Your profile</p>
+            </div>
+        </a>
+
+        <div class="logout-menu" onclick="showLogoutConfirmation()">
+            <div class="logout-icon">
+                <img src="../assets/img/logout.png" alt=""> 
+            </div> 
+            <p>Log out</p>
+        </div>
+    </div>
+
     <div id="logoutConfirmation" class="popupContainer">
         <div class="popupContent">
             <p>Are you sure you want to log out?</p>
@@ -95,20 +132,6 @@ include_once "../functions/header.php";
         </div>
     </div>
 
-    <script>
-        function showLogoutConfirmation() {
-            document.getElementById("logoutConfirmation").style.display = "block";
-        }
-
-        function hideLogoutConfirmation() {
-            document.getElementById("logoutConfirmation").style.display = "none";
-        }
-
-        function logout() {
-            window.location.href = "../functions/logout.php";
-        }
-    </script>
-
-    <script src="../assets/js/theme/setting.js"></script>
+    <script src="../assets/js/sidebarShow.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <?php
 include_once "../authentication/auth.php";
+include_once "../functions/header.php";
 ?>
 
 <!DOCTYPE html>
@@ -12,9 +13,51 @@ include_once "../authentication/auth.php";
     <title>MedEquip Tracker</title>
 
     <link rel="stylesheet" href="../assets/css/setting.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
+    <style>
+        .close-btn:hover{
+            background-color: transparent !important;
+            cursor: default;
+        }
+    </style>
 </head>
-
 <body id="body">
+    <div class="headerContainer">
+        <div class="subHeaderContainer">
+            <div class="imageContainer">
+                <div class="subImageContainer">
+                    <img class="image" src="../assets/img/medLogo.png" alt="">
+                </div>
+
+                <div class="nameContainer">
+                    <img src="../assets/img/system-name.png" alt="">
+                </div>
+            </div>
+
+            <div class="profileContainer">
+                <div class="subProfileContainer" id="profileContainer">
+                    <?php
+                        if (!empty($userInfo['profile_img'])) {
+                            echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
+                        } else {
+                            echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
+                        }
+                    ?>
+                    </div>
+
+                    <div class="subProfileContainer">
+                    <div class='menubarContainer' onclick='toggleMenu(this)'>
+                        <div class='line'></div>
+                        <div class='line'></div>
+                        <div class='line'></div>
+                    </div>
+                    <p class="userName"><?php echo $userInfo['username'] ?? ''; ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="subContainer">
             <div class="buttonContainer">
@@ -47,6 +90,42 @@ include_once "../authentication/auth.php";
         </div>
     </div>
 
+    <!-- sidebar show -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-profile">
+            <div class="subProfileContainer">
+                <?php
+                    if (!empty($userInfo['profile_img'])) {
+                        echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
+                    } else {
+                        echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
+                    }
+                ?>
+            </div>
+            <div class="user-info">
+                <p class="userName"><?php echo $userInfo['fullname'] ?? ''; ?></p>
+                <p class="email"><?php echo $userInfo['email'] ?? ''; ?></p>
+            </div>
+            <button class="close-btn" onclick="toggleSidebar()" style="left: 40%;">x</button>
+        </div>
+
+        <a href="../user panel/userProfile.php?id=<?php echo $userID; ?>">
+            <div class="profile-menu">
+                <div class="profile-icon">
+                    <img src="../assets/img/person-circle.png" alt=""> 
+                </div> 
+                <p>Your profile</p>
+            </div>
+        </a>
+
+        <div class="logout-menu" onclick="showLogoutConfirmation()">
+            <div class="logout-icon">
+                <img src="../assets/img/logout.png" alt=""> 
+            </div> 
+            <p>Log out</p>
+        </div>
+    </div>
+
     <div id="logoutConfirmation" class="popupContainer">
         <div class="popupContent">
             <p>Are you sure you want to log out?</p>
@@ -57,20 +136,6 @@ include_once "../authentication/auth.php";
         </div>
     </div>
 
-    <script>
-        function showLogoutConfirmation() {
-            document.getElementById("logoutConfirmation").style.display = "block";
-        }
-
-        function hideLogoutConfirmation() {
-            document.getElementById("logoutConfirmation").style.display = "none";
-        }
-
-        function logout() {
-            window.location.href = "../functions/logout.php";
-        }
-    </script>
-
-    <script src="../assets/js/theme/setting.js"></script>
+    <script src="../assets/js/sidebarShow.js"></script>
 </body>
 </html>

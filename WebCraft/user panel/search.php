@@ -26,7 +26,7 @@
             echo "<a href='../user panel/equipOtherInfo.php?equipment_ID={$row['equipment_ID']}&id={$userID}'>
                     <img src='../assets/img/view.png' alt='View' class='action-img' style='width: 2.5rem; height: 1.rem;'>
                     </a>";
-            echo "<img src='../assets/img/trash.png' alt='View' class='action-img' style='width: 1.7rem; height: 1.7rem;'>";
+            // echo "<img src='../assets/img/trash.png' alt='View' class='action-img' style='width: 1.7rem; height: 1.7rem;'>";
             echo "</td>";
             echo "</tr>";
             $count++; 

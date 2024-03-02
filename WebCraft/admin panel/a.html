@@ -1,0 +1,98 @@
+$mail->isHTML(true);
+$mail->Subject = "Maintenance Request";
+$mail->Body = "
+    <!DOCTYPE html>
+    <html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Maintenance Request</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                max-width: 600px;
+                margin: 20px auto;
+                padding: 20px;
+                background-color: #ffffff;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+            .header {
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            .logo-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            .logo {
+                width: auto;
+                height: 70px;
+            }
+            .content {
+                text-align: left;
+            }
+            .footer {
+                margin-top: 20px;
+                text-align: left;
+            }
+            hr {
+                border: none;
+                border-top: 1px solid #ddd;
+                margin: 20px 0;
+            }
+            p {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+            strong {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='header'>
+                <div class='logo-container'>
+                    <img src='../assets/img/medLogo.png' alt='Logo Left' class='logo'>
+                    <p>Western Mindanao State University <br> College of Medicine <br> National Road, Baliwasan, Zamboanga City</p>
+                    <img src='../assets/img/wmsu-logo.png' alt='Logo Right' class='logo'>
+                </div>
+                <h2>Appointment Maintenance Request</h2>
+            </div>
+            <div class='content'>
+                <p><strong>Good day $maintenance_name,</strong></p>
+                <p>I am writing this maintenance request on behalf of College of Medicine at Western Mindanao State University to request equipment maintenance. The details of the request are as follows:</p>
+                <div>
+                    <p><strong>Equipment:</strong> $equipment_name</p>
+                    <p><strong>Issue:</strong> $details_of_equipment</p>
+                    <p><strong>Budget:</strong> ₱$budget</p>
+                    <p><strong>Appointment Date:</strong> $date_of_appointment</p>
+                </div>
+                <hr>
+                <p>We kindly request that you confirm this date and provide us with a time slot that works best for your team.</p>
+            </div>
+            <div class='footer'>
+                <div>
+                    <p><strong>Sender:</strong> $admin_name</p>
+                    <p><strong>School:</strong> Western Mindanao State University</p>
+                    <p><strong>Contact Number:</strong> $admin_contact</p>
+                </div>
+                <br>
+                <p>Thank you for your attention to this matter. We appreciate your prompt response and assistance.</p>
+                <br>
+                <p><strong>Sincerely,</strong></p>
+                <p>$admin_name</p>
+            </div>
+        </div>
+    </body>
+    </html>
+";

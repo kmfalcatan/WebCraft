@@ -80,7 +80,6 @@ if ($result->num_rows > 0) {
             </div>
            <div class="userContainer" id="userContainer">
                <?php foreach ($users as $user): ?>
-                <!-- <a class="link" href="../admin panel/viewUserEquip.php?id=<?php echo $user['id']; ?>"> -->
                     <div class="subUserContainer"  onclick="toggleSidebarAndProfile(this)" data-userid="<?php echo $user['id']; ?>">
                         <div class="imageContainer2">
                             <div class="subImageContainer2">

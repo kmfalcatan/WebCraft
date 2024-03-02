@@ -15,6 +15,7 @@ include_once "../functions/approveRequest.php";
 
     <link rel="stylesheet" href="../assets/css/viewAppointment.css">
     <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
 </head>
 <body id="body">
     <div class="container1">
@@ -31,7 +32,7 @@ include_once "../functions/approveRequest.php";
                 </div>
 
                 <div class="profileContainer">
-                    <div class="subProfileContainer">
+                    <div class="subProfileContainer" id="profileContainer">
                         <?php
                             if (!empty($userInfo['profile_img'])) {
                                 echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
@@ -74,11 +75,11 @@ include_once "../functions/approveRequest.php";
                         </div>
 
                         <div class="equipNameContainer">
-                            <input name="date_of_appointment" value="Appointment Date: <?php echo $date_of_appointment; ?>" readonly>
+                            <input name="date_of_appointment" value="<?php echo $date_of_appointment; ?>" readonly>
                         </div>
 
                         <div class="equipNameContainer">
-                            <input name="details_of_equipment" value="Reason: <?php echo $details_of_equipment; ?>" readonly>
+                            <input name="details_of_equipment" value="<?php echo $details_of_equipment; ?>" readonly>
                         </div>
                     </div>
                 </div>
@@ -109,7 +110,7 @@ include_once "../functions/approveRequest.php";
                         <div class="subBudgetContainer">
                             <input type="text" class="budget" name="budget" placeholder="Budget:" value="<?php echo $budget; ?>" readonly>
                             <input type="text" class="budget" name="admin_name" placeholder="Admin name:" value="<?php echo $admin_name; ?>" readonly>
-                            <input type="email" class="budget" name="admin_email" placeholder="Admin email:"  value="<?php echo $admin_email; ?>" readonly>
+                            <input type="email" class="budget" name="admin_contact" placeholder="Admin Contact #:"  value="<?php echo $admin_contact; ?>" readonly>
                         </div>
                     </div>
                 </div>
@@ -136,10 +137,6 @@ include_once "../functions/approveRequest.php";
                     <a href="viewAppointment.php?request_ID=<?php echo $_GET['request_ID']; ?>&id=<?php echo $userID; ?>">
                         <button class="button" type="button">Edit Form</button>
                     </a>
-                    <!-- <button class="button1">
-                        <img class="image7" src="../assets/img/th (3).jpg" alt="">
-                    </button> -->
-                    
                     <button class="button" type="submit" name="approve" id="approveButton" disabled>Approve</button>
                     <a href="../admin panel/appointment.php?id=<?php echo $userID; ?>">
                         <button class="button" type="button">Back</button>
@@ -147,9 +144,54 @@ include_once "../functions/approveRequest.php";
                 </div>
             </div>
         </form>
-        
-        <script src="../assets/js/theme/dashboard-theme.js"></script>
-        <script src="../assets/js/approveReq.js"></script>
 
+        <!-- sidebar show -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-profile">
+            <div class="subProfileContainer">
+                <?php
+                    if (!empty($userInfo['profile_img'])) {
+                        echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
+                    } else {
+                        echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
+                    }
+                ?>
+            </div>
+            <div class="user-info">
+                <p class="userName"><?php echo $userInfo['fullname'] ?? ''; ?></p>
+                <p class="email"><?php echo $userInfo['email'] ?? ''; ?></p>
+            </div>
+            <button class="close-btn" onclick="toggleSidebar()">x</button>
+        </div>
+
+        <a href="../admin panel/userProfile.php?id=<?php echo $userID; ?>">
+            <div class="profile-menu">
+                <div class="profile-icon">
+                    <img src="../assets/img/person-circle.png" alt=""> 
+                </div> 
+                <p>Your profile</p>
+            </div>
+        </a>
+
+        <div class="logout-menu" onclick="showLogoutConfirmation()">
+            <div class="logout-icon">
+                <img src="../assets/img/logout.png" alt=""> 
+            </div> 
+            <p>Log out</p>
+        </div>
+    </div>
+
+    <div id="logoutConfirmation" class="popupContainer">
+        <div class="popupContent">
+            <p>Are you sure you want to log out?</p>
+            <div class="popupButtons">
+                <button onclick="logout()">Yes</button>
+                <button onclick="hideLogoutConfirmation()">No</button>
+            </div>
+        </div>
+    </div>
+        
+    <script src="../assets/js/approveReq.js"></script>
+    <script src="../assets/js/sidebarShow.js"></script>
 </body>
 </html>

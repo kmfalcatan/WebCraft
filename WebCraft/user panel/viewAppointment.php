@@ -15,6 +15,7 @@ include_once "../functions/approveRequest.php";
 
     <link rel="stylesheet" href="../assets/css/viewAppointment.css">
     <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
 </head>
 <body id="body">
     <div class="container1">
@@ -26,12 +27,12 @@ include_once "../functions/approveRequest.php";
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
                 <div class="profileContainer">
-                    <div class="subProfileContainer">
+                    <div class="subProfileContainer" id="profileContainer">
                         <?php
                             if (!empty($userInfo['profile_img'])) {
                                 echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
@@ -47,14 +48,19 @@ include_once "../functions/approveRequest.php";
                             <div class='line'></div>
                             <div class='line'></div>
                         </div>
-                        <p class="adminName"><?php echo $userInfo['username'] ?? ''; ?></p>
+                        <p class="userName"><?php echo $userInfo['username'] ?? ''; ?></p>
                     </div>
                 </div>
             </div>
         </div>
 
         <form class="container2" method="POST" enctype="multipart/form-data" >
-            <div class="subContainer">
+            <div class="topContainer">
+                <img class="top-img" src="../assets/img/calendar.png" alt="" >
+                <h2>PROCESSED APPOINTMENT</h2>
+            </div>
+
+            <div class="subContainer" id="subContainer">
                 <div class="equipInfoContainer">
                     <div class="imageContainer1">
                         <!-- img di pa nasasave sa database table budget -->
@@ -105,7 +111,7 @@ include_once "../functions/approveRequest.php";
                         <div class="subBudgetContainer">
                             <input type="text" class="budget" name="budget" placeholder="Budget:" value="<?php echo $budget; ?>" readonly>
                             <input type="text" class="budget" name="admin_name" placeholder="Admin name:" value="<?php echo $admin_name; ?>" readonly>
-                            <input type="email" class="budget" name="admin_email" placeholder="Admin email:"  value="<?php echo $admin_email; ?>" readonly>
+                            <input type="email" class="budget" name="admin_contact" placeholder="Admin Contact #:"  value="<?php echo $admin_contact; ?>" readonly>
                         </div>
                     </div>
                 </div>
@@ -140,9 +146,55 @@ include_once "../functions/approveRequest.php";
                 </div>
             </div>
         </form>
+
+        <!-- sidebar show -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-profile">
+            <div class="subProfileContainer">
+                <?php
+                    if (!empty($userInfo['profile_img'])) {
+                        echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
+                    } else {
+                        echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
+                    }
+                ?>
+            </div>
+            <div class="user-info">
+                <p class="userName"><?php echo $userInfo['fullname'] ?? ''; ?></p>
+                <p class="email"><?php echo $userInfo['email'] ?? ''; ?></p>
+            </div>
+            <button class="close-btn" onclick="toggleSidebar()">x</button>
+        </div>
+
+        <a href="../user panel/userProfile.php?id=<?php echo $userID; ?>">
+            <div class="profile-menu">
+                <div class="profile-icon">
+                    <img src="../assets/img/person-circle.png" alt=""> 
+                </div> 
+                <p>Your profile</p>
+            </div>
+        </a>
+
+        <div class="logout-menu" onclick="showLogoutConfirmation()">
+            <div class="logout-icon">
+                <img src="../assets/img/logout.png" alt=""> 
+            </div> 
+            <p>Log out</p>
+        </div>
+    </div>
+
+    <div id="logoutConfirmation" class="popupContainer">
+        <div class="popupContent">
+            <p>Are you sure you want to log out?</p>
+            <div class="popupButtons">
+                <button onclick="logout()">Yes</button>
+                <button onclick="hideLogoutConfirmation()">No</button>
+            </div>
+        </div>
+    </div>
         
-        <script src="../assets/js/theme/dashboard-theme.js"></script>
-        <script src="../assets/js/approveReq.js"></script>
+    <script src="../assets/js/approveReq.js"></script>
+    <script src="../assets/js/sidebarShow.js"></script>
 
 </body>
 </html>

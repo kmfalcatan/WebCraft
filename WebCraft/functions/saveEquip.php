@@ -4,7 +4,6 @@ include '../functions/header.php';
 include '../authentication/auth.php';
 
 if (isset($_POST['submit_form1'])) {
-
     $user = $_POST['user'];
     $equipment_name = $_POST['article'];
     $deployment = $_POST['deployment'];
@@ -16,48 +15,58 @@ if (isset($_POST['submit_form1'])) {
     $remarks = $_POST['remarks'];
     $description = $_POST['description'];
     $year_received = $_POST['year_received'];
+    $warranty_start = $_POST['warranty_start'];
+    $warranty_end = $_POST['warranty_end'];
+    $budget = $_POST['budget'];
+    $instruction = $_POST['instruction'];
 
+    // Handling image upload
     $target_dir = "../uploads/";
     $image_name = basename($_FILES["image"]["name"]);
     $target_file = $target_dir . $image_name;
-    $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
+    // Handling warranty image upload
+    $warranty_image_name = basename($_FILES["warranty_image"]["name"]);
+    $warranty_target_file = $target_dir . $warranty_image_name;
+    $warranty_imageFileType = strtolower(pathinfo($warranty_target_file, PATHINFO_EXTENSION));
+
+    $uploadOk = 1;
+
+    // Check if image file is a actual image
     $check = getimagesize($_FILES["image"]["tmp_name"]);
-    if ($check !== false) {
-        $uploadOk = 1;
-    } else {
+    if ($check === false) {
         echo "Error: File is not an image.";
         $uploadOk = 0;
     }
 
-    if ($_FILES["image"]["size"] > 500000) {
+    // Check if warranty image file is a actual image
+    $warranty_check = getimagesize($_FILES["warranty_image"]["tmp_name"]);
+    if ($warranty_check === false) {
+        echo "Error: Warranty File is not an image.";
+        $uploadOk = 0;
+    }
+
+    // Check file size
+    if ($_FILES["image"]["size"] > 500000 || $_FILES["warranty_image"]["size"] > 500000) {
         echo "Error: File is too large.";
         $uploadOk = 0;
     }
 
+    // Allow certain file formats
     $allowed_formats = array("jpg", "jpeg", "png", "gif");
-    if (!in_array($imageFileType, $allowed_formats)) {
+    if (!in_array($imageFileType, $allowed_formats) || !in_array($warranty_imageFileType, $allowed_formats)) {
         echo "Error: Only JPG, JPEG, PNG, and GIF files are allowed.";
         $uploadOk = 0;
     }
 
     if ($uploadOk) {
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+        // Move image to target directory
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file) && move_uploaded_file($_FILES["warranty_image"]["tmp_name"], $warranty_target_file)) {
 
-            $check_equipment_sql = "SELECT MAX(unit_ID) as max_unit_id FROM units WHERE equipment_name = '$equipment_name'";
-            $check_equipment_result = $conn->query($check_equipment_sql);
-
-            if ($check_equipment_result->num_rows > 0) {
-                $row = $check_equipment_result->fetch_assoc();
-                $max_unit_id = $row['max_unit_id'];
-                $unit_id = $max_unit_id + 1;
-            } else {
-                $unit_id = 1;
-            }
-
-            $sql = "INSERT INTO equipment (user, article, deployment, property_number, account_code, units, unit_value, total_value, remarks, description, year_received, image) 
-                    VALUES ('$user', '$equipment_name', '$deployment', '$property_number', '$account_code', '$units', '$unit_value', '$total_value', '$remarks', '$description', '$year_received', '$image_name')";
+            // Your existing SQL code here...
+            $sql = "INSERT INTO equipment (user, article, deployment, property_number, account_code, units, unit_value, total_value, remarks, description, year_received, warranty_start, warranty_end, image, warranty_image, budget, instruction) 
+                    VALUES ('$user', '$equipment_name', '$deployment', '$property_number', '$account_code', '$units', '$unit_value', '$total_value', '$remarks', '$description', '$year_received', '$warranty_start', '$warranty_end', '$image_name', '$warranty_image_name', '$budget', '$instruction')";
 
             if ($conn->query($sql) === TRUE) {
                 $equipment_ID = $conn->insert_id;
@@ -77,16 +86,16 @@ if (isset($_POST['submit_form1'])) {
                 $role = $userInfo['role'];
 
                 if ($role === 'admin') {
-                    header("Location: ../admin panel/addOtherinfo.php?id={$userID}");
+                    header("Location: ../admin panel/dashboard.php?id={$userID}");
                 } else {
-                    header("Location: ../user panel/addOtherinfo.php?id={$userID}");
+                    header("Location: ../user panel/dashboard.php?id={$userID}");
                 }
                 exit();
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
             }
         } else {
-            echo "Error: Failed to upload image.";
+            echo "Error: Failed to upload one or both images.";
         }
     }
 

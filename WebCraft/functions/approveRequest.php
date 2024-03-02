@@ -37,7 +37,7 @@ $budget = $budgetRow['budget'] ?? '';
 $maintenanceResult = $conn->query("SELECT * FROM maintenance_contact WHERE request_ID = {$_GET['request_ID']}");
 $maintenanceRow = $maintenanceResult->fetch_assoc();
 $admin_name = $maintenanceRow['admin_name'] ?? '';
-$admin_email = $maintenanceRow['admin_email'] ?? '';
+$admin_contact = $maintenanceRow['admin_contact'] ?? '';
 $maintenance_name = $maintenanceRow['maintenance_name'] ?? '';
 $maintenance_email = $maintenanceRow['maintenance_email'] ?? '';
 $contact_number = $maintenanceRow['contact_number'] ?? '';
@@ -46,7 +46,7 @@ if (isset($_POST['approve'])) {
     approveRequest($conn, $userID, $_GET['request_ID'], $row['equip_img'], $equipment_name, $budget, $details_of_equipment);
 }
 
-if (!empty($equipment_name) && !empty($date_of_appointment) && !empty($details_of_equipment) && !empty($budget) && !empty($admin_name) && !empty($admin_email) && !empty($maintenance_name) && !empty($maintenance_email) && !empty($contact_number)) {
+if (!empty($equipment_name) && !empty($date_of_appointment) && !empty($details_of_equipment) && !empty($budget) && !empty($admin_name) && !empty($admin_contact) && !empty($maintenance_name) && !empty($maintenance_email) && !empty($contact_number)) {
     $updateStmt = $conn->prepare("UPDATE appointment SET status = 'processing' WHERE request_ID = ?");
     $updateStmt->bind_param("i", $_GET['request_ID']);
     $updateStmt->execute();

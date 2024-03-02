@@ -48,7 +48,7 @@ if ($userID !== null) {
             </button>
 
             <img class="top-img" src="../assets/img/person-circle.png" alt="" >
-            <h2>USER EQUIPMENT</h2>
+            <h2>MY INVENTORY</h2>
         </div>
 
         <div class="subContainer">
@@ -109,8 +109,9 @@ if ($userID !== null) {
                                         <td><?php echo $item['total_value']; ?></td>
                                         <td><?php echo $item['remarks']; ?></td>
                                         <td class="actionContainer">
-                                            <a href="../admin panel/equipOtherInfo.php?equipment_ID={$row['equipment_ID']}&id={$userID}">
-                                            <img src='../assets/img/view.png' alt='View' class='action-img'style='width: 2.5rem; height: 1.rem;'></a>
+                                        <a href="../user panel/equipOtherInfo.php?equipment_ID=<?php echo $item['equipment_ID']; ?>&id=<?php echo $userInfo['id']; ?>">
+                        <img src='../assets/img/view.png' alt='View' class='action-img' style='width: 2.5rem; height: 1.rem;'>
+                    </a>
                                             <img src='../assets/img/trash.png' alt='View' class='action-img' style='width: 1.7rem; height: 1.7rem;'>
                                         </td>
                                     </tr>
