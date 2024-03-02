@@ -1,3 +1,26 @@
+.topContainer2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+    width: 64%;
+    background-color: rgb(2, 116, 200);
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.topContainer2 h2{
+    margin-right: auto;
+    color: #fff;
+}
+
+.topContainer2 img{
+    width: 4rem;
+    height: 4rem;
+    margin-left: 2rem;
+    margin-top: -0.2rem;
+    filter: invert(100%);
+}
+
 .subContainer3 {
     display: flex;
     justify-content: center;
@@ -18,7 +41,7 @@
     display: flex;
     justify-content: center; 
     align-items: center; 
-    margin-left: 16rem;
+    margin-left: 19rem;
 }
 
 .subImageContainer1 {

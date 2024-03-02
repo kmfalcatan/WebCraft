@@ -22,6 +22,7 @@ if ($result) {
 
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/addEquip.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
 </head>
 <body id="body">
     <div class="container2">
@@ -38,7 +39,7 @@ if ($result) {
                 </div>
 
                 <div class="profileContainer">
-                    <div class="subProfileContainer">
+                    <div class="subProfileContainer" id="profileContainer">
                     <?php
                         if (!empty($userInfo['profile_img'])) {
                             echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
@@ -82,8 +83,8 @@ if ($result) {
         
                         <div class="uploadButtonContainer">
                             <label for="image" class="uploadButton">
+                                <img src="../assets/img/upload.png" alt="Upload Icon" class="uploadIcon">Upload file
                                 <input id="image" name="image" type="file" style="display: none;">
-                                <span class="plusIcon">+</span>
                             </label>
                         </div>
                     </div>
@@ -99,24 +100,24 @@ if ($result) {
                         </div>
                         
                         <div class="subInfoContainer">
-                            <input class="inputInfo" name="article" cols="30" rows="10" placeholder="Article:" ></input>
+                            <textarea class="inputInfo" name="article" cols="30" rows="10" placeholder="Article:" required></textarea>
                         </div>
                         
                         <div class="subInfoContainer">
-                            <input class="inputInfo" name="deployment" cols="30" rows="10" placeholder="Deployment:" ></input>
+                            <textarea class="inputInfo" name="deployment" cols="30" rows="10" placeholder="Deployment:" required></textarea>
                         </div>
     
                         <div class="subInfoContainer">
                             <div class="subInputInfoContainer2">
-                                <input class="inputInfo3" name="property_number" cols="30" rows="10" placeholder="Property number:" ></input>
+                                <textarea class="inputInfo3" name="property_number" cols="30" rows="10" placeholder="Property number:" required></textarea>
                             </div>
     
                             <div class="subInputInfoContainer2">
-                                <input class="inputInfo3" name="account_code" cols="30" rows="10" placeholder="Account code:" ></input>
+                                <textarea class="inputInfo3" name="account_code" cols="30" rows="10" placeholder="Account code:" required></textarea>
                             </div>
     
                             <div class="subInputInfoContainer2">
-                                <input class="inputInfo3" name="units" cols="30" rows="10" placeholder="Units:" ></input>
+                                <textarea class="inputInfo3" name="units" cols="30" rows="10" placeholder="Units:" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -125,40 +126,94 @@ if ($result) {
                 <div class="otherInfoContainer">
                     <div class="subOtherInfoContainer">
                         <div class="subInputInfoContainer2">
-                            <input class="inputInfo3" name="unit_value" cols="30" rows="10" placeholder="Unit value:" ></input>
+                            <textarea class="inputInfo3" name="unit_value" cols="30" rows="10" placeholder="Unit value:" required></textarea>
                         </div>
     
                         <div class="subInputInfoContainer2">
-                            <input class="inputInfo3" name="total_value" cols="30" rows="10" placeholder="Total value:" ></input>
+                            <textarea class="inputInfo3" name="total_value" cols="30" rows="10" placeholder="Total value:" required></textarea>
                         </div>
     
                         <div class="subInputInfoContainer2">
-                            <input class="inputInfo3" name="remarks" cols="30" rows="10" placeholder="remarks:"></input>
+                            <textarea class="inputInfo3" name="remarks" cols="30" rows="10" placeholder="remarks:"></textarea>
                         </div>
                     </div>
     
                     <div class="descriptionContainer">
-                        <input class="inputInfo4" name="description" cols="30" rows="10" placeholder="Description:" ></input>
+                        <textarea class="inputInfo4" name="description" cols="30" rows="10" placeholder="Description:" required></textarea>
                     </div>
 
                     <div class="dropdownContainer">
                         <label for="year">Year:</label>
-                        <select id="year" name="year_received" class="yearDropdown" >
+                        <select id="year" name="year_received" class="yearDropdown" required>
                             <option value="2022">2022</option>
                             <option value="2023">2023</option>
                             <option value="2024">2024</option>
                         </select>
                     </div>
     
-                    <div class="addEquipButtonContainer">
-                        <button class="addEquipButton" type="submit" name="submit_form1" id="addEquipButton">Add other information</button>
+                    <div class="addEquipButtonContainer" id="addEquipButtonContainer">
+                        <img src="../assets/img/arrow-down.png" alt="">
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="additionalContainer" id="additionalContainer">
+            <div class="addEquipButtonContainer"  class="closeButton" id="closeButton">
+                <img src="../assets/img/arrow-down.png" alt=""></div>
+            <?php include('addOtherinfo.php'); ?>
+        </div>
     </form>
 
+    <!-- sidebar show -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-profile">
+            <div class="subProfileContainer">
+                <?php
+                    if (!empty($userInfo['profile_img'])) {
+                        echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
+                    } else {
+                        echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
+                    }
+                ?>
+            </div>
+            <div class="user-info">
+                <p class="userName"><?php echo $userInfo['fullname'] ?? ''; ?></p>
+                <p class="email"><?php echo $userInfo['email'] ?? ''; ?></p>
+            </div>
+            <button class="close-btn" onclick="toggleSidebar()">x</button>
+        </div>
+
+        <a href="../admin panel/userProfile.php?id=<?php echo $userID; ?>">
+            <div class="profile-menu">
+                <div class="profile-icon">
+                    <img src="../assets/img/person-circle.png" alt=""> 
+                </div> 
+                <p>Your profile</p>
+            </div>
+        </a>
+
+        <div class="logout-menu" onclick="showLogoutConfirmation()">
+            <div class="logout-icon">
+                <img src="../assets/img/logout.png" alt=""> 
+            </div> 
+            <p>Log out</p>
+        </div>
+    </div>
+
+    <div id="logoutConfirmation" class="popupContainer">
+        <div class="popupContent">
+            <p>Are you sure you want to log out?</p>
+            <div class="popupButtons">
+                <button onclick="logout()">Yes</button>
+                <button onclick="hideLogoutConfirmation()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/addEquip.js"></script>
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/uploadImg.js"></script>
+    <script src="../assets/js/sidebarShow.js"></script>
 </body>
 </html>

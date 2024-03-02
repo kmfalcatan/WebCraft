@@ -19,7 +19,7 @@ include ('../authentication/auth.php');
             <div class="backContainer" id="backContainer">
                 <div class="subBackContainer">
                     <div class="back">
-                        <a href="../admin panel/dashboard.php?id=<?php echo $userID; ?>">
+                        <a href="../user panel/dashboard.php?id=<?php echo $userID; ?>">
                             <img class="backButton" src="../assets/img/chevron-left (1).png" alt="">
                         </a>
                     </div>

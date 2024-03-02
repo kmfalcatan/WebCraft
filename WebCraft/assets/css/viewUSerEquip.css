@@ -99,6 +99,8 @@ body{
     display: flex;
     flex-direction: column;
     row-gap: 0.001rem;
+    margin-left: 2rem;
+    margin-top: 1rem;
 }
 
 .subInfoContainer{
@@ -108,6 +110,7 @@ body{
     align-items: center;
     font-size: 1.2rem;
     font-weight: bold;
+    margin-bottom: -1rem;
 }
 
 .subInfoContainer #name{

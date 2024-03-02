@@ -13,6 +13,7 @@ include_once '../functions/header.php';
 
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/budget.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
 
 </head>
 <body id="body">
@@ -30,7 +31,7 @@ include_once '../functions/header.php';
                 </div>
 
                 <div class="profileContainer">
-                    <div class="subProfileContainer">
+                    <div class="subProfileContainer" id="profileContainer">
                         <?php
                             if (!empty($userInfo['profile_img'])) {
                                 echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
@@ -125,7 +126,7 @@ include_once '../functions/header.php';
                                 $count++; 
                             }
                         } else {
-                            echo "<tr><td colspan='7'>No records found</td></tr>";
+                            echo "<tr><td colspan='9'>No records found</td></tr>";
                         }
                         ?>
                     </tbody>
@@ -134,7 +135,53 @@ include_once '../functions/header.php';
         </div>
     </div>
 
+    <!-- sidebar show -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-profile">
+            <div class="subProfileContainer">
+                <?php
+                    if (!empty($userInfo['profile_img'])) {
+                        echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
+                    } else {
+                        echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
+                    }
+                ?>
+            </div>
+            <div class="user-info">
+                <p class="userName"><?php echo $userInfo['fullname'] ?? ''; ?></p>
+                <p class="email"><?php echo $userInfo['email'] ?? ''; ?></p>
+            </div>
+            <button class="close-btn" onclick="toggleSidebar()">x</button>
+        </div>
+
+        <a href="../admin panel/userProfile.php?id=<?php echo $userID; ?>">
+            <div class="profile-menu">
+                <div class="profile-icon">
+                    <img src="../assets/img/person-circle.png" alt=""> 
+                </div> 
+                <p>Your profile</p>
+            </div>
+        </a>
+
+        <div class="logout-menu" onclick="showLogoutConfirmation()">
+            <div class="logout-icon">
+                <img src="../assets/img/logout.png" alt=""> 
+            </div> 
+            <p>Log out</p>
+        </div>
+    </div>
+
+    <div id="logoutConfirmation" class="popupContainer">
+        <div class="popupContent">
+            <p>Are you sure you want to log out?</p>
+            <div class="popupButtons">
+                <button onclick="logout()">Yes</button>
+                <button onclick="hideLogoutConfirmation()">No</button>
+            </div>
+        </div>
+    </div>
+
     <script src="../assets/js/dashboard.js"></script>
-    <script src="../assets/js/theme/dashboard-theme.js"></script>
+    <script src="../assets/js/sidebarShow.js"></script>
 </body>
 </html>

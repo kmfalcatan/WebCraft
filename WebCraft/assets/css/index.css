@@ -124,7 +124,7 @@ body{
 }
 
 .sideNavBarContainer{
-    outline: red dashed;
+    /* outline: red dashed; */
     height: 23.5em;
     width:  12.5rem;
     position: fixed;

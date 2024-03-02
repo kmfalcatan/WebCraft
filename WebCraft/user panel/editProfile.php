@@ -16,10 +16,11 @@ $userInfo = getUserInfo($conn, $userID);
     <link rel="stylesheet" href="../assets/css/profile.css">
 </head>
 <body id="body">
-    <div class="container" style="height: 100vh;">
-        <form class="subContainer" style="height: 70vh;" method="POST" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $userID; ?>" enctype="multipart/form-data">
-            <div class="textContainer">
-                <p class="text">Edit Profile</p>
+    <div class="container">
+        <form class="subContainer" id="subContainer" method="POST" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $userID; ?>" enctype="multipart/form-data">
+            <div class="topContainer">
+                <img class="top-img" src="../assets/imG/person-circle.png" alt="" >
+                <h2>EDIT PROFILE</h2>
             </div>
 
             <div class="imageContainer">

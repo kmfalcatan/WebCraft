@@ -20,6 +20,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/addEquip.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
 </head>
 <body id="body">
     <div class="container2">
@@ -36,7 +37,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 </div>
 
                 <div class="profileContainer">
-                    <div class="subProfileContainer">
+                    <div class="subProfileContainer" id="profileContainer">
                     <?php
                         if (!empty($userInfo['profile_img'])) {
                             echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
@@ -80,8 +81,8 @@ while ($row = mysqli_fetch_assoc($result)) {
         
                         <div class="uploadButtonContainer">
                             <label for="image" class="uploadButton">
-                                <input id="image" name="image" type="file" style="display: none;" required>
-                                <span class="plusIcon">+</span>
+                                <img src="../assets/img/upload.png" class="uploadIcon">Upload file
+                                <input id="image" name="image" type="file" style="display: none;">
                             </label>
                         </div>
                     </div>
@@ -148,16 +149,68 @@ while ($row = mysqli_fetch_assoc($result)) {
                         </select>
                     </div>
     
-                    <div class="addEquipButtonContainer">
-                        <button class="addEquipButton" type="submit" name="submit_form1" id="addEquipButton">Add other information</button>
+                    <div class="addEquipButtonContainer" id="addEquipButtonContainer">
+                        <img src="../assets/img/arrow-down.png" alt="">
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="additionalContainer" id="additionalContainer">
+            <div class="addEquipButtonContainer"  class="closeButton" id="closeButton">
+                <img src="../assets/img/arrow-down.png" alt=""></div>
+            <?php include('addOtherinfo.php'); ?>
+        </div>
     </form>
 
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-profile">
+            <div class="subProfileContainer">
+                <?php
+                    if (!empty($userInfo['profile_img'])) {
+                        echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
+                    } else {
+                        echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
+                    }
+                ?>
+            </div>
+            <div class="user-info">
+                <p class="userName"><?php echo $userInfo['fullname'] ?? ''; ?></p>
+                <p class="email"><?php echo $userInfo['email'] ?? ''; ?></p>
+            </div>
+            <button class="close-btn" onclick="toggleSidebar()">x</button>
+        </div>
+
+        <a href="../user panel/userProfile.php?id=<?php echo $userID; ?>">
+            <div class="profile-menu">
+                <div class="profile-icon">
+                    <img src="../assets/img/person-circle.png" alt=""> 
+                </div> 
+                <p>Your profile</p>
+            </div>
+        </a>
+
+        <div class="logout-menu" onclick="showLogoutConfirmation()">
+            <div class="logout-icon">
+                <img src="../assets/img/logout.png" alt=""> 
+            </div> 
+            <p>Log out</p>
+        </div>
+    </div>
+
+    <div id="logoutConfirmation" class="popupContainer">
+        <div class="popupContent">
+            <p>Are you sure you want to log out?</p>
+            <div class="popupButtons">
+                <button onclick="logout()">Yes</button>
+                <button onclick="hideLogoutConfirmation()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/addEquip.js"></script>
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/uploadImg.js"></script>
-    <script src="../assets/js/theme/new-equip-theme.js"></script>
+    <script src="../assets/js/sidebarShow.js"></script>
 </body>
 </html>

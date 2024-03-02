@@ -16,6 +16,7 @@ include_once "../functions/warranty.php";
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/addEquip.css">
     <link rel="stylesheet" href="../assets/css/warranty.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
 </head>
 <body id="body">
     <div class="container2">
@@ -32,7 +33,7 @@ include_once "../functions/warranty.php";
                 </div>
 
                 <div class="profileContainer">
-                    <div class="subProfileContainer">
+                    <div class="subProfileContainer" id="profileContainer">
                         <?php
                             if (!empty($userInfo['profile_img'])) {
                                 echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
@@ -121,6 +122,8 @@ include_once "../functions/warranty.php";
     
                     <!-- Temporary link -->
                     <div class="buttonsContainer">
+                        <button class="button1" id="btn1"><a href="report.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Report</a></button>
+
                         <button class="button2" id="btn2" type="button" onclick="showWarranty()">Check<span style="margin-left: 0.5rem;">Warranty</span></button>
 
                         <button class="button1" id="btn1"><a href="updateEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Edit</a></button>
@@ -135,7 +138,7 @@ include_once "../functions/warranty.php";
     <div class="container4" id="warrantyContainer" style="display: none;">
         <div class="subContainer"  >
             <div class="warrantyContainer">
-                <p>Warranty expired on: <span><?php echo isset($warranty_end) ? date('M d, Y', strtotime($warranty_end)) : ''; ?></span></p>
+                <p>Warranty Will Expire On: <span><?php echo isset($warranty_end) ? date('M d, Y', strtotime($warranty_end)) : ''; ?></span></p>
             </div>
             <div class="buttonContainer">
                 <button id="btn1" type="button" class="button" onclick="closeWarranty()">Close</button>
@@ -143,9 +146,55 @@ include_once "../functions/warranty.php";
         </div>
     </div>
 
+    <!-- sidebar show -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-profile">
+            <div class="subProfileContainer">
+                <?php
+                    if (!empty($userInfo['profile_img'])) {
+                        echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
+                    } else {
+                        echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
+                    }
+                ?>
+            </div>
+            <div class="user-info">
+                <p class="userName"><?php echo $userInfo['fullname'] ?? ''; ?></p>
+                <p class="email"><?php echo $userInfo['email'] ?? ''; ?></p>
+            </div>
+            <button class="close-btn" onclick="toggleSidebar()" style="left: 70%;">x</button>
+        </div>
+
+        <a href="../user panel/userProfile.php?id=<?php echo $userID; ?>">
+            <div class="profile-menu">
+                <div class="profile-icon">
+                    <img src="../assets/img/person-circle.png" alt=""> 
+                </div> 
+                <p>Your profile</p>
+            </div>
+        </a>
+
+        <div class="logout-menu" onclick="showLogoutConfirmation()">
+            <div class="logout-icon">
+                <img src="../assets/img/logout.png" alt=""> 
+            </div> 
+            <p>Log out</p>
+        </div>
+    </div>
+
+    <div id="logoutConfirmation" class="popupContainer">
+        <div class="popupContent">
+            <p>Are you sure you want to log out?</p>
+            <div class="popupButtons">
+                <button onclick="logout()">Yes</button>
+                <button onclick="hideLogoutConfirmation()">No</button>
+            </div>
+        </div>
+    </div>
+
 
     <script src="../assets/js/dashboard.js"></script>
-    <script src="../assets/js/theme/dashboard-theme.js"></script>
+    <script src="../assets/js/sidebarShow.js"></script>
     <script>
     function goBack() {
         window.history.back();

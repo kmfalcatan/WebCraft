@@ -67,7 +67,7 @@ $message = "";
                             <div class="inputContainer">
                                 <input class="inputField" name="email" type="text" required>
                                 <span>E-mail</span>
-                            </div>  
+                            </div>   
                         </div>
     
                         <div class="subLogInFormContainer1">
@@ -103,6 +103,5 @@ $message = "";
     </div>
 
     <script src="../assets/js/login.js"></script>
-    <!-- <script src="../assets/js/theme/login-theme.js"></script> -->
 </body>
 </html>

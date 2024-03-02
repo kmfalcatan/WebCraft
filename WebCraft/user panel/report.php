@@ -1,8 +1,58 @@
 <?php
+include ('../dbConfig/dbconnect.php');
 include_once "../authentication/auth.php";
-include_once "../functions/updateEquip.php";
 include_once "../functions/header.php";
-include_once "../functions/warranty.php";
+
+$equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
+
+$sql = "SELECT * FROM equipment WHERE equipment_ID = '$equipment_ID'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $imageFilename = $row['image'];
+    $imageURL = "../uploads/" . $imageFilename;
+    $user = $row['user'];
+    $article = $row['article'];
+    $deployment = $row['deployment'];
+    $property_number = $row['property_number'];
+    $account_code = $row['account_code'];
+    $units = $row['units'];
+    $unit_value = $row['unit_value'];
+    $total_value = $row['total_value'];
+    $remarks = $row['remarks'];
+    $description = $row['description'];
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['updateStatus'])) {
+    // Process the form submission
+
+    // Assume 'status' and 'selectedEquipment' are arrays
+    $statuses = $_POST['status'];
+    $selectedEquipment = $_POST['selectedEquipment'];
+
+    // Validate and update status in the 'units' table
+    foreach ($selectedEquipment as $index => $unitID) {
+        $status = $statuses[$index];
+
+        // Add validation as needed
+
+        // Update the status in the 'units' table
+        $updateStatusQuery = "UPDATE units SET status = '$status' WHERE unit_ID = '$unitID'";
+        $conn->query($updateStatusQuery);
+
+        //if ($status === 'lost' || $status === 'return') {
+            // Fetch equipment details
+            //$recycleQuery = "INSERT INTO recycle_bin (equipment_ID, image, article, description, deployment, user, property_number, account_code, units, unit_value, total_value, remarks, year_received, warranty_image, warranty_start, warranty_end, budget, instruction)
+                             //SELECT * FROM equipment WHERE equipment_ID = '$equipment_ID'";
+            //$conn->query($recycleQuery);
+
+            // Delete from the 'equipment' table
+            //$deleteQuery = "DELETE FROM equipment WHERE equipment_ID = '$equipment_ID'";
+          //  $conn->query($deleteQuery);
+        //}
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +67,33 @@ include_once "../functions/warranty.php";
     <link rel="stylesheet" href="../assets/css/addEquip.css">
     <link rel="stylesheet" href="../assets/css/warranty.css">
     <link rel="stylesheet" href="../assets/css/sidebarShow.css">
+
+    <style>
+        /* Simplified styling for testing */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: block;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px;
+            z-index: 1;
+        }
+
+        .checkbox-label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .status-select {
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body id="body">
     <div class="container2">
@@ -97,6 +174,46 @@ include_once "../functions/warranty.php";
                             <div class="subInputInfoContainer2">
                                 <textarea class="inputInfo3" name="units" cols="30" rows="10" placeholder="Units:" readonly><?php echo $units; ?></textarea>
                             </div>
+    
+                            <div class="subInputInfoContainer2">
+                                <div class="dropdown inputInfo3">
+                                    <button onclick="toggleDropdown()" class="dropdown-btn">Select options</button>
+                                    <div id="dropdownContent" class="dropdown-content">
+                                        <form method="POST" action="">
+                                            <?php
+                                                // Fetch units from the 'units' table inside the dropdown div
+                                                $sqlUnits = "SELECT * FROM units WHERE equipment_ID = '$equipment_ID'";
+                                                $resultUnits = $conn->query($sqlUnits);
+
+                                                // Check if there are units available
+                                                if ($resultUnits->num_rows > 0) {
+                                                    $unitsArray = array();
+                                                    while ($rowUnits = $resultUnits->fetch_assoc()) {
+                                                        // Extract unit details
+                                                        $unitID = $rowUnits['unit_ID'];
+                                                        $unitName = $rowUnits['equipment_name'];
+
+                                                        echo '<div class="checkbox-label">';
+                                                        echo '<label>';
+                                                        echo '<input type="checkbox" name="selectedEquipment[]" value="' . $unitID . '">';
+                                                        echo '<span>ID: ' . $unitID . '</span> ' . $unitName; // Display ID and name
+                                                        echo '<select class="status-select" name="status[]">';
+                                                        echo '<option value="" disabled selected>Choose a status</option>';
+                                                        echo '<option value="lost">Lost</option>';
+                                                        echo '<option value="return">Return</option>';
+                                                        echo '</select>';
+                                                        echo '</label>';
+                                                        echo '</div>';
+                                                    }
+                                                } else {
+                                                    echo '<p>No units available.</p>';
+                                                }
+                                            ?>
+                                            <button type="submit" name="updateStatus">Update Status</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -122,11 +239,7 @@ include_once "../functions/warranty.php";
     
                     <!-- Temporary link -->
                     <div class="buttonsContainer">
-                        <button class="button2" id="btn2" type="button" onclick="showWarranty()">Check<span style="margin-left: 0.5rem;">Warranty</span></button>
-
-                        <button class="button1" id="btn1"><a href="updateEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Edit</a></button>
-                    
-                        <button class="button3" id="btn3" type="button"><a href="dashboard.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Back</a></button>
+                        <button class="button3" id="btn3" type="button"><a href="equipOtherInfo.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Back</a></button>
                     </div>
                 </div>
             </div>
@@ -160,10 +273,10 @@ include_once "../functions/warranty.php";
                 <p class="userName"><?php echo $userInfo['fullname'] ?? ''; ?></p>
                 <p class="email"><?php echo $userInfo['email'] ?? ''; ?></p>
             </div>
-            <button class="close-btn" onclick="toggleSidebar()">x</button>
+            <button class="close-btn" onclick="toggleSidebar()" style="left: 70%;">x</button>
         </div>
 
-        <a href="../admin panel/userProfile.php?id=<?php echo $userID; ?>">
+        <a href="../user panel/userProfile.php?id=<?php echo $userID; ?>">
             <div class="profile-menu">
                 <div class="profile-icon">
                     <img src="../assets/img/person-circle.png" alt=""> 
@@ -193,16 +306,30 @@ include_once "../functions/warranty.php";
 
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/sidebarShow.js"></script>
-
     <script>
-        function showWarranty() {
-            document.getElementById('warrantyContainer').style.display = 'block';
-        }
-
-        function closeWarranty() {
-            document.getElementById('warrantyContainer').style.display = 'none';
-        }
+    function goBack() {
+        window.history.back();
+    }
     </script>
+
+<script>
+    function toggleDropdown() {
+        var dropdownContent = document.getElementById("dropdownContent");
+        dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+    }
+
+    // Close the dropdown when clicking outside
+    window.addEventListener('click', function(event) {
+        var dropdownContent = document.getElementById("dropdownContent");
+        var dropdownBtn = document.querySelector(".dropdown-btn");
+
+        if (!event.target.matches('.dropdown-btn') && !event.target.closest('.dropdown-content')) {
+            if (dropdownContent.style.display === 'block') {
+                dropdownContent.style.display = 'none';
+            }
+        }
+    });
+</script>
 
 </body>
 </html>
