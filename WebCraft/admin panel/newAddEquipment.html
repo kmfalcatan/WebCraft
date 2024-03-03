@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/newAddequipment.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
+    <link rel="stylesheet" href="../assets/css/newOtherInfo.css">
+</head>
+<body>
+    <div class="container1">
+        <div class="headerContainer">
+            <div class="subHeaderContainer">
+                <div class="imageContainer">
+                    <div class="subImageContainer">
+                        <img class="image" src="../assets/img/medLogo.png" alt="">
+                    </div>
+
+                    <div class="nameContainer">
+                        <img class="medName" src="../assets/img/system-name.png" alt="">
+                    </div>
+                </div>
+
+                <div class="profileContainer">
+                    <div class="subProfileContainer" id="profileContainer">
+                            <img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">
+                            <img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">
+                        </div>
+
+                        <div class="subProfileContainer">
+                        <div class='menubarContainer' onclick='toggleMenu(this)'>
+                            <div class='line'></div>
+                            <div class='line'></div>
+                            <div class='line'></div>
+                        </div>
+                        <p class="userName"></p>
+                    </div>
+                </div>
+            </div>
+            <?php include('sidebar.php'); ?>
+        </div>
+    </div>
+
+    <div class="container2">
+        <div class="subContainer3">
+            <div class="textContainer">
+                <div class="imageContainer2">
+                    <div class="subImageContainer2">
+                        <img class="image1" src="../assets/img/stet-icon.png" alt="">
+                    </div>
+
+                    <div class="textContainer1">
+                        <p>ADD EQUIPMENT</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subContainer4">
+                <div class="infoContainer1">
+                    <div class="uploadImageContainer1">
+                        <div class="subUploadImageContainer1">
+                            <div class="imageContainer3">
+                                <img class="image3" src="" alt="">
+                            </div>
+                        </div>
+
+                        <div class="uploadButtonContainer1">
+                            <button class="uploadButton1">
+                                <img class="uploadIcon1" src="../assets/img/upload.png" alt="">
+                                upload
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="subInfoContainer1">
+                        <div class="inputInfoContainer3">
+                            <div class="subInputInfoContainer3">
+                                <button onclick="dropdown()" class="viewButton">View selected user</button>
+                            </div>
+
+                            <div class="subInputInfoContainer3">
+                                <button onclick="dropdown()" class="inputInfo1">Select User</button>
+
+                                <div class="dropdownContainer1" style="display: none;">
+                                    <div class="subDropDownContainer1">
+                                        <input class="checkBox" type="checkbox">
+                                        <p>UserName</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="inputInfoContainer3">
+                            <div class="subInputInfoContainer3">
+                                <input class="inputInfo2" type="text" placeholder="Article:">
+                            </div>
+
+                            <div class="subInputInfoContainer3">
+                                <input class="inputInfo2" type="text" placeholder="Deployment:">
+                            </div>
+                        </div>
+
+                        <div class="inputInfoContainer3">
+                            <div class="subInputInfoContainer3">
+                                <input class="inputInfo2" type="text" placeholder="Distribute unit:">
+                            </div>
+
+                            <div class="subInputInfoContainer3">
+                                <input class="inputInfo2" type="text" placeholder="Total unit:">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subContainer6">
+                    <div class="subInputInfoContainer3">
+                        <input class="inputInfo2" type="text" placeholder="Property number:">
+                    </div>
+
+                    <div class="subInputInfoContainer3">
+                        <input class="inputInfo2" type="text" placeholder="Account code:">
+                    </div>
+
+                    <div class="subInputInfoContainer3">
+                        <input class="inputInfo2" type="text" placeholder="Unit value:">
+                    </div>
+
+                    <div class="subInputInfoContainer3">
+                        <input class="inputInfo2" type="text" placeholder="Total value:">
+                    </div>
+
+                    <div class="subInputInfoContainer3">
+                        <input class="inputInfo2" type="text" placeholder="Remarks:">
+                    </div>
+                </div>
+
+                <div class="descriptionContainer1">
+                    <input class="description" type="text" placeholder="Descripton:">
+                </div>
+
+                <div class="yearContainer">
+                    <p class="year">Year:
+                        <select name="" id="">
+                            <option value="">2023</option>
+                            <option value="">2024</option>
+                        </select>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="otherInfoContainer6">
+            <img onclick="appear()" class="arrowDown" src="../assets/img/arrow-down.png" alt="">
+        </div>
+
+        <div class="container3" style="display: none;">
+            <div class="backContainer1">
+                <img onclick="appear()" class="arrowDown1" src="../assets/img/arrow-down.png" alt="">
+            </div>
+
+            <div class="container2">
+                <div class="subContainer7">
+                    <div class="textContainer3">
+                        <div class="imageContainer2">
+                            <div class="subImageContainer2">
+                                <img class="image1" src="../assets/img/stet-icon.png" alt="">
+                            </div>
+        
+                            <div class="textContainer2">
+                                <p>ADDITIONAL INFORMATION</p>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="subContainer5">
+                        <div class="infoContainer3">
+                            <div class="uploadImageContainer3">
+                                <div class="subUploadImageContainer2">
+                                    <div class="imageContainer4">
+                                        <img class="image4" src="" alt="">
+                                    </div>
+                                </div>
+        
+                                <div class="uploadButtonContainer6">
+                                    <button class="uploadButton6">
+                                        <img class="uploadIcon6" src="../assets/img/upload.png" alt="">
+                                        upload
+                                    </button>
+                                </div>
+                            </div>
+        
+                            <div class="subInfoContainer2">
+                                <div class="inputInfoContainer5">
+                                    <div class="subInputInfoContainer5">
+                                        <p class="inputInfo3">Warranty start date:</p>
+                                    </div>
+
+                                    <div class="subInputInfoContainer5">
+                                        <input class="inputInfo4" type="date" placeholder="Article:">
+                                    </div>
+
+                                    <div class="subInputInfoContainer5">
+                                        <p class="inputInfo3">Warranty expiration date:</p>
+                                    </div>
+        
+                                    <div class="subInputInfoContainer5">
+                                        <input class="inputInfo4" type="date" placeholder="Deployment:">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="descriptionContainer2">
+                            <input class="description1" type="text" placeholder="How to use:">
+                        </div>
+
+                        <div class="addButtonContainer">
+                            <button class="addButton">Add to inventory</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/dashboard.js"></script>
+
+    <script>
+        function dropdown(){
+            var dropdownContainer = document.querySelector('.dropdownContainer1');
+
+            if(dropdownContainer.style.display === 'none'){
+                dropdownContainer.style.display = 'block';
+            } else if (dropdownContainer.style.display = 'block') {
+                dropdownContainer.style.display = 'none';
+            } else{
+                dropdownContainer.style.display = 'none';
+            }
+        }
+
+        function appear(){
+            var popup = document.querySelector('.container3');
+
+            if(popup.style.display === 'none'){
+                popup.style.display = 'block';
+            } else if(popup.style.display === 'block'){
+                popup.style.display = 'none';
+            } else{
+                popup.styl.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
