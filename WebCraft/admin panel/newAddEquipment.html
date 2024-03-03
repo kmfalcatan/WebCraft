@@ -78,13 +78,20 @@
                     <div class="subInfoContainer1">
                         <div class="inputInfoContainer3">
                             <div class="subInputInfoContainer3">
-                                <button onclick="dropdown()" class="viewButton">View selected user</button>
+                                <button onclick="dropdown1()" class="viewButton">View selected user</button>
+
+                                <div class="dropdownContainer1" id="dropdown1" style="display: none;">
+                                    <div class="subDropDownContainer1">
+                                        <input class="checkBox" type="checkbox">
+                                        <p>UserName</p>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="subInputInfoContainer3">
                                 <button onclick="dropdown()" class="inputInfo1">Select User</button>
 
-                                <div class="dropdownContainer1" style="display: none;">
+                                <div class="dropdownContainer1" id="dropdown" style="display: none;">
                                     <div class="subDropDownContainer1">
                                         <input class="checkBox" type="checkbox">
                                         <p>UserName</p>
@@ -105,11 +112,35 @@
 
                         <div class="inputInfoContainer3">
                             <div class="subInputInfoContainer3">
-                                <input class="inputInfo2" type="text" placeholder="Distribute unit:">
+                                <button onclick="dropdown2()" class="inputInfo8">Distribute unit:</button>
+
+                                <div class="dropdownContainer1" id="dropdown2" style="display: none;">
+                                    <div class="subDropDownContainer1">
+                                        <input class="checkBox" type="checkbox">
+                                        <p>UserName</p>
+                                        <input style="width: 3rem; margin-left: 0.5rem; text-align: center;" type="number" placeholder="Unit:">
+                                    </div>
+
+                                    <div class="subDropDownContainer1">
+                                        <button class="saveButton">save</button>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="subInputInfoContainer3">
                                 <input class="inputInfo2" type="text" placeholder="Total unit:">
+                            </div>
+
+                            <div class="subInputInfoContainer3">
+                                <button onclick="dropdown3()" class="viewButton">View more</button>
+
+                                <div class="dropdownContainer1" id="dropdown3" style="display: none;">
+                                    <div class="subDropDownContainer1">
+                                        <input class="checkBox" type="checkbox">
+                                        <p>UserName</p>
+                                        <input style="width: 3rem; margin-left: 0.5rem; text-align: center;" type="number" placeholder="Unit:">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -230,7 +261,7 @@
 
     <script>
         function dropdown(){
-            var dropdownContainer = document.querySelector('.dropdownContainer1');
+            var dropdownContainer = document.getElementById('dropdown');
 
             if(dropdownContainer.style.display === 'none'){
                 dropdownContainer.style.display = 'block';
@@ -238,6 +269,42 @@
                 dropdownContainer.style.display = 'none';
             } else{
                 dropdownContainer.style.display = 'none';
+            }
+        }
+
+        function dropdown1(){
+            var dropdownContainer1 = document.getElementById('dropdown1');
+
+            if(dropdownContainer1.style.display === 'none'){
+                dropdownContainer1.style.display = 'block';
+            } else if(dropdownContainer1.style.display === 'block'){
+                dropdownContainer1.style.display = 'none';
+            } else{
+                dropdownContainer1.style.display = 'none';
+            }
+        }
+
+        function dropdown2(){
+            var dropdownContainer1 = document.getElementById('dropdown2');
+
+            if(dropdownContainer1.style.display === 'none'){
+                dropdownContainer1.style.display = 'block';
+            } else if(dropdownContainer1.style.display === 'block'){
+                dropdownContainer1.style.display = 'none';
+            } else{
+                dropdownContainer1.style.display = 'none';
+            }
+        }
+
+        function dropdown3(){
+            var dropdownContainer1 = document.getElementById('dropdown3');
+
+            if(dropdownContainer1.style.display === 'none'){
+                dropdownContainer1.style.display = 'block';
+            } else if(dropdownContainer1.style.display === 'block'){
+                dropdownContainer1.style.display = 'none';
+            } else{
+                dropdownContainer1.style.display = 'none';
             }
         }
 
