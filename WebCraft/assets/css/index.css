@@ -37,7 +37,7 @@ body{
 
 .subImageContainer{
     height: 100%;
-    width: 8rem;
+    width: 3rem;
     margin-left: 1rem;
     display: flex;
     justify-content: center;
@@ -51,6 +51,7 @@ body{
 .nameContainer img{
     width: 14rem;
     height: 2.5rem;
+    display: none;
 }
 
 .profileContainer{
@@ -412,14 +413,17 @@ th{
         font-size: 1.5rem;
     }
 
-    .nameContainer{
-        display: flex;
+    .nameContainer img{
         justify-content: center;
         align-items: center;
         width: 12rem;
-        margin-left: 1rem;
-        font-weight: bold;
         font-size: 1.3rem;
+        display: block;
+    }
+
+    .nameContainer{
+        display: block;
+        margin-top: 0.9rem;
     }
 
     .imageContainer{
@@ -497,14 +501,17 @@ th{
         align-items: center;
     }
 
-    .nameContainer{
-        display: flex;
+    .nameContainer img{
         justify-content: center;
         align-items: center;
-        width: 18rem;
-        margin-left: 1rem;
-        font-weight: bold;
-        font-size: 1.5rem;
+        width: 12rem;
+        font-size: 1.3rem;
+        display: block;
+    }
+
+    .nameContainer{
+        display: block;
+        margin-top: 0.9rem;
     }
 
     .adminName, 
@@ -643,12 +650,17 @@ th{
         width: 20rem;
     }
 
-    .nameContainer{
-        display: flex;
+    .nameContainer img{
         justify-content: center;
         align-items: center;
-        width: 20rem;
-        margin-left: 1rem;
+        width: 12rem;
+        font-size: 1.3rem;
+        display: block;
+    }
+
+    .nameContainer{
+        display: block;
+        margin-top: 0.9rem;
     }
 
     .imageContainer{

@@ -1,0 +1,428 @@
+.container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    position: relative;
+    flex-direction: column;
+}
+
+.subContainer3{
+    height: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    background-color: #fff;
+}
+
+.textContainer{
+    height: 4rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    background-color: rgb(2, 116, 200);
+}
+
+.imageContainer2{
+    height: 100%;
+    width: 21rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.subImageContainer2{
+    height: 100%;
+    width: 4rem;
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image1{
+    height: 100%;
+    filter: invert(100%);
+}
+
+.textContainer1{
+    width: 20rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.subContainer4{
+    height: 100%;
+}
+
+.infoContainer1{
+    height: 34rem;
+}
+
+.uploadImageContainer1{
+    height: 15rem;
+}
+
+.subUploadImageContainer1{
+    height: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContainer3{
+    height: 11rem;
+    width: 11rem;
+    border-radius: 0.5rem;
+    background-color: rgb(2, 116, 200);
+}
+
+.image3{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.uploadButtonContainer1{
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploadButton1{
+    height: 2rem;
+    width: 8rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: rgb(2, 116, 200);
+    color: white;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.uploadButton1:hover{
+    background-color: rgb(2, 84, 143);
+}
+
+.uploadButton1:active{
+    background-color: rgb(2, 116, 200);
+    transform: scale(0.9);
+}
+
+.uploadIcon1{
+    height: 1rem;
+    margin-right: 0.5rem;
+    filter: invert(100%);
+}
+
+.subInfoContainer1{
+    height: 19rem;
+}
+
+.inputInfoContainer3{
+    height: 6rem;
+    width: 100%;
+}
+
+.subInputInfoContainer3, .subInputInfoContainer4{
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.viewButton{
+    height: 2rem;
+    width: 10rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: transparent;
+    color: rgb(2, 116, 200);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.viewButton:hover{
+    background-color: rgb(2, 84, 143);
+    color: white;
+}
+
+.viewButton:active{
+    background-color: rgb(2, 116, 200);
+    transform: scale(0.9);
+    color: white;
+}
+
+.inputInfo1{
+    height: 2.5rem;
+    width: 90%;
+    background-color: white;
+    border: solid gray 1px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.inputInfo1:hover{
+    background-color: rgb(2, 116, 200);
+    color: white;
+}
+
+.inputInfo1:active{
+    background-color: rgb(2, 116, 200);
+    color: white;
+}
+
+.dropdownContainer1{
+    position: absolute;
+    width: 90%;
+    border-radius: 0.5rem;
+    top: 0;
+    margin-top: 3rem;
+    background-color: rgb(2, 116, 200);
+    border: solid gray 1px;
+    z-index: 1;
+    color: white;
+}
+
+.subDropDownContainer1{
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.checkBox{
+    margin-right: 0.5rem;
+}
+
+.inputInfo2{
+    height: 2.5rem;
+    width: 90%;
+    background-color: white;
+    border: solid gray 1px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.subContainer6{
+    height:15rem;
+    margin-bottom: 0.5rem;
+}
+
+.descriptionContainer1{
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.description{
+    height: 9rem;
+    width: 90%;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    border: solid gray 1px;
+}
+
+.yearContainer{
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    flex-direction: row;
+}
+
+.year{
+    height: 100%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.otherinfoContainer6{
+    position: absolute;
+    top: 0;
+}
+
+.arrowDown{
+    height: 2rem;
+    cursor: pointer;
+    border-radius: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*laptop*/
+@media only screen and (min-width: 1025px) and (max-width: 1440px){
+    .infoContainer1{
+        display: flex;
+        flex-direction: row;
+        height: 20rem;
+        padding: 0 1rem;
+    }
+
+    .uploadImageContainer1{
+        width: 20rem;
+        height: 100%;
+    }
+
+    .subUploadImageContainer1{
+        height: 17rem;
+    }
+
+    .imageContainer3{
+        height: 16rem;
+        width: 16rem;
+    }
+
+    .subInfoContainer1{
+        width: 39rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        column-gap: 0.5rem;
+    }
+
+    .inputInfoContainer3{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 5rem;
+    }
+
+    .subInputInfoContainer3{
+        width: 100%;
+        column-gap: 0.5rem;
+    }
+
+    .subInputInfoContainer4{
+        width: 17rem;
+    }
+
+    .inputInfo1{
+        width: 100%;
+    }
+
+    .inputInfo2{
+        width: 97%;
+    }
+
+    .subContainer6{
+        display: flex;
+        flex-direction: row;
+        padding: 0 1rem;
+        column-gap: 0.5rem;
+        padding: 0 1.1rem;
+        height: 4rem;
+    }
+
+    .descriptionContainer1{
+        padding: 0 1rem;
+    }
+
+    .description{
+        width: 99%;
+    }
+
+    .subContainer3{
+        width: 60rem;
+    }
+}
+
+/*pc*/
+@media only screen and (min-width: 1441px){
+    .infoContainer1{
+        display: flex;
+        flex-direction: row;
+        height: 20rem;
+        padding: 0 1rem;
+    }
+
+    .uploadImageContainer1{
+        width: 20rem;
+        height: 100%;
+    }
+
+    .subUploadImageContainer1{
+        height: 17rem;
+    }
+
+    .imageContainer3{
+        height: 16rem;
+        width: 16rem;
+    }
+
+    .subInfoContainer1{
+        width: 49rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        column-gap: 0.5rem;
+    }
+
+    .inputInfoContainer3{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 5rem;
+    }
+
+    .subInputInfoContainer3{
+        width: 100%;
+        column-gap: 0.5rem;
+    }
+
+    .subInputInfoContainer4{
+        width: 17rem;
+    }
+
+    .inputInfo1{
+        width: 100%;
+    }
+
+    .inputInfo2{
+        width: 97%;
+    }
+
+    .subContainer6{
+        display: flex;
+        flex-direction: row;
+        padding: 0 1rem;
+        column-gap: 0.5rem;
+        padding: 0 1.1rem;
+        height: 4rem;
+    }
+
+    .descriptionContainer1{
+        padding: 0 1rem;
+    }
+
+    .description{
+        width: 99%;
+    }
+
+    .subContainer3{
+        width: 70rem;
+    }
+}
