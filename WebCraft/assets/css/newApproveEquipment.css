@@ -228,7 +228,6 @@
     .equipInfoContainer{
         width: 37.6rem;
         display: flex;
-        justify-content: center;
         align-items: center;
         flex-direction: column;
     }
@@ -280,7 +279,6 @@
     .equipInfoContainer{
         width: 50rem;
         display: flex;
-        justify-content: center;
         align-items: center;
         flex-direction: column;
     }
