@@ -1,0 +1,132 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    height: 96.2vh;
+    background: rgb(207, 224, 236);
+    padding-top: 2rem;
+}
+
+.headerContainer{
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.backContainer{
+    height: 4rem;
+    width: 4rem;
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+}
+
+.backIcon{
+    height: 2rem;
+    border-radius: 0.5rem;
+}
+
+.settingContainer{
+    height: 100%;
+    width: 11rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.settingText{
+    height: 100%;
+    width: 7rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.subContainer{
+    height: 89vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.settingContainer1{
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subSettingContainer1{
+    height: 100%;
+    width: 10rem;
+    border-radius: 0.5rem;
+    transition: all 0.15s;
+    border: solid gray 1px;
+}
+
+.subSettingContainer1:hover{
+    transform: scale(1.1);
+}
+
+.subSettingContainer1:active{
+    transform: scale(1);
+}
+
+.imageContainer{
+    height: 7rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textContainer{
+    outline: red dashed px;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+}
+
+a{
+    text-decoration: none;
+}
+
+.image1{
+    height: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+
+@media only screen and (min-width: 601px){
+    .subContainer{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*laptop*/
+@media only screen and (min-width: 1025px) {
+    .subContainer{
+        display: grid;
+        grid-template-columns: repeat(2, 30rem);
+    }
+
+    .subSettingContainer1{
+        transform: scale(1.5);
+    }
+
+    .subSettingContainer1:hover{
+        transform: scale(1.6);
+    }
+}
