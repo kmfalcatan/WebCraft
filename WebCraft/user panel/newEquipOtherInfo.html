@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
+    <link rel="stylesheet" href="../assets/css/newEquipOtherInfo.css">
+</head>
+<body>
+    <div class="container1">
+        <div class="headerContainer">
+            <div class="subHeaderContainer">
+                <div class="imageContainer">
+                    <div class="subImageContainer">
+                        <img class="image" src="../assets/img/medLogo.png" alt="">
+                    </div>
+
+                    <div class="nameContainer">
+                        <img class="medName" src="../assets/img/system-name.png" alt="">
+                    </div>
+                </div>
+
+                <div class="profileContainer">
+                    <div class="subProfileContainer" id="profileContainer">
+                            <img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">
+                            <img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">
+                        </div>
+
+                        <div class="subProfileContainer">
+                        <div class='menubarContainer' onclick='toggleMenu(this)'>
+                            <div class='line'></div>
+                            <div class='line'></div>
+                            <div class='line'></div>
+                        </div>
+                        <p class="userName"></p>
+                    </div>
+                </div>
+            </div>
+            <?php include('sidebar.php'); ?>
+        </div>
+    </div>
+
+    <div class="container2">
+        <div class="subContainer2">
+            <div class="headerContainer1">
+                <div class="reportContainer">
+                    <a href="">
+                        <button class="reportButton">REPORT</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="infoContainer">
+                <div class="subInfoContainer">
+                    <div class="imageContainer1">
+                        <div class="subImageContainer1">
+                            <div class="image1">
+                                <img class="image1" src="" alt="">
+                            </div>
+                        </div>
+
+                        <div class="equipNameContainer">
+                            <p>LAPTOP</p>
+                        </div>
+                    </div>
+
+                    <div class="subInfoContainer1">
+                        <div class="infoEquipContainer">
+                            <div class="subInfoEquipContainer">
+                                <p>USER:</p>
+                            </div>
+
+                            <div class="subInfoEquipContainer1">
+                                <div class="infoEquip">
+
+                                </div>
+                            </div>
+
+                            <div class="subInfoEquipContainer2">
+                                <button onclick="popup2()" class="viewButton">View more</button>
+                                
+                                <div class="userContainer" id="userContainer" style="display: none;">
+                                    <div class="subUserContainer">
+                                        <p>Name:</p>
+                                        <p>Units handle:</p>
+                                    </div>
+
+                                    <div class="subUserContainer1">
+                                        <p>Khriz marr falcatan</p>
+                                        <p>10</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="infoEquipContainer1">
+                            <div class="subInfoEquipContainer">
+                                <p>USER:</p>
+                            </div>
+
+                            <div class="subInfoEquipContainer1">
+                                <div class="infoEquip">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="infoEquipContainer2">
+                            <div class="infoEquipContainer3">
+                                <div class="subInfoEquipContainer">
+                                    <p>USER:</p>
+                                </div>
+    
+                                <div class="subInfoEquipContainer1">
+                                    <div class="infoEquip">
+    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="infoEquipContainer3">
+                                <div class="subInfoEquipContainer">
+                                    <p>USER:</p>
+                                </div>
+    
+                                <div class="subInfoEquipContainer1">
+                                    <div class="infoEquip">
+    
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="infoEquipContainer3">
+                                <div class="subInfoEquipContainer">
+                                    <p>USER:</p>
+                                </div>
+    
+                                <div class="subInfoEquipContainer1">
+                                    <div class="infoEquip">
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infoEquipContainer4">
+                    <div class="infoEquipContainer3">
+                        <div class="subInfoEquipContainer">
+                            <p>USER:</p>
+                        </div>
+
+                        <div class="subInfoEquipContainer1">
+                            <div class="infoEquip">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infoEquipContainer3">
+                        <div class="subInfoEquipContainer">
+                            <p>USER:</p>
+                        </div>
+
+                        <div class="subInfoEquipContainer1">
+                            <div class="infoEquip">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infoEquipContainer3">
+                        <div class="subInfoEquipContainer">
+                            <p>USER:</p>
+                        </div>
+
+                        <div class="subInfoEquipContainer1">
+                            <div class="infoEquip">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="descriptionContainer">
+                    <div class="subInfoEquipContainer">
+                        <p>DESCRIPTION:</p>
+                    </div>
+
+                    <div class="subDescriptionContainer">
+                        <div class="infoEquip">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="descriptionContainer">
+                    <div class="subInfoEquipContainer">
+                        <p>HOW TO USE:</p>
+                    </div>
+
+                    <div class="subDescriptionContainer">
+                        <div class="infoEquip">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttonContainer">
+                    <button class="button">Warranty</button>
+                    <button class="button">Edit</button>
+                    <button class="button">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function popup2(){
+            var popupUsers = document.getElementById('userContainer');
+
+            if(popupUsers.style.display === 'none'){
+                popupUsers.style.display = 'block';
+            } else if(popupUsers.style.display === 'block'){
+                popupUsers.style.display = 'none';
+            } else{
+                popupUsers.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
