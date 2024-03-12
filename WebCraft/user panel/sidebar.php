@@ -1,29 +1,6 @@
-<?php
- include_once "../authentication/auth.php";
-?>
-<style>
-    .sideNavBarContainer{
-        height: 25rem;
-    }
-    .image5{
-        top: 1.5rem;
-    }
-</style>
-    <div class='sideNavBarContainer'>
+<div class='sideNavBarContainer2'>
+
         <div class='sideNavBar1'>
-            <div class="subSideNavBar">
-                <a class='profile' href='../user panel/addEquip.php?id=<?php echo $userID; ?>'>
-                    New Equipment
-                </a>
-            </div>
-
-            <div class="image2">
-                <img class="image3" src="../assets/img/th-removebg-preview.png" alt="">
-                <img class="image5" src="../assets/img/plus-circle.png" alt="">
-            </div>
-        </div>
-
-        <div class='sideNavBar'>
                 <div class="subSideNavBar">
                     <a class='profile' href='../user panel/dashboard.php?id=<?php echo $userID; ?>'>
                         Inventory
@@ -43,17 +20,6 @@
 
             <div class="image2">
                 <img class="image3" src="../assets/img/calendar.png" alt="">
-            </div>
-        </div>
-        <div class='sideNavBar'>
-            <div class="subSideNavBar">
-                <a class='profile' href='../user panel/budget.php?id=<?php echo $userID; ?>'>
-                    Budget
-                </a>
-            </div>
-
-            <div class="image2">
-                <img class="image3" src="../assets/img/th__1_-removebg-preview.png" alt="">
             </div>
         </div>
         <div class='sideNavBar'>

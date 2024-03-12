@@ -63,17 +63,6 @@ include_once "../authentication/auth.php";
     </div>
     <div class='sideNavBar'>
         <div class="subSideNavBar">
-            <a class='profile' href='../admin panel/budget.php?id=<?php echo $userID; ?>'>
-                Budget
-            </a>
-        </div>
-
-        <div class="image2">
-            <img class="image3" src="../assets/img/th__1_-removebg-preview.png" alt="">
-        </div>
-    </div>
-    <div class='sideNavBar'>
-        <div class="subSideNavBar">
             <a class='profile' href='../admin panel/admin-guide.php?id=<?php echo $userID; ?>'>
                 Help
             </a>
