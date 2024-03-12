@@ -52,6 +52,17 @@ include_once "../authentication/auth.php";
     </div>
     <div class='sideNavBar'>
         <div class="subSideNavBar">
+            <a class='profile' href='../admin panel/reportList.php?id=<?php echo $userID; ?>'>
+                Report
+            </a>
+        </div>
+
+        <div class="image2">
+            <img class="image3" src="../assets/img/calendar.png" alt="">
+        </div>
+    </div>
+    <div class='sideNavBar'>
+        <div class="subSideNavBar">
             <a class='profile' href='../admin panel/budget.php?id=<?php echo $userID; ?>'>
                 Budget
             </a>
@@ -59,17 +70,6 @@ include_once "../authentication/auth.php";
 
         <div class="image2">
             <img class="image3" src="../assets/img/th__1_-removebg-preview.png" alt="">
-        </div>
-    </div>
-    <div class='sideNavBar'>
-        <div class="subSideNavBar">
-            <a class='profile' href='../admin panel/appointment.php?id=<?php echo $userID; ?>'>
-                Appointment
-            </a>
-        </div>
-
-        <div class="image2">
-            <img class="image3" src="../assets/img/calendar.png" alt="">
         </div>
     </div>
     <div class='sideNavBar'>
@@ -91,7 +91,7 @@ include_once "../authentication/auth.php";
         </div>
 
         <div class="image2">
-            <img class="image4" src="../assets/img/about-us-icon-3.jpg" alt="">
+            <img class="image4" src="../assets/img/about-us-icon-3.jpg" alt=""  style="width: 2.5rem; height:2rem;">
         </div>
     </div>
     <div class='sideNavBar2'>

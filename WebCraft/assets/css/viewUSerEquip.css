@@ -62,7 +62,6 @@ body{
     border-bottom: solid gray 1px;
     display: flex;
     flex-direction: row;
-    margin-left: 5rem;
 }
 
 .imageContainer{
@@ -72,12 +71,13 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 5rem;
 }
 
 .subImageContainer3{
     /* outline: red dashed 1px; */
-    height: 9rem;
-    width: 9rem;
+    height: 7rem;
+    width: 7rem;
     border-radius: 5rem;
     display: flex;
     justify-content: center;

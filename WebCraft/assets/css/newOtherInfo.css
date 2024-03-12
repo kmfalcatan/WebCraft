@@ -39,11 +39,6 @@
     border-radius: 0.5rem;
     cursor: pointer;
     font-size: 1.2rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
 }
 
 .addButtonContainer{
@@ -55,12 +50,14 @@
 
 .addButton{
     height: 2.5rem;
-    width: 10rem;
+    width: 12rem;
     border-radius: 0.5rem;
     border: none;
     background-color: rgb(2, 116, 200);
     color: white;
     cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .addButton:hover{
@@ -81,6 +78,7 @@
     flex-direction: column;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     background-color: #fff;
+    margin-top: -2rem;
 }
 
 .textContainer3{
@@ -175,7 +173,8 @@
     border-radius: 0.5rem;
     cursor: pointer;
     font-size: 1.2rem;
-    text-align: center;
+    padding-left: 0.5rem;
+    color: rgb(2, 116, 200);
 }
 
 .descriptionContainer2{
@@ -206,6 +205,41 @@
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
+}
+
+/* instruction */
+
+.instructionContainer{
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.instruction{
+    overflow-x: auto;
+}
+
+#stepsList{
+    flex-direction: column;
+    border: none;
+}
+
+#stepsList li{
+    border: none;
+    height: 4rem;
+    width: 20rem;
+}
+
+#addStep{
+    padding: 0.2rem 0.5rem;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: rgb(2, 116, 200);
+    color: #fff;
+    font-size: 1rem;
+    margin-left: 1rem;
 }
 
 /*laptop*/

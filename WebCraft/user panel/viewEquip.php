@@ -31,23 +31,24 @@ $offset = ($currentPage - 1) * $recordsPerPage;
     <title>MedEquip Tracker</title>
 
     <link rel="stylesheet" href="../assets/css/viewEquip.css">
+    <link rel="stylesheet" href="../assets/css/newViewEquipment.css">
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/sidebarShow.css">
 </head>
 <body id="body">
     
 <div class="container2">
-        <div class="headerContainer">
+    <div class="headerContainer">
         <div class="subHeaderContainer">
-                <div class="imageContainer">
-                    <div class="subImageContainer">
-                        <img class="image" src="../assets/img/medLogo.png" alt="">
-                    </div>
-
-                    <div class="nameContainer">
-                        <img src="../assets/img/system-name.png" alt="">
-                    </div>
+            <div class="imageContainer">
+                <div class="subImageContainer">
+                    <img class="image" src="../assets/img/medLogo.png" alt="">
                 </div>
+
+                <div class="nameContainer">
+                    <img src="../assets/img/system-name.png" alt="">
+                </div>
+            </div>
 
                 <div class="profileContainer">
                     <div class="subProfileContainer" id="profileContainer">
@@ -73,18 +74,19 @@ $offset = ($currentPage - 1) * $recordsPerPage;
             </div>
         </div>
     </div>
+    
     <div class="container1">
         <div class="header">
             <button class="backbtn">
-            <a href="dashboard.php?id=<?php echo $userID; ?>"><img src="../assets//img/left-arrow.png" style="width: 1.5rem; height: 1.5rem;" ></a>
+                <a href="dashboard.php?id=<?php echo $userID; ?>"><img src="../assets//img/left-arrow.png" style="width: 1.5rem; height: 1.5rem;" ></a>
             </button>
-        <?php
-            $result_article = $conn->query("SELECT article FROM equipment WHERE equipment_ID = '$equipment_ID'");
+            <?php
+                $result_article = $conn->query("SELECT article FROM equipment WHERE equipment_ID = '$equipment_ID'");
 
-            if ($result_article->num_rows > 0 && $article = $result_article->fetch_assoc()) {
-                echo "<h2>{$article['article']} unit list</h2>";
-            }
-        ?>
+                if ($result_article->num_rows > 0 && $article = $result_article->fetch_assoc()) {
+                    echo "<h2>{$article['article']} available unit list</h2>";
+                }
+            ?>
         <div class="searchContainer">
             <input class="searchBar" type="text" id="searchInput" placeholder="Search..." oninput="liveSearch()">
         </div>
@@ -97,41 +99,42 @@ $offset = ($currentPage - 1) * $recordsPerPage;
                 while ($row1 = $result_units->fetch_assoc()) {
                     $equipment_name = $row1['equipment_name'];
                     $unit_ID = $row1['unit_ID'];
-                    $status = $row1['status'];
+                    $user = $row1['user'];
                     
                     $unitPrefix = 'UNIT';
                     $defaultUnitID = '0000';
                     $unitID = $unitPrefix . '-' . str_pad($unit_ID, strlen($defaultUnitID), '0', STR_PAD_LEFT);
                     
-                    echo "<a href='updateUnit.php?equipment_ID=$equipment_ID&unit_ID=$unit_ID&id=$userID'>";
-                        echo "<div class='subContainer1'>";
-                            echo "<div class='equipmentContainer'>";
+                        echo "<div class='equipContainer'>";
+                            echo "<div class='subEquipContainer'>";
                                 echo "<div class='imageContainer1'>";
-                                    echo "<div class='subImageContainer1'>";
-                                        echo "<img class='image3' src='$imageURL' alt=''>";
-                                    echo "</div>";
+                                    echo "<img class='image1' src='$imageURL' alt=''>";
                                 echo "</div>";
                                 echo "<div class='infoContainer'>";
-                                    echo "<div class='statusContainer'>";
-                                        echo "<div class='subStatusContainer'>";
-                                            echo "<div class='status'>";
-                                                echo "<p class='subStatus'>OLD</p>";
-                                            echo "</div>";
+                                    echo "<div class='subInfoContainer'>";
+                                        echo "<div class='statusContainer1'>";
+                                            echo "<p class='status1'>OLD</p>";
                                         echo "</div>";
                                     echo "</div>";
-                                    echo "<div class='subInfoContainer'>";
-                                        echo "<p class='equip-name'> $equipment_name</p>";
+                                    echo "<div class='subInfoContainer1'>";
+                                        echo "<p class='text'> $equipment_name</p>";
                                     echo "</div>";
-                                    echo "<div class='subInfoContainer'>";
-                                        echo "<p>ID: $unitID</p>";
+                                    echo "<div class='subInfoContainer1'>";
+                                        echo "<p  class='text'>ID: $unitID</p>";
                                     echo "</div>";
-                                    echo "<div class='subInfoContainer'>";
-                                        echo "Status: $status";
+                                    echo "<div class='subInfoContainer1'>";
+                                        echo "<p  class='text'>user: $user</p>";
                                     echo "</div>";
+
+                                    echo "<div class='subInfoContainer'>";
+                                        echo "<div class='statusContainer2'>";
+                                            echo "<button onclick='popup1()' class='historyButton' type='button'>History</button>";
+                                        echo "</div>";
+                                    echo "</div>";
+
                                 echo "</div>";
                             echo "</div>";
                         echo "</div>";
-                    echo "</a>";
                 }
             ?>
         
@@ -157,41 +160,38 @@ $offset = ($currentPage - 1) * $recordsPerPage;
                 ?>
             </div>
         </div>
+
+        <!-- history -->
+        <div class="container3" style="display: none;">
+            <div class="container4">
+                <div class="subContainer3">
+                    <div class="equipmentNameContainer">
+                        <p>Equipment history</p>
+                    </div>
+    
+                    <div class="issueContainer">
+                        <div class="subIssueContainer">
+                            <p>Issue: Lost</p>
+                        </div>
+    
+                        <div class="subIssueContainer">
+                            <p>Date: 03/03/2024</p>
+                        </div>
+                    </div>
+    
+                    <div class="cancelContainer">
+                        <div class="subCancelContainer">
+                            <button onclick="popup1()" class="cancelButton" type="button">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <!-- sidebar show -->
     <div class="sidebar" id="sidebar">
-        <div class="sidebar-profile">
-            <div class="subProfileContainer">
-                <?php
-                    if (!empty($userInfo['profile_img'])) {
-                        echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
-                    } else {
-                        echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
-                    }
-                ?>
-            </div>
-            <div class="user-info">
-                <p class="userName"><?php echo $userInfo['fullname'] ?? ''; ?></p>
-                <p class="email"><?php echo $userInfo['email'] ?? ''; ?></p>
-            </div>
-            <button class="close-btn" onclick="toggleSidebar()">x</button>
-        </div>
-
-        <a href="../user panel/userProfile.php?id=<?php echo $userID; ?>">
-            <div class="profile-menu">
-                <div class="profile-icon">
-                    <img src="../assets/img/person-circle.png" alt=""> 
-                </div> 
-                <p>Your profile</p>
-            </div>
-        </a>
-
-        <div class="logout-menu" onclick="showLogoutConfirmation()">
-            <div class="logout-icon">
-                <img src="../assets/img/logout.png" alt=""> 
-            </div> 
-            <p>Log out</p>
-        </div>
+        <?php include('slideshow.php'); ?>
     </div>
 
     <div id="logoutConfirmation" class="popupContainer">
@@ -204,10 +204,22 @@ $offset = ($currentPage - 1) * $recordsPerPage;
         </div>
     </div>
 
-    </script>
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/viewEquipt.js"></script>
     <script src="../assets/js/nextPrev.js"></script>
     <script src="../assets/js/sidebarShow.js"></script>
+    <script>
+        function popup1(){
+            var popupContainer = document.querySelector('.container3');
+
+            if(popupContainer.style.display === 'none'){
+                popupContainer.style.display = 'block';
+            } else if(popupContainer.style.display === 'block'){
+                popupContainer.style.display = 'none';
+            } else{
+                popupContainer.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

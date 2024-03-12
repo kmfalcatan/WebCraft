@@ -36,13 +36,13 @@
         </div>
         <div class='sideNavBar'>
             <div class="subSideNavBar">
-                <a class='profile' href='../user panel/contact.php?id=<?php echo $userID; ?>'>
-                    Contact
+                <a class='profile' href='../user panel/reportSent.php?id=<?php echo $userID; ?>'>
+                    Report
                 </a>
             </div>
 
             <div class="image2">
-                <img class="image3" src="../assets/img/phone.png" alt="">
+                <img class="image3" src="../assets/img/calendar.png" alt="">
             </div>
         </div>
         <div class='sideNavBar'>
@@ -54,17 +54,6 @@
 
             <div class="image2">
                 <img class="image3" src="../assets/img/th__1_-removebg-preview.png" alt="">
-            </div>
-        </div>
-        <div class='sideNavBar'>
-            <div class="subSideNavBar">
-                <a class='profile' href='../user panel/appointment.php?id=<?php echo $userID; ?>'>
-                    Appointment
-                </a>
-            </div>
-
-            <div class="image2">
-                <img class="image3" src="../assets/img/calendar.png" alt="">
             </div>
         </div>
         <div class='sideNavBar'>
@@ -87,6 +76,17 @@
 
             <div class="image2">
                 <img class="image4" src="../assets/img/about-us-icon-3.jpg" alt="">
+            </div>
+        </div>
+        <div class='sideNavBar'>
+            <div class="subSideNavBar">
+                <a class='profile' href='../user panel/contact.php?id=<?php echo $userID; ?>'>
+                    Contact
+                </a>
+            </div>
+
+            <div class="image2">
+                <img class="image3" src="../assets/img/phone.png" alt="">
             </div>
         </div>
         <div class='sideNavBar2'>
