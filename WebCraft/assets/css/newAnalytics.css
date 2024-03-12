@@ -4,14 +4,15 @@
 }
 
 .container{
-    background-color: #fff;
+    background-color: #f1f1f1;
     display: flex;
     flex-direction: row;
+    overflow: hidden;
 }
 
 .sideBarContainer{
     height: 100%;
-    width: 4rem;
+    width: 6rem;
     background-color: rgb(2, 116, 200);
     display: flex;
     align-items: center;
@@ -19,6 +20,30 @@
     flex-direction: column;
     gap: 0.5rem;
     position: fixed;
+}
+
+#back{
+    margin-top: 3rem;
+    margin-bottom: 10rem;
+}
+
+.adminProfile{
+    border-top: #fff 1px solid;
+    padding-top: 1rem;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#admin-profile{
+    margin-top: 4.5rem;
+}
+
+#img{
+    height: 3rem;
+    border-radius: 50px;
+    filter: invert(0%);
 }
 
 .subSideBarContainer{
@@ -30,6 +55,7 @@
     align-items: center;
     transition: all 0.15s;
     cursor: pointer;
+    margin-bottom: 3rem;
 }
 
 .subSideBarContainer:hover{
@@ -42,7 +68,7 @@
 }
 
 .image{
-    height: 2rem;
+    height: 2.5rem;
     filter: invert(100%);
 }
 
@@ -50,11 +76,11 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-left: 4rem;
+    margin-left: 8rem;
 }
 
 .graphContainer{
-    width: 100%;
+    width: 82%;
 }
 
 .subGraphContainer{
@@ -66,15 +92,18 @@
 }
 
 .graphInfoContainer{
-    height: 8rem;
+    height: 10rem;
     width: 100%;
-    background: rgb(207, 224, 236);
+    background: #fff;
     border-radius: 0.5rem;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    margin-top: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .subGraphInfoContainer{
@@ -104,22 +133,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 1rem;
+    text-align: center;
+    padding: 0;
 }
 
 .subGraphInfoContainer1{
     height: 19rem;
-    width: 20.1rem;
+    width: 35rem;
     border-radius: 0.5rem;
-    background: rgb(207, 224, 236);
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .subGraphInfoContainer2{
     height: 19rem;
     width: 100%;
     border-radius: 0.5rem;
-    background: rgb(207, 224, 236);
-    padding: 0 1rem;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    
 }
 
 .graphContainer1{
@@ -128,19 +168,71 @@
     justify-content: center;
     align-items: center;
     padding: 0 1rem;
+    width: 78%;
+    margin-right: 50rem;
 }
 
 .subGraphContainer2{
     height: 8rem;
     width: 100%;
-    background: rgb(207, 224, 236);
+    background: #fff;
     border-radius: 0.5rem;
     overflow: auto;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: row;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
+
+/* bargraph */
+
+canvas{
+    width: 30rem;
+}
+
+/* user lists */
+
+.userContainer {
+    flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+     margin-right: 20px;
+     border: 1px solid #ccc;
+     border-radius: 0.5rem;
+     padding: 8px;
+     column-gap: 3 rem;
+     background-color: #f1f1f1;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+     width: 6rem;
+ }
+
+ .userProfileImg {
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     object-fit: cover;
+     margin-right: 10px;
+     border-bottom: 1px solid #000;
+ }
+
+ .userName {
+     font-weight: bold;
+     margin: 0;
+ }
+
+ .userID {
+     margin-top: 5px;
+     color: #000;
+     border-top: 1px #000 solid;
+     padding-top: 1rem;
+ }
+
+ .unitsHandled {
+     margin-top: 5px;
+     color: #000;
+ }
+
 
 /*laptop*/
 @media only screen and (min-width: 1025px) and (max-width: 1440px){

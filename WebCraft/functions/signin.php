@@ -14,9 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = getUserByEmail($email);
             $_SESSION['user_id'] = $user['id'];
             if ($user['role'] === 'admin') {
-                header("Location: ../admin panel/dashboard.php?id=" . $user['id']);
+                header("Location: ../admin panel/loading.php?id=" . $user['id']);
             } else {
-                header("Location: ../user panel/dashboard.php?id=" . $user['id']);
+                header("Location: ../user panel/loading.php?id=" . $user['id']);
             }
             exit();
         } else {

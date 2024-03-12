@@ -5,28 +5,14 @@ include_once "../authentication/auth.php";
 
 $userID = isset($_GET['id']) ? $_GET['id'] : null; 
 
-if ($userID !== null) {
-   
-    $query = "SELECT * FROM users WHERE id = ?";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "i", $userID);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $user = mysqli_fetch_assoc($result);
+$query = "SELECT * FROM users WHERE id = '$userID'";
+$result = mysqli_query($conn, $query);
+$user = mysqli_fetch_assoc($result);
 
-    if ($user !== null) { 
-        $query = "SELECT * FROM equipment WHERE user = ?";
-        $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "s", $user['fullname']);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        $equipment = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        
-        $userID = isset($user['id']) ? date('Y') . '-' . str_pad($user['id'], 5, '0', STR_PAD_LEFT) : "";
-    } else {
+$userID = isset($user['id']) ? date('Y') . '-' . str_pad($user['id'], 5, '0', STR_PAD_LEFT) : "";
 
-    }
-}
+$fullname = isset($user['fullname']) ? $user['fullname'] : "";
+
 ?>
 
 <!DOCTYPE html>
@@ -47,8 +33,8 @@ if ($userID !== null) {
                 <img src="../assets//img/left-arrow.png" style="width: 1.5rem; height: 1.5rem;" >
             </button>
 
-            <img class="top-img" src="../assets/img/person-circle.png" alt="" >
-            <h2>MY INVENTORY</h2>
+            <img class="top-img" src="../assets/img/file-text-circle.png" alt="" >
+            <h2>MY UNITS</h2>
         </div>
 
         <div class="subContainer">
@@ -85,38 +71,58 @@ if ($userID !== null) {
                             <tr>
                                 <th>#</th>
                                 <th>ARTICLE</th>
+                                <th>UNIT ID</th>
                                 <th>PROPERTY NUMBER</th>
                                 <th>ACCOUNT CODE</th>
-                                <th>UNITS</th>
                                 <th>UNIT VALUE</th>
-                                <th>TOTAL VALUE</th>
-                                <th>REMARKS</th>
-                                <th>ACTION</th>
                             </tr>
                         </thead>
     
                         <tbody>
-                            <?php if (isset($equipment)): ?>
-                                <?php $counter = 1; ?>
-                                <?php foreach ($equipment as $item): ?>
-                                    <tr>
-                                        <td><?php echo $counter++; ?></td>
-                                        <td><?php echo $item['article']; ?></td>
-                                        <td><?php echo $item['property_number']; ?></td>
-                                        <td><?php echo $item['account_code']; ?></td>
-                                        <td><?php echo $item['units']; ?></td>
-                                        <td><?php echo $item['unit_value']; ?></td>
-                                        <td><?php echo $item['total_value']; ?></td>
-                                        <td><?php echo $item['remarks']; ?></td>
-                                        <td class="actionContainer">
-                                        <a href="../user panel/equipOtherInfo.php?equipment_ID=<?php echo $item['equipment_ID']; ?>&id=<?php echo $userInfo['id']; ?>">
-                        <img src='../assets/img/view.png' alt='View' class='action-img' style='width: 2.5rem; height: 1.rem;'>
-                    </a>
-                                            <img src='../assets/img/trash.png' alt='View' class='action-img' style='width: 1.7rem; height: 1.7rem;'>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
+                            <?php
+                            $unitQuery = "SELECT unit_ID, equipment_name FROM units WHERE user = '$fullname'";
+                            $unitResult = mysqli_query($conn, $unitQuery);
+                            $properties = array();
+
+                            while ($row = mysqli_fetch_assoc($unitResult)) {
+                                $unitID = $row['unit_ID'];
+                                $equipment_name = $row['equipment_name'];
+
+                                $unitPrefix = 'UNIT';
+                                $defaultUnitID = '0000';
+                                $unitID = $unitPrefix . '-' . str_pad($unitID, strlen($defaultUnitID), '0', STR_PAD_LEFT);
+
+                                $propertyQuery = "SELECT property_number, account_code, unit_value FROM equipment WHERE article = '$equipment_name'";
+                                $propertyResult = mysqli_query($conn, $propertyQuery);
+
+                                while ($propertyRow = mysqli_fetch_assoc($propertyResult)) {
+                                    $property_number = $propertyRow['property_number'];
+                                    $account_code = $propertyRow['account_code'];
+                                    $unit_value = $propertyRow['unit_value'];
+
+                                    $properties[] = array(
+                                        'equipment_name' => $equipment_name,
+                                        'unit_ID' => $unitID,
+                                        'property_number' => $property_number,
+                                        'account_code' => $account_code,
+                                        'unit_value' => $unit_value
+                                    );
+                                }
+                            }
+
+                            $count = 1; 
+                            foreach ($properties as $property) {
+                                echo "<tr>";
+                                echo "<td>{$count}</td>";
+                                echo "<td>{$property['equipment_name']}</td>";
+                                echo "<td>{$property['unit_ID']}</td>";
+                                echo "<td>{$property['property_number']}</td>";
+                                echo "<td>{$property['account_code']}</td>";
+                                echo "<td>{$property['unit_value']}</td>";
+                                echo "</tr>";
+                                $count++; 
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>

@@ -130,6 +130,9 @@ a p{
 
 .popupButtons {
     margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .popupButtons button {
@@ -176,5 +179,6 @@ a p{
     .popupButtons button {
         margin-right: 1rem;
         max-width: 25%;
+        font-weight: lighter;
     }
 }

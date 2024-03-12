@@ -1,3 +1,7 @@
+.actionContainer{
+    cursor: pointer;
+}
+
 .buttonContainer1{
     height: 4rem;
     width: 100%;

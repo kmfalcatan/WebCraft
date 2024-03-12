@@ -1,17 +1,29 @@
+document.addEventListener('DOMContentLoaded', function () {
+    var uploadButton1 = document.getElementById('image');
+    var uploadImage1 = document.getElementById('image3');
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var uploadButton = document.querySelector('.uploadButton');
-        var uploadImage = document.querySelector('.uploadImage');
+    uploadButton1.addEventListener('change', function (event) {
+      if (event.target.files.length > 0) {
+        var selectedImage1 = event.target.files[0];
+        var imageURL1 = URL.createObjectURL(selectedImage1);
 
-        uploadButton.addEventListener('change', function (event) {
-           
-            if (event.target.files.length > 0) {
-                var selectedImage = event.target.files[0];
-                var imageURL = URL.createObjectURL(selectedImage);
-
-                uploadImage.src = imageURL;
-            } else {
-                uploadImage.src = '../assets/img/img_placeholder.jpg';
-            }
-        });
+        uploadImage1.src = imageURL1;
+      } else {
+        uploadImage1.src = '../assets/img/img_placeholder.jpg';
+      }
     });
+
+    var uploadButton2 = document.getElementById('warranty_image');
+    var uploadImage2 = document.getElementById('image4');
+
+    uploadButton2.addEventListener('change', function (event) {
+      if (event.target.files.length > 0) {
+        var selectedImage2 = event.target.files[0];
+        var imageURL2 = URL.createObjectURL(selectedImage2);
+
+        uploadImage2.src = imageURL2;
+      } else {
+        uploadImage2.src = '../assets/img/img_placeholder.jpg';
+      }
+    });
+  });

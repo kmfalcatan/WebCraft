@@ -1,7 +1,7 @@
 <?php
 include_once "../dbConfig/dbconnect.php";
 
-$query = "SELECT article, SUM(units) AS units FROM equipment GROUP BY article";
+$query = "SELECT article, SUM(total_unit) AS units FROM equipment GROUP BY article";
 $result = mysqli_query($conn, $query);
 
 $articleNames = [];

@@ -108,7 +108,7 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                             <th>UNIT VALUE</th>
                             <th>TOTAL VALUE</th>
                             <th>REMARKS</th>
-                            <th colspan="4">ACTION</th>
+                            <th colspan="4">VIEW</th>
                         </tr>
                     </thead>
 

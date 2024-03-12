@@ -27,7 +27,7 @@
             </div>
 
             <div class="subButtonContainer">
-                <button><a class="button2"  href="">Contact</a></button>
+                <button><a class="button2"  href="contact.php">Contact</a></button>
             </div>
 
             <div class="subButtonContainer">
