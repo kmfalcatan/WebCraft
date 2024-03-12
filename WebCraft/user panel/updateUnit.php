@@ -20,6 +20,7 @@ $unitID = $unitPrefix . '-' . str_pad($unit_ID, strlen($defaultUnitID), '0', STR
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/addEquip.css">
     <link rel="stylesheet" href="../assets/css/updateUnit.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
 </head>
 <body id="body">
     <div class="container2">
@@ -31,12 +32,12 @@ $unitID = $unitPrefix . '-' . str_pad($unit_ID, strlen($defaultUnitID), '0', STR
                     </div>
 
                     <div class="nameContainer">
-                        <p class="companyName">MedEquip Tracker</p>
+                        <img class="system-name" src="../assets/img/system-name.png" alt="">
                     </div>
                 </div>
 
                 <div class="profileContainer">
-                    <div class="subProfileContainer">
+                    <div class="subProfileContainer" id="profileContainer">
                         <?php
                             if (!empty($userInfo['profile_img'])) {
                                 echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
@@ -61,7 +62,11 @@ $unitID = $unitPrefix . '-' . str_pad($unit_ID, strlen($defaultUnitID), '0', STR
 
     <form class="subContainer3" action="" enctype="multipart/form-data" method="post">
         <div class="container3">
-            <div class="subContainer2">
+            <div class="topContainer2">
+                <img class="top-img" src="../assets/img/stet-icon.png" alt="" >
+                <h2>ADDITIONAL INFORMATION</h2>
+            </div>
+            <div class="subContainer2" id="subContainer">
                 <div class="imageContainer1">
                     <div class="subImageContainer1">
                         <div class="uploadImageContainer">
@@ -90,10 +95,6 @@ $unitID = $unitPrefix . '-' . str_pad($unit_ID, strlen($defaultUnitID), '0', STR
                         </div>
                     </div>
     
-                    <!-- <div class="descriptionContainer">
-                        <textarea class="inputInfo4" name="description" cols="30" rows="10" placeholder="Description:"><?php echo $description; ?></textarea>
-                    </div> -->
-    
                     <div class="buttonsContainer">
                         <a href="../user panel/updateEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">
                             <button class="button" type="submit" id="btn1">Save</button>
@@ -106,12 +107,57 @@ $unitID = $unitPrefix . '-' . str_pad($unit_ID, strlen($defaultUnitID), '0', STR
         </div>
     </form>
 
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-profile">
+            <div class="subProfileContainer">
+                <?php
+                    if (!empty($userInfo['profile_img'])) {
+                        echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
+                    } else {
+                        echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
+                    }
+                ?>
+            </div>
+            <div class="user-info">
+                <p class="userName"><?php echo $userInfo['fullname'] ?? ''; ?></p>
+                <p class="email"><?php echo $userInfo['email'] ?? ''; ?></p>
+            </div>
+            <button class="close-btn" onclick="toggleSidebar()">x</button>
+        </div>
+
+        <a href="../user panel/userProfile.php?id=<?php echo $userID; ?>">
+            <div class="profile-menu">
+                <div class="profile-icon">
+                    <img src="../assets/img/person-circle.png" alt=""> 
+                </div> 
+                <p>Your profile</p>
+            </div>
+        </a>
+
+        <div class="logout-menu" onclick="showLogoutConfirmation()">
+            <div class="logout-icon">
+                <img src="../assets/img/logout.png" alt=""> 
+            </div> 
+            <p>Log out</p>
+        </div>
+    </div>
+
+    <div id="logoutConfirmation" class="popupContainer">
+        <div class="popupContent">
+            <p>Are you sure you want to log out?</p>
+            <div class="popupButtons">
+                <button onclick="logout()">Yes</button>
+                <button onclick="hideLogoutConfirmation()">No</button>
+            </div>
+        </div>
+    </div>
+
     <script src="../assets/js/dashboard.js"></script>
-    <script src="../assets/js/theme/dashboard-theme.js"></script>
+    <script src="../assets/js/sidebarShow.js"></script>
     <script>
-    function goBack() {
-        window.history.back();
-    }
+        function goBack() {
+            window.history.back();
+        }
     </script>
 </body>
 </html>

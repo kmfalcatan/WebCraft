@@ -1,7 +1,9 @@
 <?php
-include_once '../functions/updateEquip.php';
-include_once '../functions/header.php';
-include_once '../authentication/auth.php';
+include_once "../dbConfig/dbconnect.php";
+include_once "../authentication/auth.php";
+include_once "../functions/header.php";
+include_once "../functions/equipInfo.php";
+    
 ?>
 
 <!DOCTYPE html>
@@ -9,15 +11,16 @@ include_once '../authentication/auth.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../assets/img/webcraftLogo.png">
-    <title>MedEquip Tracker</title>
+    <title>Document</title>
 
     <link rel="stylesheet" href="../assets/css/index.css">
-    <link rel="stylesheet" href="../assets/css/addEquip.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
+    <link rel="stylesheet" href="../assets/css/newEquipOtherInfo.css">
+    <link rel="stylesheet" href="../assets/css/warranty.css">
 </head>
-<body id="body">
-    <div class="container2">
-        <div class="headerContainer">
+<body>
+    <div class="container1">
+    <div class="headerContainer">
             <div class="subHeaderContainer">
                 <div class="imageContainer">
                     <div class="subImageContainer">
@@ -30,7 +33,7 @@ include_once '../authentication/auth.php';
                 </div>
 
                 <div class="profileContainer">
-                    <div class="subProfileContainer">
+                    <div class="subProfileContainer" id="profileContainer">
                         <?php
                             if (!empty($userInfo['profile_img'])) {
                                 echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
@@ -41,100 +44,172 @@ include_once '../authentication/auth.php';
                         </div>
 
                         <div class="subProfileContainer">
-                        <div class='menubarContainer' onclick='toggleMenu(this)'>
-                            <div class='line'></div>
-                            <div class='line'></div>
-                            <div class='line'></div>
+                            <div class='menubarContainer' onclick='toggleMenu(this)'>
+                                <div class='line'></div>
+                                <div class='line'></div>
+                                <div class='line'></div>
+                            </div>
+
+                            <p class="adminName"><?php echo $userInfo['username'] ?? ''; ?></p>
                         </div>
-                        <p class="adminName"><?php echo $userInfo['username'] ?? ''; ?></p>
                     </div>
                 </div>
+            <?php include('sidebar.php'); ?>
+        </div>
+    </div>
+
+    <div class="container2">
+        <div class="subContainer2">
+            <div class="headerContainer1">
+            </div>
+
+            <form class="infoContainer"  action="" enctype="multipart/form-data" method="post">
+               <input type="hidden" name="equipment_ID" value="<?php echo $equipment_ID; ?>">
+                <div class="subInfoContainer">
+                    <div class="imageContainer1">
+                        <div class="subImageContainer1">
+                            <div class="image1">
+                                <img class="image1" src="<?php echo $imageURL; ?>" alt="Mountain Placeholder" onerror="this.onerror=null; this.src='../assets/img/img_placeholder.jpg';">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="subInfoContainer1">
+                        <div class="infoEquipContainer1">
+                            <div class="subInfoEquipContainer">
+                                <p>Article</p>
+                            </div>
+
+                            <div class="subInfoEquipContainer1">
+                                <input class="infoEquip" type="text" name="article" id="update" value="<?php echo $article; ?>">
+                            </div>
+                        </div>
+                        
+                        <div class="infoEquipContainer1">
+                            <div class="subInfoEquipContainer">
+                                <p>Deployment</p>
+                            </div>
+
+                            <div class="subInfoEquipContainer1">
+                                    <input class="infoEquip" type="text" name="deployment" id="update" value="<?php echo $deployment; ?>">
+                            </div>
+                        </div>
+
+                        <div class="infoEquipContainer2">
+                            <div class="infoEquipContainer3">
+                                <div class="subInfoEquipContainer">
+                                    <p>Property Number</p>
+                                </div>
+    
+                                <div class="subInfoEquipContainer1">
+                                    <input class="infoEquip" type="text" name="property_number" id="update" value="<?php echo $property_number; ?>">
+                                </div>
+                            </div>
+
+                            <div class="infoEquipContainer3">
+                                <div class="subInfoEquipContainer">
+                                    <p>Account Code</p>
+                                </div>
+    
+                                <div class="subInfoEquipContainer1">
+                                    <input class="infoEquip" type="text" name="account_code" id="update" value="<?php echo $account_code; ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infoEquipContainer4">
+                    <div class="infoEquipContainer3">
+                        <div class="subInfoEquipContainer">
+                            <p>Unit Value</p>
+                        </div>
+
+                        <div class="subInfoEquipContainer1">
+                            <input class="infoEquip" type="text" name="unit_value" id="update" value="<?php echo $unit_value; ?>">
+                            
+                        </div>
+                    </div>
+
+                    <div class="infoEquipContainer3">
+                        <div class="subInfoEquipContainer">
+                            <p>Total Value</p>
+                        </div>
+
+                        <div class="subInfoEquipContainer1">
+                            <input class="infoEquip" type="text" name="total_value" id="update" value="<?php echo $total_value; ?>">
+                        </div>
+                    </div>
+
+                    <div class="infoEquipContainer3">
+                        <div class="subInfoEquipContainer">
+                            <p>Remarks</p>
+                        </div>
+
+                        <div class="subInfoEquipContainer1">
+                             <input class="infoEquip" type="text" name="remarks" id="update" value="<?php echo $remarks; ?>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="descriptionContainer">
+                    <div class="subInfoEquipContainer">
+                        <p>Description</p>
+                    </div>
+
+                    <div class="subDescriptionContainer">
+                        <input class="infoEquip" type="text" name="description" id="update" value="<?php echo $description; ?>">
+                    </div>
+                </div>
+
+                <div class="descriptionContainer">
+                    <div class="subInfoEquipContainer">
+                        <p>Step How To Use:</p>
+                    </div>
+
+                    <div class="subDescriptionContainer">
+                        <input class="infoEquip" type="text" name="instruction" id="update" value="<?php echo $instruction; ?>">
+                    </div>
+                </div>
+
+                <div class="buttonContainer" style="margin-top: 2.4rem;">
+                        <button class="button" type="submit" id="btn1">Save</button>
+                        
+                     
+                        <button id="btn2" type="button" class="button" >Cancel</button>
+                  
+                </div>
+            </form>
+        </div>
+    </div>
+
+     <!-- sidebar show -->
+     <div class="sidebar" id="sidebar">
+        <?php include('slideshow.php'); ?>
+    </div>
+
+    <div id="logoutConfirmation" class="popupContainer">
+        <div class="popupContent">
+            <p>Are you sure you want to log out?</p>
+            <div class="popupButtons">
+                <button onclick="logout()">Yes</button>
+                <button onclick="hideLogoutConfirmation()">No</button>
             </div>
         </div>
     </div>
 
-    <form class="subContainer3" action="" enctype="multipart/form-data" method="post">
-        <div class="container3">
-            <div class="topContainer">
-                <img class="top-img" src="../assets/img/th-removebg-preview.png" alt="" >
-                <h2>EDIT EQUIPMENT</h2>
-            </div>
-            <div class="subContainer2">
-                <div class="imageContainer1">
-                    <div class="subImageContainer1">
-                        <div class="uploadImageContainer">
-                            <div class="subUploadImageContainer">
-                                <img class="uploadImage" src="<?php echo $imageURL; ?>" alt="Mountain Placeholder">
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="infoContainer">
-                        <div class="subInfoContainer">
-                            <textarea class="inputInfo" name="user" cols="30" rows="10" placeholder="User name:" readonly><?php echo $user; ?></textarea>
-                        </div>
-                        
-                        <div class="subInfoContainer">
-                            <textarea class="inputInfo" name="article" cols="30" rows="10" placeholder="Article:"><?php echo $article; ?></textarea>
-                        </div>
-                        
-                        <div class="subInfoContainer">
-                            <textarea class="inputInfo" name="deployment" cols="30" rows="10" placeholder="Deployment:"><?php echo $deployment; ?></textarea>
-                        </div>
-    
-                        <div class="subInfoContainer">
-                            <div class="subInputInfoContainer2">
-                                <textarea class="inputInfo3" name="property_number" cols="30" rows="10" placeholder="Property number:"><?php echo $property_number; ?></textarea>
-                            </div>
-    
-                            <div class="subInputInfoContainer2">
-                                <textarea class="inputInfo3" name="account_code" cols="30" rows="10" placeholder="Account code:"><?php echo $account_code; ?></textarea>
-                            </div>
-    
-                            <div class="subInputInfoContainer2">
-                                <textarea class="inputInfo3" name="units" cols="30" rows="10" placeholder="Units:"><?php echo $units; ?></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="otherInfoContainer">
-                    <div class="subOtherInfoContainer">
-                        <div class="subInputInfoContainer2">
-                            <textarea class="inputInfo3" name="unit_value" cols="30" rows="10" placeholder="Unit value:"><?php echo $unit_value; ?></textarea>
-                        </div>
-    
-                        <div class="subInputInfoContainer2">
-                            <textarea class="inputInfo3" name="total_value" cols="30" rows="10" placeholder="Total value:"><?php echo $total_value; ?></textarea>
-                        </div>
-    
-                        <div class="subInputInfoContainer2">
-                            <textarea class="inputInfo3" name="remarks" cols="30" rows="10" placeholder="remarks:"><?php echo $remarks; ?></textarea>
-                        </div>
-                    </div>
-    
-                    <div class="descriptionContainer">
-                        <textarea class="inputInfo4" name="description" cols="30" rows="10" placeholder="Description:"><?php echo $description; ?></textarea>
-                    </div>
-    
-                    <div class="buttonsContainer" style="margin-top: 2.4rem;">
-                        <a href="../admin panel/updateEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">
-                            <button class="button" type="submit" id="btn1">Save</button>
-                        </a>
-                        
-                        <button id="btn2" type="button" class="button" onclick="goBack()">Cancel</button>
-                    </div>
-                </div>
+    <div id="logoutConfirmation" class="popupContainer">
+        <div class="popupContent">
+            <p>Are you sure you want to log out?</p>
+            <div class="popupButtons">
+                <button onclick="logout()">Yes</button>
+                <button onclick="hideLogoutConfirmation()">No</button>
             </div>
         </div>
-    </form>
+    </div>
 
-    <script src="../assets/js/dashboard.js"></script>
-    <script src="../assets/js/theme/dashboard-theme.js"></script>
-    <script>
-    function goBack() {
-        window.history.back();
-    }
-    </script>
+    <script src="../assets/js/sidebarShow.js"></script>
+    <script src="../assets/js/toggle.js"></script>
 </body>
 </html>

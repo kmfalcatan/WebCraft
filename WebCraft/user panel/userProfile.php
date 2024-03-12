@@ -15,12 +15,31 @@ include_once "../functions/header.php";
 
     <link rel="stylesheet" href="../assets/css/addOtherInfor.css">
     <link rel="stylesheet" href="../assets/css/profile.css">
+    <style>
+        .topContainer a{
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 0.4rem 2rem;
+            text-decoration: none;
+            color: rgb(2, 116, 200);
+            margin-right: 2rem;
+            font-weight: bold;
+            border-radius: 0.3rem;
+        }
+
+        .topContainer a:hover{
+            background-color: rgba(2, 117, 200, 0.297);
+            color: #fff;
+        }
+    </style>
 </head>
 <body id="body">
-    <div class="container" style="height: 100vh;">
-        <form class="subContainer"  style="height: 70vh;" method="POST"  action="../user panel/editProfile.php?id=<?php echo $userID; ?>">
-            <div class="textContainer">
-                <p class="text">Profile</p>
+    <div class="container">
+        <form class="subContainer" id="subContainer" method="POST"  action="../user panel/editProfile.php?id=<?php echo $userID; ?>">
+            <div class="topContainer">
+                <img class="top-img" src="../assets/imG/person-circle.png" alt="" >
+                <h2>USER PROFILE</h2>
+                <a href="../user panel/userEquip.php?id=<?php echo $userID; ?>">My inventory</a>
             </div>
 
             <input type="hidden" name="id" value="<?php echo $userID; ?>">
@@ -81,7 +100,7 @@ include_once "../functions/header.php";
                 <a href="../user panel/editProfile.php?id=<?php echo $userID; ?>">
                     <button class="button" id="btn1"><a href="../user panel/editProfile.php?id=<?php echo $userID; ?>">Edit</a></button>
                 </a>
-                <button class="button" id="btn2"><a href="../user panel/setting.php?id=<?php echo $userID; ?>">Back </a></button>
+                <button class="button" id="btn2"><a href="../user panel/setting.php?id=<?php echo $userInfo['id']; ?>">Back</a></button>
             </div>
         </form>
     </div>

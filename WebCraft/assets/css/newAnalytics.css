@@ -1,0 +1,292 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    background-color: #f1f1f1;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.sideBarContainer{
+    height: 100%;
+    width: 6rem;
+    background-color: rgb(2, 116, 200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: fixed;
+}
+
+#back{
+    margin-top: 3rem;
+    margin-bottom: 10rem;
+}
+
+.adminProfile{
+    border-top: #fff 1px solid;
+    padding-top: 1rem;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#admin-profile{
+    margin-top: 4.5rem;
+}
+
+#img{
+    height: 3rem;
+    border-radius: 50px;
+    filter: invert(0%);
+}
+
+.subSideBarContainer{
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.15s;
+    cursor: pointer;
+    margin-bottom: 3rem;
+}
+
+.subSideBarContainer:hover{
+    background-color: rgb(2, 82, 139);
+}
+
+.subSideBarContainer:active{
+    background-color: rgb(2, 116, 200);
+    transform: scale(0.9);
+}
+
+.image{
+    height: 2.5rem;
+    filter: invert(100%);
+}
+
+.subContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 8rem;
+}
+
+.graphContainer{
+    width: 82%;
+}
+
+.subGraphContainer{
+    height: 10rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.graphInfoContainer{
+    height: 10rem;
+    width: 100%;
+    background: #fff;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.subGraphInfoContainer{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 0.5rem;
+    background-color: snow;
+}
+
+.subGraphContainer1{
+    height: 40.5rem;
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.graphInfoContainer1{
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.graphInfoContainer2{
+    height: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+}
+
+.subGraphInfoContainer1{
+    height: 19rem;
+    width: 35rem;
+    border-radius: 0.5rem;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.subGraphInfoContainer2{
+    height: 19rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    
+}
+
+.graphContainer1{
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    width: 78%;
+    margin-right: 50rem;
+}
+
+.subGraphContainer2{
+    height: 8rem;
+    width: 100%;
+    background: #fff;
+    border-radius: 0.5rem;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* bargraph */
+
+canvas{
+    width: 30rem;
+}
+
+/* user lists */
+
+.userContainer {
+    flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+     margin-right: 20px;
+     border: 1px solid #ccc;
+     border-radius: 0.5rem;
+     padding: 8px;
+     column-gap: 3 rem;
+     background-color: #f1f1f1;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+     width: 6rem;
+ }
+
+ .userProfileImg {
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     object-fit: cover;
+     margin-right: 10px;
+     border-bottom: 1px solid #000;
+ }
+
+ .userName {
+     font-weight: bold;
+     margin: 0;
+ }
+
+ .userID {
+     margin-top: 5px;
+     color: #000;
+     border-top: 1px #000 solid;
+     padding-top: 1rem;
+ }
+
+ .unitsHandled {
+     margin-top: 5px;
+     color: #000;
+ }
+
+
+/*laptop*/
+@media only screen and (min-width: 1025px) and (max-width: 1440px){
+    .subGraphContainer1{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .graphInfoContainer1{
+        width: 100%;
+    }
+
+    .subGraphContainer1{
+        height: 20rem;
+    }
+}
+
+/*pc*/
+@media only screen and (min-width: 1441px){
+    .subGraphContainer1{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .graphInfoContainer1{
+        width: 100%;
+    }
+
+    .subGraphContainer1{
+        height: 20rem;
+    }
+
+    .subContainer{
+        display: flex;
+        flex-direction: row;
+        height: 100vh;
+    }
+
+    .graphContainer1{
+        height: 100%;
+        display: flex;
+    }
+
+    .subGraphContainer2{
+        height: 98%;
+        width: 8rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .graphContainer{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

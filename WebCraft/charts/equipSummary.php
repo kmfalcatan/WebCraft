@@ -8,17 +8,18 @@
 
         .equipment-container {
             display: inline-block;
-            height: 5rem;
+            height: 4rem;
             width: 50%;
             margin: 0 1rem;
             padding: 1rem 5rem;
-            background-color: #fff;
+            background-color: #f1f1f1;
             border-radius: 0.5rem;
             text-align: center;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             transition: transform 0.15s;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
         }
 
         .equipment-container h3{
@@ -34,7 +35,7 @@
         <?php
         include_once "../dbConfig/dbconnect.php";
 
-        $query = "SELECT article, SUM(units) AS total_units FROM equipment GROUP BY article";
+        $query = "SELECT article, SUM(total_unit) AS total_units FROM equipment GROUP BY article";
         $result = mysqli_query($conn, $query);
 
         while ($row = mysqli_fetch_assoc($result)) {

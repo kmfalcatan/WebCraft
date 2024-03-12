@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2024 at 09:40 AM
+-- Generation Time: Mar 11, 2024 at 05:55 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,75 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `appointment`
+-- Table structure for table `approved_report`
 --
 
-CREATE TABLE `appointment` (
-  `request_ID` int(11) NOT NULL,
-  `equipment_ID` int(11) DEFAULT NULL,
-  `article` varchar(255) DEFAULT NULL,
-  `date_request` date DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `fullname` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `contact_number` varchar(20) DEFAULT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'pending',
-  `damage_img` varchar(255) DEFAULT NULL,
-  `equip_img` varchar(255) DEFAULT NULL,
-  `unit_ID` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `appointment`
---
-
-INSERT INTO `appointment` (`request_ID`, `equipment_ID`, `article`, `date_request`, `description`, `fullname`, `email`, `contact_number`, `status`, `damage_img`, `equip_img`, `unit_ID`) VALUES
-(1, 28, 'White Board', '2024-03-01', 'damage', 'Padwa Tingkasan ', 'powie@gmail.com', '1234567890', 'Pending', NULL, 'bg.png', 'UNIT-0003');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `approved_requests`
---
-
-CREATE TABLE `approved_requests` (
+CREATE TABLE `approved_report` (
   `approved_ID` int(11) NOT NULL,
-  `request_ID` int(11) DEFAULT NULL,
-  `equip_img` varchar(255) DEFAULT NULL,
-  `equipment_name` varchar(255) DEFAULT NULL,
-  `budget` decimal(10,2) DEFAULT NULL,
-  `details_of_equipment` text DEFAULT NULL,
-  `date_approved` timestamp NOT NULL DEFAULT current_timestamp()
+  `user_ID` int(11) NOT NULL,
+  `article` text DEFAULT NULL,
+  `unit_ID` varchar(255) DEFAULT NULL,
+  `unit_issue` varchar(255) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `approved_requests`
+-- Dumping data for table `approved_report`
 --
 
-INSERT INTO `approved_requests` (`approved_ID`, `request_ID`, `equip_img`, `equipment_name`, `budget`, `details_of_equipment`, `date_approved`) VALUES
-(1, 1, 'bg.png', 'White Board', 5.00, 'damage', '2024-02-17 18:30:07');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `budget`
---
-
-CREATE TABLE `budget` (
-  `budget_ID` int(11) NOT NULL,
-  `budget` decimal(10,2) DEFAULT NULL,
-  `equipment_name` varchar(255) DEFAULT NULL,
-  `equip_img` varchar(255) DEFAULT NULL,
-  `details_of_equipment` text DEFAULT NULL,
-  `request_ID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `budget`
---
-
-INSERT INTO `budget` (`budget_ID`, `budget`, `equipment_name`, `equip_img`, `details_of_equipment`, `request_ID`) VALUES
-(3, 5.00, 'White Board', '', 'Reason: damage', 1);
+INSERT INTO `approved_report` (`approved_ID`, `user_ID`, `article`, `unit_ID`, `unit_issue`, `timestamp`) VALUES
+(3, 6, 'kasd', 'UNIT-0015', ' LOST', '2024-03-11 16:36:21');
 
 -- --------------------------------------------------------
 
@@ -109,7 +58,7 @@ CREATE TABLE `equipment` (
   `user` varchar(255) DEFAULT NULL,
   `property_number` varchar(255) NOT NULL,
   `account_code` varchar(255) NOT NULL,
-  `units` varchar(255) NOT NULL,
+  `total_unit` int(11) NOT NULL,
   `unit_value` varchar(255) NOT NULL,
   `total_value` varchar(255) NOT NULL,
   `remarks` varchar(255) NOT NULL,
@@ -125,69 +74,14 @@ CREATE TABLE `equipment` (
 -- Dumping data for table `equipment`
 --
 
-INSERT INTO `equipment` (`equipment_ID`, `image`, `article`, `description`, `deployment`, `user`, `property_number`, `account_code`, `units`, `unit_value`, `total_value`, `remarks`, `year_received`, `warranty_image`, `warranty_start`, `warranty_end`, `budget`, `instruction`) VALUES
-(1, 'MBFP-1003.jpg', 'Alcohol Dispenser', 'Foot press alcohol dispenser metal type. Specification: Height: 5ft x 8.3 inches, made of stainless steel (T202), hand face, up to 500ml alcohol pump bottle capacity, 102cm height.', 'College of Medicine', 'Vincent Robinson Balido', 'ICS-22-STF-0296/20-4', '1-0-05-100', '2', '1, 500.00', '1, 500.00', 'none', 2022, 'MBFP-1003.jpg', '2020-10-28', '2027-06-03', '1, 500.00', '1.	Position the dispenser on the floor.\r\n2.	Place your foot on the pedal or press area.\r\n3.	Apply pressure to activate the dispenser.\r\n4.	Dispense alcohol onto your hand.\r\n5.	Rub your hands together.\r\n6.	Allow hands to dry.\r\n'),
-(2, '3472049428.jpg', 'Cabinet', 'JIT-LF01 2 layers glass sliding door cabinet, with lock 4 adjustable salves, color: beige.', 'College of Medicine', 'Vincent Robinson Balido', 'ICS-23-F101-0018/2-1-2', '1-04-06-010', '2', '9920', '19840', 'Operational', 2023, '3472049428.jpg', '2023-06-04', '2024-06-04', '5000.00', '1.	Identify the handles or knobs on the sliding doors.\r\n2.	Gently pull or push on the handles/knobs to slide the doors open.\r\n3.	Slide the doors to the desired position to access the shelves inside.\r\n4.	Place or retrieve items from the shelves as needed.\r\n5.	After use, slide the doors back to their original closed position.\r\n'),
-(3, 'in.png', 'Chair', 'LINO URATEX - school char, plastic school chair with work surface, white, for adult users.', 'College of Medicine', 'Vincent Robinson Balido', 'ICS-23-F101-0017/110-1-110', '1-04-05-100', '110', '1000', '110000', 'Operational', 2023, 'in.png', '2023-12-14', '2024-12-12', '10, 000.00', '1.	Position the chair in a suitable area.\r\n2.	Sit on the chair comfortably.\r\n3.	Place your belongings on the work surface.\r\n4.	Use the work surface for writing, reading, and perform tasks as needed.\r\n'),
-(4, 'images (10).jpeg', 'Extension Wire', 'OMNI 3 Gang Universal outlet', 'College of Medicine ', 'Vincent Robinson Balido', 'ICS-23-f101-0019/10-10-10', '01-04-05-190', '10', '1528', '15280', 'Operational', 2023, '415698161_284560747642277_6576589458493813153_n (1).jpg', '2024-02-05', '2025-02-05', '20500', 'Fill in later'),
-(5, 'images (11).jpeg', 'Fire Extinguisher', 'Dry Chemical 10lbs', 'College of Medicine ', 'Vincent Robinson Balido', 'ICS-22-STF-00147/52-37-39', '01-04-05-080', '3', '1899', '5697', 'Operational', 2022, 'Electrical-Contractor-Warranty-Form.jpg', '2024-02-06', '2025-02-06', '20500', 'PULL... Pull the pin. This will also break the tamper seal.\r\n\r\nAIM... Aim low, pointing the extinguisher nozzle (or its horn or hose) at the base of the fire.\r\n\r\nNOTE: Do not touch the plastic discharge horn on CO2 extinguishers, it gets very cold and may damage skin.\r\n\r\nSQUEEZE... Squeeze the handle to release the extinguishing agent.\r\nSWEEP... Sweep from side to side at the base of the fire until it appears to be out. Watch the area. If the fire re-ignites, repeat steps 2 - 4.'),
-(6, 'b3f82f0e02c655a5eb79eb7c125a91d3.jpg', 'Gloves', 'hand gloves, rubber, reusable, heavy-duty, good Quality ', 'College of Medicine', 'Vincent Robinson Balido', 'ICS-22-STF-0290/33-13', '1-04-05-190', '1', '124', '124', 'Operational ', 2022, 'Electrical-Contractor-Warranty-Form.jpg', '2024-02-06', '2025-02-06', '20500', 'Gloves are worn for protection, so cleaning them can extend their lifespan and protect against contamination. Here is a step-by-step process to help you clean your gloves whether they are vinyl, nitrile, or latex gloves:\r\n\r\n1. Washing the outside of the gloves with soap or a mild detergent and hot water while they are still on your hands can help keep them sanitary. Rub the gloves together or with a cloth to remove dirt, germs, and other organic materials. Thoroughly rinse the gloves under running water.\r\n2. Take off the gloves and wash your hands with soap and water.\r\n3. Soak the gloves inside out in a mixture of soap and water for a few minutes.\r\n4. Hang the gloves to dry in a well-ventilated location. Make sure they are completely dry before folding them and putting them away.\r\n5. Keep the clean rubber gloves in a dry place to prevent mildew growth.'),
-(7, 'TL-SG1016D_UN_7.0_01_1499779712369t.jpg', 'Internet Switch', 'TP-link internet Switch 16 ports 10/100 MBPS, Auto Negotiation ', 'College of Medicine', 'Vincent Robinson Balido', 'ICS=22-F101-0361', '1-04-05-130', '1', '1450', '1450', 'Operational', 2022, 'Electrical-Contractor-Warranty-Form.jpg', '2024-02-06', '2025-02-06', '20500', 'Setting Up a 16-Port Switch\r\nSetting up a 16-port switch might sound daunting, but it’s simpler than you might think. Here’s a straightforward guide to get you started:\r\n1.	Location and Connections: First, choose a central location for your switch. This should be a place where all your devices can easily connect. Plug one end of an Ethernet cable into each device you want to connect, and then plug the other end into any of the available ports on the switch. The ports on the switch are like the outlets in your home – they’re where your devices plug in.\r\n2.	Powering Up: Connect the power adapter to the switch and plug it into a power outlet. Once powered up, the switch’s lights should start blinking, indicating that it’s working. These lights help you see which ports are active and connected.\r\n3.	Configuration (If Needed): In most cases, a 16-port switch is ready to use as soon as it’s powered up and devices are connected. However, if you have specific needs or want to optimize your network further, some switches might offer a web interface for more advanced configuration. You can access this interface through a web browser by typing in the switch’s IP address.\r\nIn essence, setting up a 16-port switch involves connecting your devices to its ports, supplying power, and then enjoying smoother and faster network connections. It’s a small effort that leads to a big improvement in your digital experience.\r\n\r\n'),
-(8, 'study_chair1.jpg', 'Monoblock Chair', 'uno Study Chair, whit Arm and Writing pad, 100% virgin Plastic resin (from Araceli lim)', 'College of Medicine', 'Vincent Robinson Balido', 'ICS-21-STF-0110/264-1-100', '1-04-06-010', '100', '998', '99800', 'All Operational', 2022, 'Electrical-Contractor-Warranty-Form.jpg', '2024-02-06', '2025-02-06', '20500', 'Encourages Movement — The first point we must tackle is the chair’s ability to allow movement.\r\n\r\nAdequate Space — Did you know that in the 20th Century, the classroom furniture was produced to encourage upright posture?\r\n\r\n“A 135-degree body-thigh sitting posture was demonstrated to be the best biomechanical sitting position, as opposed to a 90-degree posture, which most people consider normal.\r\n\r\nWe were not created to sit down for long hours, but somehow modern life requires the vast majority of the global population to work in a seated position,” stated Dr. Waseem Bashir, MBChB from the University of Alberta Hospital, Canada.\r\n\r\nFlexible — Flexibility talks about the chair’s lightweight design that can accommodate different teaching techniques and learning styles.\r\n\r\nRight Fit — We should not forget the size of the chair. If you have long legs you wouldn’t want to sit on a chair shorter than you. The same applies to classroom chairs.\r\n\r\nIt’s not just the left or right-handed chairs that teachers need to ask about but also if there are chairs that can fit the height of the children.'),
-(9, 'images (12).jpeg', 'Monoblock Chair', 'UNO Monoblock Chair with Writing Desk- for adult user with writing desk, without armrest 100% virgin plastic resin (15 units for lest handed, 40 units for right handed)', 'College of Medicine', 'Vincent Robinson Balido', 'ICS-22-STF-00173/55-1-55', '1-04-06-010', '55', '1000', '55000', 'Operational', 2022, 'Electrical-Contractor-Warranty-Form.jpg', '2024-02-06', '2025-02-06', '20500', '1. Chair size\r\n\r\nSchools require chairs of different sizes because students come from various age groups. Hence, the chair should:\r\n\r\nFit their body height, size, and weight.\r\nEnsure comfort and good body posture.\r\nProvide adequate support for the back, shoulders, and arms.\r\n2. Chair material\r\n\r\nGenerally, school chairs are made from leather, wood, hard plastic, and soft plastic. These materials impact the chair’s comfort, look, durability, and maintenance. Without a doubt, leather and mesh chairs are highly recommended if you want to tick all the boxes. Lower-quality materials are, of course, prone to more wear and tear. Hence, it’s best to choose what gives more value to your money.\r\n\r\n3. Chair colour\r\n\r\nSchool furniture is no longer restricted to drab, dull, and mundane colours like brown, beige, and grey. However, picking a colour tone that aligns with the purpose is essential. Light colour tones are known for their soothing effect, while mid-tones stimulate the senses and creative elements.\r\n\r\n4. Adjustable features\r\n\r\nIf these chairs are used in a classroom setting, they should have height adjustability features to accommodate students of all ages. Leg and armrests make the chair more ergonomic. Students can sit comfortably through long exams or lectures without fidgeting or squirming if it is slightly tiltable.\r\n\r\n5. Storage space\r\n\r\nNowadays, student chairs with writing pads come with book baskets fixed under the chair. This feature serves a dual purpose:\r\nIt eliminates the need for a separate desk or shelf for storing books and other paraphernalia.\r\nIt offers easy access to school supplies without disturbing the classroom or moving things around.\r\n\r\n6. Writing pad size\r\n\r\nThe larger the writing pad, the more workspace it provides. The desk and chair combo comes with a tablet for student writing and is generally equipped with casters to facilitate collaborative and dynamic learning environments in the classroom.\r\n\r\nHas our blog piqued your interest in buying student chairs with writing pads? To purchase your chairs, look no further than Inspace, the furniture industry pioneers who specialize in custom-made, ergonomic school furniture.'),
-(28, 'bg.png', 'White Board', 'sadasdasd', 'College of Medicine', '', 'ICS1243', '01-02-05-1996', '2', '', '1.788', '', 2022, 'bg.png', '2024-01-31', '2024-03-09', '2,000', 'dfsdfsddfsdf');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `maintenance_contact`
---
-
-CREATE TABLE `maintenance_contact` (
-  `maintenance_ID` int(11) NOT NULL,
-  `maintenance_name` varchar(255) DEFAULT NULL,
-  `maintenance_email` varchar(255) DEFAULT NULL,
-  `contact_number` varchar(20) NOT NULL,
-  `request_ID` int(11) DEFAULT NULL,
-  `admin_email` varchar(255) DEFAULT NULL,
-  `admin_name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `maintenance_contact`
---
-
-INSERT INTO `maintenance_contact` (`maintenance_ID`, `maintenance_name`, `maintenance_email`, `contact_number`, `request_ID`, `admin_email`, `admin_name`) VALUES
-(3, 'Padwa Tingkasan', 'powie@gmail.com', '1234567890', 1, 'admin@wmsu.edu.ph', 'Kyle Kuzma');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `recycle_bin`
---
-
-CREATE TABLE `recycle_bin` (
-  `recycle_ID` int(11) NOT NULL,
-  `equipment_ID` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `article` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `deployment` varchar(255) DEFAULT NULL,
-  `user` varchar(255) DEFAULT NULL,
-  `property_number` varchar(255) NOT NULL,
-  `account_code` varchar(255) NOT NULL,
-  `units` varchar(255) NOT NULL,
-  `unit_value` varchar(255) NOT NULL,
-  `total_value` varchar(255) NOT NULL,
-  `remarks` varchar(255) NOT NULL,
-  `year_received` int(11) NOT NULL,
-  `warranty_image` varchar(255) DEFAULT NULL,
-  `warranty_start` date DEFAULT NULL,
-  `warranty_end` date DEFAULT NULL,
-  `budget` varchar(255) DEFAULT NULL,
-  `instruction` text DEFAULT NULL,
-  `deleted_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `equipment` (`equipment_ID`, `image`, `article`, `description`, `deployment`, `user`, `property_number`, `account_code`, `total_unit`, `unit_value`, `total_value`, `remarks`, `year_received`, `warranty_image`, `warranty_start`, `warranty_end`, `budget`, `instruction`) VALUES
+(161, '3472049428.jpg', 'Cabinet', 'JIT-LF01 2 layers glass sliding door cabinet, with lock 4 adjustable salves, color: beige.', 'College of Medicine', NULL, 'ICS-23-F101-0018/2-1-2', '1-04-06-010', 2, '9920', '19,840.00', '', 2023, 'in.png', '2024-03-01', '2024-03-28', NULL, 'qwe'),
+(162, 'in.png', 'Extension Wire', 'OMNI 3 Gang Universal outlet', 'College of Medicine', NULL, 'ICS-23-F101-0019-10-1-10', '1-04-05-190', 6, '1528', '15,280.00', '', 2023, 'in.png', '2024-03-29', '2024-03-31', NULL, ''),
+(163, '', 'kasd', '', '', NULL, '', '', 1, '', '', '', 0, '', '0000-00-00', '0000-00-00', NULL, ''),
+(164, 'MBFP-1003.jpg', 'Alcohol Dispenser', 'MBFP-1003.jpg\', \'Alcohol Dispenser\', \'Foot press alcohol dispenser metal type. Specification: Height: 5ft x 8.3 inches, made of stainless steel (T202),  hand face, up to 500ml alcohol pump bottle capacity, 102cm height.', 'College of Medicine', NULL, 'ICS-22-STF-0296/20-4', '1-04-05-100', 1, '1500', '1,500.00', '', 2022, 'in.png', '2024-03-28', '2024-03-28', NULL, ''),
+(165, 'in.png', 'Chair', 'LINO URATEX - school char, plastic school chair with work surface, white, for adult users.', 'College of Medicine', NULL, 'ICS-23-F101-0017/110-1-110', '1-04-06-010', 15, '110', '1,650.00', '', 2023, 'in.png', '2024-04-05', '2024-03-28', NULL, ''),
+(166, 'in.png', 'Fire Extenguisher', '\'Dry Chemical 10lbs\\\', \\\'College of Medicine', 'College of Medicine', NULL, 'ICS-22-STF-00147/52-27-39', '\'1-04-05-080', 3, '1899', '5,697.00', '', 2022, 'in.png', '2024-03-01', '2024-04-04', NULL, ''),
+(167, 'in.png', 'Desktop Computer', 'Intel Core i3 9100 6M cache, up to 4.20 GHZ', 'College of Medicine', NULL, 'ICS-21-F101-0024/20-115', '1-06-05-030', 15, '33575', '503,625.00', '', 2021, 'in.png', '2024-03-29', '2024-02-29', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -199,19 +93,83 @@ CREATE TABLE `units` (
   `unit_ID` int(11) NOT NULL,
   `equipment_ID` int(11) NOT NULL,
   `equipment_name` varchar(255) NOT NULL,
-  `status` varchar(255) DEFAULT NULL
+  `user` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `units`
 --
 
-INSERT INTO `units` (`unit_ID`, `equipment_ID`, `equipment_name`, `status`) VALUES
-(1, 28, 'White Board', 'Available'),
-(2, 28, 'White Board', 'Available'),
-(3, 28, 'White Board', 'Available'),
-(4, 28, 'White Board', 'Available'),
-(5, 28, 'White Board', 'Available');
+INSERT INTO `units` (`unit_ID`, `equipment_ID`, `equipment_name`, `user`) VALUES
+(1, 161, 'Cabinet', 'Khriz Marr Falcatan'),
+(2, 161, 'Cabinet', 'John Mark Taborada'),
+(3, 162, 'Extension Wire', 'Rogie Gabotero'),
+(4, 162, 'Extension Wire', 'Rogie Gabotero'),
+(5, 162, 'Extension Wire', 'Rogie Gabotero'),
+(6, 162, 'Extension Wire', 'Rogie Gabotero'),
+(7, 162, 'Extension Wire', 'Rogie Gabotero'),
+(16, 163, 'kasd', 'Arp-J Villares'),
+(18, 164, 'Alcohol Dispenser', 'Padwa Tingkasan'),
+(19, 165, 'Chair', 'Rogie Gabotero'),
+(20, 165, 'Chair', 'Rogie Gabotero'),
+(21, 165, 'Chair', 'Rogie Gabotero'),
+(22, 165, 'Chair', 'Rogie Gabotero'),
+(23, 165, 'Chair', 'Rogie Gabotero'),
+(24, 165, 'Chair', 'Padwa Tingkasan'),
+(25, 165, 'Chair', 'Padwa Tingkasan'),
+(26, 165, 'Chair', 'Padwa Tingkasan'),
+(27, 165, 'Chair', 'Padwa Tingkasan'),
+(28, 165, 'Chair', 'Padwa Tingkasan'),
+(29, 165, 'Chair', 'Khriz Marr Falcatan'),
+(30, 165, 'Chair', 'Khriz Marr Falcatan'),
+(31, 165, 'Chair', 'Khriz Marr Falcatan'),
+(32, 165, 'Chair', 'Khriz Marr Falcatan'),
+(33, 165, 'Chair', 'Khriz Marr Falcatan'),
+(34, 166, 'Fire Extenguisher', 'John Mark Taborada'),
+(35, 166, 'Fire Extenguisher', 'Arp-J Villares'),
+(36, 166, 'Fire Extenguisher', 'Arp-J Villares'),
+(37, 167, 'Desktop Computer', 'John Mark Taborada'),
+(38, 167, 'Desktop Computer', 'John Mark Taborada'),
+(39, 167, 'Desktop Computer', 'John Mark Taborada'),
+(40, 167, 'Desktop Computer', 'John Mark Taborada'),
+(41, 167, 'Desktop Computer', 'John Mark Taborada'),
+(42, 167, 'Desktop Computer', 'Khriz Marr Falcatan'),
+(43, 167, 'Desktop Computer', 'Khriz Marr Falcatan'),
+(44, 167, 'Desktop Computer', 'Khriz Marr Falcatan'),
+(45, 167, 'Desktop Computer', 'Khriz Marr Falcatan'),
+(46, 167, 'Desktop Computer', 'Khriz Marr Falcatan'),
+(47, 167, 'Desktop Computer', 'Rogie Gabotero'),
+(48, 167, 'Desktop Computer', 'Rogie Gabotero'),
+(49, 167, 'Desktop Computer', 'Rogie Gabotero'),
+(50, 167, 'Desktop Computer', 'Rogie Gabotero'),
+(51, 167, 'Desktop Computer', 'Rogie Gabotero');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `unit_report`
+--
+
+CREATE TABLE `unit_report` (
+  `report_ID` int(11) NOT NULL,
+  `equipment_ID` int(11) DEFAULT NULL,
+  `user_ID` int(11) DEFAULT NULL,
+  `unit_ID` varchar(50) DEFAULT NULL,
+  `unit_handler` varchar(255) DEFAULT NULL,
+  `report_issue` varchar(255) DEFAULT NULL,
+  `problem_desc` text DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(255) NOT NULL DEFAULT 'You have sent a report.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `unit_report`
+--
+
+INSERT INTO `unit_report` (`report_ID`, `equipment_ID`, `user_ID`, `unit_ID`, `unit_handler`, `report_issue`, `problem_desc`, `timestamp`, `status`) VALUES
+(1, 163, 6, 'UNIT-0015', NULL, 'FOR RETURN', 'kln', '2024-03-11 05:12:40', 'Your report has been approved.'),
+(2, 163, 6, 'UNIT-0016', NULL, 'LOST', 'dsf', '2024-03-11 09:07:31', 'Your report has been approved.'),
+(3, 163, 6, 'UNIT-0015', NULL, 'LOST', 'fff', '2024-03-11 09:35:49', 'Your report has been approved.');
 
 -- --------------------------------------------------------
 
@@ -238,35 +196,54 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `password`, `role`, `contact`, `department`, `profile_img`, `username`, `gender`, `address`) VALUES
-(1, 'Kyle Kuzma', 'admin@wmsu.edu.ph', '$2y$10$4i0fG49uA1Z6PwBYbrMAVORPvB6Z0ZDS3s9ZbTwgkA7rlB5H8VjOO', 'admin', '000000', 'College of Medicine', 'kyle kuzma.jpg', 'alle', NULL, NULL),
-(21, 'Vincent Robinson Balido', 'padwa@gmail.com', '$2y$10$NVLiU9YDLagVX8xBQ3e2deUt3zpc6pO1wCfFcXTARkQyA3371radS', 'user', '', 'CCS', 'paw.png', NULL, NULL, NULL),
-(22, 'SHARNALYN BALUAN TULAWIE', 'pawtingkasan20@gmail.com', '$2y$10$JNN4Cf4s43XreWTCP80VRuJ.rVabu8CobSgqp/YhOJXISew.GF2Gy', 'user', NULL, NULL, NULL, NULL, NULL, NULL),
-(23, 'Padwa Tingkasan ', 'powie@gmail.com', '$2y$10$NDSdPKKn3Ou1DXAqAvwNneu9nOqxNaTZ..pwWg2hVrjnBT/DPIaCK', 'user', '8080', '', 'padwa.png', 'paw', '', '');
+(1, 'Ryan Torres', 'admin@wmsu.edu.ph', '$2y$10$9Y2twzt5f5BdSdK0V3wDFuZxw2WXU7JbcLi2xWWcskjQtfOzsrx7O', 'admin', '00000', '', 'kyle kuzma.jpg', 'kyle', '', ''),
+(2, 'Rogie Gabotero', 'rogie@gmail.com', '$2y$10$84PvOmbRIEkHFN7gyMGHneKxzDUennPHDcrNxC39xjAEIeu002eey', 'user', '00000', 'College of Computing Studies', 'rogie.jpg', 'Gie', 'Male', 'ZC'),
+(3, 'Padwa Tingkasan', 'padwa@gmail.com', '$2y$10$VOOiCimGE1nYFnYwy0lYfeTN24op75mVoOCNARSN9iHLtqmZo4T1y', 'user', '00000', 'College of Computing Studies', 'padwa.png', 'Paw', 'Female', 'ZC'),
+(4, 'Khriz Marr Falcatan', 'khriz@gmail.com', '$2y$10$ue4ZCK8IJH2fKQfyHkdR0OXnVcnCFRks9MGR7kLJgaG3jjUqyguR6', 'user', '000000', 'College of Computing Studies', 'khriz.jpg', 'Khriz', 'Male', 'ZC'),
+(5, 'John Mark Taborada', 'john@gmail.com', '$2y$10$LzaPzeSkto5zsp.jLiB9.OaMSZ73gS8VoBYnNnDMZbjVyaBhS2MAa', 'user', '00000', 'College of Computing Studies', 'tabs.png', 'Tabs', 'Male', 'ZC'),
+(6, 'Arp-J Villares', 'arp@gmail.com', '$2y$10$dMu9OE0oNDfQm./UR7T2re.ApRRIUfRYA8flTtZEiP5SJDsBvdITi', 'user', '00000', 'College of Computing Studies', 'arp.png', 'Arp', 'Male', 'ZC');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_unit`
+--
+
+CREATE TABLE `user_unit` (
+  `user` varchar(255) NOT NULL,
+  `article` varchar(255) DEFAULT NULL,
+  `units_handled` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_unit`
+--
+
+INSERT INTO `user_unit` (`user`, `article`, `units_handled`) VALUES
+('Khriz Marr Falcatan', 'Cabinet', 1),
+('John Mark Taborada', 'Cabinet', 1),
+('Rogie Gabotero', 'Extension Wire', 5),
+('Arp-J Villares', 'Extension Wire', 5),
+('Arp-J Villares', 'kasd', 5),
+('Padwa Tingkasan', 'Alcohol Dispenser', 1),
+('Rogie Gabotero', 'Chair', 5),
+('Padwa Tingkasan', 'Chair', 5),
+('Khriz Marr Falcatan', 'Chair', 5),
+('John Mark Taborada', 'Fire Extenguisher', 1),
+('Arp-J Villares', 'Fire Extenguisher', 2),
+('John Mark Taborada', 'Desktop Computer', 5),
+('Khriz Marr Falcatan', 'Desktop Computer', 5),
+('Rogie Gabotero', 'Desktop Computer', 5);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `appointment`
+-- Indexes for table `approved_report`
 --
-ALTER TABLE `appointment`
-  ADD PRIMARY KEY (`request_ID`),
-  ADD KEY `equipment_ID` (`equipment_ID`);
-
---
--- Indexes for table `approved_requests`
---
-ALTER TABLE `approved_requests`
-  ADD PRIMARY KEY (`approved_ID`),
-  ADD KEY `request_ID` (`request_ID`);
-
---
--- Indexes for table `budget`
---
-ALTER TABLE `budget`
-  ADD PRIMARY KEY (`budget_ID`),
-  ADD KEY `fk_budget_request_id` (`request_ID`);
+ALTER TABLE `approved_report`
+  ADD PRIMARY KEY (`approved_ID`);
 
 --
 -- Indexes for table `equipment`
@@ -275,24 +252,17 @@ ALTER TABLE `equipment`
   ADD PRIMARY KEY (`equipment_ID`);
 
 --
--- Indexes for table `maintenance_contact`
---
-ALTER TABLE `maintenance_contact`
-  ADD PRIMARY KEY (`maintenance_ID`),
-  ADD KEY `fk_maintenance_contact_request_id` (`request_ID`);
-
---
--- Indexes for table `recycle_bin`
---
-ALTER TABLE `recycle_bin`
-  ADD PRIMARY KEY (`recycle_ID`),
-  ADD KEY `equipment_ID` (`equipment_ID`);
-
---
 -- Indexes for table `units`
 --
 ALTER TABLE `units`
   ADD PRIMARY KEY (`unit_ID`,`equipment_name`),
+  ADD KEY `equipment_ID` (`equipment_ID`);
+
+--
+-- Indexes for table `unit_report`
+--
+ALTER TABLE `unit_report`
+  ADD PRIMARY KEY (`report_ID`),
   ADD KEY `equipment_ID` (`equipment_ID`);
 
 --
@@ -306,93 +276,50 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `appointment`
+-- AUTO_INCREMENT for table `approved_report`
 --
-ALTER TABLE `appointment`
-  MODIFY `request_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `approved_requests`
---
-ALTER TABLE `approved_requests`
-  MODIFY `approved_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `budget`
---
-ALTER TABLE `budget`
-  MODIFY `budget_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `approved_report`
+  MODIFY `approved_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `equipment`
 --
 ALTER TABLE `equipment`
-  MODIFY `equipment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
---
--- AUTO_INCREMENT for table `maintenance_contact`
---
-ALTER TABLE `maintenance_contact`
-  MODIFY `maintenance_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `recycle_bin`
---
-ALTER TABLE `recycle_bin`
-  MODIFY `recycle_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `equipment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
 
 --
 -- AUTO_INCREMENT for table `units`
 --
 ALTER TABLE `units`
-  MODIFY `unit_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `unit_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `unit_report`
+--
+ALTER TABLE `unit_report`
+  MODIFY `report_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `appointment`
---
-ALTER TABLE `appointment`
-  ADD CONSTRAINT `appointment_ibfk_1` FOREIGN KEY (`equipment_ID`) REFERENCES `equipment` (`equipment_ID`);
-
---
--- Constraints for table `approved_requests`
---
-ALTER TABLE `approved_requests`
-  ADD CONSTRAINT `approved_requests_ibfk_1` FOREIGN KEY (`request_ID`) REFERENCES `appointment` (`request_ID`);
-
---
--- Constraints for table `budget`
---
-ALTER TABLE `budget`
-  ADD CONSTRAINT `fk_budget_request_id` FOREIGN KEY (`request_ID`) REFERENCES `appointment` (`request_ID`);
-
---
--- Constraints for table `maintenance_contact`
---
-ALTER TABLE `maintenance_contact`
-  ADD CONSTRAINT `fk_maintenance_contact_request_id` FOREIGN KEY (`request_ID`) REFERENCES `appointment` (`request_ID`);
-
---
--- Constraints for table `recycle_bin`
---
-ALTER TABLE `recycle_bin`
-  ADD CONSTRAINT `fk_recycle_bin_equipment` FOREIGN KEY (`equipment_ID`) REFERENCES `equipment` (`equipment_ID`) ON DELETE CASCADE,
-  ADD CONSTRAINT `recycle_bin_ibfk_1` FOREIGN KEY (`equipment_ID`) REFERENCES `equipment` (`equipment_ID`);
-
---
 -- Constraints for table `units`
 --
 ALTER TABLE `units`
   ADD CONSTRAINT `units_ibfk_1` FOREIGN KEY (`equipment_ID`) REFERENCES `equipment` (`equipment_ID`);
+
+--
+-- Constraints for table `unit_report`
+--
+ALTER TABLE `unit_report`
+  ADD CONSTRAINT `unit_report_ibfk_1` FOREIGN KEY (`equipment_ID`) REFERENCES `equipment` (`equipment_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

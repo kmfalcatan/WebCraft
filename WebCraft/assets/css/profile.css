@@ -82,11 +82,10 @@
     align-items: center;
     border-radius: 0.5rem;
     border: none;
-    background-color: #f7f7f7;
     border: solid gray 1px;
     font-size: 1.2rem;
-    padding-left: 0.5rem;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    padding-left: 1rem;
+    
 }
 
 .userInfo3{

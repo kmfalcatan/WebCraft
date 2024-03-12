@@ -1,6 +1,13 @@
+.requiredSymbol {
+    color: red;
+    margin-left: 5px;
+    font-size: 1.5rem;
+}
+
 
 .container3{
     height: 95vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,9 +60,8 @@
 .subUploadImageContainer{
     height: 100%;
     width: 9rem;
-    background-color: #fff;
-    border: none;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+    background-color: snow;
+    border: #ddd solid 0.2rem;
 }
 
 .uploadImage{
@@ -76,25 +82,33 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: -2.5rem;
+    margin-top: -1.5rem;
+    margin-right: 3rem;
   }
   
-  .uploadButton {
-    color: transparent;
-    text-align: center;
+  .uploadButton{
+    background-color: rgb(2, 116, 200);
+    color: #fff;
+    margin-left: 1%;
+    margin-top: 2rem;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 9rem;
+    height: 2rem;
+    font-weight: 600;
+    border-radius: 0.3rem;
     cursor: pointer;
-    background-color: #f1f1f1d7;
-    border-radius: 5rem;
-    border: 0.1rem solid #ccc;
-    padding: 0.8rem 1.5rem;
-    margin: 0 auto;
-  }
+}
 
-.plusIcon {
-    font-size: 2.5rem;
-    font-weight: bolder;
-    color: #333;
-    text-align: center;
+.uploadIcon{
+    width: 2rem;
+    height: 2rem;
+    margin-top: 2rem;
+    margin-right: 1rem;
+    filter: invert(100%);
 }
 
 .subImageContainer1{
@@ -109,17 +123,10 @@
 
 .dropdownContainer select,
 .infoContainer select,
-.descriptionContainer input,
-.infoContainer input,
-.subOtherInfoContainer input{
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.dropdownContainer select,
-.infoContainer select,
 .descriptionContainer textarea,
+.infoContainer input,
 .infoContainer textarea,
+.subOtherInfoContainer input,
 .subOtherInfoContainer textarea{
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -226,6 +233,12 @@ input{
     justify-content: center;
     align-items: center;
     margin-top: -2rem;
+    cursor: pointer;
+}
+
+.addEquipButtonContainer img{
+    width: 3rem;
+    height: 3rem;
 }
 
 .buttonsContainer button:hover{
@@ -295,654 +308,29 @@ input{
     border: solid gray 1px;
     font-weight: bolder;
     color: #fff;
+
 }
 
 button a{
     text-decoration: none;
     color: #fff;
 }
-/*tablet*/
-@media only screen and (min-width: 601px) and (max-width: 1024px) {
-    .container3{
-        /* outline: red dashed 1px; */
-        height: 91vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 
-    .subContainer2{
-        height: 69%;
-    }
-
-    .imageContainer1{
-        display: flex;
-        flex-direction: row;
-        /* outline: red dashed 1px; */
-        height: 17rem;
-    }
-
-    .subImageContainer1{
-        width: 15rem;
-        height: 17rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .infoContainer{
-        /* outline: red dashed 1px; */
-        height: 17rem;
-        width: 100%;
-    }
-
-    .subInfoContainer{
-        /* outline: red dashed 1px; */
-        display: flex;
-        width: 100%;
-    }
-
-    .subInputInfoContainer2{
-        width: 50%;
-        /* outline: red dashed 1px; */
-    }
-
-    .inputInfo{
-        width: 100%;
-    }
-
-    .inputInfo3{
-        width: 87%;
-    }
-    
-    .uploadButtonContainer{
-        /* outline: red dashed 1px; */
-        width: 100%;
-    }
-
-    .uploadImageContainer{
-        /* outline: red dashed 1px; */
-        height: 15rem;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .subImageContainer1{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 15rem;
-        /* outline: red dashed 1px; */
-        margin-right: 0.5rem;
-    }
-
-    .subUploadImageContainer{
-        /* outline: red dashed 1px; */
-        width: 100%;
-    }
-
-    .uploadImage{
-        width: 15rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .uploadButton{
-        margin-left: 4.7rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .otherInfoContainer{
-        margin-top: 1rem;
-        width: 100%;
-        height: 17rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .descriptionContainer{
-        /* outline: red dashed 1px; */
-        width: 100%;
-        height: 10rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .inputInfo4{
-        /* outline: red dashed 1px; */
-        height: 90%;
-        width: 100%;
-    }
-}
-
-/*laptop*/
-@media only screen and (min-width: 1025px) and (max-width: 1440px) {
-    
-    .container3{
-        /* outline: red dashed 1px; */
-        height: 91vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .subContainer2{
-        height: 69%;
-        width: 50rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .imageContainer1{
-        display: flex;
-        flex-direction: row;
-        /* outline: red dashed 1px; */
-        height: 17rem;
-    }
-
-    .subImageContainer1{
-        width: 15rem;
-        height: 17rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .infoContainer{
-        /* outline: red dashed 1px; */
-        height: 17rem;
-        width: 100%;
-    }
-
-    .subInfoContainer{
-        /* outline: red dashed 1px; */
-        display: flex;
-        width: 100%;
-    }
-
-    .subInputInfoContainer2{
-        width: 50%;
-        /* outline: red dashed 1px; */
-    }
-
-    .inputInfo{
-        width: 100%;
-    }
-
-    .inputInfo3{
-        width: 87%;
-    }
-    
-    .uploadButtonContainer{
-        /* outline: red dashed 1px; */
-        width: 100%;
-    }
-
-    .uploadImageContainer{
-        /* outline: red dashed 1px; */
-        height: 15rem;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .subImageContainer1{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 15rem;
-        /* outline: red dashed 1px; */
-        margin-right: 0.5rem;
-    }
-
-    .subUploadImageContainer{
-        /* outline: red dashed 1px; */
-        width: 100%;
-    }
-
-    .uploadImage{
-        width: 15rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .uploadButton{
-        margin-left: 4.7rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .otherInfoContainer{
-        margin-top: 1rem;
-        width: 100%;
-        height: 17rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .descriptionContainer{
-        /* outline: red dashed 1px; */
-        width: 100%;
-        height: 10rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .inputInfo4{
-        /* outline: red dashed 1px; */
-        height: 90%;
-        width: 100%;
-    }
-}
-
-
-/*pc*/
-@media only screen and (min-width: 1441px){
-    .container3{
-        /* outline: red dashed 1px; */
-        height: 91vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .subContainer2{
-        height: 69%;
-        width: 50rem;
-    }
-
-    .imageContainer1{
-        display: flex;
-        flex-direction: row;
-        /* outline: red dashed 1px; */
-        height: 17rem;
-    }
-
-    .subImageContainer1{
-        width: 15rem;
-        height: 17rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .infoContainer{
-        /* outline: red dashed 1px; */
-        height: 17rem;
-        width: 100%;
-    }
-
-    .subInfoContainer{
-        /* outline: red dashed 1px; */
-        display: flex;
-        width: 100%;
-    }
-
-    .subInputInfoContainer2{
-        width: 50%;
-        /* outline: red dashed 1px; */
-    }
-
-    .inputInfo{
-        width: 100%;
-    }
-
-    .inputInfo3{
-        width: 87%;
-    }
-    
-    .uploadButtonContainer{
-        /* outline: red dashed 1px; */
-        width: 100%;
-    }
-
-    .uploadImageContainer{
-        /* outline: red dashed 1px; */
-        height: 15rem;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .subImageContainer1{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 15rem;
-        /* outline: red dashed 1px; */
-        margin-right: 0.5rem;
-    }
-
-    .subUploadImageContainer{
-        /* outline: red dashed 1px; */
-        width: 100%;
-    }
-
-    .uploadImage{
-        width: 15rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .uploadButton{
-        margin-left: 4.7rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .otherInfoContainer{
-        margin-top: 1rem;
-        width: 100%;
-        height: 17rem;
-        /* outline: red dashed 1px; */
-    }
-
-    .descriptionContainer{
-        /* outline: red dashed 1px; */
-        width: 100%;
-        height: 10rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .inputInfo4{
-        /* outline: red dashed 1px; */
-        height: 90%;
-        width: 100%;
-    }
-}
-.container3{
-    height: 95vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.container3 .subContainer2{
-    height: 75%;
-    width: 60%;
-    border-radius: 0 0 0.5rem 0.5rem;
-    background-color: #fff;
-    padding: 1rem;
-    padding: 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-.topContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 5rem;
-    width: 63.3%;
-    background-color: rgb(2, 116, 200);
-    border-radius: 0.5rem 0.5rem 0 0;
-}
-
-.topContainer h2{
-    margin-right: auto;
-    color: #fff;
-}
-
-.topContainer img{
-    width: 4rem;
-    height: 4rem;
-    margin-left: 2rem;
-    filter: invert(100%);
-}
-
-.imageContainer1{
-    height: 23rem;
-}
-
-.uploadImageContainer{
-    height: 9rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.subUploadImageContainer{
-    height: 100%;
-    width: 9rem;
-    background-color: snow;
-    border: #ddd solid 0.2rem;
-}
-
-.uploadImage{
-    height: 100%;
-    width: 100%;
-}
-
-/* .uploadButtonContainer{
-    height: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
-.uploadButtonContainer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: -2.5rem;
-  }
-  
-  .uploadButton {
-    color: transparent;
-    text-align: center;
-    cursor: pointer;
-    background-color: #f1f1f1d7;
-    border-radius: 5rem;
-    border: 0.1rem solid #ccc;
-    padding: 0.8rem 1.5rem;
-    margin: 0 auto;
-  }
-
-.plusIcon {
-    font-size: 2.5rem;
-    font-weight: bolder;
-    color: #333;
-    text-align: center;
-}
-
-.subImageContainer1{
-    height: 11rem;
-}
-
-.infoContainer{
-    height: 15rem;
-    margin-top: -1.5rem;
-    margin-left: 2rem;
-}
-
-.dropdownContainer select,
-.infoContainer select,
-.descriptionContainer input,
-.infoContainer input,
-.subOtherInfoContainer input{
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.subInfoContainer{
-    height: 3rem;
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 1.5rem;
-    /* outline: red dashed 1px; */
-}
-
-.inputInfo{
-    height: 2.5rem;
-    width: 100%;
-    border-radius: 0.5rem;
-    padding-left: 1rem;
-    padding-top: 0.5rem;
-    font-size: 1.2rem;
-}
-
-.subInputInfoContainer{
-    height: 100%;
-    width: 8rem;
-}
-
-.subInputInfoContainer2{
-    height: 100%;
-    width: 90%;
-    /* outline: red dashed 1px; */
-}
-
-.inputInfo1{
-    height: 2rem;
-    width: 6.6rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem 0.5rem;
-    font-size: 1rem;
-}
-
-.inputInfo2{
-    height: 2rem;
-    width: 3.6rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem 0.5rem;
-    font-size: 1rem;
-}
-
-.otherInfoContainer{
-    height: 13rem;
-    margin-top: 5rem;
-}
-
-.subOtherInfoContainer{
-    height: 3rem;
-    display: flex;
-    flex-direction: row;
-    column-gap: 1rem;
-    /* outline: red dashed 1px; */
-}
-
-.subInputInfoContainer2{
-    height: 100%;
-    width: 100%;
-    /* outline: red dashed 1px; */
-}
-
-input{
-    border: 0.5px solid #000;
-}
-
-.inputInfo3{
-    height: 2rem;
-    width: 90%;
-    border-radius: 0.5rem;
-    padding: 0.5rem 0.5rem;
-    font-size: 1rem;
-}
-
-.descriptionContainer{
-    height: 6rem;
-    margin-top: 1rem;
-    /* outline: red dashed 1px; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.inputInfo4{
-    height: 5.5rem;
-    width: 100%;
-    border-radius: 1rem;
-    padding-top: 0.5rem;
-    padding-left: 0.5rem;
-    font-size: 1.2rem;
-}
-
-.addEquipButtonContainer{
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -2rem;
-}
-
-.buttonsContainer button:hover{
-    background-color: rgb(2, 116, 200);
-}
-
-.addEquipButton{
-    height: 3rem;
-    width: 15rem;
-    border-radius: 0.5rem;
-    background: rgb(2, 116, 200);
-    transition: all 0.15s;
-    border: solid gray 1px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #fff;
-}
-
-.addEquipButton a{
-    text-decoration: none;
-    color: #000;
-}
-
-.addEquipButton:hover{
+#btn1:hover,
+#btn2:hover,
+#btn3:hover{
     background-color: rgba(2, 117, 200, 0.297);
-    color: #000;
 }
 
-.addEquipButton:active{
-    background: rgb(2, 116, 200);
-}
-
-.dropdownContainer {
-    margin-top: 1rem;
-}
-
-.dropdownContainer label {
-    margin-top: 0.7rem;
-    margin-right: 1rem;
-    font-size: 1.5rem;
-  }
-  
-.yearDropdown {
-    height: 1.5rem;
-    width: 7rem;
-    border-radius: 0.5rem;
-    padding-left: 1rem;
-    font-size: 1.2rem;
-  }
-
-  /* For updating form */
-.buttonsContainer{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    margin-top: 0.5rem;
-    column-gap: 0.5rem;
-    row-gap: 0.5rem;
-}
-
-.buttonsContainer button{
-    height: 1.8rem;
-    width: 7rem;
-    cursor: pointer;
-    border-radius: 0.5rem;
-    background: rgb(2, 116, 200);
-    border: solid gray 1px;
-    font-weight: bolder;
-    color: #fff;
-}
-
-button a{
-    text-decoration: none;
-    color: #000;
+#btn1:active,
+#btn2:active,
+#btn3:active{
+    background-color: rgba(2, 117, 200, 0.76);
 }
 /*tablet*/
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
-    .topContainer {
-        width: 66.1%;
+    .container3 .topContainer{
+        width: 70%;
     }
     
     .container3{
@@ -951,22 +339,25 @@ button a{
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow-y: auto;
     }
 
     .subContainer2{
         height: 69%;
+        overflow-y: auto;
     }
 
     .imageContainer1{
+        flex-direction: column;
         display: flex;
-        flex-direction: row;
-        /* outline: red dashed 1px; */
-        height: 17rem;
+        align-items: center;
+        justify-content: center;
+        margin-top: 5rem;
     }
 
     .subImageContainer1{
-        width: 15rem;
-        height: 17rem;
+        width: 13rem;
+        height: 15rem;
         /* outline: red dashed 1px; */
     }
 
@@ -974,6 +365,8 @@ button a{
         /* outline: red dashed 1px; */
         height: 17rem;
         width: 100%;
+        margin-right: 2rem;
+        margin-top: 2rem;
     }
 
     .subInfoContainer{
@@ -1035,7 +428,7 @@ button a{
     }
 
     .otherInfoContainer{
-        margin-top: 1rem;
+        margin-top: 7rem;
         width: 100%;
         height: 17rem;
         /* outline: red dashed 1px; */
@@ -1055,14 +448,18 @@ button a{
         height: 90%;
         width: 100%;
     }
+
+    .addEquipButtonContainer{
+        margin-top: 2rem;
+    }
 }
 
 /*laptop*/
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
-    .topContainer {
+    .container3 .topContainer{
         width: 66%;
     }
-
+    
     .container3{
         /* outline: red dashed 1px; */
         height: 91vh;
@@ -1180,11 +577,9 @@ button a{
 
 /*pc*/
 @media only screen and (min-width: 1441px){
-    .topContainer {
-        height: 5rem;
-        width: 64.4%;
+    .container3 .topContainer{
+        width: 64%;
     }
-
     .container3{
         /* outline: red dashed 1px; */
         height: 91vh;
@@ -1296,4 +691,42 @@ button a{
         height: 90%;
         width: 100%;
     }
+}
+
+@media only screen and (min-width: 1292px){
+    .container3 .topContainer{
+        width: 63.4%;
+    }
+}
+
+/* Hidden Form */
+
+.additionalContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.5s ease, opacity 0.5s ease; 
+    transform: translateY(100%);
+    opacity: 0; 
+    overflow: hidden;
+   
+}
+
+.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
 }

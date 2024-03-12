@@ -48,7 +48,7 @@ $message = "";
                 <div class="logInFormContainer">
                     <div class="subLogInFormContainer">
                         <div class="logIntextContainer">
-                            <p class="logIntext">Sign in</p>
+                            <p class="logIntext">SIGN IN</p>
                         </div>
     
                         <?php
@@ -65,7 +65,8 @@ $message = "";
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputField" name="email" type="email" placeholder="E-mail" required>
+                                <input class="inputField" name="email" type="text" required>
+                                <span>E-mail</span>
                             </div>  
                         </div>
     
@@ -75,7 +76,8 @@ $message = "";
                             </div>
     
                             <div class="inputContainer">
-                                <input class="inputField" name="password" type="password" placeholder="Password" required>
+                                <input class="inputField" name="password" type="password" required>
+                                <span>Password</span>
                             </div>  
                         </div>
     

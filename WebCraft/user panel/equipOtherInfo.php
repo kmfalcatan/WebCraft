@@ -1,4 +1,5 @@
 <?php
+include_once "../dbConfig/dbconnect.php";
 include_once "../authentication/auth.php";
 include_once "../functions/updateEquip.php";
 include_once "../functions/header.php";
@@ -10,16 +11,17 @@ include_once "../functions/warranty.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../assets/img/webcraftLogo.png">
-    <title>MedEquip Tracker</title>
+    <title>Document</title>
 
     <link rel="stylesheet" href="../assets/css/index.css">
-    <link rel="stylesheet" href="../assets/css/addEquip.css">
+    <link rel="stylesheet" href="../assets/css/sidebarShow.css">
+    <link rel="stylesheet" href="../assets/css/newEquipOtherInfo.css">
     <link rel="stylesheet" href="../assets/css/warranty.css">
+   
 </head>
-<body id="body">
-    <div class="container2">
-        <div class="headerContainer">
+<body>
+    <div class="container1">
+    <div class="headerContainer">
             <div class="subHeaderContainer">
                 <div class="imageContainer">
                     <div class="subImageContainer">
@@ -32,7 +34,7 @@ include_once "../functions/warranty.php";
                 </div>
 
                 <div class="profileContainer">
-                    <div class="subProfileContainer">
+                    <div class="subProfileContainer" id="profileContainer">
                         <?php
                             if (!empty($userInfo['profile_img'])) {
                                 echo '<img class="headerImg" src="../uploads/' . $userInfo['profile_img'] . '" alt="Profile Image">';
@@ -43,99 +45,225 @@ include_once "../functions/warranty.php";
                         </div>
 
                         <div class="subProfileContainer">
-                        <div class='menubarContainer' onclick='toggleMenu(this)'>
-                            <div class='line'></div>
-                            <div class='line'></div>
-                            <div class='line'></div>
+                            <div class='menubarContainer' onclick='toggleMenu(this)'>
+                                <div class='line'></div>
+                                <div class='line'></div>
+                                <div class='line'></div>
+                            </div>
+
+                            <p class="adminName"><?php echo $userInfo['username'] ?? ''; ?></p>
                         </div>
-                        <p class="userName"><?php echo $userInfo['username'] ?? ''; ?></p>
                     </div>
+                </div>
+            <?php include('sidebar.php'); ?>
+        </div>
+    </div>
+
+    <div class="container2">
+        <div class="subContainer2">
+            <div class="headerContainer1">
+                <div class="reportContainer"  id="reportContainer">
+                    <button class="reportButton" onclick="toggleDropdown()">REPORT</button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <h4>UNIT REPORTING AND REMOVAL AGREEMENT</h4>
+                        <br> 
+                        <p class="agreement">By continuing to report a unit, you acknowledge that the unit will be subject to review and approval by the 
+                            administrator of the system. The decision to remove the unit from the available list will be based on the 
+                            administrator's review of the reported reason. Once approved by the administrator, the unit will be permanently 
+                            removed from the available list. However, if the unit is repaired or found, the administrator may restore it 
+                            to the available list. You agree to keep all information related to the reported unit confidential and not disclose 
+                            it to any third party without the prior written consent of the administrator.
+                        </p>
+                        <br>
+                        <input type="checkbox" name="agreementCheckbox" id="agreementCheckbox" value="">
+                        <label for="agreementCheckbox">I understand and agree to the terms and conditions.</label>
+                        <a href="report.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">
+                            <button class="proceed"  disabled>Proceed</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="infoContainer">
+                <div class="subInfoContainer">
+                    <div class="imageContainer1">
+                        <div class="subImageContainer1">
+                            <div class="image1">
+                                <img class="image1" src="<?php echo $imageURL; ?>" alt="Mountain Placeholder" onerror="this.onerror=null; this.src='../assets/img/img_placeholder.jpg';">
+                            </div>
+
+                        </div>
+
+                        <div class="equipNameContainer">
+                            <p><?php echo $article; ?></p>
+                        </div>
+                    </div>
+
+                    <div class="subInfoContainer1">
+                        <div class="infoEquipContainer">
+                            <div class="subInfoEquipContainer">
+                                <p>User Handler</p>
+                            </div>
+
+                            <div class="subInfoEquipContainer1">
+                                <div class="infoEquip">
+                                    <?php foreach ($userInfo as $info): ?>
+                                        <div class="userHandler">
+                                            <p><?php echo $info['user']; ?></p>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+
+                            <div class="subInfoEquipContainer2">
+                                <button onclick="popup2()" class="viewButton">View more</button>
+                                
+                                <div class="userContainer" id="userContainer" style="display: none;">
+                                    <div class="subUserContainer">
+                                        <p>NAME</p>
+                                        <p>UNIT HANDLE</p>
+                                    </div>
+
+                                     <?php foreach ($userInfo as $info): ?>
+                                        <div class="subUserContainer1">
+                                            <p><?php echo $info['user']; ?></p>
+                                            <p><?php echo $info['units_handled']; ?></p>
+                                        </div>
+                                    <?php endforeach; ?>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="infoEquipContainer1">
+                            <div class="subInfoEquipContainer">
+                                <p>Deployment</p>
+                            </div>
+
+                            <div class="subInfoEquipContainer1">
+                                <div class="infoEquip">
+                                    <p><?php echo $deployment; ?></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="infoEquipContainer2">
+                            <div class="infoEquipContainer3">
+                                <div class="subInfoEquipContainer">
+                                    <p>Property Number</p>
+                                </div>
+    
+                                <div class="subInfoEquipContainer1">
+                                    <div class="infoEquip">
+                                        <p><?php echo $property_number; ?></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="infoEquipContainer3">
+                                <div class="subInfoEquipContainer">
+                                    <p>Account Code</p>
+                                </div>
+    
+                                <div class="subInfoEquipContainer1">
+                                    <div class="infoEquip">
+                                        <p><?php echo $account_code; ?></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="infoEquipContainer3">
+                                <div class="subInfoEquipContainer">
+                                    <p>Total Units</p>
+                                </div>
+    
+                                <div class="subInfoEquipContainer1">
+                                    <div class="infoEquip">
+                                        <p><?php echo $units; ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infoEquipContainer4">
+                    <div class="infoEquipContainer3">
+                        <div class="subInfoEquipContainer">
+                            <p>Unit Value</p>
+                        </div>
+
+                        <div class="subInfoEquipContainer1">
+                            <div class="infoEquip">
+                                <p><?php echo $unit_value; ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infoEquipContainer3">
+                        <div class="subInfoEquipContainer">
+                            <p>Total Value</p>
+                        </div>
+
+                        <div class="subInfoEquipContainer1">
+                            <div class="infoEquip">
+                                <p><?php echo $total_value; ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infoEquipContainer3">
+                        <div class="subInfoEquipContainer">
+                            <p>Remarks</p>
+                        </div>
+
+                        <div class="subInfoEquipContainer1">
+                            <div class="infoEquip">
+                                <p><?php echo $remarks; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="descriptionContainer">
+                    <div class="subInfoEquipContainer">
+                        <p>Description</p>
+                    </div>
+
+                    <div class="subDescriptionContainer">
+                        <div class="infoEquip">
+                            <p><?php echo $description; ?></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="descriptionContainer">
+                    <div class="subInfoEquipContainer">
+                        <p>Step How To Use:</p>
+                    </div>
+
+                    <div class="subDescriptionContainer">
+                        <div class="infoEquip">
+                            <p><?php echo $instruction; ?></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttonContainer">
+                    <button class="button"   onclick="showWarranty()" id="btn2" type="button">Warranty</button>
+                   <a href="dashboard.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>"> <button class="button" type="button">Back</button></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <form class="subContainer3" action="" enctype="multipart/form-data" method="post">
-        <div class="container3">
-            <div class="topContainer">
-                <img class="top-img" src="../assets/img/th-removebg-preview.png" alt="" >
-                <h2>VIEW EQUIPMENT</h2>
-            </div>
-            <div class="subContainer2">
-                <div class="imageContainer1">
-                    <div class="subImageContainer1">
-                        <div class="uploadImageContainer">
-                            <div class="subUploadImageContainer">
-                                <img class="uploadImage" src="<?php echo $imageURL; ?>" alt="Mountain Placeholder">
-                            </div>
-                        </div>
-                    </div>
     
-                    <div class="infoContainer">
-                        <div class="subInfoContainer">
-                            <textarea class="inputInfo" name="user" cols="30" rows="10" placeholder="User name:" readonly><?php echo $user; ?></textarea>
-                        </div>
-                        
-                        <div class="subInfoContainer">
-                            <textarea class="inputInfo" name="article" cols="30" rows="10" placeholder="Article:" readonly><?php echo $article; ?></textarea>
-                        </div>
-                        
-                        <div class="subInfoContainer">
-                            <textarea class="inputInfo" name="deployment" cols="30" rows="10" placeholder="Deployment:" readonly><?php echo $deployment; ?></textarea>
-                        </div>
-    
-                        <div class="subInfoContainer">
-                            <div class="subInputInfoContainer2">
-                                <textarea class="inputInfo3" name="property_number" cols="30" rows="10" placeholder="Property number:" readonly><?php echo $property_number; ?></textarea>
-                            </div>
-    
-                            <div class="subInputInfoContainer2">
-                                <textarea class="inputInfo3" name="account_code" cols="30" rows="10" placeholder="Account code:" readonly><?php echo $account_code; ?></textarea>
-                            </div>
-    
-                            <div class="subInputInfoContainer2">
-                                <textarea class="inputInfo3" name="units" cols="30" rows="10" placeholder="Units:" readonly><?php echo $units; ?></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="otherInfoContainer">
-                    <div class="subOtherInfoContainer">
-                        <div class="subInputInfoContainer2">
-                            <textarea class="inputInfo3" name="unit_value" cols="30" rows="10" placeholder="Unit value:" readonly><?php echo $unit_value; ?></textarea>
-                        </div>
-    
-                        <div class="subInputInfoContainer2">
-                            <textarea class="inputInfo3" name="total_value" cols="30" rows="10" placeholder="Total value:" readonly><?php echo $total_value; ?></textarea>
-                        </div>
-    
-                        <div class="subInputInfoContainer2">
-                            <textarea class="inputInfo3" name="remarks" cols="30" rows="10" placeholder="remarks:" readonly><?php echo $remarks; ?></textarea>
-                        </div>
-                    </div>
-    
-                    <div class="descriptionContainer">
-                        <textarea class="inputInfo4" name="description" cols="30" rows="10" placeholder="Description:" readonly><?php echo $description; ?></textarea>
-                    </div>
-    
-                    <!-- Temporary link -->
-                    <div class="buttonsContainer">
-                        <button class="button2" id="btn2" type="button" onclick="showWarranty()">Check<span style="margin-left: 0.5rem;">Warranty</span></button>
 
-                        <button class="button1" id="btn1"><a href="updateEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Edit</a></button>
-                    
-                        <button class="button3" id="btn3" type="button"><a href="dashboard.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">Back</a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
+    <!-- warranty -->
     <div class="container4" id="warrantyContainer" style="display: none;">
         <div class="subContainer"  >
             <div class="warrantyContainer">
-                <p>Warranty expired on: <span><?php echo isset($warranty_end) ? date('M d, Y', strtotime($warranty_end)) : ''; ?></span></p>
+                <p>Warranty Will Expire On: <span><?php echo isset($warranty_end) ? date('M d, Y', strtotime($warranty_end)) : ''; ?></span></p>
             </div>
             <div class="buttonContainer">
                 <button id="btn1" type="button" class="button" onclick="closeWarranty()">Close</button>
@@ -143,24 +271,32 @@ include_once "../functions/warranty.php";
         </div>
     </div>
 
+     <!-- sidebar show -->
+     <div class="sidebar" id="sidebar">
+        <?php include('slideshow.php'); ?>
+    </div>
 
-    <script src="../assets/js/dashboard.js"></script>
-    <script src="../assets/js/theme/dashboard-theme.js"></script>
-    <script>
-    function goBack() {
-        window.history.back();
-    }
-    </script>
+    <div id="logoutConfirmation" class="popupContainer">
+        <div class="popupContent">
+            <p>Are you sure you want to log out?</p>
+            <div class="popupButtons">
+                <button onclick="logout()">Yes</button>
+                <button onclick="hideLogoutConfirmation()">No</button>
+            </div>
+        </div>
+    </div>
 
-<script>
-    function showWarranty() {
-        document.getElementById('warrantyContainer').style.display = 'block';
-    }
+    <div id="logoutConfirmation" class="popupContainer">
+        <div class="popupContent">
+            <p>Are you sure you want to log out?</p>
+            <div class="popupButtons">
+                <button onclick="logout()">Yes</button>
+                <button onclick="hideLogoutConfirmation()">No</button>
+            </div>
+        </div>
+    </div>
 
-    function closeWarranty() {
-        document.getElementById('warrantyContainer').style.display = 'none';
-    }
-</script>
-
+    <script src="../assets/js/sidebarShow.js"></script>
+    <script src="../assets/js/toggle.js"></script>
 </body>
 </html>

@@ -1,95 +1,110 @@
 <?php
 include '../dbConfig/dbconnect.php';
-include '../functions/header.php';
 include '../authentication/auth.php';
+include '../functions/header.php';
 
-if (isset($_POST['submit_form1'])) {
+function saveUserUnit($conn, $article, $username, $unitsHandled) {
+    $query = "INSERT INTO user_unit (article, user, units_handled) VALUES (?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "sss", $article, $username, $unitsHandled);
+    $result = mysqli_stmt_execute($stmt);
 
-    $user = $_POST['user'];
-    $equipment_name = $_POST['article'];
-    $deployment = $_POST['deployment'];
-    $property_number = $_POST['property_number'];
-    $account_code = $_POST['account_code'];
-    $units = $_POST['units'];
-    $unit_value = $_POST['unit_value'];
-    $total_value = $_POST['total_value'];
-    $remarks = $_POST['remarks'];
-    $description = $_POST['description'];
-    $year_received = $_POST['year_received'];
+    if (!$result) {
+        echo "Error: " . mysqli_error($conn);
+        return false;
+    }
+    return true;
+}
 
-    $target_dir = "../uploads/";
-    $image_name = basename($_FILES["image"]["name"]);
-    $target_file = $target_dir . $image_name;
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+function saveEquipment($conn, $article, $deployment, $property_number, $account_code, $unit_value, $total_value, $remarks, $description, $year_received, $warranty_start, $warranty_end, $warranty_image, $total_unit, $instruction, $image, $selectedUsers, $unitsHandledArray) {
 
-    $check = getimagesize($_FILES["image"]["tmp_name"]);
-    if ($check !== false) {
-        $uploadOk = 1;
-    } else {
-        echo "Error: File is not an image.";
-        $uploadOk = 0;
+    $query = "INSERT INTO equipment (article, deployment, property_number, account_code, unit_value, total_value, remarks, description, year_received, warranty_start, warranty_end, warranty_image, total_unit, instruction, image) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "ssssssssssssiss", $article, $deployment, $property_number, $account_code, $unit_value, $total_value, $remarks, $description, $year_received, $warranty_start, $warranty_end, $warranty_image, $total_unit, $instruction, $image);
+    $result = mysqli_stmt_execute($stmt);
+
+    if (!$result) {
+        echo "Error: " . mysqli_error($conn);
+        return false;
     }
 
-    if ($_FILES["image"]["size"] > 500000) {
-        echo "Error: File is too large.";
-        $uploadOk = 0;
-    }
+    $equipment_ID = $conn->insert_id;
 
-    $allowed_formats = array("jpg", "jpeg", "png", "gif");
-    if (!in_array($imageFileType, $allowed_formats)) {
-        echo "Error: Only JPG, JPEG, PNG, and GIF files are allowed.";
-        $uploadOk = 0;
-    }
+    $unit_id = 1; 
+    foreach ($selectedUsers as $key => $username) {
+        $unitsHandled = $unitsHandledArray[$key] ?? '';
 
-    if ($uploadOk) {
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-
-            $check_equipment_sql = "SELECT MAX(unit_ID) as max_unit_id FROM units WHERE equipment_name = '$equipment_name'";
-            $check_equipment_result = $conn->query($check_equipment_sql);
-
-            if ($check_equipment_result->num_rows > 0) {
-                $row = $check_equipment_result->fetch_assoc();
-                $max_unit_id = $row['max_unit_id'];
-                $unit_id = $max_unit_id + 1;
-            } else {
-                $unit_id = 1;
+        for ($i = 0; $i < $unitsHandled; $i++) {
+            $insert_unit_sql = "INSERT INTO units (equipment_ID, equipment_name, user) 
+                                VALUES ('$equipment_ID', '$article', '$username')";
+            if ($conn->query($insert_unit_sql) !== TRUE) {
+                echo "Error: " . $insert_unit_sql . "<br>" . $conn->error;
             }
-
-            $sql = "INSERT INTO equipment (user, article, deployment, property_number, account_code, units, unit_value, total_value, remarks, description, year_received, image) 
-                    VALUES ('$user', '$equipment_name', '$deployment', '$property_number', '$account_code', '$units', '$unit_value', '$total_value', '$remarks', '$description', '$year_received', '$image_name')";
-
-            if ($conn->query($sql) === TRUE) {
-                $equipment_ID = $conn->insert_id;
-
-                for ($i = 0; $i < $units; $i++) {
-                    $insert_unit_sql = "INSERT INTO units (unit_ID, equipment_ID, equipment_name, status) 
-                                        VALUES ('$unit_id', '$equipment_ID', '$equipment_name', 'Available')";
-                    if ($conn->query($insert_unit_sql) !== TRUE) {
-                        echo "Error: " . $insert_unit_sql . "<br>" . $conn->error;
-                    }
-                    $unit_id++;
-                }
-
-                $_SESSION['equipment_ID'] = $equipment_ID;
-
-                $userInfo = getUserInfo($conn, $userID);
-                $role = $userInfo['role'];
-
-                if ($role === 'admin') {
-                    header("Location: ../admin panel/addOtherinfo.php?id={$userID}");
-                } else {
-                    header("Location: ../user panel/addOtherinfo.php?id={$userID}");
-                }
-                exit();
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-        } else {
-            echo "Error: Failed to upload image.";
+            $unit_id++;
         }
     }
 
-    $conn->close();
+    return true;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $article = $_POST['article'] ?? '';
+    $deployment = $_POST['deployment'] ?? '';
+    $property_number = $_POST['property_number'] ?? '';
+    $account_code = $_POST['account_code'] ?? '';
+    $unit_value = $_POST['unit_value'] ?? '';
+    $total_value = $_POST['total_value'] ?? '';
+    $remarks = $_POST['remarks'] ?? '';
+    $description = $_POST['description'] ?? '';
+    $year_received = $_POST['year_received'] ?? '';
+    $warranty_start = $_POST['warranty_start'] ?? '';
+    $warranty_end = $_POST['warranty_end'] ?? '';
+    $total_unit = $_POST['total_unit'] ?? '';
+    $instruction = $_POST['instruction'] ?? '';
+
+    $warranty_image = '';
+    if (isset($_FILES['warranty_image']) && $_FILES['warranty_image']['error'] === UPLOAD_ERR_OK) {
+        $tmp_name = $_FILES['warranty_image']['tmp_name'];
+        $filename = $_FILES['warranty_image']['name'];
+        $warranty_image = $filename;
+        move_uploaded_file($tmp_name, '../uploads/' . $warranty_image); 
+    }
+    
+    $image = '';
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $tmp_name = $_FILES['image']['tmp_name'];
+        $filename = $_FILES['image']['name'];
+        $image = $filename;
+        move_uploaded_file($tmp_name, '../uploads/' . $image); 
+    }    
+
+    $unitsHandledArray = $_POST['units_handled'] ?? '';
+    $selectedUsers = $_POST['user'] ?? [];
+
+    $success = saveEquipment($conn, $article, $deployment, $property_number, $account_code, $unit_value, $total_value, $remarks, $description, $year_received, $warranty_start, $warranty_end, $warranty_image, $total_unit, $instruction, $image, $selectedUsers, $unitsHandledArray);
+
+    if ($success) {
+        foreach ($selectedUsers as $key => $username) {
+            $unitsHandled = $unitsHandledArray[$key] ?? '';
+
+            $userUnitSuccess = saveUserUnit($conn, $article, $username, $unitsHandled);
+
+            if (!$userUnitSuccess) {
+                echo "Error occurred while saving user unit information.";
+            }
+        }
+
+        $userID = $_SESSION['user_id'];
+        $userInfo = getUserInfo($conn, $userID);
+        $role = $userInfo['role'];
+    
+        if ($role === 'admin') {
+            header("Location: ../admin panel/dashboard.php?equipment_ID={$equipment_ID}&id={$userID}");
+            exit();
+        }
+    } else {
+        echo "Error occurred while saving equipment information.";
+    }
 }
 ?>
