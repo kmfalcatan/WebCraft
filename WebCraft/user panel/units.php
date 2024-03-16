@@ -2,15 +2,6 @@
 include_once "../dbConfig/dbconnect.php";
 include_once "../functions/header.php";
 
-$fullName = isset($_GET['fullname']) ? $_GET['fullname'] : null;
-
-$sql = "SELECT * FROM equipment";
-if ($fullName) {
-  $sql .= " WHERE user LIKE '%$fullName%'";
-}
-
-$result = $conn->query($sql);
-$equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
 ?>
 
 
@@ -19,7 +10,8 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/png" href="../assets/img/webcraftLogo.png">
+    <title>MedEquip Tracker</title>
 
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/sidebarShow.css">
@@ -47,7 +39,7 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                                 echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
                             }
                         ?>
-                    </div>
+                        </div>
 
                         <div class="subProfileContainer">
                         <div class='menubarContainer' onclick='toggleMenu(this)'>
@@ -55,7 +47,7 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                             <div class='line'></div>
                             <div class='line'></div>
                         </div>
-                        <p class="userName"><?php echo $userInfo['username'] ?? ''; ?></p>
+                        <p class="adminName"><?php echo $userInfo['username'] ?? ''; ?></p>
                     </div>
                 </div>
             </div>
@@ -74,27 +66,24 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                     </div>
 
                     <div class="filter" onclick="filterByYear('all')">
-                        <p class="year">All</p>
-                    </div>
+                            <p class="year">All</p>
+                        </div>
 
-                    <div class="filter" onclick="filterByYear(2024)">
-                        <p class="year">2024</p>
-                    </div>
+                        <div class="filter" onclick="filterByYear(2024)">
+                            <p class="year">2024</p>
+                        </div>
 
-                    <div class="filter" onclick="filterByYear(2023)">
-                        <p class="year">2023</p>
-                    </div>
+                        <div class="filter" onclick="filterByYear(2023)">
+                            <p class="year">2023</p>
+                        </div>
 
-                    <div class="filter" onclick="filterByYear(2022)">
-                        <p class="year">2022</p>
-                    </div>
+                        <div class="filter" onclick="filterByYear(2022)">
+                            <p class="year">2022</p>
+                        </div>
 
-                    <div class="med-icon">
-                        <a href="../user panel/units.php?id=<?php echo $userID; ?>" style="display: flex; align-items: center;">
-                            <img src="../assets/img/file-text-circle.png" style="filter: invert(100%); width: 2rem; height: 2rem; cursor: pointer;" alt="">
-                        </a>
-                    </div>
-
+                        <div class="med-icon" id="medIcon">
+                            <img src="../assets/img/filter.png" style="filter: invert(100%); width: 2rem; height: 2rem; cursor: pointer;" alt="">
+                        </div>
                 </div>
            </div>
 
@@ -103,26 +92,61 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>UNIT ID</th>
                             <th>ARTICLE</th>
                             <th>PROPERTY NUMBER</th>
                             <th>ACCOUNT CODE</th>
-                            <th>UNITS</th>
-                            <th>UNIT VALUE</th>
-                            <th>TOTAL VALUE</th>
-                            <th>REMARKS</th>
-                            <th colspan="4">VIEW</th>
+                            <th>UNIT CUSTODIAN</th>
+                            <th>YEAR</th>
                         </tr>
                     </thead>
 
                     <tbody id="tblBody">
+                        <?php
+                            $sql = "SELECT unit_ID, equipment_name, user FROM units";
+                            $result = mysqli_query($conn, $sql);
+
+                            if ($result) {
+                                $count = 1; 
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $equipmentName = $row['equipment_name'];
+
+                                    $sqlEquipment = "SELECT property_number, account_code, year_received FROM equipment WHERE article = '$equipmentName'";
+                                    $resultEquipment = mysqli_query($conn, $sqlEquipment);
+
+                                    $formattedUnitID = '';
+
+                                    if ($resultEquipment) {
+                                        $equipmentRow = mysqli_fetch_assoc($resultEquipment);
+
+                                        $unitPrefix = 'UNIT';
+                                        $defaultUnitID = '0000';
+                                        $unitID = $row['unit_ID'];
+                                        $formattedUnitID = $unitPrefix . '-' . str_pad($unitID, strlen($defaultUnitID), '0', STR_PAD_LEFT);
+
+                                        echo "<tr>";
+                                        echo "<td>{$count}</td>"; 
+                                        echo "<td style='font-weight: bold;'>" . $formattedUnitID . "</td>";
+                                        echo "<td>" . $row['equipment_name'] . "</td>";
+                                        echo "<td>" . $equipmentRow['property_number'] . "</td>";
+                                        echo "<td>" . $equipmentRow['account_code'] . "</td>";
+                                        echo "<td>" . $row['user'] . "</td>";
+                                        echo "<td>" . $equipmentRow['year_received'] . "</td>";
+                                        echo "</tr>";
+                                        $count++; 
+                                    }
+                                }
+                            }
+                            ?>
                     </tbody>
                 </table>
            </div>
         </div>
     </div>
 
+    <!-- sidebar show -->
     <div class="sidebar" id="sidebar" style="height: 35%;">
-        <?php include("slideshow.php"); ?>
+        <?php include('slideshow.php'); ?>
     </div>
 
     <div id="logoutConfirmation" class="popupContainer">
@@ -136,7 +160,7 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
     </div>
 
     <script src="../assets/js/dashboard.js"></script>
-    <script src="../assets/js/search.js"></script>
     <script src="../assets/js/sidebarShow.js"></script>
+    
 </body>
 </html>

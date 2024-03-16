@@ -4,8 +4,11 @@
     flex-direction: column;
 }
 
+.headerContainer1{
+    display: flex;
+}
+
 .iconContainer{
-    outline: red dashed 1px;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -13,7 +16,6 @@
 }
 
 .subIconContainer{
-    outline: red dashed 1px;
     height: 100%;
     width: 5rem;
     border-radius: 0.5rem;
@@ -22,8 +24,11 @@
     align-items: center;
 }
 
+.subIconContainer img{
+    filter: invert(100%);
+}
+
 .textContainer10{
-    outline: red dashed 1px;
     height: 100%;
     font-size: 1.5rem;
     color: snow;
@@ -176,9 +181,6 @@ h3{
     height: 4rem;
     border-radius: 0.5rem 0.5rem 0 0;
     background-color: rgb(2, 116, 200);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 .backContainer, .backContainer1{

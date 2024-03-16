@@ -9,8 +9,7 @@ $query = "SELECT * FROM users WHERE id = '$userID'";
 $result = mysqli_query($conn, $query);
 $user = mysqli_fetch_assoc($result);
 
-$user_ID = isset($user['id']) ? date('Y') . '-' . str_pad($user['id'], 5, '0', STR_PAD_LEFT) : "";
-
+$userID = isset($user['id']) ? date('Y') . '-' . str_pad($user['id'], 5, '0', STR_PAD_LEFT) : "";
 $fullname = isset($user['fullname']) ? $user['fullname'] : "";
 
 $equipmentCountQuery = "SELECT equipment_name, COUNT(unit_ID) AS unit_count FROM units WHERE user = '$fullname' GROUP BY equipment_name";
@@ -44,7 +43,7 @@ while ($row = mysqli_fetch_assoc($equipmentCountResult)) {
                 <img src="../assets//img/left-arrow.png" style="width: 1.5rem; height: 1.5rem;" >
             </button>
 
-             <div class="searchCon">
+            <div class="searchCon">
                 <input class="search" type="text" id="searchInput" placeholder="Search..." oninput="liveSearch()">
             </div>
         </div>
@@ -67,7 +66,7 @@ while ($row = mysqli_fetch_assoc($equipmentCountResult)) {
                     </div>
 
                     <div class="subInfoContainer">
-                        <p id="id"><?php echo $user_ID; ?></p>
+                        <p id="id"><?php echo $userID; ?></p>
                     </div>
                 </div>
 
@@ -82,19 +81,9 @@ while ($row = mysqli_fetch_assoc($equipmentCountResult)) {
 
                     <div class="options">
                         <div class="transfer" id="transferDropdown">
-                            <img src="../assets/img/transfer-icon.png" alt="">
-                            <div class="dropdown-content" id="dropdownContent">
-                            <h5>SELECT UNITS TO TRANSFER</h5>
-                                <?php
-                                    $equipmentNameQuery = "SELECT DISTINCT equipment_name, equipment_ID FROM units WHERE user = '$fullname'";
-                                    $equipmentNameResult = mysqli_query($conn, $equipmentNameQuery);
-                                    while ($row = mysqli_fetch_assoc($equipmentNameResult)) {
-                                        $equipmentID = $row['equipment_ID'];
-                                        
-                                        echo '<a href="transfer.php?equipment_ID=' . $equipmentID . '&id=' . $userID . '">' . $row['equipment_name'] . '</a>';
-                                    }
-                                ?>
-                            </div>
+                            <a href="">
+                                <img src="../assets/img/person-circle.png" alt="">
+                            </a>
                         </div>
 
                         <div class="sort-unit">
@@ -103,7 +92,6 @@ while ($row = mysqli_fetch_assoc($equipmentCountResult)) {
                             </a>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -173,37 +161,12 @@ while ($row = mysqli_fetch_assoc($equipmentCountResult)) {
         </div>
     </div>
 
-    <script>
+        <script>
         function goBack() {
             window.history.back();
         }
-    </script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var transferDropdown = document.getElementById('transferDropdown');
-        var dropdownContent = document.getElementById('dropdownContent');
-
-        dropdownContent.style.display = 'none';
-
-        transferDropdown.addEventListener('click', function(event) {
-            event.stopPropagation();
-            if (dropdownContent.style.display === 'none') {
-                dropdownContent.style.display = 'block';
-            } else {
-                dropdownContent.style.display = 'none';
-            }
-        });
-
-        document.addEventListener('click', function(event) {
-            if (!transferDropdown.contains(event.target)) {
-                dropdownContent.style.display = 'none';
-            }
-        });
-    });
-</script>
-
-
+        </script>
+    
 <script>
     var equipmentNames = <?php echo json_encode($equipmentNames); ?>;
     var unitCounts = <?php echo json_encode($unitCounts); ?>;

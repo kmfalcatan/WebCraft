@@ -5,25 +5,25 @@
 }
 
 .iconContainer{
-    outline: red dashed 1px;
     height: 100%;
     display: flex;
     flex-direction: row;
 }
 
 .subIconContainer{
-    outline: red dashed 1px;
     height: 100%;
     width: 5rem;
     border-radius: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 1rem;
+}
+
+.subIconContainer img{
+    filter: invert(100%);
 }
 
 .textContainer10{
-    outline: red dashed 1px;
     height: 100%;
     font-size: 1.5rem;
     color: snow;
@@ -61,6 +61,7 @@
     align-items: center;
     margin-right: 1.2rem;
     position: relative;
+    margin-left: auto;
 }
 
 .reportButton{
@@ -167,7 +168,7 @@ input{
 }
 
 .subInfoEquipContainer{
-    height: 2rem;
+    height: 2.5rem;
     padding: 0 1rem;
     display: flex;
     align-items: center;

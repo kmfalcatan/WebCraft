@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2024 at 05:55 PM
+-- Generation Time: Mar 16, 2024 at 03:32 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -22,7 +22,15 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+-- admin@wmsu.edu.ph
+-- adminPass
+-- --------------------------------------------------------
+-- 
+-- arp@gmail.com       pass: arp
+-- khriz@gmail.com     pass: khriz
+-- rogie@gmail.com     pass: rogie
+-- john@gmail.com      pass: john
+-- padwa@gmail.com     pass: padwa
 --
 -- Table structure for table `approved_report`
 --
@@ -41,7 +49,7 @@ CREATE TABLE `approved_report` (
 --
 
 INSERT INTO `approved_report` (`approved_ID`, `user_ID`, `article`, `unit_ID`, `unit_issue`, `timestamp`) VALUES
-(3, 6, 'kasd', 'UNIT-0015', ' LOST', '2024-03-11 16:36:21');
+(1, 3, 'Chair', 'UNIT-0024', ' FOR RETURN', '2024-03-15 11:43:31');
 
 -- --------------------------------------------------------
 
@@ -75,13 +83,40 @@ CREATE TABLE `equipment` (
 --
 
 INSERT INTO `equipment` (`equipment_ID`, `image`, `article`, `description`, `deployment`, `user`, `property_number`, `account_code`, `total_unit`, `unit_value`, `total_value`, `remarks`, `year_received`, `warranty_image`, `warranty_start`, `warranty_end`, `budget`, `instruction`) VALUES
-(161, '3472049428.jpg', 'Cabinet', 'JIT-LF01 2 layers glass sliding door cabinet, with lock 4 adjustable salves, color: beige.', 'College of Medicine', NULL, 'ICS-23-F101-0018/2-1-2', '1-04-06-010', 2, '9920', '19,840.00', '', 2023, 'in.png', '2024-03-01', '2024-03-28', NULL, 'qwe'),
+(161, '3472049428.jpg', 'Cabinet', 'JIT-LF01 2 layers glass sliding door cabinet, with lock 4 adjustable salves, color: beige.', 'College of Medicine', NULL, 'ICS-23-F101-0018/2-1-2', '1-04-06-010', 2, '9920', '19,840.00', '', 2023, 'in.png', '2024-03-01', '2024-03-28', NULL, ''),
 (162, 'in.png', 'Extension Wire', 'OMNI 3 Gang Universal outlet', 'College of Medicine', NULL, 'ICS-23-F101-0019-10-1-10', '1-04-05-190', 6, '1528', '15,280.00', '', 2023, 'in.png', '2024-03-29', '2024-03-31', NULL, ''),
-(163, '', 'kasd', '', '', NULL, '', '', 1, '', '', '', 0, '', '0000-00-00', '0000-00-00', NULL, ''),
+(163, '', 'kasd', '', '', NULL, '', '', 1, '', '', 'ffds', 2024, '', '0000-00-00', '0000-00-00', NULL, ''),
 (164, 'MBFP-1003.jpg', 'Alcohol Dispenser', 'MBFP-1003.jpg\', \'Alcohol Dispenser\', \'Foot press alcohol dispenser metal type. Specification: Height: 5ft x 8.3 inches, made of stainless steel (T202),  hand face, up to 500ml alcohol pump bottle capacity, 102cm height.', 'College of Medicine', NULL, 'ICS-22-STF-0296/20-4', '1-04-05-100', 1, '1500', '1,500.00', '', 2022, 'in.png', '2024-03-28', '2024-03-28', NULL, ''),
-(165, 'in.png', 'Chair', 'LINO URATEX - school char, plastic school chair with work surface, white, for adult users.', 'College of Medicine', NULL, 'ICS-23-F101-0017/110-1-110', '1-04-06-010', 15, '110', '1,650.00', '', 2023, 'in.png', '2024-04-05', '2024-03-28', NULL, ''),
+(165, 'in.png', 'Chair', 'LINO URATEX - school char, plastic school chair with work surface, white, for adult users.', 'College of Medicine', NULL, 'ICS-23-F101-0017/110-1-110', '1-04-06-010', 14, '110', '1,650.00', '', 2023, 'in.png', '2024-04-05', '2024-03-28', NULL, ''),
 (166, 'in.png', 'Fire Extenguisher', '\'Dry Chemical 10lbs\\\', \\\'College of Medicine', 'College of Medicine', NULL, 'ICS-22-STF-00147/52-27-39', '\'1-04-05-080', 3, '1899', '5,697.00', '', 2022, 'in.png', '2024-03-01', '2024-04-04', NULL, ''),
-(167, 'in.png', 'Desktop Computer', 'Intel Core i3 9100 6M cache, up to 4.20 GHZ', 'College of Medicine', NULL, 'ICS-21-F101-0024/20-115', '1-06-05-030', 15, '33575', '503,625.00', '', 2021, 'in.png', '2024-03-29', '2024-02-29', NULL, '');
+(167, 'in.png', 'Desktop Computer', 'Intel Core i3 9100 6M cache, up to 4.20 GHZ', 'College of Medicine', NULL, 'ICS-21-F101-0024/20-115', '1-06-05-030', 15, '33575', '503,625.00', '', 2021, 'in.png', '2024-03-29', '2024-02-29', NULL, ''),
+(168, 'usb.jpg', 'Flash drive', 'Transcend push type, TS USB 3.0 JK790 64GB black.', 'College of Medicine', NULL, 'ICS-22-STF-00092/46-34-43', '1-04-05-030', 10, '480', '4,800.00', '', 2022, 'in.png', '2024-03-01', '2024-03-29', NULL, ''),
+(169, '711TA1qCEmL._AC_SL1500_ (1).jpg', 'Thermometer', 'Handsfree temperature quick measurement tool thermometer with tripod and alcohol dispenser.', 'College of Medicine', NULL, 'ICS-21-STF-0179/17-17', '1-04-05-100', 1, '2,772', '2,772.00', '', 2021, '', '0000-00-00', '0000-00-00', NULL, ''),
+(170, '59ac2865c28e4410692917f65606b945.jpg', 'Television', 'Television, samsung 55 inched 4K UHD smart TV UA55TU7000', 'College of Medicine', NULL, 'ICS-24-F101-0001', '1-06-05-020', 5, '50,000', '250,000.00', '', 2024, 'in.png', '2024-03-06', '2024-04-11', NULL, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transfer_unit`
+--
+
+CREATE TABLE `transfer_unit` (
+  `transfer_ID` int(11) NOT NULL,
+  `equipment_ID` varchar(50) DEFAULT NULL,
+  `unit_ID` varchar(50) DEFAULT NULL,
+  `new_handler` varchar(100) DEFAULT NULL,
+  `reason` varchar(100) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` varchar(50) DEFAULT 'Pending',
+  `user_ID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transfer_unit`
+--
+
+INSERT INTO `transfer_unit` (`transfer_ID`, `equipment_ID`, `unit_ID`, `new_handler`, `reason`, `timestamp`, `status`, `user_ID`) VALUES
+(1, '165', '0', 'Arp-J Villares', 'bulok', '2024-03-15 05:49:34', 'Pending', 3);
 
 -- --------------------------------------------------------
 
@@ -115,7 +150,6 @@ INSERT INTO `units` (`unit_ID`, `equipment_ID`, `equipment_name`, `user`) VALUES
 (21, 165, 'Chair', 'Rogie Gabotero'),
 (22, 165, 'Chair', 'Rogie Gabotero'),
 (23, 165, 'Chair', 'Rogie Gabotero'),
-(24, 165, 'Chair', 'Padwa Tingkasan'),
 (25, 165, 'Chair', 'Padwa Tingkasan'),
 (26, 165, 'Chair', 'Padwa Tingkasan'),
 (27, 165, 'Chair', 'Padwa Tingkasan'),
@@ -142,7 +176,23 @@ INSERT INTO `units` (`unit_ID`, `equipment_ID`, `equipment_name`, `user`) VALUES
 (48, 167, 'Desktop Computer', 'Rogie Gabotero'),
 (49, 167, 'Desktop Computer', 'Rogie Gabotero'),
 (50, 167, 'Desktop Computer', 'Rogie Gabotero'),
-(51, 167, 'Desktop Computer', 'Rogie Gabotero');
+(51, 167, 'Desktop Computer', 'Rogie Gabotero'),
+(52, 168, 'Flash drive', 'Khriz Marr Falcatan'),
+(53, 168, 'Flash drive', 'Khriz Marr Falcatan'),
+(54, 168, 'Flash drive', 'Khriz Marr Falcatan'),
+(55, 168, 'Flash drive', 'Khriz Marr Falcatan'),
+(56, 168, 'Flash drive', 'Khriz Marr Falcatan'),
+(57, 168, 'Flash drive', 'John Mark Taborada'),
+(58, 168, 'Flash drive', 'John Mark Taborada'),
+(59, 168, 'Flash drive', 'John Mark Taborada'),
+(60, 168, 'Flash drive', 'John Mark Taborada'),
+(61, 168, 'Flash drive', 'John Mark Taborada'),
+(62, 169, 'Thermometer', 'Padwa Tingkasan'),
+(63, 170, 'Television', 'Rogie Gabotero'),
+(64, 170, 'Television', 'Padwa Tingkasan'),
+(65, 170, 'Television', 'Khriz Marr Falcatan'),
+(66, 170, 'Television', 'John Mark Taborada'),
+(67, 170, 'Television', 'Arp-J Villares');
 
 -- --------------------------------------------------------
 
@@ -167,9 +217,7 @@ CREATE TABLE `unit_report` (
 --
 
 INSERT INTO `unit_report` (`report_ID`, `equipment_ID`, `user_ID`, `unit_ID`, `unit_handler`, `report_issue`, `problem_desc`, `timestamp`, `status`) VALUES
-(1, 163, 6, 'UNIT-0015', NULL, 'FOR RETURN', 'kln', '2024-03-11 05:12:40', 'Your report has been approved.'),
-(2, 163, 6, 'UNIT-0016', NULL, 'LOST', 'dsf', '2024-03-11 09:07:31', 'Your report has been approved.'),
-(3, 163, 6, 'UNIT-0015', NULL, 'LOST', 'fff', '2024-03-11 09:35:49', 'Your report has been approved.');
+(1, 165, 3, 'UNIT-0024', NULL, 'FOR RETURN', 'damage', '2024-03-15 04:35:24', 'Your report has been approved.');
 
 -- --------------------------------------------------------
 
@@ -233,7 +281,15 @@ INSERT INTO `user_unit` (`user`, `article`, `units_handled`) VALUES
 ('Arp-J Villares', 'Fire Extenguisher', 2),
 ('John Mark Taborada', 'Desktop Computer', 5),
 ('Khriz Marr Falcatan', 'Desktop Computer', 5),
-('Rogie Gabotero', 'Desktop Computer', 5);
+('Rogie Gabotero', 'Desktop Computer', 5),
+('Khriz Marr Falcatan', 'Flash drive', 5),
+('John Mark Taborada', 'Flash drive', 5),
+('Padwa Tingkasan', 'Thermometer', 1),
+('Rogie Gabotero', 'Television', 1),
+('Padwa Tingkasan', 'Television', 1),
+('Khriz Marr Falcatan', 'Television', 1),
+('John Mark Taborada', 'Television', 1),
+('Arp-J Villares', 'Television', 1);
 
 --
 -- Indexes for dumped tables
@@ -250,6 +306,12 @@ ALTER TABLE `approved_report`
 --
 ALTER TABLE `equipment`
   ADD PRIMARY KEY (`equipment_ID`);
+
+--
+-- Indexes for table `transfer_unit`
+--
+ALTER TABLE `transfer_unit`
+  ADD PRIMARY KEY (`transfer_ID`);
 
 --
 -- Indexes for table `units`
@@ -279,31 +341,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `approved_report`
 --
 ALTER TABLE `approved_report`
-  MODIFY `approved_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `approved_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `equipment`
 --
 ALTER TABLE `equipment`
-  MODIFY `equipment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+  MODIFY `equipment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+
+--
+-- AUTO_INCREMENT for table `transfer_unit`
+--
+ALTER TABLE `transfer_unit`
+  MODIFY `transfer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `units`
 --
 ALTER TABLE `units`
-  MODIFY `unit_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `unit_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `unit_report`
 --
 ALTER TABLE `unit_report`
-  MODIFY `report_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `report_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

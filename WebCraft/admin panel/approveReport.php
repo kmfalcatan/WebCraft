@@ -1,7 +1,7 @@
 <?php
+include_once "../functions/displayReport.php";
 include_once "../functions/header.php";
 include_once "../authentication/auth.php";
-include_once "../functions/binDetails.php";
 
 ?>
 
@@ -38,7 +38,7 @@ include_once "../functions/binDetails.php";
                             } else {
                                 echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
                             }
-                        ?>
+                        ?> 
                         </div>
 
                         <div class="subProfileContainer">
@@ -58,24 +58,24 @@ include_once "../functions/binDetails.php";
     <div class="container2">
         <div class="subContainer2">
             <div class="headerContainer2">
-                <a href="../user panel/bin.php?id=<?php echo $userID; ?>">
+                <a href="../admin panel/reportList.php?id=<?php echo $userID; ?>">
                     <div class="backContainer">
                         <img class="image3" src="../assets/img/left-arrow.png" alt="">
                     </div>
                 </a>
 
                 <div class="iconContainer">
-                    <div class="textContainer10">
-                        <p>lakshdkasgd</p>
-                    </div>
-                    
                     <div class="subIconContainer">
-                        <img src="" alt="">
+                        <img src="../assets/img/calendar.png" alt="">
+                    </div>
+
+                    <div class="textContainer10">
+                        <p>REPORT DETAILS</p>
                     </div>
                 </div>
             </div>
 
-            <form class="infoContainer" action="" method="post"  enctype="multipart/form-data">
+            <form class="infoContainer" action="../functions/approveReport.php" method="post"  enctype="multipart/form-data">
                 <input type="hidden" name="user_ID" value="<?php echo $user_ID ?>">
 
                 <div class="subInfoContainer">
@@ -89,7 +89,7 @@ include_once "../functions/binDetails.php";
                         </div>
 
                         <div class="equipNameContainer">
-                            <input type="text" class="article" name="article" value="<?php echo $row_approved['article']; ?>" readonly>
+                            <input type="text" class="article" name="article" value="<?php echo $article; ?>" readonly>
                         </div>
                     </div>
 
@@ -100,7 +100,7 @@ include_once "../functions/binDetails.php";
                             </div>
 
                             <div class="subUserContainer">
-                                <input type="text" class="userName2" name="fullname" value=" <?php echo $row_users['fullname']; ?>" readonly>
+                                <input type="text" class="userName2" name="fullname" value="<?php echo $user_full_name; ?>" readonly>
                             </div>
                         </div>
 
@@ -111,7 +111,7 @@ include_once "../functions/binDetails.php";
 
                             <div class="subUserContainer">
                                 <div class="userName2">
-                                    <?php echo $row_equip['deployment']; ?>
+                                    <?php echo $deployment; ?>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +124,7 @@ include_once "../functions/binDetails.php";
     
                                 <div class="subUserContainer">
                                     <div class="userName2">
-                                        <?php echo $row_equip['property_number']; ?>
+                                        <?php echo $property_number; ?>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@ include_once "../functions/binDetails.php";
     
                                 <div class="subUserContainer">
                                     <div class="userName2">
-                                        <?php echo $row_equip['account_code']; ?>
+                                        <?php echo $account_code; ?>
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@ include_once "../functions/binDetails.php";
 
                     <div class="subDescriptionContainer">
                         <div class="userName2">
-                            <?php echo $row_equip['description']; ?>
+                            <?php echo $description; ?>
                         </div>
                     </div>
                 </div>
@@ -161,9 +161,10 @@ include_once "../functions/binDetails.php";
                         <p>UNITS REPORTED</p>
                     </div>
 
+                    <?php foreach ($unit_reports as $index => $report) : ?>
                         <div class="subUnitContainer">
                             <div class="unitNumberContainer">
-                                <input type="text" class="unitID" name="unit_ID" value="<?php echo $row_approved['unit_ID']; ?>">
+                                <input type="text" class="unitID" name="unit_ID[]" value="<?php echo $report['unit_ID']; ?>">
                             </div>
 
                             <div class="unitNumberContainer1">
@@ -172,7 +173,7 @@ include_once "../functions/binDetails.php";
                                 </div>
 
                                 <div class="subUserContainer">
-                                    <input type="text" class="userName2" name="unit_issue" value="<?php echo $row_approved['unit_issue']; ?>">
+                                    <input type="text" class="userName2" name="unit_issue[]" value=" <?php echo $report['report_issue']; ?>">
                                 </div>
                             </div>
 
@@ -182,11 +183,17 @@ include_once "../functions/binDetails.php";
                                 </div>
 
                                 <div class="subUserContainer">
-                                    <input type="text" class="userName2" name="problem_desc" value="" readonly>
+                                    <input type="text" class="userName2" name="problem_desc" value="<?php echo $report['problem_desc']; ?>" readonly>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
+                </div>
+
+                <div class="buttonContainer">
+                    <button class="button" type="submit" name="approve">Approve</button>
+                    <button class="button">Decline</button>
+                </div>
             </form>
         </div>
     </div>

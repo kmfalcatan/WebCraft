@@ -1,9 +1,9 @@
 <?php
-include_once "../dbConfig/dbconnect.php";
 include_once "../authentication/auth.php";
-include_once "../functions/updateEquip.php";
 include_once "../functions/header.php";
-include_once "../functions/warranty.php";
+include_once "../functions/equipInfo.php";
+include_once "../functions/updateEquip.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,6 @@ include_once "../functions/warranty.php";
     <link rel="stylesheet" href="../assets/css/sidebarShow.css">
     <link rel="stylesheet" href="../assets/css/newEquipOtherInfo.css">
     <link rel="stylesheet" href="../assets/css/warranty.css">
-   
 </head>
 <body>
     <div class="container1">
@@ -64,37 +63,17 @@ include_once "../functions/warranty.php";
             <div class="headerContainer1">
                 <div class="iconContainer">
                     <div class="subIconContainer">
-
+                        <img src="../assets/img/file-text-circle.png" alt="">
                     </div>
 
                     <div class="textContainer10">
-                        <p>lakshdkasgd</p>
-                    </div>
-                </div>
-                
-                <div class="reportContainer"  id="reportContainer">
-                    <button class="reportButton" onclick="toggleDropdown()">REPORT</button>
-                    <div class="dropdown-content" id="dropdownContent">
-                        <h4>UNIT REPORTING AND REMOVAL AGREEMENT</h4>
-                        <br> 
-                        <p class="agreement">By continuing to report a unit, you acknowledge that the unit will be subject to review and approval by the 
-                            administrator of the system. The decision to remove the unit from the available list will be based on the 
-                            administrator's review of the reported reason. Once approved by the administrator, the unit will be permanently 
-                            removed from the available list. However, if the unit is repaired or found, the administrator may restore it 
-                            to the available list. You agree to keep all information related to the reported unit confidential and not disclose 
-                            it to any third party without the prior written consent of the administrator.
-                        </p>
-                        <br>
-                        <input type="checkbox" name="agreementCheckbox" id="agreementCheckbox" value="">
-                        <label for="agreementCheckbox">I understand and agree to the terms and conditions.</label>
-                        <a href="report.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">
-                            <button class="proceed"  disabled>Proceed</button>
-                        </a>
+                        <p>EDIT DETAILS</p>
                     </div>
                 </div>
             </div>
 
-            <div class="infoContainer">
+            <form class="infoContainer"  action="" enctype="multipart/form-data" method="post">
+               <input type="hidden" name="equipment_ID" value="<?php echo $equipment_ID; ?>">
                 <div class="subInfoContainer">
                     <div class="imageContainer1">
                         <div class="subImageContainer1">
@@ -103,57 +82,26 @@ include_once "../functions/warranty.php";
                             </div>
 
                         </div>
-
-                        <div class="equipNameContainer">
-                            <p><?php echo $article; ?></p>
-                        </div>
                     </div>
 
                     <div class="subInfoContainer1">
-                        <div class="infoEquipContainer">
+                        <div class="infoEquipContainer1">
                             <div class="subInfoEquipContainer">
-                                <p>User Handler</p>
+                                <p>Article</p>
                             </div>
 
                             <div class="subInfoEquipContainer1">
-                                <div class="infoEquip">
-                                    <?php foreach ($userInfo as $info): ?>
-                                        <div class="userHandler">
-                                            <p><?php echo $info['user']; ?></p>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-
-                            <div class="subInfoEquipContainer2">
-                                <button onclick="popup2()" class="viewButton">View more</button>
-                                
-                                <div class="userContainer" id="userContainer" style="display: none;">
-                                    <div class="subUserContainer">
-                                        <p>NAME</p>
-                                        <p>UNIT HANDLE</p>
-                                    </div>
-
-                                     <?php foreach ($userInfo as $info): ?>
-                                        <div class="subUserContainer1">
-                                            <p><?php echo $info['user']; ?></p>
-                                            <p><?php echo $info['units_handled']; ?></p>
-                                        </div>
-                                    <?php endforeach; ?>
-                                    
-                                </div>
+                                <input class="infoEquip" type="text" name="article" id="update" value="<?php echo $article; ?>">
                             </div>
                         </div>
-
+                        
                         <div class="infoEquipContainer1">
                             <div class="subInfoEquipContainer">
                                 <p>Deployment</p>
                             </div>
 
                             <div class="subInfoEquipContainer1">
-                                <div class="infoEquip">
-                                    <p><?php echo $deployment; ?></p>
-                                </div>
+                                    <input class="infoEquip" type="text" name="deployment" id="update" value="<?php echo $deployment; ?>">
                             </div>
                         </div>
 
@@ -164,9 +112,7 @@ include_once "../functions/warranty.php";
                                 </div>
     
                                 <div class="subInfoEquipContainer1">
-                                    <div class="infoEquip">
-                                        <p><?php echo $property_number; ?></p>
-                                    </div>
+                                    <input class="infoEquip" type="text" name="property_number" id="update" value="<?php echo $property_number; ?>">
                                 </div>
                             </div>
 
@@ -176,21 +122,7 @@ include_once "../functions/warranty.php";
                                 </div>
     
                                 <div class="subInfoEquipContainer1">
-                                    <div class="infoEquip">
-                                        <p><?php echo $account_code; ?></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="infoEquipContainer3">
-                                <div class="subInfoEquipContainer">
-                                    <p>Total Units</p>
-                                </div>
-    
-                                <div class="subInfoEquipContainer1">
-                                    <div class="infoEquip">
-                                        <p><?php echo $units; ?></p>
-                                    </div>
+                                    <input class="infoEquip" type="text" name="account_code" id="update" value="<?php echo $account_code; ?>">
                                 </div>
                             </div>
                         </div>
@@ -204,9 +136,8 @@ include_once "../functions/warranty.php";
                         </div>
 
                         <div class="subInfoEquipContainer1">
-                            <div class="infoEquip">
-                                <p><?php echo $unit_value; ?></p>
-                            </div>
+                            <input class="infoEquip" type="text" name="unit_value" id="update" value="<?php echo $unit_value; ?>" readonly>
+                            
                         </div>
                     </div>
 
@@ -216,9 +147,7 @@ include_once "../functions/warranty.php";
                         </div>
 
                         <div class="subInfoEquipContainer1">
-                            <div class="infoEquip">
-                                <p><?php echo $total_value; ?></p>
-                            </div>
+                            <input class="infoEquip" type="text" name="total_value" id="update" value="<?php echo $total_value; ?>" readonly>
                         </div>
                     </div>
 
@@ -228,9 +157,7 @@ include_once "../functions/warranty.php";
                         </div>
 
                         <div class="subInfoEquipContainer1">
-                            <div class="infoEquip">
-                                <p><?php echo $remarks; ?></p>
-                            </div>
+                             <input class="infoEquip" type="text" name="remarks" id="update" value="<?php echo $remarks; ?>">
                         </div>
                     </div>
                 </div>
@@ -241,9 +168,7 @@ include_once "../functions/warranty.php";
                     </div>
 
                     <div class="subDescriptionContainer">
-                        <div class="infoEquip">
-                            <p><?php echo $description; ?></p>
-                        </div>
+                        <input class="infoEquip" type="text" name="description" id="update" value="<?php echo $description; ?>">
                     </div>
                 </div>
 
@@ -253,31 +178,20 @@ include_once "../functions/warranty.php";
                     </div>
 
                     <div class="subDescriptionContainer">
-                        <div class="infoEquip">
-                            <p><?php echo $instruction; ?></p>
-                        </div>
+                        <input class="infoEquip" type="text" name="instruction" id="update" value="<?php echo $instruction; ?>">
                     </div>
                 </div>
 
-                <div class="buttonContainer">
-                    <button class="button"   onclick="showWarranty()" id="btn2" type="button">Warranty</button>
-                   <a href="dashboard.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>"> <button class="button" type="button">Back</button></a>
+                <div class="buttonContainer" style="margin-top: 2.4rem;">
+                        <button class="button" type="submit" id="btn1">Save</button>
+                        
+                     
+                        <a href="equipOtherInfo.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">
+                        <button id="btn2" type="button" class="button" >Cancel</button>
+                        </a>
+                  
                 </div>
-            </div>
-        </div>
-    </div>
-
-    
-
-    <!-- warranty -->
-    <div class="container4" id="warrantyContainer" style="display: none;">
-        <div class="subContainer"  >
-            <div class="warrantyContainer">
-                <p>Warranty Will Expire On: <span><?php echo isset($warranty_end) ? date('M d, Y', strtotime($warranty_end)) : ''; ?></span></p>
-            </div>
-            <div class="buttonContainer">
-                <button id="btn1" type="button" class="button" onclick="closeWarranty()">Close</button>
-            </div>
+            </form>
         </div>
     </div>
 

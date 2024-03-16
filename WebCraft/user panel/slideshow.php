@@ -15,12 +15,21 @@
         <button class="close-btn" onclick="toggleSidebar()">x</button>
     </div>
 
-    <a href="../admin panel/userProfile.php?id=<?php echo $userID; ?>">
+    <a href="../user panel/userProfile.php?id=<?php echo $userID; ?>">
         <div class="profile-menu">
             <div class="profile-icon">
                 <img src="../assets/img/person-circle.png" alt=""> 
             </div> 
             <p>Your profile</p>
+        </div>
+    </a>
+
+    <a href="../user panel/userEquip.php?id=<?php echo $userID; ?>">
+       <div class="logout-menu">
+            <div class="logout-icon">
+                <img src="../assets/img/file-text-circle.png" alt=""> 
+            </div> 
+            <p>My units</p>
         </div>
     </a>
 

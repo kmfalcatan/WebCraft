@@ -79,7 +79,7 @@ include_once '../authentication/auth.php';
                 </div>
            </div>
 
-           <div class="tableContainer">
+           <div class="tableContainer" style="background-color: #fff;">
                 <table>
                     <tbody>
                         <tr>
@@ -131,20 +131,20 @@ include_once '../authentication/auth.php';
                                     if ($prevTimestamp !== null) {
                                         echo "</a></div></td></tr>";
                                     }
-                                    echo "<tr><td><div class='list'>";
+                                    echo "<tr><td><div class='list'  onclick='changeColor(this)'  data-id='{$report_ID}'>";
 
                                     echo "<div class='sender-img'>
                                             <img src='../uploads/" . ($image ? $image : 'placeholder.jpg') . "' alt='Profile Image'>
                                         </div>
-                                        <a href='approveReport.php?report_ID={$report_ID}&user_ID={$currentUserID}&timestamp={$timestamp}&id={$userID}' style='width: 100%;'>
-                                            <div class='label' style='display: flex;'>
-                                                <p class='left-text'><span>$fullName</span> sent a report.</p>
-                                                <div class='right-text'>
-                                                    <p class='time'>$timeAgo</p> 
-                                                    <i class='fas fa-ellipsis-h'></i>
-                                                </div>
+                                        <div class='label' style='display: flex;'>
+                                        <a href='approveReport.php?report_ID={$report_ID}&user_ID={$currentUserID}&timestamp={$timestamp}&id={$userID}'>
+                                            <p class='left-text'><span>$fullName</span> sent a report.</p>
+                                        </a>
+                                            <div class='right-text'>
+                                                <p class='time'>$timeAgo</p> 
+                                                <i class='fas fa-ellipsis-h'></i>
                                             </div>
-                                        </a>";
+                                        </div>";
 
                                     $userID = $currentUserID;
                                     $prevTimestamp = $timestamp;
@@ -181,5 +181,29 @@ include_once '../authentication/auth.php';
 
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/sidebarShow.js"></script>
+    <script>
+        function changeColor(element) {
+            element.classList.add('selected');
+            
+            const selectedItems = document.querySelectorAll('.list.selected');
+            const selectedIds = Array.from(selectedItems).map(item => item.getAttribute('data-id'));
+            localStorage.setItem('selectedListItems', JSON.stringify(selectedIds));
+        }
+
+        function checkSelectedColor() {
+            const selectedIds = JSON.parse(localStorage.getItem('selectedListItems'));
+            if (selectedIds) {
+                selectedIds.forEach(id => {
+                    const selectedElement = document.querySelector(`.list[data-id='${id}']`);
+                    if (selectedElement) {
+                        selectedElement.classList.add('selected');
+                    }
+                });
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', checkSelectedColor);
+    </script>
+
 </body>
 </html>

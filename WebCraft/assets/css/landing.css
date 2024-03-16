@@ -10,17 +10,19 @@ body{
 }
 
 .headerContainer{
-    height: 5rem;
+    height: 7rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     animation: fading 2s linear ;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    padding: 0 3rem;
 }
 
 .logoContainer{
     height: 100%;
+    margin-left: -1rem;
 }
 
 .subLogoContainer{
@@ -53,13 +55,13 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    column-gap: 1rem;
-    margin-right: 1rem;
+    column-gap: 2rem;
+    margin-right: 3rem;
 }
 
 .subButtonContainer {
     height: 100%;
-    width: 5rem;
+    width: 5.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +72,7 @@ body{
     display: inline-block;
     height: 2rem;
     width: 100%;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: lighter;
     font-family: "Montserrat", sans-serif;
     border-radius: 0.5rem;
@@ -103,11 +105,8 @@ body{
 .subButtonContainer .button3{
     background-color: rgb(2, 116, 200);
     color: #fff;
-    height: 2rem;
-    width: 7rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 1rem 2rem;
+    margin-left: 2rem;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
@@ -139,6 +138,10 @@ button a{
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
 
+.textContainer{
+    margin-left: 5rem;
+}
+
 .textContainer, .imageContainer{
     height: 50%;
     display: flex;
@@ -166,7 +169,6 @@ button a{
 .subWelcomeContainer{
     height: 100%;
     width: 100%;
-    margin-left: 1rem;
     display: flex;
     align-items: center;
     font-size: 2.3rem;
@@ -190,11 +192,10 @@ button a{
     align-items: center;
     font-size: 0.5rem;
     color: #535353;
-    margin-left: 1rem;
 }
 
 .subParagraphContainer p{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .viewContainer{
@@ -295,17 +296,16 @@ a{
     }
 
     .buttonContainer{
-        outline: red dashed 1px;
         width: 23rem;
     }
 
     .subButtonContainer{
-        outline: red dashed 1px;
-        width: 7rem;
+        width: 5.5rem;
+        
     }
 
     .button3{
-        height: 5rem;
+        color: #fff;
     }
 
     .subImageContainer{
@@ -403,17 +403,17 @@ a{
     }
 
     .buttonContainer{
-        outline: red dashed 1px;
         width: 25rem;
     }
 
     .subButtonContainer{
-        outline: red dashed 1px;
         width: 8rem;
     }
 
     .button3{
-        height: 5rem;
+        padding: 1rem 2rem;
+        margin-left: 2rem;
+        color: #fff;
     }
 
     .welcomeContainer{
