@@ -26,7 +26,7 @@
 }
 
 #subContainer{
-    height: 80%;
+    height: 90%;
     width: 60%;
     border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
     background-color: #fff;
@@ -71,6 +71,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
+    margin-top: 0.5rem;
 }
 
 .userInfo2,
@@ -100,7 +101,7 @@
     background-color: transparent;
     font-size: 1.5rem;
     font-weight: bolder;
-    padding-left: 0.5rem;
+    padding-right: 1.2rem;
 }
 
 .fullnameContainer {
@@ -113,17 +114,19 @@
 
 .userInfo3{
     margin-left: 2rem;
+    text-transform: uppercase   ;
 }
 
 /* user id */
 .userID{
     margin-top: -3rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .buttonContainer2{
     height: 4rem;
-    margin-top: 2rem;
+    margin-top: 9rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -164,6 +167,12 @@ button a{
     width: 18rem;
     background-color: #fff;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+label{
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    margin-left: 5%;
 }
 /*tablet*/
 @media only screen and (min-width: 601px){

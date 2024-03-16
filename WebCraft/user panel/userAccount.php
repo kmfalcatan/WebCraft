@@ -60,7 +60,7 @@ if ($result->num_rows > 0) {
                             <div class='line'></div>
                             <div class='line'></div>
                         </div>
-                        <p class="adminName"><?php echo $userInfo['username'] ?? ''; ?></p>
+                        <p class="userName"><?php echo $userInfo['username'] ?? ''; ?></p>
                     </div>
                 </div>
             </div>
@@ -77,16 +77,8 @@ if ($result->num_rows > 0) {
            <div class="topContainer" id="topContainer">
                 <img class="top-img" src="../assets/img/person-circle.png" alt="" >
                 <h2>USER LIST</h2>
-
-                <div class="addIcon">
-                    <div class="subAddIcon">
-                        <a href="../admin panel/addUser.php?id=<?php echo $userID; ?>">
-                            <button class="addButton" >Add user</button>
-                        </a>
-                    </div>
-                </div>
             </div>
-           <div class="userContainer" id="userContainer">
+           <div class="userContainer" id="userContainer" style="height: 33rem;">
                <?php foreach ($users as $user): ?>
                     <div class="subUserContainer"  onclick="toggleSidebarAndProfile(this)" data-userid="<?php echo $user['id']; ?>">
                         <div class="imageContainer2">
@@ -107,7 +99,7 @@ if ($result->num_rows > 0) {
                 <?php endforeach; ?>
             </div>
 
-            <div class="container2" id="profileContainer" >
+            <div class="container2" id="profileContainer" style="padding: 2rem 1rem;">
                 <button class="closeButton" onclick="closeProfileContainer()">Close</button>
                 <img class="profile_img_circle" src="../uploads/<?php echo $user['profile_img']; ?>" alt="">
                 <p id="name"><?php echo $user['fullname'] ?? ''; ?></p>
@@ -124,16 +116,8 @@ if ($result->num_rows > 0) {
                         <p><?php echo $user['gender'] ?? ''; ?></p>
                     </div>
                 </div>
-                <a class="link" href="../admin panel/viewUserEquip.php?id=<?php echo $user['id']; ?>">View Equipment</a>
+                <a class="link" href="../user panel/viewUserEquip.php?id=<?php echo $user['id']; ?>">View Equipment</a>
             </div>
-
-            <!-- <div class="addIcon">
-                <div class="subAddIcon">
-                    <a href="../admin panel/addUser.php?id=<?php echo $userID; ?>">
-                        <button class="addButton" >Add user</button>
-                    </a>
-                 </div>
-            </div> -->
         </div>
     </div>
     

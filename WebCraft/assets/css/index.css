@@ -126,7 +126,18 @@ body{
 
 .sideNavBarContainer{
     /* outline: red dashed; */
-    height: 23.5em;
+    height: 21em;
+    width:  12.5rem;
+    position: fixed;
+    right: -12.5rem;
+    top: 4.5rem;
+    background-color: rgb(255,252,252);
+    z-index: 1;
+}
+
+.sideNavBarContainer2{
+    /* outline: red dashed; */
+    height: 15.6em;
     width:  12.5rem;
     position: fixed;
     right: -12.5rem;
@@ -435,7 +446,7 @@ th{
         width: 4rem;
     }
     
-    .sideNavBarContainer{
+    .sideNavBarContainer, .sideNavBarContainer2{
         border-radius: 0rem 0rem 1rem 1rem;
     }
 
@@ -534,7 +545,7 @@ th{
     }
 
     .sideNavBarContainer{
-        height: 28rem;
+        height: 25rem;
         position: absolute;
         left: -9.7rem;
         top: 15rem;
@@ -543,6 +554,20 @@ th{
     }
 
     .sideNavBarContainer:hover{
+        position: absolute;
+        left: 0;
+    }
+
+    .sideNavBarContainer2{
+        height: 18.75rem;
+        position: absolute;
+        left: -9.7rem;
+        top: 18rem;
+        border-radius: 0rem 1rem 1rem 0rem;
+        transition: all 0.5s;
+    }
+
+    .sideNavBarContaine2:hover{
         position: absolute;
         left: 0;
     }
@@ -673,7 +698,7 @@ th{
     }
 
     .sideNavBarContainer{
-        height: 28rem;
+        height: 25rem;
         position: absolute;
         left: -9.7rem;
         top: 15rem;
@@ -690,6 +715,21 @@ th{
         position: absolute;
         left: 0;
     }
+
+    .sideNavBarContainer2{
+        height: 18.7rem;
+        position: absolute;
+        left: -9.7rem;
+        top: 20rem;
+        border-radius: 0rem 1rem 1rem 0rem;
+        transition: all 0.5s;
+    }
+
+    .sideNavBarContainer2:hover{
+        position: absolute;
+        left: 0;
+    }
+    
 
     .subSideNavBar{
         height: 100%;

@@ -4,6 +4,34 @@
     display: flex;
 }
 
+.iconContainer{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.subIconContainer{
+    height: 100%;
+    width: 5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subIconContainer img{
+    filter: invert(100%);
+}
+
+.textContainer10{
+    height: 100%;
+    font-size: 1.5rem;
+    color: snow;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
 .subContainer2{
     height: 90%;
     width: 90%;
@@ -21,7 +49,7 @@
     border-radius: 0.5rem 0.5rem 0 0;
     background-color: rgb(2, 116, 200);
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -33,6 +61,7 @@
     align-items: center;
     margin-right: 1.2rem;
     position: relative;
+    margin-left: auto;
 }
 
 .reportButton{
@@ -95,9 +124,6 @@
     height: 100%;
 }
 
-.subInfoContainer{
-}
-
 .imageContainer1{
     height: 15rem;
 }
@@ -134,7 +160,7 @@ input{
 }
 
 .subInfoContainer1{
-    height: 27rem;
+    height: 31rem;
 }
 
 .infoEquipContainer{
@@ -142,7 +168,7 @@ input{
 }
 
 .subInfoEquipContainer{
-    height: 2rem;
+    height: 2.5rem;
     padding: 0 1rem;
     display: flex;
     align-items: center;
@@ -224,6 +250,7 @@ input{
 
 .infoEquipContainer1{
     height: 5rem;
+    margin-bottom: 1rem;
 }
 
 .subUserContainer{
@@ -256,14 +283,16 @@ input{
 
 .infoEquipContainer3{
     height: 5rem;
+    margin-bottom: 1rem;
 }
 
 .infoEquipContainer4{
-    height: 15rem;
+    height: 18rem;
 }
 
 .descriptionContainer{
     height: 12rem;
+    margin-bottom: 1rem;
 }
 
 .subDescriptionContainer{
@@ -286,7 +315,7 @@ input{
 
 .button{
     height: 2rem;
-    width: 7rem;
+    width: 5rem;
     border-radius: 0.5rem;
     border: none;
     background-color: rgb(2, 116, 200);
@@ -352,6 +381,7 @@ input{
         display: flex;
         flex-direction: row;
         height: 5rem;
+        margin-bottom: 1rem;
     }
 
     .subContainer2{
@@ -401,6 +431,7 @@ input{
         display: flex;
         flex-direction: row;
         height: 5rem;
+        margin-bottom: 1rem;
     }
 
     .subContainer2{

@@ -1,9 +1,10 @@
 <?php
 include_once "../dbConfig/dbconnect.php";
 include_once "../authentication/auth.php";
-include_once "../functions/updateEquip.php";
 include_once "../functions/header.php";
 include_once "../functions/warranty.php";
+include_once "../functions/equipInfo.php"
+
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +18,6 @@ include_once "../functions/warranty.php";
     <link rel="stylesheet" href="../assets/css/sidebarShow.css">
     <link rel="stylesheet" href="../assets/css/newEquipOtherInfo.css">
     <link rel="stylesheet" href="../assets/css/warranty.css">
-   
 </head>
 <body>
     <div class="container1">
@@ -62,6 +62,16 @@ include_once "../functions/warranty.php";
     <div class="container2">
         <div class="subContainer2">
             <div class="headerContainer1">
+                <div class="iconContainer">
+                    <div class="subIconContainer">
+                        <img src="../assets/img/file-text-circle.png" alt="">
+                    </div>
+
+                    <div class="textContainer10">
+                        <p>EQUIPMENT DETAILS</p>
+                    </div>
+                </div>
+
                 <div class="reportContainer"  id="reportContainer">
                     <button class="reportButton" onclick="toggleDropdown()">REPORT</button>
                     <div class="dropdown-content" id="dropdownContent">
@@ -102,7 +112,7 @@ include_once "../functions/warranty.php";
                     <div class="subInfoContainer1">
                         <div class="infoEquipContainer">
                             <div class="subInfoEquipContainer">
-                                <p>User Handler</p>
+                                <p>Property Custodian</p>
                             </div>
 
                             <div class="subInfoEquipContainer1">
@@ -251,13 +261,12 @@ include_once "../functions/warranty.php";
 
                 <div class="buttonContainer">
                     <button class="button"   onclick="showWarranty()" id="btn2" type="button">Warranty</button>
+                   <a href="updateEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>"> <button class="button" type="button">Edit</button></a>
                    <a href="dashboard.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>"> <button class="button" type="button">Back</button></a>
                 </div>
             </div>
         </div>
     </div>
-
-    
 
     <!-- warranty -->
     <div class="container4" id="warrantyContainer" style="display: none;">

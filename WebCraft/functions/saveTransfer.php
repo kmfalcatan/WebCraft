@@ -5,20 +5,19 @@ require_once '../authentication/auth.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $unitIDs = explode("\n", $_POST['unit_ID']);
-    $reportIssues = explode("\n", $_POST['report_issue']);
-    $problemDescs = explode("\n", $_POST['problem_desc']);
+    $newHandlers = explode("\n", $_POST['new_handler']);
+    $reasons = explode("\n", $_POST['reason']);
 
     $equipment_ID = $_POST['equipment_ID'];
     $user_ID = $_POST['user_ID'];
-    $user = $_POST['user'];
 
     $timestamp = date('Y-m-d H:i:s');
 
-    $stmt = $conn->prepare("INSERT INTO unit_report (timestamp, equipment_ID, user_ID, unit_handler, unit_ID, report_issue, problem_desc) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO transfer_unit (timestamp, equipment_ID, user_ID, unit_ID, new_handler, reason) VALUES (?, ?, ?, ?, ?, ?)");
 
     for ($i = 0; $i < count($unitIDs); $i++) {
-        if (!empty($unitIDs[$i]) && !empty($reportIssues[$i]) && !empty($problemDescs[$i])) {
-            $stmt->bind_param("siiisss", $timestamp, $equipment_ID, $user_ID, $user, $unitIDs[$i], $reportIssues[$i], $problemDescs[$i]);
+        if (!empty($unitIDs[$i]) && !empty($newHandlers[$i]) && !empty($reasons[$i])) {
+            $stmt->bind_param("siiiss", $timestamp, $equipment_ID, $user_ID, $unitIDs[$i], $newHandlers[$i], $reasons[$i]);
             $stmt->execute();
         }
     }
@@ -26,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $userID = $_SESSION['user_id']; 
-$userInfo = getUserInfo($conn, $userID);
+$userInfo = getUserInfo($conn, $userID); 
 $role = $userInfo['role'];
 
 if ($role === 'user') {

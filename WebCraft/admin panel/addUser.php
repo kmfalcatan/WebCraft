@@ -1,6 +1,7 @@
-<?php
-include_once "../functions/adduser.php";
-include_once "../authentication/auth.php";
+<?php 
+ include_once "../functions/adduser.php";
+ include_once "../authentication/auth.php";
+ include_once "../dbConfig/dbconnect.php";
 ?>
 
 <!DOCTYPE html>
@@ -15,19 +16,24 @@ include_once "../authentication/auth.php";
     <link rel="stylesheet" href="../assets/css/addUser.css">
 </head>
 <body id="body">
-    <div class="container">
+    <div class="container" style="margin-top: 0;">
+        
         <form class="subContainer1" action="../functions/adduser.php" method="POST" onsubmit="return validateForm()">
 
             <div class="inputContainer">
-                <input type="text" name="fullname" placeholder="User full name" required>
+                <input type="text" name="fullname" placeholder="Full Name" required>
             </div>
 
             <div class="inputContainer">
-                <input type="email" name="email" placeholder="User email" required>
+                <input type="email" name="email" placeholder="New E-mail" required>
             </div>
 
             <div class="inputContainer">
-                <input type="password" name="password" placeholder="User password" required>
+                <input type="email" name="current_email" placeholder="Current E-mail" required>
+            </div>
+
+            <div class="inputContainer">
+                <input type="password" name="password" placeholder="Default password" required>
             </div>
 
             <div class="inputContainer">
@@ -43,7 +49,7 @@ include_once "../authentication/auth.php";
             </div>
 
             <div class="buttonContainer">
-                <button type="submit" class="button" id="btn1">Add user</button>
+                <button type="submit" class="button" name="submit">Add user</button>
                 <a href="../admin panel/userAccount.php?id=<?php echo $userID; ?>">
                     <button type="button" class="button" id="btn2">Cancel</button>
                 </a>

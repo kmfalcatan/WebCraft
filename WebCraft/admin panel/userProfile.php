@@ -41,36 +41,43 @@ include_once "../functions/header.php";
 
             <div class="fullnameContainer">
                 <div class="subUserInfoContainer">
-                <input class="userInfo3" name="fullname" type="text" placeholder="Full Name" value="<?php echo $userInfo['fullname'] ?? ''; ?>" readonly>
+                <input class="userInfo3" name="fullname" type="text" value="<?php echo $userInfo['fullname'] ?? ''; ?>" readonly>
                 </div>
             </div>
 
             <div class="subWarrantyContainer">
                 <div class="userInfoContainer">
+
+                    <label for="username">Username</label>
                     <div class="subUserInfoContainer">
-                        <input class="userInfo2" name="username" type="text" placeholder="User Name" value="<?php echo $userInfo['username'] ?? ''; ?>" readonly>
+                        <input class="userInfo2" name="username" type="text" value="<?php echo $userInfo['username'] ?? ''; ?>" readonly>
                     </div>
                     
+                    <label for="email">E-mail</label>
                     <div class="subUserInfoContainer">
-                        <input class="userInfo2" name="email" type="email" placeholder="Email" value="<?php echo $userInfo['email'] ?? ''; ?>" readonly>
+                        <input class="userInfo2" name="email" type="email" value="<?php echo $userInfo['email'] ?? ''; ?>" readonly>
                     </div>
                     
+                    <label for="contact">Contact Number</label>
                     <div class="subUserInfoContainer">
-                        <input class="userInfo2" name="contact" type="number" placeholder="Contact no." value="<?php echo $userInfo['contact'] ?? ''; ?>" readonly>
+                        <input class="userInfo2" name="contact" type="number" value="<?php echo $userInfo['contact'] ?? ''; ?>" readonly>
                     </div>
                 </div>
 
                 <div class="userInfoContainer">
+                    <label for="department">Department</label>
                     <div class="subUserInfoContainer">
-                        <input class="userInfo2" name="department" type="text" placeholder="Department" value="<?php echo $userInfo['department'] ?? ''; ?>" readonly>
+                        <input class="userInfo2" name="department" type="text" value="<?php echo $userInfo['department'] ?? ''; ?>" readonly>
                     </div>
                     
+                    <label for="address">Address</label>
                     <div class="subUserInfoContainer">
-                        <input class="userInfo2" name="address" type="text" placeholder="Address" value="<?php echo $userInfo['address'] ?? ''; ?>" readonly>
+                        <input class="userInfo2" name="address" type="text" value="<?php echo $userInfo['address'] ?? ''; ?>" readonly>
                     </div>
                     
+                    <label for="gender">Gender</label>
                     <div class="subUserInfoContainer">
-                        <input class="" id="gender" name="gender" type="text" placeholder="Gender" value="<?php echo $userInfo['gender'] ?? ''; ?>" readonly>
+                        <input class="" id="gender" name="gender" type="text" value="<?php echo $userInfo['gender'] ?? ''; ?>" readonly>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 .subContainer1{
-    height: 25rem;
-    width: 25rem;
+    height: auto;
+    width: 30rem;
     border-radius: 0.5rem;
     padding: 2rem;
     display: flex;

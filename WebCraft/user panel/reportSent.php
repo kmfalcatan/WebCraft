@@ -89,7 +89,7 @@ include_once '../authentication/auth.php';
                 </div>
            </div>
 
-           <div class="tableContainer">
+           <div class="tableContainer" style="background-color: #fff;">
                 <table>
                     <tbody>
                         <tr>
@@ -175,7 +175,7 @@ include_once '../authentication/auth.php';
     </div>
 
     <!-- sidebar show -->
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar" id="sidebar" style="height: 35%;">
         <?php include('slideshow.php'); ?>
     </div>
 

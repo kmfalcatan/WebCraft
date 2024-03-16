@@ -1,7 +1,7 @@
 <?php
 include_once "../dbConfig/dbconnect.php";
 include_once "../authentication/auth.php";
-include_once "../functions/updateEquip.php";
+include_once "../functions/report.php";
 include_once "../functions/header.php";
 ?>
 
@@ -75,7 +75,7 @@ include_once "../functions/header.php";
 
                 <div class="infoContainer1">
                     <div class="subInfoContainer1">
-                        <p>USER HANDLER</p>
+                        <p>HANDLER</p>
                     </div>
 
                     <div class="textContainer">

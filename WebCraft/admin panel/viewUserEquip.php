@@ -13,6 +13,16 @@ $userID = isset($user['id']) ? date('Y') . '-' . str_pad($user['id'], 5, '0', ST
 
 $fullname = isset($user['fullname']) ? $user['fullname'] : "";
 
+$equipmentCountQuery = "SELECT equipment_name, COUNT(unit_ID) AS unit_count FROM units WHERE user = '$fullname' GROUP BY equipment_name";
+$equipmentCountResult = mysqli_query($conn, $equipmentCountQuery);
+
+$equipmentNames = [];
+$unitCounts = [];
+
+while ($row = mysqli_fetch_assoc($equipmentCountResult)) {
+    $equipmentNames[] = $row['equipment_name'];
+    $unitCounts[] = $row['unit_count'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +35,7 @@ $fullname = isset($user['fullname']) ? $user['fullname'] : "";
 
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/viewUSerEquip.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body id="body">
     <div class="container2">
@@ -33,8 +44,9 @@ $fullname = isset($user['fullname']) ? $user['fullname'] : "";
                 <img src="../assets//img/left-arrow.png" style="width: 1.5rem; height: 1.5rem;" >
             </button>
 
-            <img class="top-img" src="../assets/img/file-text-circle.png" alt= "">
-            <h2>USER EQUIPMENT</h2>
+            <div class="searchCon">
+                <input class="search" type="text" id="searchInput" placeholder="Search..." oninput="liveSearch()">
+            </div>
         </div>
 
         <div class="subContainer">
@@ -55,11 +67,31 @@ $fullname = isset($user['fullname']) ? $user['fullname'] : "";
                     </div>
 
                     <div class="subInfoContainer">
-                        <p>ID: <?php echo $userID; ?></p>
+                        <p id="id"><?php echo $userID; ?></p>
+                    </div>
+                </div>
+
+                <div class="graph">
+                    <div class="piechart">
+                        
                     </div>
 
-                    <div class="subInfoContainer">
-                        <p>Department: <?php echo isset($user['department']) ? $user['department'] : ""; ?></p>
+                    <div class="bargraph">
+                        <canvas id="barChart" style="width: 100%; height: 100%"></canvas>
+                    </div>
+
+                    <div class="options">
+                        <div class="transfer" id="transferDropdown">
+                            <a href="">
+                                <img src="../assets/img/person-circle.png" alt="">
+                            </a>
+                        </div>
+
+                        <div class="sort-unit">
+                            <a href="">
+                                <img src="../assets/img/th (2).jpg" alt="">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -130,10 +162,39 @@ $fullname = isset($user['fullname']) ? $user['fullname'] : "";
         </div>
     </div>
 
-        <script>
+    <script>
         function goBack() {
             window.history.back();
         }
-        </script>
+    </script>
+
+<script>
+    var equipmentNames = <?php echo json_encode($equipmentNames); ?>;
+    var unitCounts = <?php echo json_encode($unitCounts); ?>;
+
+    var ctx = document.getElementById('barChart').getContext('2d');
+    var barChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: equipmentNames,
+            datasets: [{
+                label: 'Unit Count',
+                data: unitCounts,
+                backgroundColor: 'rgb(207, 224, 238)',
+                borderColor: 'rgb(207, 224, 236)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    precision: 0,
+                    stepSize: 1
+                }
+            }
+        }
+    });
+</script>
 </body>
 </html>

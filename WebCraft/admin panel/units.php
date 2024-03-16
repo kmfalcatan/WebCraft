@@ -2,9 +2,6 @@
 include_once "../dbConfig/dbconnect.php";
 include_once "../functions/header.php";
 
-$sql = "SELECT * FROM equipment";
-$result = $conn->query($sql);
-$equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
 ?>
 
 
@@ -84,10 +81,8 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                             <p class="year">2022</p>
                         </div>
 
-                        <div class="med-icon">
-                            <a href="../admin panel/units.php?id=<?php echo $userID; ?>" style="display: flex; align-items: center;">
-                                <img src="../assets/img/file-text-circle.png" style="filter: invert(100%); width: 2rem; height: 2rem; cursor: pointer;" alt="">
-                            </a>
+                        <div class="med-icon" id="medIcon">
+                            <img src="../assets/img/filter.png" style="filter: invert(100%); width: 2rem; height: 2rem; cursor: pointer;" alt="">
                         </div>
                 </div>
            </div>
@@ -97,19 +92,56 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>UNIT ID</th>
                             <th>ARTICLE</th>
                             <th>PROPERTY NUMBER</th>
                             <th>ACCOUNT CODE</th>
-                            <th>UNITS</th>
-                            <th>UNIT VALUE</th>
-                            <th>TOTAL VALUE</th>
-                            <th>REMARKS</th>
-                            <th>VIEW</th>
+                            <th>UNIT HANDLER</th>
+                            <th>YEAR</th>
+                            <th>ACTION</th>
                         </tr>
                     </thead>
 
                     <tbody id="tblBody">
-                      
+                        <?php
+                            $sql = "SELECT unit_ID, equipment_name, user FROM units";
+                            $result = mysqli_query($conn, $sql);
+
+                            if ($result) {
+                                $count = 1; 
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $equipmentName = $row['equipment_name'];
+
+                                    $sqlEquipment = "SELECT property_number, account_code, year_received FROM equipment WHERE article = '$equipmentName'";
+                                    $resultEquipment = mysqli_query($conn, $sqlEquipment);
+
+                                    $formattedUnitID = '';
+
+                                    if ($resultEquipment) {
+                                        $equipmentRow = mysqli_fetch_assoc($resultEquipment);
+
+                                        $unitPrefix = 'UNIT';
+                                        $defaultUnitID = '0000';
+                                        $unitID = $row['unit_ID'];
+                                        $formattedUnitID = $unitPrefix . '-' . str_pad($unitID, strlen($defaultUnitID), '0', STR_PAD_LEFT);
+
+                                        echo "<tr>";
+                                        echo "<td>{$count}</td>"; 
+                                        echo "<td style='font-weight: bold;'>" . $formattedUnitID . "</td>";
+                                        echo "<td>" . $row['equipment_name'] . "</td>";
+                                        echo "<td>" . $equipmentRow['property_number'] . "</td>";
+                                        echo "<td>" . $equipmentRow['account_code'] . "</td>";
+                                        echo "<td>" . $row['user'] . "</td>";
+                                        echo "<td>" . $equipmentRow['year_received'] . "</td>";
+                                        echo "<td class='actionContainer' style='display: flex;'>";
+                                        echo "<img src='../assets/img/remove.png' alt='View' class='action-img' style='width: 1.7rem; height: 1.7rem;'>";
+                                        echo "</td>";
+                                        echo "</tr>";
+                                        $count++; 
+                                    }
+                                }
+                            }
+                            ?>
                     </tbody>
                 </table>
            </div>
@@ -132,7 +164,7 @@ $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
     </div>
 
     <script src="../assets/js/dashboard.js"></script>
-    <script src="../assets/js/search.js"></script>
     <script src="../assets/js/sidebarShow.js"></script>
+    
 </body>
 </html>

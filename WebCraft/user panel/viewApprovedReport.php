@@ -63,6 +63,16 @@ include_once "../functions/binDetails.php";
                         <img class="image3" src="../assets/img/left-arrow.png" alt="">
                     </div>
                 </a>
+
+                <div class="iconContainer">
+                    <div class="subIconContainer">
+                        <img src="../assets/img/file-text-circle.png" alt="">
+                    </div>
+
+                    <div class="textContainer10">
+                        <p>UNIT DETAILS</p>
+                    </div>
+                </div>
             </div>
 
             <form class="infoContainer" action="" method="post"  enctype="multipart/form-data">

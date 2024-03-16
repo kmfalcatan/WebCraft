@@ -1,9 +1,9 @@
 <?php
-include_once "../dbConfig/dbconnect.php";
 include_once "../authentication/auth.php";
 include_once "../functions/header.php";
 include_once "../functions/equipInfo.php";
-    
+include_once "../functions/updateEquip.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +61,15 @@ include_once "../functions/equipInfo.php";
     <div class="container2">
         <div class="subContainer2">
             <div class="headerContainer1">
+                <div class="iconContainer">
+                    <div class="subIconContainer">
+                        <img src="../assets/img/file-text-circle.png" alt="">
+                    </div>
+
+                    <div class="textContainer10">
+                        <p>EDIT DETAILS</p>
+                    </div>
+                </div>
             </div>
 
             <form class="infoContainer"  action="" enctype="multipart/form-data" method="post">
@@ -127,7 +136,7 @@ include_once "../functions/equipInfo.php";
                         </div>
 
                         <div class="subInfoEquipContainer1">
-                            <input class="infoEquip" type="text" name="unit_value" id="update" value="<?php echo $unit_value; ?>">
+                            <input class="infoEquip" type="text" name="unit_value" id="update" value="<?php echo $unit_value; ?>" readonly>
                             
                         </div>
                     </div>
@@ -138,7 +147,7 @@ include_once "../functions/equipInfo.php";
                         </div>
 
                         <div class="subInfoEquipContainer1">
-                            <input class="infoEquip" type="text" name="total_value" id="update" value="<?php echo $total_value; ?>">
+                            <input class="infoEquip" type="text" name="total_value" id="update" value="<?php echo $total_value; ?>" readonly>
                         </div>
                     </div>
 
@@ -177,7 +186,9 @@ include_once "../functions/equipInfo.php";
                         <button class="button" type="submit" id="btn1">Save</button>
                         
                      
+                        <a href="equipOtherInfo.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">
                         <button id="btn2" type="button" class="button" >Cancel</button>
+                        </a>
                   
                 </div>
             </form>

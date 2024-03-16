@@ -15,18 +15,19 @@
 }
 
 .topContainer img{
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     margin-left: 2rem;
     filter: invert(100%);
 }
 
 .userContainer{
-    height: 38rem;
+    height: 33rem;
     width: 87%;
     padding: 0.5rem;
     background-color: #fff;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     justify-content: space-around;
     position: relative;
     padding: 1rem;
@@ -39,6 +40,30 @@ h2{
     padding: 0.5rem;
     color: #979595;
 }
+
+.top-right{
+    display: flex;
+    align-items: center;
+}
+
+.searchCon {
+    margin-left: auto;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.searchCon #searchInput{
+    height: 2rem;
+    width: 15rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    background-color: #ffffffa5;
+    border: 1px solid #a6a6a6;
+    padding-left: 1rem;
+}   
 
 .subUserContainer{
     height: 5rem;
@@ -90,16 +115,13 @@ h2{
 
 .addIcon{
     height: 4rem;
-    width: 100%;
     display: flex;
     justify-content: right;
     align-items: center;
-    margin-top: 1rem;
+    margin-right: 2rem;
 }
 
 .subAddIcon{
-    margin-right: 5.5%;
-    margin-top: -1.5%;
     cursor: pointer;
     transition: all 0.15s;
     display: flex;
@@ -116,20 +138,20 @@ h2{
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    background: rgb(2, 116, 200);
+    color: rgb(2, 116, 200);
     transition: all 0.15s;
     border: solid gray 1px;
     cursor: pointer;
-    color: #fff;
+    background-color: #f7f7f7;
 }
 
 .addButton:hover{
-    background-color: rgba(2, 117, 200, 0.297);
-    color: #000;
+    background: rgb(207, 224, 236);
 }
 
 .addButton:active{
-    background-color: rgba(2, 117, 200, 0.76);
+    background-color: rgb(2, 116, 200);
+    color: #f7f7f7;
 }
 
 /* Toggle */
@@ -154,7 +176,7 @@ h2{
     width: 63rem; 
     height: 36.5rem;
     background-color: #fff;
-    padding: 1rem;
+    padding: 2rem 1rem;
     z-index: 999; 
     text-align: center;
     border-radius: 0.5rem;

@@ -17,10 +17,12 @@ body{
     animation: fading 2s linear ;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+    padding: 0 3rem;
 }
 
 .logoContainer{
     height: 100%;
+    margin-left: -1rem;
 }
 
 .subLogoContainer{
@@ -54,7 +56,7 @@ body{
     justify-content: center;
     flex-direction: row;
     column-gap: 2rem;
-    margin-right: 4rem;
+    margin-right: 3rem;
 }
 
 .subButtonContainer {
@@ -136,13 +138,16 @@ button a{
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
 
+.textContainer{
+    margin-left: 5rem;
+}
+
 .textContainer, .imageContainer{
     height: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-left: 6rem;
 }
 
 
@@ -164,7 +169,6 @@ button a{
 .subWelcomeContainer{
     height: 100%;
     width: 100%;
-    margin-left: 3rem;
     display: flex;
     align-items: center;
     font-size: 2.3rem;
@@ -184,7 +188,6 @@ button a{
 .subParagraphContainer{
     height: 100%;
     width: 80%;
-    margin-left: 3rem;
     display: flex;
     align-items: center;
     font-size: 0.5rem;
@@ -192,7 +195,7 @@ button a{
 }
 
 .subParagraphContainer p{
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
 
 .viewContainer{
@@ -203,7 +206,7 @@ button a{
 .subViewContainer{
     height: 100%;
     width: 80%;
-    margin-left: 3rem;
+    margin-left: 1rem;
     display: flex;
     align-items: center;
 }
@@ -237,8 +240,8 @@ a{
 }
 
 .subImageContainer{
-    height: 63%;
-    width: 60%;
+    height: 15rem;
+    width: 15rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -247,7 +250,7 @@ a{
 }
 
 .subImageContainer{
-    font-size: 15rem;
+    font-size: 5rem;
     font-family: fantasy;
     color: #fff;
 }
@@ -292,6 +295,28 @@ a{
         width: 50%;
     }
 
+    .buttonContainer{
+        width: 23rem;
+    }
+
+    .subButtonContainer{
+        width: 5.5rem;
+        
+    }
+
+    .button3{
+        color: #fff;
+    }
+
+    .subImageContainer{
+        height: 25rem;
+        width: 25rem;
+    }
+
+    h1{
+        font-size: 30rem;
+    }
+
     .image{
         height: 15rem;
         width: 15rem;
@@ -325,10 +350,6 @@ a{
     .logoContainer{
         display: flex;
         flex-direction: row;
-    }
-
-    .headerContainer{
-        padding: 0 3rem 0 3rem;
     }
 
     .textContainer{
@@ -368,8 +389,31 @@ a{
         width: 50%;
     }
 
+    .subImageContainer{
+        height: 30rem;
+        width: 30rem;
+    }
+
+    h1{
+        font-size: 35rem;
+    }
+
     .image{
         height: 25rem;
+    }
+
+    .buttonContainer{
+        width: 25rem;
+    }
+
+    .subButtonContainer{
+        width: 8rem;
+    }
+
+    .button3{
+        padding: 1rem 2rem;
+        margin-left: 2rem;
+        color: #fff;
     }
 
     .welcomeContainer{
@@ -410,10 +454,6 @@ a{
     .logoContainer{
         display: flex;
         flex-direction: row;
-    }
-
-    .headerContainer{
-        padding: 0 3rem 0 3rem;
     }
 
     .textContainer{

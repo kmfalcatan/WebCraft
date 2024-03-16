@@ -3,35 +3,33 @@
 ?>
 <style>
     .sideNavBarContainer{
-        height: 25rem;
+        height: 21.8rem;
     }
     .image5{
         top: 1.5rem;
     }
 </style>
     <div class='sideNavBarContainer'>
-        <div class='sideNavBar1'>
+        <div class='sideNavBar'>
             <div class="subSideNavBar">
-                <a class='profile' href='../user panel/addEquip.php?id=<?php echo $userID; ?>'>
-                    New Equipment
+                <a class='profile' href='../user panel/dashboard.php?id=<?php echo $userID; ?>'>
+                    Inventory
                 </a>
             </div>
 
             <div class="image2">
-                <img class="image3" src="../assets/img/th-removebg-preview.png" alt="">
-                <img class="image5" src="../assets/img/plus-circle.png" alt="">
+                <img class="image3" src="../assets/img/file-text-circle.png" alt="">
             </div>
         </div>
-
         <div class='sideNavBar'>
-                <div class="subSideNavBar">
-                    <a class='profile' href='../user panel/dashboard.php?id=<?php echo $userID; ?>'>
-                        Inventory
-                    </a>
-                </div>
+            <div class="subSideNavBar">
+                <a class='profile' href='../user panel/userAccount.php?id=<?php echo $userID; ?>'>
+                    Users
+                </a>
+            </div>
 
             <div class="image2">
-                <img class="image3" src="../assets/img/file-text-circle.png" alt="">
+                <img class="image3" src="../assets/img/person-circle.png" alt="">
             </div>
         </div>
         <div class='sideNavBar'>
@@ -43,17 +41,6 @@
 
             <div class="image2">
                 <img class="image3" src="../assets/img/calendar.png" alt="">
-            </div>
-        </div>
-        <div class='sideNavBar'>
-            <div class="subSideNavBar">
-                <a class='profile' href='../user panel/budget.php?id=<?php echo $userID; ?>'>
-                    Budget
-                </a>
-            </div>
-
-            <div class="image2">
-                <img class="image3" src="../assets/img/th__1_-removebg-preview.png" alt="">
             </div>
         </div>
         <div class='sideNavBar'>

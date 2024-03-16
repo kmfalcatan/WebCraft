@@ -57,6 +57,16 @@ include_once "../authentication/auth.php";
                         <img class="image3" src="../assets/img/left-arrow.png" alt="">
                     </div>
                 </a>
+
+                <div class="iconContainer">
+                    <div class="subIconContainer">
+                        <img src="../assets/img/calendar.png" alt="">
+                    </div>
+
+                    <div class="textContainer10">
+                        <p>REPORT DETAILS</p>
+                    </div>
+                </div>
             </div>
 
             <div class="infoContainer">

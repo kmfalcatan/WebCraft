@@ -47,7 +47,6 @@ function showProfileContainer(element) {
 
   var idElement = document.createElement("p");
 
-  var id = "0001"; 
 
   idElement.textContent = "" + formatDate(id);
 

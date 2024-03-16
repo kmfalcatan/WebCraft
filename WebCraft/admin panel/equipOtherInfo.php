@@ -62,11 +62,21 @@ include_once "../functions/equipInfo.php"
     <div class="container2">
         <div class="subContainer2">
             <div class="headerContainer1">
-                <div class="reportContainer">
+                <div class="iconContainer">
+                    <div class="subIconContainer">
+                        <img src="../assets/img/file-text-circle.png" alt="">
+                    </div>
+
+                    <div class="textContainer10">
+                        <p>EQUIPMENT DETAILS</p>
+                    </div>
+                </div>
+
+                <!-- <div class="reportContainer">
                     <a href="report.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>">
                         <button class="reportButton">REPORT</button>
                     </a>
-                </div>
+                </div> -->
             </div>
 
             <div class="infoContainer">
