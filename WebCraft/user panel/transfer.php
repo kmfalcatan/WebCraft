@@ -1,7 +1,7 @@
 <?php
 include_once "../dbConfig/dbconnect.php";
 include_once "../authentication/auth.php";
-include_once "../functions/updateEquip.php";
+include_once "../functions/report.php";
 include_once "../functions/header.php";
 ?>
 
@@ -40,9 +40,9 @@ include_once "../functions/header.php";
                                 echo '<img class="headerImg" src="../assets/img/person-circle.png" alt="Mountain Placeholder">';
                             }
                         ?>
-                        </div>
+                    </div>
 
-                        <div class="subProfileContainer">
+                    <div class="subProfileContainer">
                         <p class="adminName"><?php echo $userInfo['username'] ?? ''; ?></p>
                     </div>
                 </div>
@@ -53,19 +53,19 @@ include_once "../functions/header.php";
     <div class="container2">
         <div class="subContainer2">
             <div class="headerContainer1">
-                <a href="equipOtherInfo.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>"> 
+                <a href="../user panel/userEquip.php?equipment_ID=<?php echo $equipment_ID; ?>&id=<?php echo $userID; ?>"> 
                     <div class="backContainer">
                         <img class="backContainer1" src="../assets/img/left-arrow.png" alt="">
                     </div>
                 </a>
 
                 <div class="iconContainer">
-                    <div class="textContainer10">
-                        <p>lakshdkasgd</p>
-                    </div>
-                    
                     <div class="subIconContainer">
-                        <img src="" alt="">
+                        <img src="../assets/img/transfer-icon.png" alt="" style="width: 2.5rem; height: 2.2rem;">
+                    </div>
+
+                    <div class="textContainer10">
+                        <p>UNIT TRANSFER</p>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@ include_once "../functions/header.php";
 
                 <div class="infoContainer1">
                     <div class="subInfoContainer1">
-                        <p>USER HANDLER</p>
+                        <p>UNIT CUSTODIAN</p>
                     </div>
 
                     <div class="textContainer">
@@ -141,18 +141,19 @@ include_once "../functions/header.php";
             </div>
         </div>
 
-        <form class="buttonContainer" id="buttonContainer" action="../functions/saveReport.php" method="post">
+        <form class="buttonContainer" id="buttonContainer" action="../functions/saveTransfer.php" method="post">
             <button style="display: block;" id="selectButton" onclick="popup()" class="button" type="button">SELECT UNIT</button>
             
             <input type="hidden" name="equipment_ID" value="<?php echo $equipment_ID; ?>">
             <input type="hidden" name="user_ID" value="<?php echo $userID; ?>">
             <input type="hidden" name="unit_ID" id="unit_ID">
-            <input type="hidden" name="report_issue" id="issue">
-            <input type="hidden" name="problem_desc" id="problem_desc">
+            <input type="hidden" name="reason" id="reason">
+            <input type="hidden" name="new_handler" id="new_handler">
+
 
             <div class="unitContainer" style="display: none;">
                 <div class="subUnitContainer">
-                        <?php
+                <?php
                         if(isset($_GET['equipment_ID'])) {
                             $equipment_ID = $_GET['equipment_ID'];
                         
@@ -186,10 +187,15 @@ include_once "../functions/header.php";
                                 echo '<p>' . $user . '</p>';
                                 echo '</div>';
                                 echo '<div class="unitNameContainer1">';
-                                echo '<select class="issue" data-unit-id="' . $formattedUnitID . '">';
-                                echo '<option value="" disabled selected>Select issue</option>';
-                                echo '<option value="LOST">LOST</option>';
-                                echo '<option value="FOR RETURN">FOR RETURN</option>';
+                                echo '<select  class="issue" data-unit-id="' . $formattedUnitID . '">';
+                                echo '<option value="" disabled selected>Select user</option>';
+                                $userQuery = "SELECT fullname FROM users WHERE role = 'user'";
+                                $userResult = $conn->query($userQuery);
+                                if ($userResult->num_rows > 0) {
+                                    while($userRow = $userResult->fetch_assoc()) {
+                                        echo '<option value="' . $userRow["fullname"] . '">' . $userRow["fullname"] . '</option>';
+                                    }
+                                }
                                 echo '</select>';
                                 echo '</div>';
                                 echo '</div>';
@@ -238,17 +244,25 @@ include_once "../functions/header.php";
     });
 
     function updateDisplayOnChange() {
-        selectedUnits = [];
-        checkboxes.forEach(checkbox => {
-            const unitID = checkbox.dataset.unitId;
-            const issueSelect = document.querySelector(`.issue[data-unit-id="${unitID}"]`);
-            const issue = issueSelect.value || '';
-            if (checkbox.checked) {
-                selectedUnits.push({ unit_ID: unitID, report_issue: issue, problem_desc: '' });
+    selectedUnits = [];
+    let reasonSelected = false; // Flag to track if the reason has been selected
+    checkboxes.forEach(checkbox => {
+        const unitID = checkbox.dataset.unitId;
+        const issueSelect = document.querySelector(`.issue[data-unit-id="${unitID}"]`);
+        const issue = issueSelect.value || '';
+        if (checkbox.checked) {
+            if (!reasonSelected) {
+                document.getElementById('new_handler').value = issueSelect.options[issueSelect.selectedIndex].text;
+                reasonSelected = true;
+            } else {
+                // Set the reason or problem description
+                document.getElementById('reason').value = issue;
             }
-        });
-        updateDisplay(selectedUnits);
-    }
+            selectedUnits.push({ unit_ID: unitID, report_issue: issue, problem_desc: '' });
+        }
+    });
+    updateDisplay(selectedUnits);
+}
 
     function updateDisplay(units) {
         const unitInfoContainer = document.querySelector('.unitInfoContainer');
@@ -275,7 +289,7 @@ include_once "../functions/header.php";
 
             const issueContainer = document.createElement('div');
             issueContainer.classList.add('subInfoContainer1');
-            issueContainer.innerHTML = '<p>Issue</p>';
+            issueContainer.innerHTML = '<p>New Custodian</p>';
             subContainer.appendChild(issueContainer);
 
             const issueTextContainer = document.createElement('div');
@@ -289,7 +303,7 @@ include_once "../functions/header.php";
 
             const additionalIssueExplanation = document.createElement('div');
             additionalIssueExplanation.classList.add('subInfoContainer1');
-            additionalIssueExplanation.innerHTML = '<p>Problem description</p>';
+            additionalIssueExplanation.innerHTML = '<p>Tell me why do you want to transfer the unit</p>';
             additionalIssueExplanation.style.justifyContent = 'flex-start';
             additionalIssueExplanation.style.marginLeft = '1rem';
             subContainer.appendChild(additionalIssueExplanation);
@@ -300,7 +314,7 @@ include_once "../functions/header.php";
             additionalIssueText.classList.add('subTextContainer1');
             additionalIssueText.value = item.problem_desc;
             additionalIssueText.setAttribute('type', 'text');   
-            additionalIssueText.setAttribute('placeholder', 'Enter unit problem description'); 
+            additionalIssueText.setAttribute('placeholder', 'Enter your reason  here..'); 
             additionalIssueText.style.fontWeight = '100';
             additionalIssueText.style.alignItems = 'start';
             additionalIssueContainer.appendChild(additionalIssueText);
@@ -310,8 +324,7 @@ include_once "../functions/header.php";
             unitInfoContainer.appendChild(subContainer);
 
             const unitID = document.getElementById('unitID_' + index); 
-            const issue = document.getElementById('issue_' + index); 
-            const subTextContainers = [unitID, issue];
+            const subTextContainers = [unitID];
             subTextContainers.forEach(container => {
                 container.style.maxWidth = '50%'; 
             });
@@ -319,7 +332,7 @@ include_once "../functions/header.php";
             if (index < units.length - 1) {
                 const space = document.createElement('div');
                 space.classList.add('container-space');
-                space.style.height = '17rem'; 
+                space.style.height = '10rem'; 
                 space.style.overflowX = 'hidden'; 
                 space.style.marginLeft = '37px';
                 space.style.borderBottom = '2px solid rgb(2, 116, 200)'; 
@@ -330,54 +343,48 @@ include_once "../functions/header.php";
     }
 
     document.getElementById('buttonContainer').addEventListener('submit', function(event) {
-        event.preventDefault(); 
+            event.preventDefault(); 
 
-        const unitIDInput = document.getElementById('unit_ID');
-        const issueInput = document.getElementById('issue');
+            const unitIDInput = document.getElementById('unit_ID');
 
-        unitIDInput.value = '';
-        issueInput.value = '';
+            unitIDInput.value = '';
 
-        selectedUnits.forEach((selectedUnit, index) => {
+            selectedUnits.forEach((selectedUnit, index) => {
+                unitIDInput.value += selectedUnit.unit_ID;
 
-            unitIDInput.value += selectedUnit.unit_ID;
-            issueInput.value += selectedUnit.report_issue;
+                if (index < selectedUnits.length - 1) {
+                    unitIDInput.value += '\n';
+                }
+            });
 
-            if (index < selectedUnits.length - 1) {
-                unitIDInput.value += '\n';
-                issueInput.value += '\n';
+            const problemDescriptions = document.querySelectorAll('.subTextContainer1');
+            let allProblemDesc = ""; 
+
+            problemDescriptions.forEach(input => {
+                if (input.tagName.toLowerCase() === "input" && input.value.trim() !== "") {
+                    allProblemDesc += input.value + "\n"; 
+                    input.setAttribute('readonly', 'readonly');
+                }
+            });
+
+            const reasonInput = document.getElementById('reason');
+            if (reasonInput) { 
+                reasonInput.value = allProblemDesc.trim();
             }
+
+            const submitContainer = document.getElementById('submitContainer');
+            submitContainer.innerHTML = `
+                <button class="button2" id="cancel-submit" type"button">Cancel</button>
+                <button class="button2" id="confirm-submit" style="width: 10rem;">Confirm Submit</button>
+            `;
+            document.getElementById('confirm-submit').addEventListener('click', function() {
+                document.getElementById('buttonContainer').submit();
+            });
+
+            document.getElementById('cancel-submit').addEventListener('click', function() {
+                window.location.reload(); 
+            });
         });
-
-
-        const problemDescriptions = document.querySelectorAll('.subTextContainer1');
-        let allProblemDesc = ""; 
-
-        problemDescriptions.forEach(input => {
-            if (input.tagName.toLowerCase() === "input" && input.value.trim() !== "") {
-                allProblemDesc += input.value + "\n"; 
-                input.setAttribute('readonly', 'readonly');
-            }
-        });
-
-        const problemDescInput = document.getElementById('problem_desc');
-        if (problemDescInput) { 
-            problemDescInput.value = allProblemDesc.trim();
-        }
-
-        const submitContainer = document.getElementById('submitContainer');
-        submitContainer.innerHTML = `
-            <button class="button2" id="cancel-submit" type"button">Cancel</button>
-            <button class="button2" id="confirm-submit" style="width: 10rem;">Confirm Submit</button>
-        `;
-        document.getElementById('confirm-submit').addEventListener('click', function() {
-            document.getElementById('buttonContainer').submit();
-        });
-        
-        document.getElementById('cancel-submit').addEventListener('click', function() {
-            window.location.reload(); 
-        });
-    });
 
 });
 

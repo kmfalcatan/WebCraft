@@ -26,8 +26,8 @@
 }
 
 #subContainer{
-    height: 80%;
-    width: 90%;
+    height: 90%;
+    width: 60%;
     border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
@@ -71,12 +71,12 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
-    flex-direction: column;
+    margin-top: 0.5rem;
 }
 
 .userInfo2,
-#gender, .startWarranty{
-    height: 3rem;
+#gender{
+    height: 100%;
     width: 90%;
     display: flex;
     justify-content: center;
@@ -87,19 +87,6 @@
     font-size: 1.2rem;
     padding-left: 1rem;
     
-}
-
-.textContainer5{
-    height: 2rem;
-    width: 2rem;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-}
-
-.text1{
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    margin-left: 5%;
 }
 
 .userInfo3{
@@ -114,7 +101,7 @@
     background-color: transparent;
     font-size: 1.5rem;
     font-weight: bolder;
-    padding-left: 0.5rem;
+    padding-right: 1.2rem;
 }
 
 .fullnameContainer {
@@ -127,17 +114,19 @@
 
 .userInfo3{
     margin-left: 2rem;
+    text-transform: uppercase   ;
 }
 
 /* user id */
 .userID{
     margin-top: -3rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .buttonContainer2{
     height: 4rem;
-    margin-top: 2rem;
+    margin-top: 9rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -178,6 +167,12 @@ button a{
     width: 18rem;
     background-color: #fff;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+label{
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    margin-left: 5%;
 }
 /*tablet*/
 @media only screen and (min-width: 601px){

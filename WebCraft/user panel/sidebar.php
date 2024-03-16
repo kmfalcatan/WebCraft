@@ -1,14 +1,35 @@
-<div class='sideNavBarContainer2'>
-
-        <div class='sideNavBar1'>
-                <div class="subSideNavBar">
-                    <a class='profile' href='../user panel/dashboard.php?id=<?php echo $userID; ?>'>
-                        Inventory
-                    </a>
-                </div>
+<?php
+ include_once "../authentication/auth.php";
+?>
+<style>
+    .sideNavBarContainer{
+        height: 21.8rem;
+    }
+    .image5{
+        top: 1.5rem;
+    }
+</style>
+    <div class='sideNavBarContainer'>
+        <div class='sideNavBar'>
+            <div class="subSideNavBar">
+                <a class='profile' href='../user panel/dashboard.php?id=<?php echo $userID; ?>'>
+                    Inventory
+                </a>
+            </div>
 
             <div class="image2">
                 <img class="image3" src="../assets/img/file-text-circle.png" alt="">
+            </div>
+        </div>
+        <div class='sideNavBar'>
+            <div class="subSideNavBar">
+                <a class='profile' href='../user panel/userAccount.php?id=<?php echo $userID; ?>'>
+                    Users
+                </a>
+            </div>
+
+            <div class="image2">
+                <img class="image3" src="../assets/img/person-circle.png" alt="">
             </div>
         </div>
         <div class='sideNavBar'>

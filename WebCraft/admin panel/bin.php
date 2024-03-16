@@ -65,7 +65,7 @@ include_once "../functions/header.php";
             </div>
 
             <div class="filterContainer">
-                <div class="subFilterContainer">
+                <div class="subFilterContainer" >
                     <div class="sortContainer">
                         <img class="sort" src="../assets/img/th (2).jpg" alt="">
                     </div>
@@ -75,15 +75,11 @@ include_once "../functions/header.php";
                     </div>
 
                     <div class="filter" onclick="filterByYear(2024)">
-                        <p class="year">2024</p>
+                        <p class="year">Lost</p>
                     </div>
 
                     <div class="filter" onclick="filterByYear(2023)">
-                        <p class="year">2023</p>
-                    </div>
-
-                    <div class="filter" onclick="filterByYear(2022)">
-                        <p class="year">2022</p>
+                        <p class="year">Return</p>
                     </div>
 
                     <div class="med-icon">
@@ -107,7 +103,7 @@ include_once "../functions/header.php";
 
                     <tbody">
                         <?php
-                            $query = "SELECT approved_ID, user_ID, article, unit_ID, unit_issue, timestamp FROM approved_report";
+                            $query = "SELECT approved_ID, user_ID, article, unit_ID, unit_issue, timestamp FROM approved_report  ORDER BY timestamp DESC";
                             $result = mysqli_query($conn, $query);
 
                             if ($result && mysqli_num_rows($result) > 0) {

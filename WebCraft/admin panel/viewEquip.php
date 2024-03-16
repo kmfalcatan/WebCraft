@@ -3,8 +3,21 @@ include_once "../dbConfig/dbconnect.php";
 include_once "../functions/header.php";
 include_once "../authentication/auth.php";
 
+function isEquipmentNew($equipment_ID, $conn) {
+    $currentYear = date("Y");
+    $sql = "SELECT year_received FROM equipment WHERE equipment_ID = '$equipment_ID'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $yearReceived = $row['year_received'];
+        return $yearReceived == $currentYear;
+    }
+    return false;
+}
+
 $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
-$userID = isset($_GET['id']) ? $_GET['id'] : null; 
+$userID = isset($_GET['id']) ? $_GET['id'] : null;
 $sql2 = "SELECT image FROM equipment WHERE equipment_ID = '$equipment_ID'";
 $sql = "SELECT * FROM units WHERE equipment_ID = '$equipment_ID'";
 $result_units = $conn->query($sql);
@@ -34,6 +47,12 @@ $offset = ($currentPage - 1) * $recordsPerPage;
     <link rel="stylesheet" href="../assets/css/newViewEquipment.css">
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/sidebarShow.css">
+
+    <style>
+        .statusContainer1.new {
+            background-color: green;
+        }
+    </style>
 </head>
 <body id="body">
     
@@ -92,53 +111,52 @@ $offset = ($currentPage - 1) * $recordsPerPage;
         </div>
     </div>
         <div class="subContainer">
-            <?php
-                $sql = "SELECT * FROM units WHERE equipment_ID = '$equipment_ID' LIMIT $offset, $recordsPerPage";
-                $result_units = $conn->query($sql);
+        <?php
+        $sql = "SELECT * FROM units WHERE equipment_ID = '$equipment_ID' LIMIT $offset, $recordsPerPage";
+        $result_units = $conn->query($sql);
 
-                while ($row1 = $result_units->fetch_assoc()) {
-                    $equipment_name = $row1['equipment_name'];
-                    $unit_ID = $row1['unit_ID'];
-                    $user = $row1['user'];
-                    
-                    $unitPrefix = 'UNIT';
-                    $defaultUnitID = '0000';
-                    $unitID = $unitPrefix . '-' . str_pad($unit_ID, strlen($defaultUnitID), '0', STR_PAD_LEFT);
-                    
-                    echo "<a href='updateUnit.php?equipment_ID=$equipment_ID&unit_ID=$unit_ID&id=$userID'>";
-                        echo "<div class='equipContainer'>";
-                            echo "<div class='subEquipContainer'>";
-                                echo "<div class='imageContainer1'>";
-                                    echo "<img class='image1' src='$imageURL' alt=''>";
-                                echo "</div>";
-                                echo "<div class='infoContainer'>";
-                                    echo "<div class='subInfoContainer'>";
-                                        echo "<div class='statusContainer1'>";
-                                            echo "<p class='status1'>OLD</p>";
-                                        echo "</div>";
-                                    echo "</div>";
-                                    echo "<div class='subInfoContainer1'>";
-                                        echo "<p class='text'> $equipment_name</p>";
-                                    echo "</div>";
-                                    echo "<div class='subInfoContainer1'>";
-                                        echo "<p  class='text'>ID: $unitID</p>";
-                                    echo "</div>";
-                                    echo "<div class='subInfoContainer1'>";
-                                        echo "<p  class='text'>user: $user</p>";
-                                    echo "</div>";
+        while ($row1 = $result_units->fetch_assoc()) {
+            $equipment_name = $row1['equipment_name'];
+            $unit_ID = $row1['unit_ID'];
+            $user = $row1['user'];
+            $isNew = isEquipmentNew($equipment_ID, $conn);
+            
+            $unitPrefix = 'UNIT';
+            $defaultUnitID = '0000';
+            $unitID = $unitPrefix . '-' . str_pad($unit_ID, strlen($defaultUnitID), '0', STR_PAD_LEFT);
+            
+            echo "<div class='equipContainer'>";
+            echo "<div class='subEquipContainer'>";
+            echo "<div class='imageContainer1'>";
+            echo "<img class='image1' src='$imageURL' alt=''>";
+            echo "</div>";
+            echo "<div class='infoContainer'>";
+            echo "<div class='subInfoContainer'>";
+            echo "<div class='statusContainer1" . ($isNew ? " new" : "") . "'>";
+            echo "<p class='status1'>" . ($isNew ? "NEW" : "OLD") . "</p>";
+            echo "</div>";
+            echo "</div>";
+            echo "<div class='subInfoContainer1'>";
+            echo "<p class='text'><strong>$equipment_name</strong></p>";
+            echo "</div>";
+            echo "<div class='subInfoContainer1'>";
+            echo "<p  class='text'>$unitID</p>";
+            echo "</div>";
+            echo "<div class='subInfoContainer1'>";
+            echo "<p  class='text'>$user</p>";
+            echo "</div>";
 
-                                    echo "<div class='subInfoContainer'>";
-                                        echo "<div class='statusContainer2'>";
-                                            echo "<button onclick='popup1()' class='historyButton' type='button'>History</button>";
-                                        echo "</div>";
-                                    echo "</div>";
+            echo "<div class='subInfoContainer'>";
+            echo "<div class='statusContainer2'>";
+            echo "<button onclick='popup1()' class='historyButton' type='button'>History</button>";
+            echo "</div>";
+            echo "</div>";
 
-                                echo "</div>";
-                            echo "</div>";
-                        echo "</div>";
-                    echo "</a>";
-                }
-            ?>
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+        }
+        ?>
         
         </div>
         <div class="buttonContainer">

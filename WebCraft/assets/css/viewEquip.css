@@ -10,7 +10,7 @@
 
 .subContainer{
     /* outline: red dashed 1px; */
-    height: 36rem;
+    height: 38rem;
     width: 80%;
     background-color: #fff;
     border-radius: 0 0 0.5rem 0.5rem;
@@ -21,7 +21,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    overflow: auto;
+    overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 

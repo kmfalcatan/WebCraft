@@ -23,16 +23,21 @@ body{
     margin-top: 2rem;
 }
 
-.topContainer h2{
-    margin-right: auto;
-    color: #fff;
+.searchCon {
+    margin-right: 2rem;
+    align-items: center;
+    justify-items: center;
 }
 
-.topContainer img{
-    width: 4rem;
-    height: 4rem;
-    margin-left: 2rem;
-    filter: invert(100%);
+.searchCon #searchInput{
+    height: 2rem;
+    width: 15rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    background-color: #ffffffa5;
+    border: 1px solid #a6a6a6;
+    padding-left: 1rem;
 }
 
 .topContainer .backbtn{
@@ -62,6 +67,8 @@ body{
     border-bottom: solid gray 1px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    padding: 0 5.5rem;
 }
 
 .imageContainer{
@@ -71,7 +78,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 5rem;
 }
 
 .subImageContainer3{
@@ -95,12 +101,12 @@ body{
 .inforContainer{
     /* outline: red dashed 1px; */
     height: 100%;
-    width: 57%;
+    width: 20%;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     row-gap: 0.001rem;
-    margin-left: 2rem;
-    margin-top: 1rem;
 }
 
 .subInfoContainer{
@@ -110,13 +116,115 @@ body{
     align-items: center;
     font-size: 1.2rem;
     font-weight: bold;
-    margin-bottom: -1rem;
 }
 
 .subInfoContainer #name{
     text-transform: uppercase;
     font-size: 1.5rem;
 }
+
+.graph{
+    /* outline: red dashed 1px; */
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    row-gap: 0.001rem;
+    margin-left: auto;
+}
+
+.bargraph{
+    /* outline: red dashed 1px; */
+    height: 90%;
+    width: 50%;
+    display: flex;
+}
+
+.piechart{
+    /* outline: red dashed 1px; */
+    height: 90%;
+    width: 30%;
+    display: flex;
+}
+
+.options{
+    /* outline: red dashed 1px; */
+    height: 70%;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+
+.transfer{
+    /* outline: red dashed 1px; */
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    display: inline-block;
+}
+
+.transfer img,
+.sort-unit img{
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.transfer img:hover,
+.sort-unit img:hover{
+    transform: scale(1.2);
+}
+
+.sort-unit{
+    /* outline: red dashed 1px; */
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0rem 0.5rem 1rem 0rem rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 100%;
+    min-width: 10rem;
+    max-height: 12.5rem; 
+    overflow-y: auto; 
+    margin-top: 0.5rem;
+    right: 0;
+    padding: 1.5rem;
+    border-radius: 0.2rem;
+}
+
+.dropdown-content h5{
+    text-align: center;
+    justify-content: center;
+    font-weight: bold;
+    border-bottom: #ccc solid 1px;
+    padding-bottom: 0.5rem;
+    color: rgb(2, 116, 200);
+}
+
+.dropdown-content a {
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    display: block;
+    color: black;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
 
 .tableContainer1{
     /* outline: red dashed 1px; */

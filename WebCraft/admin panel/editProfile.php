@@ -13,10 +13,15 @@ include_once "../authentication/auth.php";
 
     <link rel="stylesheet" href="../assets/css/addOtherInfor.css">
     <link rel="stylesheet" href="../assets/css/profile.css">
+     <style>
+        .subUserInfoContainer select{
+            width: 93%;
+        }
+    </style>
 </head>
 <body id="body">
     <div class="container">
-        <form class="subContainer" id="subContainer"  method="POST" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $userID; ?>" enctype="multipart/form-data">
+        <form class="subContainer" id="subContainer" style="height: 80%;"  method="POST" action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . $userID; ?>" enctype="multipart/form-data">
             <div class="topContainer">
                 <img class="top-img" src="../assets/imG/person-circle.png" alt="" >
                 <h2>EDIT PROFILE</h2>
@@ -64,7 +69,7 @@ include_once "../authentication/auth.php";
 
                 <div class="userInfoContainer">
                     <div class="subUserInfoContainer">
-                        <select class="userInfo2" name="department" id="gender">
+                        <select class="userInfo2" name="department" id="gender" style="width: 93%;">
                             <option value="" disabled selected hidden>Choose a department</option>
                             <option value="College of Medicine">College of Medicine</option>
                             <option value="College of Science and Mathematics">College of Science and Mathematics</option>
@@ -88,7 +93,7 @@ include_once "../authentication/auth.php";
                 </div>
             </div>
 
-            <div class="buttonContainer2">
+            <div class="buttonContainer2" style="margin-top: 2.5rem;">
                 <button class="button" type="submit" id="btn1">Save</button>
                 <a href="../admin panel/setting.php">
                     <button class="button" id="btn2">Back</button>

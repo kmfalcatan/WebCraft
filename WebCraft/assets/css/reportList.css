@@ -31,9 +31,13 @@
     width: 90%;
 }
 
+.list.selected {
+    background-color: #fff;
+}
+
 /* container list */
 .list{
-    background-color: #f7f7f7; 
+    background-color: rgb(255, 255, 255); 
     height: 5rem; 
     border: 1px solid #a6a6a6;
     display: flex;
