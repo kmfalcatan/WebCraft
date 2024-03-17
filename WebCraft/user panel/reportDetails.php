@@ -88,7 +88,7 @@ include_once "../authentication/auth.php";
                     <div class="equipInfoContainer">
                         <div class="subEquipInfoContainer">
                             <div class="userContainer">
-                                <p class="user">User</p>
+                                <p class="user">Custodian</p>
                             </div>
 
                             <div class="subUserContainer">

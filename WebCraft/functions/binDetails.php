@@ -7,9 +7,10 @@ $user_ID = null;
 $unit_ID = null;
 $unit_issue = null;
 $article = null;
+$problem_desc = null;
 
     if ($approved_ID) {
-        $query = "SELECT user_ID, unit_ID, unit_issue, article FROM approved_report WHERE approved_ID = ?";
+        $query = "SELECT user_ID, unit_ID, unit_issue, problem_desc, article FROM approved_report WHERE approved_ID = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("i", $approved_ID);
         $stmt->execute();
@@ -20,6 +21,7 @@ $article = null;
             $user_ID = $row_approved['user_ID'];
             $unit_ID = $row_approved['unit_ID'];
             $unit_issue = $row_approved['unit_issue'];
+            $problem_desc = $row_approved['problem_desc'];
             $article = $row_approved['article'];
 
         $query_users = "SELECT fullname FROM users WHERE id = ?";

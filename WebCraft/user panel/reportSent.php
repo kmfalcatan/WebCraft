@@ -111,12 +111,15 @@ include_once '../authentication/auth.php';
                                         continue; 
                                     }
 
-                                    $imageQuery = "SELECT profile_img FROM users WHERE id = '$userID'";
-                                    $imageResult = mysqli_query($conn, $imageQuery);
+                                    $formatted_timestamp = date("l j, Y h:i a", strtotime($row['timestamp']));
 
-                                    if (mysqli_num_rows($imageResult) > 0) {
-                                        $row = mysqli_fetch_assoc($imageResult);
+                                    $userQuery = "SELECT profile_img, fullname FROM users WHERE id = '$userID'";
+                                    $userResult = mysqli_query($conn, $userQuery);
+
+                                    if (mysqli_num_rows($userResult) > 0) {
+                                        $row = mysqli_fetch_assoc($userResult);
                                         $image = $row['profile_img'];
+                                        $fullName = $row['fullname'];
 
                                         $timeDiff = time() - $timestamp;
 
@@ -145,15 +148,47 @@ include_once '../authentication/auth.php';
                                         echo "<div class='sender-img'>
                                                 <img src='../uploads/" . ($image ? $image : 'placeholder.jpg') . "' alt='Profile Image'>
                                             </div>
-                                            <a href='reportDetails.php?report_ID=$reportID&user_ID=$userID&timestamp=$timestamp' style='width: 100%;'>
-                                                <div class='label' style='display: flex;'>
+                                            <div class='label' style='display: flex;'>
+                                                <a href='reportDetails.php?report_ID=$reportID&user_ID=$userID&timestamp=$timestamp'>
                                                     <p class='left-text'>" . $status ."</p>
-                                                    <div class='right-text'>
-                                                        <p class='time'>" . $timeAgo . "</p> 
-                                                        <i class='fas fa-ellipsis-h'></i>
+                                                </a>
+                                                <div class='right-text'>
+                                                <p class='time'>$timeAgo</p> 
+                                                <button class='ellipsis-button' onclick='toggleDropdown(this)' style='border: none;'>
+                                                <i class='fas fa-ellipsis-h'></i>
+                                                <div class='dropdownContainer' style='display: none;'>
+                                                    <h3>Details</h3>
+                                                    <div class='details'>
+
+                                                      <div class='content'>
+                                                        <p>Sender:</p>
+                                                       </div>
+
+                                                      <div class='value'>
+                                                        <p><span>$fullName</span></p>
+                                                       </div>
+
+                                                      <div class='content'>
+                                                        <p>Content:</p>
+                                                      </div>
+
+                                                      <div class='value'>
+                                                        <p><span>Report to remove unit from available list</span></p>
+                                                       </div>
+
+                                                      <div class='content'>
+                                                        <p>Date&Time: </p>
+                                                      </div>
+
+                                                      <div class='value'>
+                                                        <p><span>$formatted_timestamp</span></p>
+                                                       </div>
+
                                                     </div>
                                                 </div>
-                                            </a>";
+                                                </button>   
+                                            </div>
+                                                </div>";
                                         echo "</div></td></tr>";
 
                                         $previousTimestamp = $timestamp;
@@ -191,5 +226,15 @@ include_once '../authentication/auth.php';
 
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/sidebarShow.js"></script>
+    <script>
+        function toggleDropdown(element) {
+            const dropdownContainer = element.querySelector('.dropdownContainer');
+            if (dropdownContainer.style.display === 'none') {
+            dropdownContainer.style.display = 'block';
+            } else {
+            dropdownContainer.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

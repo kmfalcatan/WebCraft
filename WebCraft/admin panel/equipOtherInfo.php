@@ -97,7 +97,7 @@ include_once "../functions/equipInfo.php"
                     <div class="subInfoContainer1">
                         <div class="infoEquipContainer">
                             <div class="subInfoEquipContainer">
-                                <p>User Handler</p>
+                                <p>Poperty Custodian</p>
                             </div>
 
                             <div class="subInfoEquipContainer1">

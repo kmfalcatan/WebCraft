@@ -126,6 +126,8 @@ include_once '../authentication/auth.php';
                                     }
                                 }
 
+                                $formatted_timestamp = date("l j, Y h:i a", strtotime($row['timestamp']));
+
                                 if ($timestamp != $prevTimestamp) {
 
                                     if ($prevTimestamp !== null) {
@@ -142,7 +144,39 @@ include_once '../authentication/auth.php';
                                         </a>
                                             <div class='right-text'>
                                                 <p class='time'>$timeAgo</p> 
+                                                <button class='ellipsis-button' onclick='toggleDropdown(this)'>
                                                 <i class='fas fa-ellipsis-h'></i>
+                                                <div class='dropdownContainer' style='display: none;'>
+                                                    <h3>Details</h3>
+                                                    <div class='details'>
+
+                                                      <div class='content'>
+                                                        <p>Sender:</p>
+                                                       </div>
+
+                                                      <div class='value'>
+                                                        <p><span>$fullName</span></p>
+                                                       </div>
+
+                                                      <div class='content'>
+                                                        <p>Content:</p>
+                                                      </div>
+
+                                                      <div class='value'>
+                                                        <p><span>Report to remove unit from available list</span></p>
+                                                       </div>
+
+                                                      <div class='content'>
+                                                        <p>Date&Time: </p>
+                                                      </div>
+
+                                                      <div class='value'>
+                                                        <p><span>$formatted_timestamp</span></p>
+                                                       </div>
+
+                                                    </div>
+                                                </div>
+                                                </button>   
                                             </div>
                                         </div>";
 
@@ -181,6 +215,7 @@ include_once '../authentication/auth.php';
 
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/sidebarShow.js"></script>
+    <script src="../assets/js/toggle.js"></script>
     <script>
         function changeColor(element) {
             element.classList.add('selected');

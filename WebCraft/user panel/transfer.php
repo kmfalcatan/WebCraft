@@ -245,7 +245,7 @@ include_once "../functions/header.php";
 
     function updateDisplayOnChange() {
     selectedUnits = [];
-    let reasonSelected = false; // Flag to track if the reason has been selected
+    let reasonSelected = false; 
     checkboxes.forEach(checkbox => {
         const unitID = checkbox.dataset.unitId;
         const issueSelect = document.querySelector(`.issue[data-unit-id="${unitID}"]`);
