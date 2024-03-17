@@ -8,7 +8,7 @@ $fullname = $_POST['fullname'];
 $equipmentID = $_POST['equipmentID'];
 $userID = $_POST['userID'];
 
-$unitIDNumeric = (int)substr($unitID, strpos($unitID, '-') + 1);
+$unitIDNumeric = (int) substr($unitID, strpos($unitID, '-') + 1);
 
 $query_insert = "INSERT INTO units (unit_ID, equipment_name, user, equipment_ID) VALUES ('$unitIDNumeric', '$article', '$fullname', '$equipmentID')";
 $result_insert = mysqli_query($conn, $query_insert);
@@ -22,15 +22,19 @@ if ($result_insert) {
         $result_delete = mysqli_query($conn, $query_delete);
 
         if ($result_delete) {
-            header("Location: ../admin panel/viewEquip.php?equipment_ID={$equipmentID}&id={$userID}");
+            mysqli_close($conn);
+            header("Location: units.php?userID={$userID}");
             exit();
         } else {
+            mysqli_close($conn);
             echo "Failed to delete row from approved_report table: " . mysqli_error($conn);
         }
     } else {
+        mysqli_close($conn);
         echo "Failed to update total_unit in equipment table: " . mysqli_error($conn);
     }
 } else {
+    mysqli_close($conn);
     echo "Failed to insert data into units table: " . mysqli_error($conn);
 }
 ?>

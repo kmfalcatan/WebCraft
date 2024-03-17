@@ -1,8 +1,57 @@
 <?php
-include_once "../functions/displayReport.php";
+include_once "../dbConfig/dbconnect.php";
 include_once "../functions/header.php";
 include_once "../authentication/auth.php";
 
+if (isset($_GET['unit_ID'])) {
+    $unit_ID = $_GET['unit_ID'];
+
+    $query = "SELECT unit_ID, equipment_ID, equipment_name, user FROM units WHERE unit_ID = '$unit_ID'";
+    $result = mysqli_query($conn, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $unitRow = mysqli_fetch_assoc($result);
+
+        $unit_ID = $unitRow['unit_ID'];
+        $equipment_ID = $unitRow['equipment_ID'];
+        $equipment_name = $unitRow['equipment_name'];
+        $user = $unitRow['user'];
+
+        $unitPrefix = 'UNIT';
+        $defaultUnitID = '0000';
+        $formattedUnitID = $unitPrefix . '-' . str_pad($unit_ID, strlen($defaultUnitID), '0', STR_PAD_LEFT);
+
+        $userQuery = "SELECT id FROM users WHERE fullname = '$user'";
+        $userResult = mysqli_query($conn, $userQuery);
+
+        if ($userResult && mysqli_num_rows($userResult) > 0) {
+            $userRow = mysqli_fetch_assoc($userResult);
+            $user_ID = $userRow['id'];
+        }
+
+        $equipmentQuery = "SELECT image, description, property_number, account_code, deployment FROM equipment WHERE equipment_ID = '$equipment_ID'";
+        $equipmentResult = mysqli_query($conn, $equipmentQuery);
+
+        if ($equipmentResult && mysqli_num_rows($equipmentResult) > 0) {
+            $equipmentRow = mysqli_fetch_assoc($equipmentResult);
+
+            $image_url = $equipmentRow['image'];
+            $description = $equipmentRow['description'];
+            $property_number = $equipmentRow['property_number'];
+            $account_code = $equipmentRow['account_code'];
+            $deployment = $equipmentRow['deployment'];
+        } else {
+            echo "Equipment not found!";
+            exit;
+        }
+    } else {
+        echo "Unit not found!";
+        exit;
+    }
+} else {
+    echo "Missing unit_ID parameter in the URL!";
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -66,21 +115,21 @@ include_once "../authentication/auth.php";
 
                 <div class="iconContainer">
                     <div class="subIconContainer">
-                        <img src="../assets/img/calendar.png" alt="">
+                        <img src="../assets/img/remove.png" alt="" style="width: 2.1rem; height: 2.1rem;">
                     </div>
 
                     <div class="textContainer10">
-                        <p>REPORT DETAILS</p>
+                        <p>REMOVE UNIT</p>
                     </div>
                 </div>
             </div>
 
-            <form class="infoContainer" action="../functions/approveReport.php" method="post"  enctype="multipart/form-data">
+            <form class="infoContainer" action="../functions/removeUnit.php" method="post"  enctype="multipart/form-data">
                 <input type="hidden" name="user_ID" value="<?php echo $user_ID ?>">
 
                 <div class="subInfoContainer">
                     <div class="imageContainer2">
-                        <div class="subImageContainer2">
+                        <div class="subImageContainer2" style="border: 1px solid rgb(2, 116, 200)">
                             <?php if (!empty($image_url)): ?>
                                 <img class="image8" src="../uploads/<?php echo $image_url; ?>" alt="">
                             <?php else: ?>
@@ -89,18 +138,18 @@ include_once "../authentication/auth.php";
                         </div>
 
                         <div class="equipNameContainer">
-                            <input type="text" class="article" name="article" value="<?php echo $article; ?>" readonly>
+                            <input type="text" class="article" name="article" value="<?php echo $equipment_name; ?>" readonly>
                         </div>
                     </div>
 
                     <div class="equipInfoContainer">
                         <div class="subEquipInfoContainer">
                             <div class="userContainer">
-                                <p class="user">Custodian</p>
+                                <p class="user">User</p>
                             </div>
 
                             <div class="subUserContainer">
-                                <input type="text" class="userName2" name="fullname" value="<?php echo $user_full_name; ?>" readonly>
+                                <input type="text" class="userName2" name="fullname" value="<?php echo $user; ?>" readonly>
                             </div>
                         </div>
 
@@ -161,10 +210,9 @@ include_once "../authentication/auth.php";
                         <p>UNITS REPORTED</p>
                     </div>
 
-                    <?php foreach ($unit_reports as $index => $report) : ?>
                         <div class="subUnitContainer">
                             <div class="unitNumberContainer">
-                                <input type="text" class="unitID" name="unit_ID[]" value="<?php echo $report['unit_ID']; ?>">
+                                <input type="text" class="unitID" name="unit_ID" value="<?php echo $formattedUnitID; ?>">
                             </div>
 
                             <div class="unitNumberContainer1">
@@ -173,7 +221,11 @@ include_once "../authentication/auth.php";
                                 </div>
 
                                 <div class="subUserContainer">
-                                    <input type="text" class="userName2" name="unit_issue[]" value=" <?php echo $report['report_issue']; ?>">
+                                    <select class="userName2" name="unit_issue">
+                                        <option value="" disabled selected>Select issue</option>
+                                        <option value="Lost">Lost</option>
+                                        <option value="For Return">For Return</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -183,16 +235,14 @@ include_once "../authentication/auth.php";
                                 </div>
 
                                 <div class="subUserContainer">
-                                    <input type="text" class="userName2" name="problem_desc" value="<?php echo $report['problem_desc']; ?>" readonly>
+                                    <input type="text" class="userName2" name="problem_desc" >
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach; ?>
                 </div>
 
                 <div class="buttonContainer">
-                    <button class="button" type="submit" name="approve">Approve</button>
-                    <button class="button">Decline</button>
+                    <button class="button" type="submit" name="approve">Remove</button>
                 </div>
             </form>
         </div>

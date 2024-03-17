@@ -75,7 +75,7 @@ include_once "../functions/header.php";
 
                 <div class="infoContainer1">
                     <div class="subInfoContainer1">
-                        <p>HANDLER</p>
+                        <p>PROPERTY CUSTODIAN</p>
                     </div>
 
                     <div class="textContainer">

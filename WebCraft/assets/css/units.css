@@ -1,4 +1,39 @@
 
+.med-icon{
+    position: absolute;
+    left: 4%;
+    border-radius: 0.3rem;
+    width: 5%;
+    height: 3%;
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: bold;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 0.7rem;
+}
+
+button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.5rem;
+    background-color: rgb(2, 116, 200);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+button img{
+    width: 1.2rem; 
+    height: 1.2rem;
+    margin-right: 0.5rem;
+    filter: invert(100%);
+}
 
 .dropdown-content {
     display: none;
@@ -35,3 +70,106 @@
 .dropdown-content a:hover {
     background-color: #ddd;
 }
+
+/* filter */
+.filterPopupContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+  
+  .filterPopupContent {
+    background-color: #fff;
+    width: 40%;
+    height: 50%;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+    flex-direction: column;
+    column-gap: 0.1rem;
+  }
+
+  .filterPopupContent h2{
+    margin-bottom: auto;
+    color: rgb(2, 116, 200);
+  }
+
+  .desc{
+    width: 90%;
+    margin-bottom: auto;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-top: 1px solid #a6a4a4;
+    padding-top: 1rem;
+  }
+
+  .filters{
+    flex-direction: column;
+    column-gap: 2.5rem;
+    margin-bottom: auto;
+    width: 90%;
+    height: auto;
+  }
+
+  .filters label{
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .filters select{
+    width: 40%;
+    height: 2.5rem;
+    margin-left: 3rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .filters .year{
+    margin-left: 6.5rem;
+  }
+
+  .filters .article{
+    margin-left: 5rem;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 95%;
+    height: auto;
+}
+
+  .button button {
+      margin-right: 3rem;
+      width: 13%;
+      border-radius: 0.2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .button .closebtn{
+    background-color: #fff;
+    width: 10%;
+    color: #333;
+
+  }
+
+  .button button:last-child {
+      margin-right: 0;
+  }
+
+

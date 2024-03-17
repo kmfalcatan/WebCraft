@@ -96,3 +96,56 @@ i{
     font-size: 1rem;
     cursor: pointer;
 }
+
+/* dropdown */
+.ellipsis-button {
+    background-color: transparent;
+    border: none;
+}
+.ellipsis-button .dropdownContainer {
+    display: flex;
+    position: absolute;
+    background-color: #f0f0f0;
+    padding: 1rem 0.5rem;
+    border-radius: 0.4rem;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.7);
+    right: 12rem;
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.ellipsis-button .dropdownContainer.visible {
+    display: block;
+}
+
+.dropdownContainer h3 {
+    color: #797979;
+    font-weight: 500;
+    max-width: 100%;
+    border-bottom: 1px #adacac solid;
+    padding-bottom: 0.5rem;
+}
+
+.dropdownContainer .details{
+    margin-top: 1rem;
+    margin-right: auto;
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 1rem;
+}
+
+.details p,
+.details span{
+    font-size: 0.8rem;
+    column-gap: 1rem;
+    color: #797979;
+}
+
+.details span{
+    margin-left: 3rem;
+    font-weight: 500;
+    color: #333;
+}

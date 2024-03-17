@@ -138,8 +138,8 @@ include_once "../functions/header.php";
                                     echo "<td>" . $formatted_timestamp . "</td>"; 
                                     echo "<td>" . $row['unit_issue'] . "</td>";
                                     echo "<td class='actionContainer'>";
-                                    echo "<img src='../assets/img/restore.png' alt='View' class='action-img' id='restore' style='width: 1.2rem; height: 0.5.rem; margin-right: 1rem;' data-unitid='{$row['unit_ID']}' data-article='{$row['article']}' 
-                                            data-fullname='{$row_user['fullname']}' data-equipmentid='{$row_equipment['equipment_ID']}' data-userid='{$user_ID}'>";
+                                    echo "<a href='units.php?id={$userID}'><img src='../assets/img/restore.png' alt='View' class='action-img' id='restore' style='width: 1.2rem; height: 0.5.rem; margin-right: 1rem;' data-unitid='{$row['unit_ID']}' data-article='{$row['article']}' 
+                                            data-fullname='{$row_user['fullname']}' data-equipmentid='{$row_equipment['equipment_ID']}' data-userid='{$user_ID}'></a>";
                                     echo "<a href='viewApprovedReport.php?approved_ID={$row['approved_ID']}&id={$userID}'><img src='../assets/img/view.png' alt='View' class='action-img' style='width: 2rem; height: 1.5rem;'></a>";
                                     echo "</td>";
                                     echo "</tr>";

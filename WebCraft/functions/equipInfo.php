@@ -1,7 +1,6 @@
 <?php
 include_once "../dbConfig/dbconnect.php";
 
-
 $equipment_ID = isset($_GET['equipment_ID']) ? $_GET['equipment_ID'] : null;
 
 $sql = "SELECT * FROM equipment WHERE equipment_ID = '$equipment_ID'";

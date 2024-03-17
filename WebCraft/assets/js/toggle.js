@@ -96,3 +96,24 @@ function history(){
         popupContainer.style.display = 'none';
     }
 }
+
+// units
+function showFilterPopup() {
+    const popupContainer = document.getElementById('filterPopupContainer');
+    popupContainer.style.display = 'flex';
+}
+
+function hideFilterPopup() {
+    const popupContainer = document.getElementById('filterPopupContainer');
+    popupContainer.style.display = 'none';
+}
+
+// report list
+function toggleDropdown(element) {
+    const dropdownContainer = element.querySelector('.dropdownContainer');
+    if (dropdownContainer.style.display === 'none') {
+      dropdownContainer.style.display = 'block';
+    } else {
+      dropdownContainer.style.display = 'none';
+    }
+  }

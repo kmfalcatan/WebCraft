@@ -98,7 +98,7 @@ if ($result) {
                     <div class="subInfoContainer1">
                         <div class="inputInfoContainer3">
                             <div class="subInputInfoContainer3">
-                                <button onclick="dropdown()" type="button" class="inputInfo1">Select User</button>
+                                <button onclick="dropdown()" type="button" class="inputInfo1">Select Custodian</button>
 
                                 <div class="dropdownContainer1"  name="user" id="dropdown" style="display: none;">
                                     <?php
@@ -115,7 +115,7 @@ if ($result) {
 
                             <div class="subInputInfoContainer3">
                                 <div class="subInputInfoContainer3">
-                                <label onclick="viewSelectedUsers()" class="viewButton">View selected users</label>
+                                <label onclick="viewSelectedUsers()" class="viewButton">Selected custodians</label>
 
                                 <div class="dropdownContainer1" id="dropdown1" style="display: none;">
                                     <div id="selectedUsersContainer" style="text-align: center;"></div>
@@ -141,7 +141,7 @@ if ($result) {
 
                                 <div class="dropdownContainer1" id="dropdown2" style="display: none;">
                                     <div class="labelContainer">
-                                        <label class="label" id="user">Users</label>
+                                        <label class="label" id="user">Custodians</label>
                                         <label class="label" id="unit">Unit</label>
                                     </div>
                                     <div id="selectedUsersContainer2"></div> 

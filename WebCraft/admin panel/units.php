@@ -15,6 +15,7 @@ include_once "../functions/header.php";
 
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/sidebarShow.css">
+    <link rel="stylesheet" href="../assets/css/units.css">
 </head>
 <body>
     <div class="container1">
@@ -61,28 +62,82 @@ include_once "../functions/header.php";
 
            <div class="filterContainer">
                 <div class="subFilterContainer">
-                    <div class="sortContainer">
-                        <img class="sort" src="../assets/img/th (2).jpg" alt="">
+                    <div class="med-icon" id="medIcon"  onclick="showFilterPopup()">
+                        <img src="../assets/img/filter.png" style="width: 1.5rem; height: 1.5rem; cursor: pointer;" alt="">
+                        <p>Filter</p>
                     </div>
 
-                    <div class="filter" onclick="filterByYear('all')">
-                            <p class="year">All</p>
-                        </div>
+                        <div class="filterPopupContainer" id="filterPopupContainer" style="display: none;">
+                            <div class="filterPopupContent">
+                                <h2>UNIT FILTERS</h2>
+                                <div class="desc">
+                                    <p>User filters to find units.</p>
+                                </div>
 
-                        <div class="filter" onclick="filterByYear(2024)">
-                            <p class="year">2024</p>
-                        </div>
+                                <div class="filters">
+                                    <div class="yearContainer">
+                                        <label for="year">Year:</label>
+                                        <select class="year" name="unit_issue">
+                                            <option value="" disabled selected>Select year</option>
+                                            <?php
+                                                $yearQuery = "SELECT DISTINCT year_received FROM equipment";
+                                            
+                                                $userResult = $conn->query($yearQuery);
+                                                
+                                                if ($userResult->num_rows > 0) {
+                                                    while($yearRow = $userResult->fetch_assoc()) {
+                                                        echo '<option value="' . $yearRow["year_received"] . '">' . $yearRow["year_received"] . '</option>';
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
 
-                        <div class="filter" onclick="filterByYear(2023)">
-                            <p class="year">2023</p>
-                        </div>
+                                    <div class="articleContainer">
+                                        <label for="article">Article:</label>
+                                        <select class="article" name="unit_issue">
+                                            <option value="" disabled selected>Select article</option>
+                                            <?php
+                                                $articleQuery = "SELECT DISTINCT article FROM equipment";
+                                            
+                                                $articleResult = $conn->query($articleQuery);
+                                                if ($articleResult->num_rows > 0) {
+                                                    while($articleRow = $articleResult->fetch_assoc()) {
+                                                        if (!empty($articleRow["article"])) {
+                                                            echo '<option value="' . $articleRow["article"] . '">' . $articleRow["article"] . '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
 
-                        <div class="filter" onclick="filterByYear(2022)">
-                            <p class="year">2022</p>
-                        </div>
+                                    <div class="custodianContainer">
+                                        <label for="custodian">Custodian:</label>
+                                        <select class="custodian" name="unit_issue">
+                                            <option value="" disabled selected>Select custodian</option>
+                                            <?php
+                                                $userQuery = "SELECT DISTINCT user FROM units";
+                                                $userResult = $conn->query($userQuery);
+                                                
+                                                if ($userResult->num_rows > 0) {
+                                                    while($userRow = $userResult->fetch_assoc()) {
+                                                        if (!empty($userRow["user"])) {
+                                                            echo '<option value="' . $userRow["user"] . '">' . $userRow["user"] . '</option>';
+                                                        }
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
 
-                        <div class="med-icon" id="medIcon">
-                            <img src="../assets/img/filter.png" style="filter: invert(100%); width: 2rem; height: 2rem; cursor: pointer;" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="button">
+                                    <button class="closebtn" onclick="hideFilterPopup()">Close</button>
+                                    <button  id="filterButton" onclick="hideFilterPopup()">Filter</button>
+                                </div> 
+                            </div>
                         </div>
                 </div>
            </div>
@@ -96,7 +151,7 @@ include_once "../functions/header.php";
                             <th>ARTICLE</th>
                             <th>PROPERTY NUMBER</th>
                             <th>ACCOUNT CODE</th>
-                            <th>UNIT HANDLER</th>
+                            <th>CUSTODIAN</th>
                             <th>YEAR</th>
                             <th>ACTION</th>
                         </tr>
@@ -134,7 +189,7 @@ include_once "../functions/header.php";
                                         echo "<td>" . $row['user'] . "</td>";
                                         echo "<td>" . $equipmentRow['year_received'] . "</td>";
                                         echo "<td class='actionContainer' style='display: flex;'>";
-                                        echo "<img src='../assets/img/remove.png' alt='View' class='action-img' style='width: 1.7rem; height: 1.7rem;'>";
+                                        echo "<a href='removeUnit.php?unit_ID={$row['unit_ID']}&id={$userInfo['id']}'><button class'movebtn'><img src='../assets/img/move.png'>remove</button</a>";
                                         echo "</td>";
                                         echo "</tr>";
                                         $count++; 
@@ -163,8 +218,10 @@ include_once "../functions/header.php";
         </div>
     </div>
 
+    <script src="../assets/js/toggle.js"></script>
     <script src="../assets/js/dashboard.js"></script>
     <script src="../assets/js/sidebarShow.js"></script>
-    
+   <script src="../assets/js/filter.js"></script>
+
 </body>
 </html>
